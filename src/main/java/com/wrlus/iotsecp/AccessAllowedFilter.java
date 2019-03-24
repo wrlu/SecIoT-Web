@@ -32,7 +32,6 @@ public class AccessAllowedFilter extends OncePerRequestFilter {
 			} else {
 				response.addHeader("Access-Control-Allow-Headers", "Content-Type,X-Requested-With");
 			}
-            
         } else {
             chain.doFilter(request, response);
         }
