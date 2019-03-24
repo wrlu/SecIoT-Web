@@ -19,16 +19,13 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
 		<property name="configLocation" value="/WEB-INF/mybatis/mybatis-config.xml" />
-		<property name="mapperLocations" value="classpath:com/wrlus/iotsecp/*/dao/*.xml" />
+		<property name="mapperLocations" value="classpath:com/wrlus/seciot/*/dao/*.xml" />
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.wrlus.iotsecp" />
+		<property name="basePackage" value="com.wrlus.seciot" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding" value="utf-8"/>
-	</bean>
-	<bean class="com.wrlus.iotsecp.common.entity.Config" scope="singleton"
-		lazy-init="false" init-method="init">
 	</bean>
 </beans>

@@ -1,6 +1,6 @@
-package com.wrlus.iotsecp.util;
+package com.wrlus.seciot.util;
 
-public class StatusConst {
+public class Status {
 	public static final String ERROR = "0";
 	public static final String SUCCESS = "1";
 }
