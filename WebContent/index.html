@@ -4,34 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>控制台 - SecIoT</title>
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+    <link href="/SecIoT/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
   </head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">SecIoT 漏洞检测系统</a>
   <input class="form-control form-control-dark w-100" type="text" placeholder="搜索" aria-label="Search">
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">登录/注销</a>
-    </li>
-  </ul>
 </nav>
 
 <div class="container-fluid">
@@ -44,28 +23,10 @@
               控制台<span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              功能介绍
-            </a>
-          </li>
         </ul>
         
         <ul class="nav flex-column mb-2">
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>应用安全</span>
-          </h6>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              安卓应用分析
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              苹果应用分析
-            </a>
-          </li>
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>系统安全</span>
           </h6>
           <li class="nav-item">
@@ -75,9 +36,24 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              现网漏洞扫描
+              设备漏洞扫描
             </a>
           </li>
+        
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>应用安全</span>
+          </h6>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              安卓应用分析
+            </a>
+          </li>
+ <!--      <li class="nav-item">
+            <a class="nav-link" href="#">
+              苹果应用分析
+            </a>
+          </li>
+  -->         
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>传输安全</span>
           </h6>
@@ -86,19 +62,7 @@
               传输流量分析
             </a>
           </li>
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>系统管理</span>
-          </h6>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              系统设置
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              关于本系统
-            </a>
-          </li>
+
         </ul>
       </div>
     </nav>
@@ -144,8 +108,9 @@
     </main>
   </div>
 </div>
-<script src="lib/jquery/jquery-3.3.1.min.js"></script>
-<script src="lib/popper/popper.min.js"></script>
-<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/SecIoT/lib/jquery/jquery-3.3.1.min.js"></script>
+<script src="/SecIoT/lib/popper/popper.min.js"></script>
+<script src="/SecIoT/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/SecIoT/js/main.js"></script>
 </body>
 </html>

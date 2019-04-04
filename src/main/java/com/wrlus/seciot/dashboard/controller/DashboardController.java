@@ -18,7 +18,7 @@ public class DashboardController {
 	
 	@ResponseBody
 	@RequestMapping("/refresh")
-	public Map<String, Object> dashboardRefresh(HttpServletRequest request, HttpServletResponse response) {
+	public Map<String, Object> refresh(HttpServletRequest request, HttpServletResponse response) {
 		Map<String, Object> data=new HashMap<String, Object>();
 		data.put("Status", Status.SUCCESS);
 		return data;

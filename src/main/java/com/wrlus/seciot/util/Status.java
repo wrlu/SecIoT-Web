@@ -1,6 +1,10 @@
 package com.wrlus.seciot.util;
 
 public class Status {
-	public static final String ERROR = "0";
-	public static final String SUCCESS = "1";
+//	成功
+	public static final String SUCCESS = "0";
+//	未知错误
+	public static final String UNKNOWN_ERROR = "1000";
+//	文件上传错误
+	public static final String FILE_UPD_ERROR = "1001";
 }
