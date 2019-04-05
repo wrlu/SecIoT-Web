@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.wrlus.seciot.fw.service.FwService;
 import com.wrlus.seciot.util.Status;
 
 @Controller
