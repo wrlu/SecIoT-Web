@@ -1,11 +1,13 @@
 package com.wrlus.seciot.pysocket;
 
-import java.io.File;
+import java.util.Map;
 
-public class PySocketResultModel {
+public class PySocketResponse {
+	
 	private int status;
 	private String reason;
-	private File logFile;
+	private Map<String, Object> data;
+	
 	public int getStatus() {
 		return status;
 	}
@@ -18,10 +20,10 @@ public class PySocketResultModel {
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
-	public File getLogFile() {
-		return logFile;
+	public Map<String, Object> getData() {
+		return data;
 	}
-	public void setLogFile(File logFile) {
-		this.logFile = logFile;
+	public void setData(Map<String, Object> data) {
+		this.data = data;
 	}
 }

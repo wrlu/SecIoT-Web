@@ -1,46 +1,41 @@
 package com.wrlus.seciot.fw.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class FwInfoModel {
+	
+	@JsonProperty("fw_name")
 	private String name;
-	private String type;
-	private String version;
-	private String developerName;
-	private String hardware;
-	private String filePath;
+	@JsonProperty("fw_path")
+	private String path;
+	@JsonProperty("fw_filesystem")
+	private String filesystem;
+	@JsonProperty("fw_root_directory")
+	private String rootDir;
+	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getType() {
-		return type;
+	public String getPath() {
+		return path;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setPath(String path) {
+		this.path = path;
 	}
-	public String getVersion() {
-		return version;
+	public String getFilesystem() {
+		return filesystem;
 	}
-	public void setVersion(String version) {
-		this.version = version;
+	public void setFilesystem(String filesystem) {
+		this.filesystem = filesystem;
 	}
-	public String getDeveloperName() {
-		return developerName;
+	public String getRootDir() {
+		return rootDir;
 	}
-	public void setDeveloperName(String developerName) {
-		this.developerName = developerName;
+	public void setRootDir(String rootDir) {
+		this.rootDir = rootDir;
 	}
-	public String getHardware() {
-		return hardware;
-	}
-	public void setHardware(String hardware) {
-		this.hardware = hardware;
-	}
-	public String getFilePath() {
-		return filePath;
-	}
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
+	
 }
