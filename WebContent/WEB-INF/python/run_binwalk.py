@@ -12,7 +12,7 @@ filesystem_roots = {
 }
 
 
-def binwalk_get_fw_info(file_name, path):
+def get_fw_info(file_name, path):
     result = binwalk(path, '')
     if result == '':
         raise OSError('binwalk runs failed.')
@@ -25,7 +25,7 @@ def binwalk_get_fw_info(file_name, path):
     return fw_info
 
 
-def binwalk_get_fw_root_directory(fw_info):
+def get_fw_root_directory(fw_info):
     global filesystem_roots
     result = binwalk(fw_info['fw_path'], '-Me')
     if result == '':
@@ -36,7 +36,8 @@ def binwalk_get_fw_root_directory(fw_info):
         path_fix = '\\'
     else:
         path_fix = '/'
-    return binwalk_base_dir + path_fix + filesystem_roots[fw_filesystem]
+    fw_info['fw_root_directory'] = binwalk_base_dir + path_fix + filesystem_roots[fw_filesystem]
+    return fw_info
 
 
 def get_filesystem(input):
@@ -57,11 +58,12 @@ def binwalk(path, params):
     return result
 
 
-def call_wsl_binwalk(path, param):
+def call_wsl_binwalk(path, params):
     wsl_path = win_path_to_wsl_path(path)
     base_path = wsl_path[:wsl_path.rfind('/')]
-    process = subprocess.Popen('wsl binwalk '+param+' -C '+base_path+' '+wsl_path,
-                               shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    cmd = 'wsl binwalk '+params+' -C '+base_path+' '+wsl_path
+    print(cmd)
+    process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     result = ''
     for line in process.stdout.readlines():
         result += line.decode('utf8')
@@ -69,10 +71,11 @@ def call_wsl_binwalk(path, param):
     return result
 
 
-def call_linux_binwalk(path, param):
+def call_linux_binwalk(path, params):
     base_path = path[:path.rfind('/')]
-    process = subprocess.Popen('binwalk '+param+' -C '+base_path+' '+path,
-                               shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    cmd = 'binwalk '+params+' -C '+base_path+' '+path
+    print(cmd)
+    process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     result = ''
     for line in process.stdout.readlines():
         result += line.decode('utf8')
@@ -91,7 +94,6 @@ def win_path_to_wsl_path(path):
 if __name__ == '__main__':
     path = 'D:\\Analysis\\mico_all_f86a5_1.44.4.bin'
     file_name = 'mico_all_f86a5_1.44.4.bin'
-    fw_info = binwalk_get_fw_info(file_name, path)
+    fw_info = get_fw_info(file_name, path)
+    fw_info = get_fw_root_directory(fw_info)
     print(fw_info)
-    extracted_path = binwalk_get_fw_root_directory(fw_info)
-    print(extracted_path)
