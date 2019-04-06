@@ -3,12 +3,14 @@ import platform
 can_login_shell = [
     '/bin/bash', '/bin/sh', '/bin/ash'
 ]
+passwd_file_name = '/etc/passwd'
+shadow_file_name = '/etc/shadow'
 
 
 def fw_linux_shadow(base_dir):
     global can_login_shell
-    passwd_file_name = '/etc/passwd'
-    shadow_file_name = '/etc/shadow'
+    global passwd_file_name
+    global shadow_file_name
     if platform.system() == 'Windows':
         path_fix = '\\'
     else:
