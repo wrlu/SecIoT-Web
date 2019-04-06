@@ -33,28 +33,28 @@ public class PySocket {
 		}
 	}
 	
-	public PySocketResultModel sendCmdSync(String cmd) {
+	public PySocketResponse sendCmdSync(PySocketRequest cmd) {
 		try {
 			return sendCmd(cmd);
 		} catch (IOException e) {
-			PySocketResultModel resultModel = new PySocketResultModel();
-			resultModel.setStatus(Status.PY_SOCKET_IO_ERROR);
-			resultModel.setReason("与Python Socket服务器通信时发生错误，错误代码："+Status.PY_SOCKET_IO_ERROR);
+			PySocketResponse response = new PySocketResponse();
+			response.setStatus(Status.PY_SOCKET_IO_ERROR);
+			response.setReason("与Python Socket服务器通信时发生错误，错误代码："+Status.PY_SOCKET_IO_ERROR);
 			e.printStackTrace();
-			return resultModel;
+			return response;
 		}
 	}
 	
-	public void sendCmdAsync(String cmd, PySocketListener callback) {
+	public void sendCmdAsync(PySocketRequest cmd, PySocketListener callback) {
 		Thread pyCmdThread = new Thread(()->{
 			try {
-				PySocketResultModel resultModel = sendCmd(cmd);
+				PySocketResponse resultModel = sendCmd(cmd);
 				callback.onSuccess(resultModel);
 			} catch (IOException e) {
-				PySocketResultModel resultModel = new PySocketResultModel();
-				resultModel.setStatus(Status.PY_SOCKET_IO_ERROR);
-				resultModel.setReason("与Python Socket服务器通信时发生错误，错误代码："+Status.PY_SOCKET_IO_ERROR);
-				callback.onError(resultModel);
+				PySocketResponse response = new PySocketResponse();
+				response.setStatus(Status.PY_SOCKET_IO_ERROR);
+				response.setReason("与Python Socket服务器通信时发生错误，错误代码："+Status.PY_SOCKET_IO_ERROR);
+				callback.onError(response);
 				e.printStackTrace();
 			}
 		});
@@ -62,11 +62,11 @@ public class PySocket {
 		pyCmdThread.start(); 
 	}
 	
-	private PySocketResultModel sendCmd(String cmd) throws IOException {
-		writer.write(cmd);
-		writer.flush();
+	private PySocketResponse sendCmd(PySocketRequest cmd) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
-		PySocketResultModel resultModel = mapper.readValue(reader, PySocketResultModel.class);
-		return resultModel;
+		writer.write(mapper.writeValueAsString(cmd));
+		writer.flush();
+		PySocketResponse response = mapper.readValue(reader, PySocketResponse.class);
+		return response;
 	}
 }

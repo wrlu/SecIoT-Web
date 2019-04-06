@@ -26,15 +26,15 @@ def do(base_dir):
             libcrypto_so_path = name
     result = {}
     if libcrypto_so_path == '':
-        result['openssl_avaliable'] = False
+        result['lib_avaliable'] = False
         return result
     libcrypto_so = open(base_dir + libcrypto_so_path.replace('/', path_fix), 'rb')
     libcrypto_so_binary = libcrypto_so.read()
     regex = re.compile(openssl_version_search_regex)
     openssl_version = regex.findall(libcrypto_so_binary)
-    result['openssl_avaliable'] = True
-    result['openssl_libcrypto_so_path'] = libcrypto_so_path
-    result['openssl_version'] = openssl_version[0].decode('utf8')
+    result['lib_avaliable'] = True
+    result['lib_path'] = libcrypto_so_path
+    result['lib_version'] = openssl_version[0].decode('utf8')
     return result
 
 
