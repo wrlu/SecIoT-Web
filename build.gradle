@@ -10,7 +10,7 @@
 apply plugin: 'java-library'
 
 // Apply the war plugin to add support for Java Web war package
-apply plugin: "war"
+apply plugin: 'war'
 
 // In this section you declare where to find the dependencies of your project
 repositories {

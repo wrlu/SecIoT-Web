@@ -7,7 +7,7 @@ passwd_file_name = '/etc/passwd'
 shadow_file_name = '/etc/shadow'
 
 
-def fw_linux_shadow(base_dir):
+def do(base_dir):
     global can_login_shell
     global passwd_file_name
     global shadow_file_name
@@ -53,5 +53,5 @@ def fw_linux_shadow(base_dir):
 
 if __name__ == '__main__':
     base_dir = 'D:\\Analysis\\_mico_all_f86a5_1.44.4.bin.extracted\\squashfs-root'
-    result = fw_linux_shadow(base_dir)
+    result = do(base_dir)
     print(result)

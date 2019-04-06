@@ -13,7 +13,7 @@ libcrypto_so_names = [
 openssl_version_search_regex = b'OpenSSL [0-1].[0-9]*.[0-9]*.[a-z]?'
 
 
-def fw_openssl_version(base_dir):
+def do(base_dir):
     global libcrypto_so_names
     global openssl_version_search_regex
     if platform.system() == 'Windows':
@@ -40,6 +40,6 @@ def fw_openssl_version(base_dir):
 
 if __name__ == '__main__':
     base_dir = 'D:\\Analysis\\_mico_all_f86a5_1.44.4.bin.extracted\\squashfs-root'
-    result = fw_openssl_version(base_dir)
+    result = do(base_dir)
     print(result)
 
