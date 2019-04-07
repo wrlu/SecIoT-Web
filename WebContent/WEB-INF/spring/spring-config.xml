@@ -28,4 +28,7 @@
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding" value="utf-8"/>
 	</bean>
+	<bean class="com.wrlus.seciot.pysocket.PyServerController" scope="singleton"
+        lazy-init="false" init-method="init" destroy-method="destory">
+    </bean>
 </beans>
