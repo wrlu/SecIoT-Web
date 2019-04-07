@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wrlus.seciot.fw.model.FwInfoModel;
 import com.wrlus.seciot.fw.model.FwThirdLibraryModel;
 import com.wrlus.seciot.fw.service.FwService;
+import com.wrlus.seciot.pysocket.PythonException;
 import com.wrlus.seciot.util.Status;
 
 @Controller
@@ -47,6 +48,7 @@ public class FwController {
 //			提取固件（binwalk -Me），获得固件根路径
 			File rootDir = fwService.getFwRootDirectory(fwInfo);
 			fwInfo.setRootDir(rootDir.getAbsolutePath());
+			log.debug("FwInfo: " + mapper.writeValueAsString(fwInfo));
 			List<FwThirdLibraryModel> fwThirdLibraries = new ArrayList<>();
 //			获得OpenSSL版本
 			String[] libnames = {"OpenSSL"};
@@ -60,16 +62,40 @@ public class FwController {
 		} catch (NullPointerException e) {
 			data.put("Status", Status.FILE_UPD_ERROR);
 			data.put("reason", "文件上传失败，错误代码："+Status.FILE_UPD_ERROR);
-			e.printStackTrace();
+			log.error("文件上传失败，错误代码："+Status.FILE_UPD_ERROR);
+			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+			if (log.isDebugEnabled()) {
+				e.printStackTrace();
+			}
+		} catch (PythonException e) {
+			data.put("Status", Status.PY_ERROR);
+			data.put("reason", "Python出现异常，错误代码："+Status.PY_ERROR);
+			log.error("Python出现异常，错误代码："+Status.PY_ERROR);
+			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+			if (log.isDebugEnabled()) {
+				e.printStackTrace();
+			}
+		} catch (IllegalStateException e) {
+			data.put("Status", Status.FILE_UPD_ERROR);
+			data.put("reason", "Python出现异常，错误代码："+Status.PY_ERROR);
+			log.error("Python出现异常，错误代码："+Status.PY_ERROR);
+			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+			if (log.isDebugEnabled()) {
+				e.printStackTrace();
+			}
 		} catch (IOException e) {
 			data.put("Status", Status.FILE_UPD_ERROR);
 			data.put("reason", "上传路径读写失败，错误代码："+Status.FILE_UPD_ERROR);
-			e.printStackTrace();
+			log.error("上传路径读写失败，错误代码："+Status.FILE_UPD_ERROR);
+			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+			if (log.isDebugEnabled()) {
+				e.printStackTrace();
+			}
 		}
 		return data;
 	}
 	
-	private File resolveUploadFile(MultipartHttpServletRequest multipartRequest, String path) throws NullPointerException, IOException{
+	private File resolveUploadFile(MultipartHttpServletRequest multipartRequest, String path) throws IllegalStateException, IOException{
 		MultipartFile multipartFile = multipartRequest.getFile("file");
 		new File(path).mkdirs();
 		File targetFile = new File(path + multipartFile.getOriginalFilename());

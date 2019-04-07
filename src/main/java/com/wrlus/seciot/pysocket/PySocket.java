@@ -9,6 +9,9 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wrlus.seciot.util.Status;
 
@@ -16,6 +19,7 @@ public class PySocket {
 	private Socket socket;
 	private BufferedWriter writer;
 	private BufferedReader reader;
+	private static Logger log = LogManager.getLogger();
 
 	public void connect() throws IOException {
 		if (!socket.isConnected()) {
@@ -24,6 +28,7 @@ public class PySocket {
 			InputStream is = socket.getInputStream();
 			writer = new BufferedWriter(new OutputStreamWriter(os));
 			reader = new BufferedReader(new InputStreamReader(is));
+			log.debug("Connect to server "+socket.getInetAddress().getHostAddress()+":"+socket.getPort());
 		}
 	}
 	
@@ -38,9 +43,12 @@ public class PySocket {
 			return sendCmd(cmd);
 		} catch (IOException e) {
 			PySocketResponse response = new PySocketResponse();
-			response.setStatus(Status.PY_SOCKET_IO_ERROR);
-			response.setReason("与Python Socket服务器通信时发生错误，错误代码："+Status.PY_SOCKET_IO_ERROR);
-			e.printStackTrace();
+			response.setStatus(Status.PY_ERROR);
+			response.setReason("Python出现异常，错误代码："+Status.PY_ERROR);
+			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+			if (log.isDebugEnabled()) {
+				e.printStackTrace();
+			}
 			return response;
 		}
 	}
@@ -52,10 +60,13 @@ public class PySocket {
 				callback.onSuccess(resultModel);
 			} catch (IOException e) {
 				PySocketResponse response = new PySocketResponse();
-				response.setStatus(Status.PY_SOCKET_IO_ERROR);
-				response.setReason("与Python Socket服务器通信时发生错误，错误代码："+Status.PY_SOCKET_IO_ERROR);
+				response.setStatus(Status.PY_ERROR);
+				response.setReason("Python出现异常，错误代码："+Status.PY_ERROR);
 				callback.onError(response);
-				e.printStackTrace();
+				log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+				if (log.isDebugEnabled()) {
+					e.printStackTrace();
+				}
 			}
 		});
 		pyCmdThread.setName("PythonCmdThread");
@@ -64,7 +75,9 @@ public class PySocket {
 	
 	private PySocketResponse sendCmd(PySocketRequest cmd) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
-		writer.write(mapper.writeValueAsString(cmd));
+		String data = mapper.writeValueAsString(cmd);
+		log.debug("Send cmd to the server: "+data);
+		writer.write(data);
 		writer.flush();
 		PySocketResponse response = mapper.readValue(reader, PySocketResponse.class);
 		return response;

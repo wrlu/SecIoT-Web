@@ -265,11 +265,11 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.socket_server" />
-      <item itemvalue="Python.run_binwalk" />
-      <item itemvalue="Python.run_jadx" />
       <item itemvalue="Python.fw_linux_shadow" />
       <item itemvalue="Python.fw_openssl_version" />
+      <item itemvalue="Python.run_binwalk" />
+      <item itemvalue="Python.run_jadx" />
+      <item itemvalue="Python.socket_server" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -286,7 +286,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="704" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="704" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17235902" />
