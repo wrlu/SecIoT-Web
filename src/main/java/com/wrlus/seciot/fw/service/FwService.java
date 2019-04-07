@@ -8,7 +8,7 @@ import com.wrlus.seciot.fw.model.FwLibraryRiskModel;
 import com.wrlus.seciot.fw.model.FwRiskReportModel;
 import com.wrlus.seciot.fw.model.FwThirdLibraryModel;
 import com.wrlus.seciot.model.PlatformRiskModel;
-import com.wrlus.seciot.pysocket.PythonException;
+import com.wrlus.seciot.pysocket.model.PythonException;
 
 public interface FwService {
 	public FwInfoModel getFwInfo(String filename, File fwFile) throws PythonException;

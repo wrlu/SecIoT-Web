@@ -23,7 +23,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wrlus.seciot.fw.model.FwInfoModel;
 import com.wrlus.seciot.fw.model.FwThirdLibraryModel;
 import com.wrlus.seciot.fw.service.FwService;
-import com.wrlus.seciot.pysocket.PythonException;
+import com.wrlus.seciot.pysocket.model.PythonException;
+import com.wrlus.seciot.util.OSUtil;
 import com.wrlus.seciot.util.Status;
 
 @Controller
@@ -39,8 +40,11 @@ public class FwController {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			String path = Thread.currentThread().getContextClassLoader().getResource("").toString();
-			path = path.replace("file:", "");
+			path = path.replace("file:/", "");
 			path = path.replace("WEB-INF/classes/", "attach/uploads/firmware"+UUID.randomUUID().toString().toUpperCase()+"/");
+			if (OSUtil.isWindows()) {
+				path = OSUtil.escapeUnixSeparator(path);
+			}
 			File fwFile = this.resolveUploadFile((MultipartHttpServletRequest) request, path);
 //			分析固件信息（binwalk）
 			FwInfoModel fwInfo = fwService.getFwInfo(fwFile.getName(), fwFile);
@@ -59,7 +63,7 @@ public class FwController {
 			data.put("fw_info", fwInfo);
 			data.put("third_lib_info", fwThirdLibraries);
 			data.put("Status", Status.SUCCESS);
-		} catch (NullPointerException e) {
+		} catch (ClassCastException | NullPointerException e) {
 			data.put("Status", Status.FILE_UPD_ERROR);
 			data.put("reason", "文件上传失败，错误代码："+Status.FILE_UPD_ERROR);
 			log.error("文件上传失败，错误代码："+Status.FILE_UPD_ERROR);

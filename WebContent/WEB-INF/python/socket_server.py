@@ -1,4 +1,5 @@
 import socketserver
+import json
 import run_binwalk
 import fw_linux_shadow
 import fw_openssl_version
@@ -26,7 +27,37 @@ class AndroidService:
 
 class SocketServer(socketserver.BaseRequestHandler):
     def handle(self):
-        data = self.request.recv(2048)
+        r_data = self.request.recv(2048)
+        data = json.load(r_data.encode('utf8'))
+        classname, method, params = self.resolve_data(data)
+        result = {}
+        if classname == 'FwService':
+            fwservice = FwService()
+            if method == 'get_fw_info':
+                result = fwservice.get_fw_info(params['file_name'], params['path'])
+            elif method == 'get_fw_root_directory':
+                result = fwservice.get_fw_root_directory(params['fw_info'])
+        if len(result) != 0:
+            ret = {
+                'status': 0,
+                'reason': 'OK',
+                'data': result
+            }
+        else:
+            ret = {
+                'status': -1,
+                'reason': 'Python Error'
+            }
+        self.request.sendall(json.dump(ret))
+
+    def resolve_data(self, data):
+        cmd = data['cmd']
+        params = data['params']
+        if cmd == "exit":
+            exit(int(params['code']))
+        classname = cmd.split('.')
+        method = cmd.split('.')
+        return classname, method, params
 
 
 if __name__ == '__main__':

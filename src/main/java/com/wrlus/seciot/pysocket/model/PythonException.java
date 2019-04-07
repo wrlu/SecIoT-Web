@@ -1,4 +1,4 @@
-package com.wrlus.seciot.pysocket;
+package com.wrlus.seciot.pysocket.model;
 
 import java.io.IOException;
 

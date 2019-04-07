@@ -8,21 +8,25 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wrlus.seciot.pysocket.model.PySocketRequest;
+import com.wrlus.seciot.pysocket.model.PySocketResponse;
 import com.wrlus.seciot.util.Status;
 
-public class PySocket {
+public class PyClient {
 	private Socket socket;
 	private BufferedWriter writer;
 	private BufferedReader reader;
 	private static Logger log = LogManager.getLogger();
 
 	public void connect() throws IOException {
-		if (!socket.isConnected()) {
+		if (socket == null || !socket.isConnected()) {
 			socket = new Socket("localhost", 8888);
 			OutputStream os = socket.getOutputStream();
 			InputStream is = socket.getInputStream();
@@ -33,7 +37,7 @@ public class PySocket {
 	}
 	
 	public void close() throws IOException {
-		if (!socket.isClosed()) {
+		if (socket != null && !socket.isClosed()) {
 			socket.close();
 		}
 	}
@@ -56,8 +60,8 @@ public class PySocket {
 	public void sendCmdAsync(PySocketRequest cmd, PySocketListener callback) {
 		Thread pyCmdThread = new Thread(()->{
 			try {
-				PySocketResponse resultModel = sendCmd(cmd);
-				callback.onSuccess(resultModel);
+				PySocketResponse response = sendCmd(cmd);
+				callback.onSuccess(response);
 			} catch (IOException e) {
 				PySocketResponse response = new PySocketResponse();
 				response.setStatus(Status.PY_ERROR);
@@ -69,14 +73,29 @@ public class PySocket {
 				}
 			}
 		});
-		pyCmdThread.setName("PythonCmdThread");
+		pyCmdThread.setName("PyClient SendCmdAsync Thread");
+		pyCmdThread.setDaemon(true);
 		pyCmdThread.start(); 
 	}
 	
-	private PySocketResponse sendCmd(PySocketRequest cmd) throws IOException {
+	public void sendExitSignal(int signal) throws IOException {
+		PySocketRequest request = new PySocketRequest();
+		Map<String, Object> params = new HashMap<>();
+		params.put("code", 1);
+		request.setCmd("exit");
+		request.setParameters(params);
 		ObjectMapper mapper = new ObjectMapper();
-		String data = mapper.writeValueAsString(cmd);
-		log.debug("Send cmd to the server: "+data);
+		String data = mapper.writeValueAsString(request);
+		log.debug("Send request to the server: "+data);
+		log.debug("Send exit signal to the server: "+signal);
+		writer.write(data);
+		writer.flush();
+	}
+	
+	private PySocketResponse sendCmd(PySocketRequest request) throws IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		String data = mapper.writeValueAsString(request);
+		log.debug("Send request to the server: "+data);
 		writer.write(data);
 		writer.flush();
 		PySocketResponse response = mapper.readValue(reader, PySocketResponse.class);
