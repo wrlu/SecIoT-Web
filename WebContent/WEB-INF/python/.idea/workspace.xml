@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbd97ff7-e094-4529-b3d7-8f8e2a709367" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../.gradle/4.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.gradle/4.3/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/socket_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/socket_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spring/spring-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../spring/spring-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spring/springmvc-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../spring/springmvc-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/fw/controller/FwController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/fw/controller/FwController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/fw/service/FwServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/fw/service/FwServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/fw/controller/FwController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/fw/controller/FwController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/fw/service/FwServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/fw/service/FwServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/socket_server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="70" column="13" lean-forward="true" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
+            <state relative-caret-position="109">
+              <caret line="71" column="18" lean-forward="true" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -265,14 +258,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="704" extended-state="7" />
+    <frame x="-7" y="-7" width="1295" height="704" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17235902" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28321677" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3916084" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5262238" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -388,8 +382,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/socket_server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="70" column="13" lean-forward="true" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
+        <state relative-caret-position="109">
+          <caret line="71" column="18" lean-forward="true" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

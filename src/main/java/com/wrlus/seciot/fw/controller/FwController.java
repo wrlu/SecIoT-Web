@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,7 +23,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wrlus.seciot.fw.model.FwInfoModel;
 import com.wrlus.seciot.fw.model.FwThirdLibraryModel;
-import com.wrlus.seciot.fw.service.FwService;
 import com.wrlus.seciot.fw.service.FwServiceImpl;
 import com.wrlus.seciot.pysocket.model.PythonException;
 import com.wrlus.seciot.util.OSUtil;
@@ -32,7 +32,8 @@ import com.wrlus.seciot.util.Status;
 @RequestMapping("/fw")
 public class FwController {
 	private static Logger log = LogManager.getLogger();
-	private FwService fwService = new FwServiceImpl();
+	@Autowired
+	private FwServiceImpl fwService;
 	
 	@ResponseBody
 	@RequestMapping("/analysis")
