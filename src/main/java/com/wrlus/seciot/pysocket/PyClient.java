@@ -42,19 +42,8 @@ public class PyClient {
 		}
 	}
 	
-	public PySocketResponse sendCmdSync(PySocketRequest cmd) {
-		try {
-			return sendCmd(cmd);
-		} catch (IOException e) {
-			PySocketResponse response = new PySocketResponse();
-			response.setStatus(Status.PY_ERROR);
-			response.setReason("Python出现异常，错误代码："+Status.PY_ERROR);
-			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
-			if (log.isDebugEnabled()) {
-				e.printStackTrace();
-			}
-			return response;
-		}
+	public PySocketResponse sendCmdSync(PySocketRequest cmd) throws IOException {
+		return sendCmd(cmd);
 	}
 	
 	public void sendCmdAsync(PySocketRequest cmd, PySocketListener callback) {
@@ -98,7 +87,8 @@ public class PyClient {
 		log.debug("Send request to the server: "+data);
 		writer.write(data);
 		writer.flush();
-		PySocketResponse response = mapper.readValue(reader, PySocketResponse.class);
+		String receiveData = reader.readLine();
+		PySocketResponse response = mapper.readValue(receiveData, PySocketResponse.class);
 		return response;
 	}
 }

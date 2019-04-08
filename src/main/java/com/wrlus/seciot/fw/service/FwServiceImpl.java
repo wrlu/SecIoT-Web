@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import com.wrlus.seciot.fw.model.FwInfoModel;
 import com.wrlus.seciot.fw.model.FwLibraryRiskModel;
@@ -19,11 +20,13 @@ import com.wrlus.seciot.pysocket.model.PySocketResponse;
 import com.wrlus.seciot.pysocket.model.PythonException;
 import com.wrlus.seciot.util.Status;
 
+@Service
 public class FwServiceImpl implements FwService {
+	@SuppressWarnings("unused")
 	private static Logger log = LogManager.getLogger();
 
 	@Override
-	public FwInfoModel getFwInfo(String filename, File fwFile) throws PythonException {
+	public FwInfoModel getFwInfo(String filename, File fwFile) throws IOException, PythonException {
 		PySocketRequest request = new PySocketRequest();
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("file_name", filename);
@@ -31,12 +34,7 @@ public class FwServiceImpl implements FwService {
 		request.setCmd("FwService.get_fw_info");
 		request.setParameters(parameters);
 		PyClient pyClient = new PyClient();
-		try {
-			pyClient.connect();
-		} catch (IOException e) {
-			log.error("Python出现异常，错误代码："+Status.PY_ERROR);
-			throw new PythonException("Python出现异常，错误代码："+Status.PY_ERROR);
-		}
+		pyClient.connect();
 		PySocketResponse result = pyClient.sendCmdSync(request);
 		if (result.getStatus() == Status.SUCCESS) {
 			FwInfoModel fwInfo = new FwInfoModel();
@@ -45,71 +43,61 @@ public class FwServiceImpl implements FwService {
 			fwInfo.setFilesystem(String.valueOf(result.getData().get("fw_filesystem")));
 			return fwInfo;
 		} else {
-			log.error("Python出现异常，错误代码："+Status.PY_ERROR);
-			throw new PythonException("Python出现异常，错误代码："+Status.PY_ERROR);
+			throw new PythonException("Python出现异常，错误代码："+result.getStatus());
 		}
+		
 	}
 
 	@Override
-	public File getFwRootDirectory(FwInfoModel fwInfoModel) throws PythonException {
+	public File getFwRootDirectory(FwInfoModel fwInfoModel) throws IOException, PythonException {
 		PySocketRequest request = new PySocketRequest();
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("fw_info", fwInfoModel);
 		request.setCmd("FwService.get_fw_root_directory");
 		request.setParameters(parameters);
 		PyClient pyClient = new PyClient();
-		try {
-			pyClient.connect();
-		} catch (IOException e) {
-			log.error("Python出现异常，错误代码："+Status.PY_ERROR);
-			throw new PythonException("Python出现异常，错误代码："+Status.PY_ERROR);
-		}
+		pyClient.connect();
 		PySocketResponse result = pyClient.sendCmdSync(request);
 		if (result.getStatus() == Status.SUCCESS) {
 			File rootDir = new File(String.valueOf(result.getData().get("fw_root_directory")));
 			return rootDir;
 		} else {
-			log.error("Python出现异常，错误代码："+Status.PY_ERROR);
-			throw new PythonException("Python出现异常，错误代码："+Status.PY_ERROR);
+			throw new PythonException("Python出现异常，错误代码："+result.getStatus());
 		}
+		
 	}
 
 	@Override
-	public FwThirdLibraryModel getFwThirdLibrary(FwInfoModel fwInfo, String libName) throws PythonException {
+	public FwThirdLibraryModel getFwThirdLibrary(FwInfoModel fwInfo, String libName) throws IOException, PythonException {
 		PySocketRequest request = new PySocketRequest();
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("base_dir", fwInfo.getRootDir());
 		parameters.put("lib_name", libName);
-		request.setCmd("FwService.get_fw_info");
+		request.setCmd("FwService.get_fw_third_library");
 		request.setParameters(parameters);
 		PyClient pyClient = new PyClient();
-		try {
-			pyClient.connect();
-			PySocketResponse result = pyClient.sendCmdSync(request);
-			if (result.getStatus() == Status.SUCCESS) {
-				FwThirdLibraryModel fwThirdLibrary = new FwThirdLibraryModel();
-				fwThirdLibrary.setAvaliable(Boolean.parseBoolean(String.valueOf(result.getData().get("lib_avaliable"))));
-				fwThirdLibrary.setPath(String.valueOf(result.getData().get("lib_path")));
-				fwThirdLibrary.setPath(String.valueOf(result.getData().get("lib_version")));
-				pyClient.close();
-				return fwThirdLibrary;
-			} else {
-				throw new PythonException("Python出现异常，错误代码："+Status.PY_ERROR);
-			}
-		} catch (Exception e) {
-			log.error("Python出现异常，错误代码："+Status.PY_ERROR);
-			throw new PythonException("Python出现异常，错误代码："+Status.PY_ERROR);
-		} 
+		pyClient.connect();
+		PySocketResponse result = pyClient.sendCmdSync(request);
+		if (result.getStatus() == Status.SUCCESS) {
+			FwThirdLibraryModel fwThirdLibrary = new FwThirdLibraryModel();
+			fwThirdLibrary.setAvaliable(Boolean.parseBoolean(String.valueOf(result.getData().get("lib_avaliable"))));
+			fwThirdLibrary.setPath(String.valueOf(result.getData().get("lib_path")));
+			fwThirdLibrary.setVersion(String.valueOf(result.getData().get("lib_version")));
+			pyClient.close();
+			return fwThirdLibrary;
+		} else {
+			throw new PythonException("Python出现异常，错误代码："+result.getStatus());
+		}
 	}
 
 	@Override
-	public Map<FwLibraryRiskModel, Boolean> checkFwLibraryRisks(FwInfoModel fwInfo, FwLibraryRiskModel[] fwLibraryRisks) throws PythonException {
+	public Map<FwLibraryRiskModel, Boolean> checkFwLibraryRisks(FwInfoModel fwInfo, FwLibraryRiskModel[] fwLibraryRisks) throws IOException, PythonException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Map<PlatformRiskModel, Boolean> checkFwPlatformRisks(FwInfoModel fwInfo, PlatformRiskModel[] platformRisks) throws PythonException {
+	public Map<PlatformRiskModel, Boolean> checkFwPlatformRisks(FwInfoModel fwInfo, PlatformRiskModel[] platformRisks) throws IOException, PythonException {
 		// TODO Auto-generated method stub
 		return null;
 	}

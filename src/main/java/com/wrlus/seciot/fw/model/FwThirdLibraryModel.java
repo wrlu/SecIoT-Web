@@ -5,17 +5,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class FwThirdLibraryModel {
 	
 	@JsonProperty("lib_avaliable")
-	private boolean isAvaliable;
+	private boolean avaliable;
 	@JsonProperty("lib_path")
 	private String path;
 	@JsonProperty("lib_version")
 	private String version;
 	
 	public boolean isAvaliable() {
-		return isAvaliable;
+		return avaliable;
 	}
-	public void setAvaliable(boolean isAvaliable) {
-		this.isAvaliable = isAvaliable;
+	public void setAvaliable(boolean avaliable) {
+		this.avaliable = avaliable;
 	}
 	public String getPath() {
 		return path;
