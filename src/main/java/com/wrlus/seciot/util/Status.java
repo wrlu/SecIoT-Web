@@ -9,4 +9,7 @@ public class Status {
 	public static final int FILE_UPD_ERROR = 1001;
 //	Python异常
 	public static final int PY_ERROR = 1002;
+//	IO异常
+	public static final int IO_ERROR = 1003;
+	
 }

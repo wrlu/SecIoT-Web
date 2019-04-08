@@ -12,7 +12,7 @@
 	<bean id="myDataSource" class="org.apache.commons.dbcp2.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost" />
+		<property name="url" value="jdbc:mysql://localhost/seciot?serverTimezone=UTC" />
 		<property name="username" value="root" /> 
 		<property name="password" value="XiaoLu0129" /> 
 	</bean>
@@ -25,10 +25,8 @@
 		<property name="basePackage" value="com.wrlus.seciot" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="defaultEncoding" value="utf-8"/>
-	</bean>
-	<bean class="com.wrlus.seciot.pysocket.PyServerController" scope="singleton"
+	<!-- 创建PyServerController Bean，自动管理Python Socket服务器 -->
+	<!-- <bean class="com.wrlus.seciot.pysocket.PyServerController" scope="singleton"
         lazy-init="false" init-method="init" destroy-method="destory">
-    </bean>
+    </bean> -->
 </beans>

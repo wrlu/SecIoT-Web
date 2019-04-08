@@ -15,8 +15,6 @@
     <context:component-scan base-package="com.wrlus.seciot"/>
     <mvc:default-servlet-handler />
 	<mvc:annotation-driven />
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
-    	id="internalResourceViewResolver" />
 	<bean id="multipartResolver" 
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		p:defaultEncoding="UTF-8" />

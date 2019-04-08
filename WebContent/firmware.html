@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>控制台 - SecIoT</title>
+    <title>系统固件分析 - SecIoT</title>
     <link href="/SecIoT/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/SecIoT/css/dashboard.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
   </head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
@@ -19,8 +19,8 @@
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="/SecIoT/">
-              控制台<span class="sr-only">(current)</span>
+            <a class="nav-link" href="/SecIoT/">
+               控制台
             </a>
           </li>
         </ul>
@@ -29,9 +29,9 @@
          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>系统安全</span>
           </h6>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="/SecIoT/firmware.html">
-              系统固件分析
+              系统固件分析<span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
@@ -69,18 +69,43 @@
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">控制台</h1>
+        <h1 class="h2">系统固件分析</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
         </div>
       </div>
-
+      
+      <form id="uploadForm" enctype="multipart/form-data" method="POST">
+                 请选择附件：
+         <input type="file" class="form-control form-control-sm" name="file">
+      </form>
+      <div class="container">
+        <button type="button" class="btn btn-primary" onclick="onAnalysis()">开始分析</button>
+      </div>
+      
+      <h2>分析结论</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>固件名称</th>
+              <th>固件文件系统</th>
+              <th>OpenSSL库是否存在</th>
+              <th>OpenSSL库位置</th>
+              <th>OpenSSL库版本</th>
+            </tr>
+          </thead>
+          <tbody id="fw_result">
+          </tbody>
+        </table>
+      </div>
     </main>
   </div>
 </div>
 <script src="/SecIoT/lib/jquery/jquery-3.3.1.min.js"></script>
 <script src="/SecIoT/lib/popper/popper.min.js"></script>
 <script src="/SecIoT/lib/bootstrap/js/bootstrap.min.js"></script>
-<script src="/SecIoT/js/main.js"></script>
+<script src="/SecIoT/js/firmware.js"></script>
 </body>
 </html>

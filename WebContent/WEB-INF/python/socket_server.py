@@ -16,8 +16,9 @@ class FwService:
     def linux_shadow(self, base_dir):
         return fw_linux_shadow.do(base_dir)
 
-    def openssl_version(self, base_dir):
-        return fw_openssl_version.do(base_dir)
+    def get_fw_third_library(self, base_dir, lib_name):
+        if lib_name.lower() == "openssl":
+            return fw_openssl_version.do(base_dir)
 
 
 class AndroidService:
@@ -28,8 +29,26 @@ class AndroidService:
 class SocketServer(socketserver.BaseRequestHandler):
     def handle(self):
         r_data = self.request.recv(2048)
-        data = json.load(r_data.encode('utf8'))
+        data = json.loads(r_data.decode('utf8'))
+        print("Receive data: "+str(data))
         classname, method, params = self.resolve_data(data)
+        ret = self.do_action(classname, method, params)
+        print("Send data: "+str(ret))
+        self.request.sendall(json.dumps(ret).encode('utf8'))
+
+    def resolve_data(self, data):
+        cmd = data['cmd']
+        params = data['params']
+        if cmd == "exit":
+            exit(int(params['code']))
+        classname = cmd.split('.')[0]
+        method = cmd.split('.')[1]
+        print('classname: '+classname)
+        print('method: '+method)
+        print('params: '+str(params))
+        return classname, method, params
+
+    def do_action(self, classname, method, params):
         result = {}
         if classname == 'FwService':
             fwservice = FwService()
@@ -37,6 +56,8 @@ class SocketServer(socketserver.BaseRequestHandler):
                 result = fwservice.get_fw_info(params['file_name'], params['path'])
             elif method == 'get_fw_root_directory':
                 result = fwservice.get_fw_root_directory(params['fw_info'])
+            elif method == 'get_fw_third_library':
+                result = fwservice.get_fw_third_library(params['base_dir'], params['lib_name'])
         if len(result) != 0:
             ret = {
                 'status': 0,
@@ -45,19 +66,10 @@ class SocketServer(socketserver.BaseRequestHandler):
             }
         else:
             ret = {
-                'status': -1,
-                'reason': 'Python Error'
+                'status': 1002,
+                'reason': 'No such python method or python error'
             }
-        self.request.sendall(json.dump(ret))
-
-    def resolve_data(self, data):
-        cmd = data['cmd']
-        params = data['params']
-        if cmd == "exit":
-            exit(int(params['code']))
-        classname = cmd.split('.')
-        method = cmd.split('.')
-        return classname, method, params
+        return ret
 
 
 if __name__ == '__main__':
