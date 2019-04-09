@@ -7,8 +7,8 @@ import run_jadx
 
 
 class FwService:
-    def get_fw_info(self, file_name, path):
-        return run_binwalk.get_fw_info(file_name, path)
+    def get_fw_info(self, file_name, file_path):
+        return run_binwalk.get_fw_info(file_name, file_path)
 
     def get_fw_root_directory(self, fw_info):
         return run_binwalk.get_fw_root_directory(fw_info)
@@ -22,8 +22,41 @@ class FwService:
 
 
 class AndroidService:
-    def get_apk_info(self, file_name, path):
-        return run_jadx.get_apk_info(file_name, path)
+    def get_apk_info(self, file_name, file_path):
+        return run_jadx.get_apk_info(file_name, file_path)
+
+    def ssl_pinning(self, sources_dir):
+        pass
+
+    def permission(self, manifest_file):
+        pass
+
+    def exported(self, manifest_file):
+        pass
+
+
+class AppleiOSService:
+    def get_ipa_info(self, file_name, file_path):
+        pass
+
+    def ats_policy(self, info_plist_file):
+        pass
+
+    def permission(self, info_plist_file):
+        pass
+
+
+class TrafficService:
+    def get_connection_pairs(self, file_name, file_path, ip):
+        pass
+
+
+class ScanService:
+    def device_scan(self):
+        pass
+
+    def port_scan(self, ip):
+        pass
 
 
 class SocketServer(socketserver.BaseRequestHandler):
@@ -53,11 +86,26 @@ class SocketServer(socketserver.BaseRequestHandler):
         if classname == 'FwService':
             fwservice = FwService()
             if method == 'get_fw_info':
-                result = fwservice.get_fw_info(params['file_name'], params['path'])
+                result = fwservice.get_fw_info(params['file_name'], params['file_path'])
             elif method == 'get_fw_root_directory':
                 result = fwservice.get_fw_root_directory(params['fw_info'])
             elif method == 'get_fw_third_library':
                 result = fwservice.get_fw_third_library(params['base_dir'], params['lib_name'])
+
+        elif classname == 'AndroidService':
+            androidservice = AndroidService()
+            if method == 'get_apk_info':
+                result = androidservice.get_apk_info(params['file_name'], params['file_path'])
+            elif method == 'permission':
+                pass
+
+        elif classname == 'AppleiOSService':
+            pass
+        elif classname == 'TrafficService':
+            pass
+        elif classname == 'ScanService':
+            pass
+
         if len(result) != 0:
             ret = {
                 'status': 0,

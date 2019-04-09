@@ -20,11 +20,11 @@ def get_apk_info(file_name, path):
     apk_info = {
         'apk_name': file_name,
         'apk_path': path,
-        'apk_sources_directory': apk_source_directory,
-        'apk_resources_directory': apk_resource_directory,
+        'apk_sources_path': apk_source_directory,
+        'apk_resources_path': apk_resource_directory,
         'apk_manifest_file': apk_manifest_file,
-        'apk_lib_directory': apk_lib_directory,
-        'apk_lib_support_abis': apk_lib_support_abis
+        'apk_ndk_lib_path': apk_lib_directory,
+        'apk_ndk_lib_support_abis': apk_lib_support_abis
     }
     return apk_info
 

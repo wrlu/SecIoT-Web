@@ -32,6 +32,7 @@ def do(base_dir):
     libcrypto_so_binary = libcrypto_so.read()
     regex = re.compile(openssl_version_search_regex)
     openssl_version = regex.findall(libcrypto_so_binary)
+    result['lib_name'] = 'OpenSSL'
     result['lib_avaliable'] = True
     result['lib_path'] = libcrypto_so_path
     result['lib_version'] = openssl_version[0].decode('utf8')

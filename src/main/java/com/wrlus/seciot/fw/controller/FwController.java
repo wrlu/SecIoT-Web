@@ -21,8 +21,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wrlus.seciot.common.model.ThirdLibraryModel;
 import com.wrlus.seciot.fw.model.FwInfoModel;
-import com.wrlus.seciot.fw.model.FwThirdLibraryModel;
 import com.wrlus.seciot.fw.service.FwServiceImpl;
 import com.wrlus.seciot.pysocket.model.PythonException;
 import com.wrlus.seciot.util.OSUtil;
@@ -40,27 +40,27 @@ public class FwController {
 	public Map<String, Object> analysis(HttpServletRequest request, HttpServletResponse response) {
 		Map<String, Object> data=new HashMap<String, Object>();
 		ObjectMapper mapper = new ObjectMapper();
+		String path = Thread.currentThread().getContextClassLoader().getResource("").toString();
+		path = path.replace("file:/", "");
+		path = path.replace("WEB-INF/classes/", "attach/uploads/firmware/"+UUID.randomUUID().toString().toUpperCase()+"/");
+		if (OSUtil.isWindows()) {
+			path = OSUtil.escapeUnixSeparator(path);
+		}
 		try {
-			String path = Thread.currentThread().getContextClassLoader().getResource("").toString();
-			path = path.replace("file:/", "");
-			path = path.replace("WEB-INF/classes/", "attach/uploads/firmware/"+UUID.randomUUID().toString().toUpperCase()+"/");
-			if (OSUtil.isWindows()) {
-				path = OSUtil.escapeUnixSeparator(path);
-			}
 //			保存上传文件
 			File fwFile = this.resolveUploadFile((MultipartHttpServletRequest) request, path);
 //			分析固件信息（binwalk）
-			FwInfoModel fwInfo = fwService.getFwInfo(fwFile.getName(), fwFile);
+			FwInfoModel fwInfo = fwService.getFwInfo(fwFile);
 			log.debug("FwInfo: " + mapper.writeValueAsString(fwInfo));
 //			提取固件（binwalk -Me），获得固件根路径
 			File rootDir = fwService.getFwRootDirectory(fwInfo);
 			fwInfo.setRootDir(rootDir.getAbsolutePath());
 			log.debug("FwInfo: " + mapper.writeValueAsString(fwInfo));
-			List<FwThirdLibraryModel> fwThirdLibraries = new ArrayList<>();
+			List<ThirdLibraryModel> fwThirdLibraries = new ArrayList<>();
 //			获得OpenSSL版本
 			String[] libnames = {"OpenSSL"};
 			for (String libname : libnames) {
-				FwThirdLibraryModel lib = fwService.getFwThirdLibrary(fwInfo, libname);
+				ThirdLibraryModel lib = fwService.getFwThirdLibrary(fwInfo, libname);
 				fwThirdLibraries.add(lib);
 			}
 			data.put("status", Status.SUCCESS);

@@ -1,9 +1,11 @@
-package com.wrlus.seciot.fw.model;
+package com.wrlus.seciot.common.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class FwThirdLibraryModel {
+public class ThirdLibraryModel {
 	
+	@JsonProperty("lib_name")
+	private String name;
 	@JsonProperty("lib_avaliable")
 	private boolean avaliable;
 	@JsonProperty("lib_path")
@@ -11,6 +13,12 @@ public class FwThirdLibraryModel {
 	@JsonProperty("lib_version")
 	private String version;
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public boolean isAvaliable() {
 		return avaliable;
 	}
