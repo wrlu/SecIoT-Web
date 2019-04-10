@@ -1,0 +1,257 @@
+<!--## firmware.html
+- 系统固件分析：包含一个上传区域，要求上传bin类型文件，和一个“开始分析”按钮，点击按钮弹出模态框提示询问是否开始分析，https://getbootstrap.com/docs/4.3/components/modal/
+- 开始后显示一个进度条，可以只有百分比文字，或者有进度条：https://getbootstrap.com/docs/4.3/components/progress/
+- 最后该页下部分显示一个简报，简报格式后面给你。然后有个“查看详情”按钮，点击跳转到另一个页面查看完整。
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>SecloT系统固件分析</title>
+		<style>
+			.topsite{
+				margin-top: 15px;
+				margin-left:25px;
+				
+			}
+			.toptitle{
+				text-shadow: 3px 1px silver;
+				color: black;
+				font-family:'comic sans ms','楷体';
+				font-size: 35px;
+				font-weight:45;
+				float: left;
+			}
+			.row{
+				width: 100%;
+				margin: auto;
+				overflow: hidden;
+				background:whitesmoke;
+			}
+			.in{
+				float: right;
+				margin-top: 30px;
+				margin-right: 100px;
+				width:450px;
+				height: 35px;
+				border-radius: 5px;
+			}
+			.cut-off{
+				width: 100%;
+				height: 20px;
+				background-color:saddlebrown;
+			}
+			.nav_bar{
+				float: left;
+				margin-top: 0px;
+				width: 200px;
+				height: 700px;
+				background-color: lightgoldenrodyellow;
+			}
+			a.link{
+				text-decoration: none;
+				font-size: 22px;
+				font-family: "楷体";
+				color: #000000;
+				border-radius: 10px;
+				margin-left: 2px;
+				margin-top: 10px;
+			}
+			a.block{
+				text-decoration: none;
+				font-size: 22px;
+				font-family: "楷体";
+				color: #000000;
+				border-radius: 10px;
+				margin-left: 2px;
+			}
+			li{
+				margin-top: 12px;
+				list-style-type: none;
+				margin-left: -5px;
+			}
+			h4{
+				font-family: "微软雅黑";
+				font-size: 20px;
+				margin-left: -18px;
+				margin-top: 10px;
+				color:darkslategray;
+			}
+			a:hover{
+				color: darkgrey;
+			}
+			.midd_content{
+				width: 97.25%;
+				height: 675px;
+				margin-right: 0px;
+				padding: 12px 20px;
+				border: 1px solid #eaeaea;
+				background-color: #fff;
+				border-radius: 4px;
+			}
+			.text_con{
+				font-family: "仿宋";
+				font-size: 25px;
+				color: black;
+				margin-top: 10px;
+				margin-left: 10px;
+			}
+			h2{
+				font-family: "新宋体";
+				font-size: 20px;
+				margin-top: 10px;
+				margin-bottom: -15px;
+				margin-left: 200px;
+			}
+			p{
+				font-family:"新宋体";
+				font-size:40px;
+				color: #000000;
+				margin-left:200px;
+				margin-top:15px;
+				margin-bottom: 25px;
+			}
+			.tshow{
+				margin-left: 200px;
+			}
+			
+			button{
+				margin-right: 300px;
+				float:right;
+				margin-top: -150px;
+				width: 80px;
+				height: 30px;
+				border:none
+				border-radius: 4px;
+				background-color:lavender;
+				font-family: "宋体";
+				font-weight: 600;
+			}
+			
+			h3{
+				font-family: "黑体";
+				font-size: 20px;
+				margin-left: 200px;
+			}
+			
+			#field{
+				width: 270px;
+				height: 30px;
+			}
+			
+			#butta{
+				width: 80px;
+				height: 30px;
+				margin-left: 30px;
+				border:none
+				border-radius: 4px;
+				background-color:lavender;
+				font-family: "宋体";
+				font-weight: 600;
+			}
+			
+		</style>
+		<script>
+			function limitype(){
+				var e=window.event||event;
+                // 获取当前选中的文件
+                var oFile = e.target.files[0];
+                console.log(oFile);
+			var fileType = oFile.name.substr(oFile.name.lastIndexOf(".")+1);
+			if (fileType!="bin") {
+    		alert("只支持.bin的文件");
+    		document.getElementById('field').value=null;
+    		return;
+			}else{
+				document.getElementById('field').value=this.value;
+				return;
+			}
+		
+		}
+			function analysis(){
+				/*alert("是否开始分析");*/
+				var truthBeTold = window.confirm("是否开始分析");
+				if (truthBeTold) {
+					/*显示进度条开始分析*/
+					window.alert("显示进度条");
+				} else{
+					return;
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+	<!--头部-->
+	<div class="row">
+	<div class="topsite">
+		<h1 class="toptitle" align="left">SecloT漏洞检测系统</h1> 
+	</div>
+	<div class="search">
+		<form action="" target="_blank"><input class="in" id=p type="text" required="required" placeholder="搜索" name="search" /><br/>
+		</form>
+	</div>
+	</div>
+	<!--分割线-->
+	<div class="cut-off"></div>
+	<!--导航栏-->
+	<div class="nav_bar">
+		<br />
+		<ul>
+			<li><a href="" class=link>控制台</a></li>
+			<br />
+			<br />
+			<h4>系统安全</h4>
+			<li><a href="firmware.html" class=link>系统固件分析</a></li>
+			<li><a href="scan.html" class=link>设备漏洞扫描</a></li>
+			<br />
+			<br />
+			<h4>应用安全</h4>
+			<li><a href="android.html" class=link>安卓应用分析</a></li>
+			<br />
+			<br />
+			<h4>传输安全</h4>
+			<li><a href="transfer.html" class=link>传输流量分析</a></li>
+			
+		</ul>
+	</div>
+	<div class="midd_content">
+		<p><b>系统固件分析</b></p>
+		<hr style="border-top:3px groove gray;" />
+		<h3>上传区</h3>
+		<!--进行文件的获取-->
+		<div>
+		<form class="tshow" method="post" enctype="multipart/form-data">
+		<input type="file" name="field" id="field" size="28" width="40px"
+			onchange=limitype() />
+		<input type="button" id=butta value="开始分析"  
+			onclick=analysis() />	
+		</form>
+		<br />
+		<br />
+		<br />
+		<p><b>分析结论</b></p>
+		<hr style="border-top:3px groove gray;" />
+		<table class="tshow" id="myTable"  style="table-layout:fixed;" width="700" height="100px" border="0" cellspacing="0">
+			<tr bgcolor=#F5F5F5>
+				<th>固件名称</th>
+				<th>固件文件系统</th>
+				<th>OpenSSL是否存在</th>
+				<th>OpenSSL库位置</th>
+				<th>OpenSSL库版本</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>	
+		</table><!--以表格形式输出检测结果-->
+		<button onclick="window.location.href='result-details.html'">显示详情</button><!--跳转到检测报告界面-->
+	</div>
+	</body>
+</html>
+<!--此界面未解决问题：1.对确认分析后的进度条等代码未书写
+				2.对于后端获取检测结果以表格形式展示未完善
+-->

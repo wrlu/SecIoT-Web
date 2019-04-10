@@ -1,0 +1,160 @@
+<!--## result-details.html
+- 显示完整报告，整体是一个div，会从后端拉取html代码过来展示。--> 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>SecloT检测报告</title>
+		<style>
+			.topsite{
+				margin-top: 15px;
+				margin-left:25px;
+				
+			}
+			.toptitle{
+				text-shadow: 3px 1px silver;
+				color: black;
+				font-family:'comic sans ms','楷体';
+				font-size: 35px;
+				font-weight:45;
+				float: left;
+			}
+			.row{
+				width: 100%;
+				margin: auto;
+				overflow: hidden;
+				background:whitesmoke;
+			}
+			.in{
+				float: right;
+				margin-top: 30px;
+				margin-right: 100px;
+				width:450px;
+				height: 35px;
+				border-radius: 5px;
+			}
+			.cut-off{
+				width: 100%;
+				height: 20px;
+				background-color:saddlebrown;
+			}
+			.nav_bar{
+				float: left;
+				margin-top: 0px;
+				width: 200px;
+				height: 700px;
+				background-color: lightgoldenrodyellow;
+			}
+			a.link{
+				text-decoration: none;
+				font-size: 22px;
+				font-family: "楷体";
+				color: #000000;
+				border-radius: 10px;
+				margin-left: 2px;
+				margin-top: 10px;
+			}
+			a.block{
+				text-decoration: none;
+				font-size: 22px;
+				font-family: "楷体";
+				color: #000000;
+				border-radius: 10px;
+				margin-left: 2px;
+			}
+			li{
+				margin-top: 12px;
+				list-style-type: none;
+				margin-left: -5px;
+			}
+			h4{
+				font-family: "微软雅黑";
+				font-size: 20px;
+				margin-left: -18px;
+				margin-top: 10px;
+				color:darkslategray;
+			}
+			a:hover{
+				color: darkgrey;
+			}
+			.midd_content{
+				width: 97.25%;
+				height: 675px;
+				margin-right: 0px;
+				padding: 12px 20px;
+				border: 1px solid #eaeaea;
+				background-color: #fff;
+				border-radius: 4px;
+			}
+			.text_con{
+				font-family: "仿宋";
+				font-size: 25px;
+				color: black;
+				margin-top: 10px;
+				margin-left: 10px;
+			}
+			h2{
+				font-family: "新宋体";
+				font-size: 20px;
+				margin-top: 10px;
+				margin-bottom: -15px;
+				margin-left: 200px;
+			}
+			p{
+				font-family:"新宋体";
+				font-size:40px;
+				color: #000000;
+				margin-left:200px;
+				margin-top:15px;
+				margin-bottom: 25px;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+	<!--头部-->
+	<div class="row">
+	<div class="topsite">
+		<h1 class="toptitle" align="left">SecloT漏洞检测系统</h1> 
+	</div>
+	<div class="search">
+		<form action="" target="_blank"><input class="in" id=p type="text" required="required" placeholder="搜索" name="search" /><br/>
+		</form>
+	</div>
+	</div>
+	<!--分割线-->
+	<div class="cut-off"></div>
+	<!--导航栏-->
+	<div class="nav_bar">
+		<br />
+		<ul>
+			<li><a href="" class=link>控制台</a></li>
+			<br />
+			<br />
+			<h4>系统安全</h4>
+			<li><a href="firmware.html" class=link>系统固件分析</a></li>
+			<li><a href="scan.html" class=link>设备漏洞扫描</a></li>
+			<br />
+			<br />
+			<h4>应用安全</h4>
+			<li><a href="android.html" class=link>安卓应用分析</a></li>
+			<br />
+			<br />
+			<h4>传输安全</h4>
+			<li><a href="transfer.html" class=link>传输流量分析</a></li>
+			
+		</ul>
+	</div>
+	
+	<div class="midd_content">
+		<p><b>完整报告显示</b></p>
+		<hr style="border-top:3px groove gray;" />
+		<!--显示检测报告-->
+		
+	</div>
+	</body>
+</html>
+<!--此界面的问题：1.与index.html相同
+			2.未实现显示后端HTM文件的功能-->
