@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>系统固件分析 - SecIoT</title>
     <link href="/SecIoT/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="/SecIoT/css/dashboard.css" rel="stylesheet">
+    <link href="/SecIoT/css/custom.css" rel="stylesheet">
   </head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
@@ -29,7 +30,6 @@
             </a>
           </li>
         </ul>
-        
         <ul class="nav flex-column mb-2">
          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>系统安全</span>
@@ -75,17 +75,15 @@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">系统固件分析</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-        </div>
       </div>
       <form id="uploadForm" enctype="multipart/form-data" method="POST">
-            请选择附件：
-      <input type="file" class="form-control form-control-sm" name="file">
+         <input type="file" size="28" width="40px" name="file">
+         <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#confirmUploadModal">开始分析</button>
       </form>
       <br/>
-      <button type="button" class="btn btn-primary" onclick="onAnalysis()">开始分析</button>
-      <br/>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">固件分析摘要</h1>
+      </div>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
@@ -103,6 +101,58 @@
         </table>
       </div>
     </main>
+  </div>
+</div>
+<!-- 提示是否上传 -->
+<div class="modal fade" id="confirmUploadModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">提示</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                您确实要将文件上传到服务器进行分析吗？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" onclick="onAnalysis()" data-dismiss="modal">开始分析</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 分析中的提示框 -->
+<div class="modal fade" id="loadingModel" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">提示</h5>
+      </div>
+      <div class="modal-body">
+                分析中，请稍候...
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 提示返回结果 -->
+<div class="modal fade" id="resultModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">提示</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="resultModalBody" class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">好的</button>
+      </div>
+    </div>
   </div>
 </div>
 <script src="/SecIoT/lib/jquery/jquery-3.3.1.min.js"></script>

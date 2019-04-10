@@ -9,6 +9,7 @@ function onAnalysis() {
 	      cache: false,
 	      processData: false,
 	      success: function (result) {
+	    	 $("#loadingModel").modal("hide");
 	    	 var result=JSON.parse(result);
 	     	 if(result.status == 0) {
 	     		tbody = "<tr>";
@@ -20,11 +21,14 @@ function onAnalysis() {
 	     		tbody += "<td>"+result.third_lib_info[0].lib_version+"</td>";
 	     		tbody += "</tr>";
 	     		$("#fw_result").html(tbody, function() {});
-	     		alert("针对 "+result.fw_info.fw_name+" 的分析完成")
+	     		$("#resultModalBody").html("针对 "+result.fw_info.fw_name+" 的分析完成", function() {});
+	     		$("#resultModal").modal("show");
 	     	 } else {
-	     		 alert(result.reason);
+	     		$("#resultModalBody").html(result.reason, function() {});
+	     		$("#resultModal").modal("show");
 	     	 }
 	      }
 	});
+	$("#loadingModel").modal("show");
 }
 

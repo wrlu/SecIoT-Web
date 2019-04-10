@@ -6,6 +6,7 @@
     <title>控制台 - SecIoT</title>
     <link href="/SecIoT/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/SecIoT/css/dashboard.css" rel="stylesheet">
+    <link href="/SecIoT/css/custom.css" rel="stylesheet">
   </head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
@@ -75,11 +76,39 @@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">控制台</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-        </div>
       </div>
-
+<div class="card">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">系统固件分析</h5>
+    <p class="card-text">通过上传获得的IoT系统固件，检测固件中常见第三方库和配置的安全风险。</p>
+    <a href="/SecIoT/firmware.html" class="btn btn-sm btn-primary">进入固件分析</a>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">移动安全分析</h5>
+        <p class="card-text">通过上传Android系统或iOS系统的应用程序软件包，检测应用程序中的常见安全风险。</p>
+        <a href="/SecIoT/android.html" class="btn btn-sm btn-primary">安卓平台</a>
+        <a href="#" class="btn btn-sm btn-light">iOS平台(暂未开放)</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">传输流量分析</h5>
+        <p class="card-text">通过上传Wireshark或tcpdump抓取到的pcap数据包，检测流量中的协议安全风险。</p>
+        <a href="#" class="btn btn-sm btn-primary">进入流量分析</a>
+      </div>
+    </div>
+  </div>
+</div>
     </main>
   </div>
 </div>

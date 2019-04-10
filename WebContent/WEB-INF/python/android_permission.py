@@ -1,7 +1,7 @@
 from xml.dom import minidom
 
 
-def permission(manifest_file):
+def do(manifest_file):
     manifest_file_content = minidom.parse(manifest_file)
     root = manifest_file_content.documentElement
     permission_elements = root.getElementsByTagName('uses-permission')
@@ -13,5 +13,5 @@ def permission(manifest_file):
 
 if __name__ == '__main__':
     manifest_file = 'D:\\Analysis\\com.huawei.ipc.apk.jadx.out\\resources\\AndroidManifest.xml'
-    permissions = permission(manifest_file)
+    permissions = do(manifest_file)
     print(permissions)
