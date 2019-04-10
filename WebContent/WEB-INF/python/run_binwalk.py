@@ -51,10 +51,8 @@ def binwalk(path, params):
     result = ''
     if platform.system() == 'Windows':
         result = call_wsl_binwalk(path, params)
-        path_fix = '\\'
     elif platform.system() == 'Linux' or platform.system() == 'MacOS':
         result = call_linux_binwalk(path, params)
-        path_fix = '/'
     return result
 
 
