@@ -24,7 +24,7 @@ function onAnalysis() {
 	     		fw_filesystem += '文件系统根目录：'+result.fw_info.fw_root_directory;
 	     		$("#fw_filesystem").html(fw_filesystem, function() {});
 //	     		填充第三方库信息
-	     		fw_third_library = '<h6 class="border-bottom border-gray pb-2 mb-0">第三方库信息</h6>';
+	     		fw_third_library = '<h6 class="border-bottom border-gray pb-2 mb-0">第三方库风险</h6>';
 	     		var i = 0;
 	     		while(i < result.third_lib_info_size) {
 	     			fw_per_third_library = '<div class="media text-muted pt-3"><p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">';

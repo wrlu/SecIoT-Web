@@ -78,29 +78,56 @@
         <h1 class="h2">安卓应用分析</h1>
       </div>
       <form id="uploadForm" enctype="multipart/form-data" method="POST">
-         <input type="file" size="28" width="40px" name="file">
-         <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#confirmUploadModal">开始分析</button>
+        <label>请选择Android软件包(*.apk)文件</label>
+         <div class="form-group">
+            <input type="file" size="28" width="30px" name="file">
+            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#confirmUploadModal">开始分析</button>
+        </div>
       </form>
-      <br/>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">应用分析摘要</h1>
+        <h1 class="h2">应用分析结果</h1>
       </div>
-      <div class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>APK名称</th>
-              <th>固件文件系统</th>
-              <th>OpenSSL库是否存在</th>
-              <th>OpenSSL库位置</th>
-              <th>OpenSSL库版本</th>
-            </tr>
-          </thead>
-          <tbody id="apk_result">
-          </tbody>
-        </table>
-      </div>
+      <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">APK基本信息</h6>
+    <div class="media text-muted pt-3">
+      <p id="fw_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">APK基本信息</strong>
+        等待分析
+      </p>
+    </div>
+    <div class="media text-muted pt-3">
+      <p id="fw_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">应用权限</strong>
+        等待分析
+      </p>
+    </div>
+  </div>
+  
+  <div id="fw_third_library" class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">平台使用风险</h6>
+    <div class="media text-muted pt-3">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">应用备份风险</strong>
+        等待分析
+      </p>
+    </div>
+    <div class="media text-muted pt-3">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">组件暴露风险</strong>
+        等待分析
+      </p>
+    </div>
+  </div>
+  
+  <div id="fw_system_config" class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">代码安全风险</h6>
+    <div class="media text-muted pt-3">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">SSL Pinning分析</strong>
+        等待分析
+      </p>
+    </div>
+  </div>
     </main>
   </div>
 </div>
@@ -118,8 +145,8 @@
                 您确实要将文件上传到服务器进行分析吗？
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary" onclick="onAnalysis()" data-dismiss="modal">开始分析</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-success" onclick="onAnalysis()" data-dismiss="modal">开始分析</button>
       </div>
     </div>
   </div>

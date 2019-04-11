@@ -78,29 +78,59 @@
         <h1 class="h2">传输流量分析</h1>
       </div>
       <form id="uploadForm" enctype="multipart/form-data" method="POST">
-         <input type="file" size="28" width="40px" name="file">
-         <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#confirmUploadModal">开始分析</button>
+        <div class="form-group">
+            <label>IoT设备IP地址：</label>
+            <input name="deviceIp" placeholder="0.0.0.0" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>移动端IP地址：</label>
+            <input name="mobileIp" placeholder="0.0.0.0" class="form-control">
+        </div>
+        <label>请选择流量捕获(*.pcap, *.cap)文件</label>
+         <div class="form-group">
+            <input type="file" size="28" width="30px" name="file">
+            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#confirmUploadModal">开始分析</button>
+        </div>
       </form>
       <br/>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">流量分析摘要</h1>
+        <h1 class="h2">流量分析结果</h1>
       </div>
-      <div class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>数据包名称</th>
-              <th>固件文件系统</th>
-              <th>OpenSSL库是否存在</th>
-              <th>OpenSSL库位置</th>
-              <th>OpenSSL库版本</th>
-            </tr>
-          </thead>
-          <tbody id="apk_result">
-          </tbody>
-        </table>
-      </div>
+      <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">流量包基本信息</h6>
+    <div class="media text-muted pt-3">
+      <p id="fw_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">流量包基本信息</strong>
+        等待分析
+      </p>
+    </div>
+  </div>
+  
+  <div id="fw_third_library" class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">传输交互信息</h6>
+    <div class="media text-muted pt-3">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">设备传输交互</strong>
+        等待分析
+      </p>
+    </div>
+    <div class="media text-muted pt-3">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">移动客户端传输交互</strong>
+        等待分析
+      </p>
+    </div>
+  </div>
+  
+  <div id="fw_system_config" class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">协议风险</h6>
+    <div class="media text-muted pt-3">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">HTTP协议风险</strong>
+        等待分析
+      </p>
+    </div>
+  </div>
     </main>
   </div>
 </div>
@@ -118,8 +148,8 @@
                 您确实要将文件上传到服务器进行分析吗？
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary" onclick="onAnalysis()" data-dismiss="modal">开始分析</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-success" onclick="onAnalysis()" data-dismiss="modal">开始分析</button>
       </div>
     </div>
   </div>
