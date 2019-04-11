@@ -52,6 +52,7 @@ public class FwController {
 			File fwFile = this.resolveUploadFile((MultipartHttpServletRequest) request, path);
 //			分析固件信息（binwalk）
 			FwInfoModel fwInfo = fwService.getFwInfo(fwFile);
+			fwInfo.setSize(fwFile.length());
 			log.debug("FwInfo: " + mapper.writeValueAsString(fwInfo));
 //			提取固件（binwalk -Me），获得固件根路径
 			File rootDir = fwService.getFwRootDirectory(fwInfo);
@@ -64,9 +65,12 @@ public class FwController {
 				ThirdLibraryModel lib = fwService.getFwThirdLibrary(fwInfo, libname);
 				fwThirdLibraries.add(lib);
 			}
+			fwInfo.setPath("");
+			fwInfo.setRootDir(fwInfo.getRootDir().split(".extracted")[1]);
 			data.put("status", Status.SUCCESS);
 			data.put("reason", "OK");
 			data.put("fw_info", fwInfo);
+			data.put("third_lib_info_size", fwThirdLibraries.size());
 			data.put("third_lib_info", fwThirdLibraries);
 		} catch (ClassCastException | NullPointerException e) {
 			data.put("status", Status.FILE_UPD_ERROR);

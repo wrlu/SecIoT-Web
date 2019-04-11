@@ -26,7 +26,7 @@
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link active" href="/SecIoT/">
-              控制台<span class="sr-only">(current)</span>
+                主页<span class="sr-only">(current)</span>
             </a>
           </li>
         </ul>
@@ -41,7 +41,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/SecIoT/scan.html">
               设备漏洞扫描
             </a>
           </li>
@@ -55,7 +55,7 @@
             </a>
           </li>
  <!--      <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/SecIoT/ios.html">
               苹果应用分析
             </a>
           </li>
@@ -64,7 +64,7 @@
             <span>传输安全</span>
           </h6>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/SecIoT/traffic.html">
               传输流量分析
             </a>
           </li>
@@ -75,16 +75,17 @@
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">控制台</h1>
+        <h1 class="h2">主页</h1>
       </div>
 <div class="card">
   <div class="card-header">
-    Featured
+    特色功能
   </div>
   <div class="card-body">
-    <h5 class="card-title">系统固件分析</h5>
-    <p class="card-text">通过上传获得的IoT系统固件，检测固件中常见第三方库和配置的安全风险。</p>
-    <a href="/SecIoT/firmware.html" class="btn btn-sm btn-primary">进入固件分析</a>
+    <h5 class="card-title">系统安全</h5>
+    <p class="card-text">上传获得的IoT系统固件，检测固件中常见第三方库和配置的安全风险。或执行设备漏洞扫描模块，扫描本地设备的远程漏洞。</p>
+    <a href="/SecIoT/firmware.html" class="btn btn-sm btn-primary">进入系统固件分析</a>
+    <a href="/SecIoT/scan.html" class="btn btn-sm btn-primary">进入设备漏洞扫描</a>
   </div>
 </div>
 <br/>
@@ -92,19 +93,19 @@
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">移动安全分析</h5>
+        <h5 class="card-title">应用安全</h5>
         <p class="card-text">通过上传Android系统或iOS系统的应用程序软件包，检测应用程序中的常见安全风险。</p>
-        <a href="/SecIoT/android.html" class="btn btn-sm btn-primary">安卓平台</a>
-        <a href="#" class="btn btn-sm btn-light">iOS平台(暂未开放)</a>
+        <a href="/SecIoT/android.html" class="btn btn-sm btn-primary">进入安卓应用分析</a>
+        <!-- <a href="/SecIoT/ios.html" class="btn btn-sm btn-light">进入苹果应用分析</a> -->
       </div>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">传输流量分析</h5>
+        <h5 class="card-title">传输安全</h5>
         <p class="card-text">通过上传Wireshark或tcpdump抓取到的pcap数据包，检测流量中的协议安全风险。</p>
-        <a href="#" class="btn btn-sm btn-primary">进入流量分析</a>
+        <a href="/SecIoT/traffic.html" class="btn btn-sm btn-primary">进入传输流量分析</a>
       </div>
     </div>
   </div>

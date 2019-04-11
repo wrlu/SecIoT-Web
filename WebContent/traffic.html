@@ -50,12 +50,12 @@
             <span>应用安全</span>
           </h6>
           <li class="nav-item">
-            <a class="nav-link active" href="/SecIoT/android.html">
-              安卓应用分析<span class="sr-only">(current)</span>
+            <a class="nav-link" href="/SecIoT/android.html">
+              安卓应用分析
             </a>
           </li>
  <!--      <li class="nav-item">
-            <a class="nav-link" href="ios.html">
+            <a class="nav-link" href="/SecIoT/ios.html">
               苹果应用分析
             </a>
           </li>
@@ -64,8 +64,8 @@
             <span>传输安全</span>
           </h6>
           <li class="nav-item">
-            <a class="nav-link" href="/SecIoT/traffic.html">
-              传输流量分析
+            <a class="nav-link active" href="/SecIoT/traffic.html">
+              传输流量分析<span class="sr-only">(current)</span>
             </a>
           </li>
 
@@ -75,7 +75,7 @@
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">安卓应用分析</h1>
+        <h1 class="h2">传输流量分析</h1>
       </div>
       <form id="uploadForm" enctype="multipart/form-data" method="POST">
          <input type="file" size="28" width="40px" name="file">
@@ -83,14 +83,14 @@
       </form>
       <br/>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">应用分析摘要</h1>
+        <h1 class="h2">流量分析摘要</h1>
       </div>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
               <th>#</th>
-              <th>APK名称</th>
+              <th>数据包名称</th>
               <th>固件文件系统</th>
               <th>OpenSSL库是否存在</th>
               <th>OpenSSL库位置</th>

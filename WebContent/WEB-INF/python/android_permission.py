@@ -8,7 +8,10 @@ def do(manifest_file):
     permissions = []
     for element in permission_elements:
         permissions.append(element.getAttribute('android:name'))
-    return permissions
+    result = {
+        'permission': permissions
+    }
+    return result
 
 
 if __name__ == '__main__':

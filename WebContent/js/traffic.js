@@ -2,7 +2,7 @@ function onAnalysis() {
 	var formData = new FormData(document.getElementById("uploadForm"));
 	$.ajax({
 	      type:"POST",
-	      url:"/SecIoT/android/analysis",
+	      url:"/SecIoT/traffic/analysis",
 	      data:formData,
 	      mimeType:"multipart/form-data",
 	      contentType: false,

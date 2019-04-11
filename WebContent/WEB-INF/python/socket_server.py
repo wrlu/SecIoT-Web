@@ -4,6 +4,9 @@ import run_binwalk
 import fw_linux_shadow
 import fw_openssl_version
 import run_jadx
+import android_exported
+import android_permission
+import android_ssl_pinning
 
 
 class FwService:
@@ -26,13 +29,13 @@ class AndroidService:
         return run_jadx.get_apk_info(file_name, file_path)
 
     def ssl_pinning(self, sources_dir):
-        pass
+        return android_ssl_pinning.do(sources_dir)
 
     def permission(self, manifest_file):
-        pass
+        return android_permission.do(manifest_file)
 
     def exported(self, manifest_file):
-        pass
+        return android_exported.do(manifest_file)
 
 
 class AppleiOSService:
@@ -97,7 +100,11 @@ class SocketServer(socketserver.BaseRequestHandler):
             if method == 'get_apk_info':
                 result = androidservice.get_apk_info(params['file_name'], params['file_path'])
             elif method == 'permission':
-                pass
+                result = androidservice.permission(params['manifest_file'])
+            elif method == 'exported':
+                result = androidservice.exported(params['manifest_file'])
+            elif method == 'ssl_pinning':
+                result = androidservice.ssl_pinning(params['sources_dir'])
 
         elif classname == 'AppleiOSService':
             pass
