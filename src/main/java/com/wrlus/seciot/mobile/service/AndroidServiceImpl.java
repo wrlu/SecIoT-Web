@@ -3,14 +3,11 @@ package com.wrlus.seciot.mobile.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wrlus.seciot.common.model.PlatformRiskDao;
-import com.wrlus.seciot.fw.model.FwInfoModel;
 import com.wrlus.seciot.mobile.model.ApkInfoModel;
-import com.wrlus.seciot.mobile.model.ApkRiskReportModel;
 import com.wrlus.seciot.pysocket.PyClient;
 import com.wrlus.seciot.pysocket.model.PySocketRequest;
 import com.wrlus.seciot.pysocket.model.PySocketResponse;
@@ -65,10 +62,5 @@ public class AndroidServiceImpl implements AndroidService {
 		return null;
 	}
 
-	@Override
-	public ApkRiskReportModel getApkRiskReport() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

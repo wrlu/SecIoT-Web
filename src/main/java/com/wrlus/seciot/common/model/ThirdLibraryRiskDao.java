@@ -1,6 +1,6 @@
 package com.wrlus.seciot.common.model;
 
-public class LibraryRiskDao {
+public class ThirdLibraryRiskDao {
 	private String id;
 	private String name;
 	private String version;

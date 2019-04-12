@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.wrlus.seciot.common.model.CVEDao;
 import com.wrlus.seciot.common.model.PlatformRiskDao;
 import com.wrlus.seciot.common.model.ThirdLibraryDao;
+import com.wrlus.seciot.common.model.ThirdLibraryRiskDao;
 
 @Repository
 public interface CommonMapper {
@@ -26,7 +27,7 @@ public interface CommonMapper {
 	public List<PlatformRiskDao> getPlatformRiskAll();
 	
 	@Select("select * from platform_risk where id = #{id};")
-	public List<PlatformRiskDao> getPlatformRiskById(@Param("id") long id);
+	public List<PlatformRiskDao> getPlatformRiskById(@Param("id") String id);
 	
 	@Select("select * from platform_risk where id in (select id from platform_risk_category where category = #{category});")
 	public List<PlatformRiskDao> getPlatformRiskByCategory(@Param("category") String category);
@@ -35,5 +36,11 @@ public interface CommonMapper {
 	public List<ThirdLibraryDao> getThirdLibraryAll();
 	
 	@Select("select * from third_library where id = #{id};")
-	public List<ThirdLibraryDao> getThirdLibraryById(@Param("id") long id);
+	public List<ThirdLibraryDao> getThirdLibraryById(@Param("id") String id);
+	
+	@Select("select * from library_risk where name = #{libname}")
+	public List<ThirdLibraryRiskDao> getThirdLibraryRiskByLibname(@Param("libname") String libname);
+	
+	@Select("select * from library_risk where id = #{id}")
+	public List<ThirdLibraryRiskDao> getThirdLibraryRiskById(String id);
 }

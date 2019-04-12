@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.wrlus.seciot.common.model.PlatformRiskDao;
 import com.wrlus.seciot.mobile.model.IpaInfoModel;
-import com.wrlus.seciot.mobile.model.IpaRiskReportModel;
 
 public class AppleiOSServiceImpl implements AppleiOSService {
 
@@ -23,12 +22,6 @@ public class AppleiOSServiceImpl implements AppleiOSService {
 
 	@Override
 	public Map<PlatformRiskDao, Boolean> checkIpaPlatformRisks(PlatformRiskDao[] platformRisks) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IpaRiskReportModel getIpaRiskReport() {
 		// TODO Auto-generated method stub
 		return null;
 	}

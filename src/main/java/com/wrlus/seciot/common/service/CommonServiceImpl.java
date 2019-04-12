@@ -9,6 +9,7 @@ import com.wrlus.seciot.common.dao.CommonMapper;
 import com.wrlus.seciot.common.model.CVEDao;
 import com.wrlus.seciot.common.model.PlatformRiskDao;
 import com.wrlus.seciot.common.model.ThirdLibraryDao;
+import com.wrlus.seciot.common.model.ThirdLibraryRiskDao;
 
 @Service
 public class CommonServiceImpl implements CommonService {
@@ -37,7 +38,7 @@ public class CommonServiceImpl implements CommonService {
 	}
 
 	@Override
-	public List<PlatformRiskDao> getPlatformRiskById(long id) {
+	public List<PlatformRiskDao> getPlatformRiskById(String id) {
 		return dao.getPlatformRiskById(id);
 	}
 
@@ -52,8 +53,18 @@ public class CommonServiceImpl implements CommonService {
 	}
 
 	@Override
-	public List<ThirdLibraryDao> getThirdLibraryById(long id) {
+	public List<ThirdLibraryDao> getThirdLibraryById(String id) {
 		return dao.getThirdLibraryById(id);
+	}
+
+	@Override
+	public List<ThirdLibraryRiskDao> getThirdLibraryRiskByLibname(String libname) {
+		return dao.getThirdLibraryRiskByLibname(libname);
+	}
+
+	@Override
+	public List<ThirdLibraryRiskDao> getThirdLibraryRiskById(String id) {
+		return dao.getThirdLibraryRiskById(id);
 	}
 
 }

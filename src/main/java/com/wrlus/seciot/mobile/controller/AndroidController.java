@@ -47,7 +47,9 @@ public class AndroidController {
 //			保存上传文件
 			File apkFile = this.resolveUploadFile((MultipartHttpServletRequest) request, path);
 			ApkInfoModel apkInfo = androidService.getApkInfo(apkFile);
-			String[] permissions = androidService.getAndroidPermissions(new File(apkInfo.getManifestFile()));
+			log.debug("ApkInfo: " + mapper.writeValueAsString(apkInfo));
+			File manifestFile = new File(apkInfo.getManifestFile());
+			String[] permissions = androidService.getAndroidPermissions(manifestFile);
 			data.put("status", Status.SUCCESS);
 			data.put("reason", "OK");
 			data.put("apk_info", apkInfo);

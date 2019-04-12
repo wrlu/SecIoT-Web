@@ -5,11 +5,9 @@ import java.util.Map;
 
 import com.wrlus.seciot.common.model.PlatformRiskDao;
 import com.wrlus.seciot.mobile.model.IpaInfoModel;
-import com.wrlus.seciot.mobile.model.IpaRiskReportModel;
 
 public interface AppleiOSService {
 	public IpaInfoModel getIpaInfo(File ipaFile);
 	public String[] getiOSPermissions(File infoPlistFile);
 	public Map<PlatformRiskDao, Boolean> checkIpaPlatformRisks(PlatformRiskDao[] platformRisks);
-	public IpaRiskReportModel getIpaRiskReport();
 }
