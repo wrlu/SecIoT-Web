@@ -20,15 +20,6 @@ repositories {
 }
 
 dependencies {
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api 'org.apache.commons:commons-math3:3.6.1'
-
-    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation 'com.google.guava:guava:23.0'
-
-    // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
-
 // https://mvnrepository.com/artifact/mysql/mysql-connector-java
 compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
 // https://mvnrepository.com/artifact/commons-codec/commons-codec
@@ -40,15 +31,15 @@ compile group: 'commons-logging', name: 'commons-logging', version: '1.2'
 // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
 compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.2'
 // https://mvnrepository.com/artifact/org.apache.poi/poi
-compile group: 'org.apache.poi', name: 'poi', version: '4.0.1'
+compile group: 'org.apache.poi', name: 'poi', version: '4.1.0'
 // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
-compile group: 'org.apache.poi', name: 'poi-ooxml', version: '4.0.1'
+compile group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.0'
 // https://mvnrepository.com/artifact/org.apache.poi/poi-scratchpad
-compile group: 'org.apache.poi', name: 'poi-scratchpad', version: '4.0.1'
+compile group: 'org.apache.poi', name: 'poi-scratchpad', version: '4.1.0'
 // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml-schemas
-compile group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '4.0.1'
+compile group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '4.1.0'
 // https://mvnrepository.com/artifact/org.apache.poi/poi-excelant
-compile group: 'org.apache.poi', name: 'poi-excelant', version: '4.0.1'
+compile group: 'org.apache.poi', name: 'poi-excelant', version: '4.1.0'
 // https://mvnrepository.com/artifact/org.springframework/spring-core
 compile group: 'org.springframework', name: 'spring-core', version: '5.1.6.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-beans
@@ -104,9 +95,9 @@ compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.3
 // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
 compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
 // https://mvnrepository.com/artifact/org.mybatis/mybatis-spring
-compile group: 'org.mybatis', name: 'mybatis-spring', version: '2.0.0'
+compile group: 'org.mybatis', name: 'mybatis-spring', version: '2.0.1'
 // https://mvnrepository.com/artifact/org.mybatis/mybatis
-compile group: 'org.mybatis', name: 'mybatis', version: '3.5.0'
+compile group: 'org.mybatis', name: 'mybatis', version: '3.5.1'
 // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
 compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 // https://mvnrepository.com/artifact/org.json/json

@@ -43,7 +43,7 @@ public class FwController {
 		// file:/C:/xxxxxx/SecIoT/WebContent/WEB-INF/classes/
 		String path = Thread.currentThread().getContextClassLoader().getResource("").toString();
 		path = path.replace("file:/", "");
-		path = path.replace("WEB-INF/classes/", "attach/uploads/firmware/"+UUID.randomUUID().toString().toUpperCase()+"/");
+		path = path.replace("WEB-INF/classes/", "attach/uploads/firmware/"+UUID.randomUUID().toString()+"/");
 		if (OSUtil.isWindows()) {
 			path = OSUtil.escapeUnixSeparator(path);
 		}
@@ -58,6 +58,8 @@ public class FwController {
 			File rootDir = fwService.getFwRootDirectory(fwInfo);
 			fwInfo.setRootDir(rootDir.getAbsolutePath());
 			log.debug("FwInfo: " + mapper.writeValueAsString(fwInfo));
+			
+			
 			List<ThirdLibraryModel> fwThirdLibraries = new ArrayList<>();
 //			获得OpenSSL版本
 			String[] libnames = {"OpenSSL"};
@@ -65,6 +67,7 @@ public class FwController {
 				ThirdLibraryModel lib = fwService.getFwThirdLibrary(fwInfo, libname);
 				fwThirdLibraries.add(lib);
 			}
+			
 			fwInfo.setPath("");
 			fwInfo.setRootDir(fwInfo.getRootDir().split(".extracted")[1]);
 			data.put("status", Status.SUCCESS);

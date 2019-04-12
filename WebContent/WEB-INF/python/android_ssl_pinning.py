@@ -2,12 +2,15 @@ import os
 import re
 import platform
 
-check_server_trusted_search_regex = 'public\\s+void\\s+checkServerTrusted\\s*\\' \
-                                    '(\\s*X509Certificate\\s*\\[\\]\\s*[a-z,A-Z,_][a-z,A-Z,0-9,_]*\\s*,' \
-                                    '\\s*String\\s+[a-z,A-Z,_][a-z,A-Z,0-9,_]*\\s*\\)'
-check_client_trusted_search_regex = 'public\\s+void\\s+checkClientTrusted\\s*\\' \
-                                    '(\\s*X509Certificate\\s*\\[\\]\\s*[a-z,A-Z,_][a-z,A-Z,0-9,_]*\\s*,' \
-                                    '\\s*String\\s+[a-z,A-Z,_][a-z,A-Z,0-9,_]*\\s*\\)'
+
+search_regex_strs = {
+    'checkServerTrusted': 'public\\s+void\\s+checkServerTrusted\\s*\\('
+                          '\\s*X509Certificate\\s*\\[\\]\\s*[a-z,A-Z,_][a-z,A-Z,0-9,_]*\\s*,'
+                          '\\s*String\\s+[a-z,A-Z,_][a-z,A-Z,0-9,_]*\\s*\\)',
+    'checkClientTrusted': 'public\\s+void\\s+checkClientTrusted\\s*\\('
+                          '\\s*X509Certificate\\s*\\[\\]\\s*[a-z,A-Z,_][a-z,A-Z,0-9,_]*\\s*,'
+                          '\\s*String\\s+[a-z,A-Z,_][a-z,A-Z,0-9,_]*\\s*\\)'
+}
 
 
 def list_all_classes(root_dir, dirname, suffix):
@@ -43,23 +46,22 @@ def do(sources_dir):
         path_fix = '\\'
     else:
         path_fix = '/'
+    result = {
+        'checkServerTrusted': [],
+        'checkClientTrusted': []
+    }
     for clazz in classes_list:
         class_file = open(sources_dir + path_fix + clazz.replace('.', path_fix) + '.java', 'rb')
         class_file_data = class_file.read()
         class_file_content = class_file_data.decode('utf8')
-        regex1 = re.compile(check_server_trusted_search_regex)
-        regex2 = re.compile(check_client_trusted_search_regex)
-        found1 = regex1.findall(class_file_content)
-        found2 = regex2.findall(class_file_content)
-        if len(found1) != 0:
-            for find in found1:
-                print(clazz + ' : ' + find)
-        if len(found2) != 0:
-            for find in found2:
-                print(clazz + ' : ' + find)
-    result = {
+        for key in search_regex_strs:
+            regex = re.compile(search_regex_strs[key])
+            found = regex.findall(class_file_content)
+            if len(found) != 0:
+                for find in found:
 
-    }
+                    result[key].append(clazz)
+
     return result
 
 

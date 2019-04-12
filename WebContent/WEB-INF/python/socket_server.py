@@ -94,6 +94,8 @@ class SocketServer(socketserver.BaseRequestHandler):
                 result = fwservice.get_fw_root_directory(params['fw_info'])
             elif method == 'get_fw_third_library':
                 result = fwservice.get_fw_third_library(params['base_dir'], params['lib_name'])
+            elif method == 'linux_shadow':
+                result = fwservice.linux_shadow(params['base_dir'])
 
         elif classname == 'AndroidService':
             androidservice = AndroidService()
@@ -107,11 +109,11 @@ class SocketServer(socketserver.BaseRequestHandler):
                 result = androidservice.ssl_pinning(params['sources_dir'])
 
         elif classname == 'AppleiOSService':
-            pass
+            iosservice = AppleiOSService()
         elif classname == 'TrafficService':
-            pass
+            trafficservice = TrafficService()
         elif classname == 'ScanService':
-            pass
+            scanservice = ScanService()
 
         if len(result) != 0:
             ret = {

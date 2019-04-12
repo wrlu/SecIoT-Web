@@ -39,7 +39,7 @@ public class AndroidController {
 		ObjectMapper mapper = new ObjectMapper();
 		String path = Thread.currentThread().getContextClassLoader().getResource("").toString();
 		path = path.replace("file:/", "");
-		path = path.replace("WEB-INF/classes/", "attach/uploads/apk/"+UUID.randomUUID().toString().toUpperCase()+"/");
+		path = path.replace("WEB-INF/classes/", "attach/uploads/apk/"+UUID.randomUUID().toString()+"/");
 		if (OSUtil.isWindows()) {
 			path = OSUtil.escapeUnixSeparator(path);
 		}
