@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wrlus.seciot.mobile.model.ApkInfoModel;
+import com.wrlus.seciot.mobile.model.ApkInfo;
 import com.wrlus.seciot.mobile.service.AndroidServiceImpl;
 import com.wrlus.seciot.pysocket.model.PythonException;
 import com.wrlus.seciot.util.OSUtil;
@@ -46,7 +46,7 @@ public class AndroidController {
 		try {
 //			保存上传文件
 			File apkFile = this.resolveUploadFile((MultipartHttpServletRequest) request, path);
-			ApkInfoModel apkInfo = androidService.getApkInfo(apkFile);
+			ApkInfo apkInfo = androidService.getApkInfo(apkFile);
 			log.debug("ApkInfo: " + mapper.writeValueAsString(apkInfo));
 			File manifestFile = new File(apkInfo.getManifestFile());
 			String[] permissions = androidService.getAndroidPermissions(manifestFile);

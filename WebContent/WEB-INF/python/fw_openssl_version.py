@@ -35,7 +35,7 @@ def do(base_dir):
     result['lib_name'] = 'OpenSSL'
     result['lib_avaliable'] = True
     result['lib_path'] = libcrypto_so_path
-    result['lib_version'] = openssl_version[0].decode('utf8')
+    result['lib_version'] = openssl_version[0].decode('utf8').replace('OpenSSL ', '')
     return result
 
 

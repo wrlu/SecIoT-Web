@@ -3,13 +3,13 @@ package com.wrlus.seciot.mobile.service;
 import java.io.File;
 import java.util.Map;
 
-import com.wrlus.seciot.common.model.PlatformRiskDao;
-import com.wrlus.seciot.mobile.model.IpaInfoModel;
+import com.wrlus.seciot.mobile.model.IpaInfo;
+import com.wrlus.seciot.platform.model.PlatformRiskDao;
 
 public class AppleiOSServiceImpl implements AppleiOSService {
 
 	@Override
-	public IpaInfoModel getIpaInfo(File ipaFile) {
+	public IpaInfo getIpaInfo(File ipaFile) {
 		// TODO Auto-generated method stub
 		return null;
 	}

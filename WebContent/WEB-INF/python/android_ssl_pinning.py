@@ -3,6 +3,10 @@ import re
 import platform
 
 
+risk_name = 'Android SSL弱校验风险'
+risk_description = ''
+risk_level = 'High'
+risk_platform = 'Android'
 search_regex_strs = {
     'checkServerTrusted': 'public\\s+void\\s+checkServerTrusted\\s*\\('
                           '\\s*X509Certificate\\s*\\[\\]\\s*[a-z,A-Z,_][a-z,A-Z,0-9,_]*\\s*,'
@@ -46,7 +50,7 @@ def do(sources_dir):
         path_fix = '\\'
     else:
         path_fix = '/'
-    result = {
+    risk_details = {
         'checkServerTrusted': [],
         'checkClientTrusted': []
     }
@@ -58,11 +62,36 @@ def do(sources_dir):
             regex = re.compile(search_regex_strs[key])
             found = regex.findall(class_file_content)
             if len(found) != 0:
-                for find in found:
+                risk_details[key].append(clazz)
+    risk_exists = False
+    for key in risk_details:
+        if len(risk_details[key]) != 0:
+            risk_exists = True
+            break
+    risk_result = {
+        'risk_exists': risk_exists,
+        'risk_name': risk_name,
+        'risk_description': risk_description,
+        'risk_level': risk_level,
+        'risk_platform': risk_platform,
+        'risk_detail_keys': ['checkServerTrusted', 'checkClientTrusted'],
+        'risk_details': risk_details
+    }
+    return risk_result
 
-                    result[key].append(clazz)
-
-    return result
+#   @JsonProperty("risk_exists")
+#   private boolean exists;
+#   @JsonProperty("risk_name")
+#   private String name;
+#   @JsonProperty("risk_description")
+#   private String description;
+#   @JsonProperty("risk_level")
+#   private String level;
+#   @JsonProperty("risk_platform")
+#   private String platform;
+#   @JsonProperty("risk_detail_keys")
+#   private String[] detailKeys;
+#   @JsonProperty("risk_details")
 
 
 if __name__ == '__main__':

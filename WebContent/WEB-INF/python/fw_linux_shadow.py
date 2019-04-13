@@ -1,5 +1,10 @@
 import platform
 
+
+risk_name = 'Linux用户帐户风险'
+risk_description = ''
+risk_level = 'Low'
+risk_platform = 'Linux'
 can_login_shell = [
     '/bin/bash', '/bin/sh', '/bin/ash'
 ]
@@ -43,12 +48,25 @@ def do(base_dir):
             user_has_passwd.append(username)
         elif passwd_hash_len == 0:
             user_has_no_passwd.append(username)
-    result = {
+    risk_details = {
         'user_avaliable': user_can_login,
         'user_has_no_passwd': user_has_no_passwd,
         'user_has_passwd': user_has_passwd,
     }
-    return result
+    if len(user_can_login) != 0:
+        risk_exists = True
+    else:
+        risk_exists = False
+    risk_result = {
+        'risk_exists': risk_exists,
+        'risk_name': risk_name,
+        'risk_description': risk_description,
+        'risk_level': risk_level,
+        'risk_platform': risk_platform,
+        'risk_detail_keys': ['user_avaliable', 'user_has_no_passwd', 'user_has_passwd'],
+        'risk_details': risk_details
+    }
+    return risk_result
 
 
 if __name__ == '__main__':

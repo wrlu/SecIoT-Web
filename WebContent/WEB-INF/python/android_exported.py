@@ -1,6 +1,12 @@
 from xml.dom import minidom
 
 
+risk_name = 'Android组件暴露风险'
+risk_description = ''
+risk_level = 'Medium'
+risk_platform = 'Android'
+
+
 def do(manifest_file):
     manifest_file_content = minidom.parse(manifest_file)
     root = manifest_file_content.documentElement
@@ -39,13 +45,27 @@ def do(manifest_file):
         else:
             if content_provider_element.getElementsByTagName('intent-filter'):
                 exported_content_provider.append(content_provider_element.getAttribute('android:name'))
-    exported_contexts = {
-        'exported_activity': exported_activity,
-        'exported_service': exported_service,
-        'exported_broadcast_receiver': exported_broadcast_receiver,
-        'exported_content_provider': exported_content_provider
+    if len(exported_activity) != 0 or len(exported_service) != 0 or len(exported_broadcast_receiver) != 0 or len(exported_content_provider) != 0:
+        risk_exists = True
+    else:
+        risk_exists = False
+    risk_details = {
+        'activity': exported_activity,
+        'service': exported_service,
+        'broadcast_receiver': exported_broadcast_receiver,
+        'content_provider': exported_content_provider
     }
-    return exported_contexts
+    risk_result = {
+        'risk_exists': risk_exists,
+        'risk_name': risk_name,
+        'risk_description': risk_description,
+        'risk_level': risk_level,
+        'risk_platform': risk_platform,
+        'risk_detail_keys': ['activity', 'service', 'broadcast_receiver', 'content_provider'],
+        'risk_details': risk_details
+    }
+
+    return risk_result
 
 
 if __name__ == '__main__':

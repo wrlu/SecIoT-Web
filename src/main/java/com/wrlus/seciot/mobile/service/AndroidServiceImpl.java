@@ -3,11 +3,13 @@ package com.wrlus.seciot.mobile.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wrlus.seciot.common.model.PlatformRiskDao;
-import com.wrlus.seciot.mobile.model.ApkInfoModel;
+import com.wrlus.seciot.mobile.model.ApkInfo;
+import com.wrlus.seciot.platform.model.PlatformRiskDao;
+import com.wrlus.seciot.platform.model.PlatformRiskResult;
 import com.wrlus.seciot.pysocket.PyClient;
 import com.wrlus.seciot.pysocket.model.PySocketRequest;
 import com.wrlus.seciot.pysocket.model.PySocketResponse;
@@ -17,7 +19,7 @@ import com.wrlus.seciot.util.Status;
 public class AndroidServiceImpl implements AndroidService {
 
 	@Override
-	public ApkInfoModel getApkInfo(File apkFile) throws IOException, PythonException {
+	public ApkInfo getApkInfo(File apkFile) throws IOException, PythonException {
 		PySocketRequest request = new PySocketRequest();
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("file_name", apkFile.getName());
@@ -29,7 +31,7 @@ public class AndroidServiceImpl implements AndroidService {
 		PySocketResponse result = pyClient.sendCmdSync(request);
 		if (result.getStatus() == Status.SUCCESS) {
 			ObjectMapper mapper = new ObjectMapper();
-			ApkInfoModel apkInfo = mapper.readValue(mapper.writeValueAsString(result.getData()), ApkInfoModel.class);
+			ApkInfo apkInfo = mapper.readValue(mapper.writeValueAsString(result.getData()), ApkInfo.class);
 			return apkInfo;
 		} else {
 			throw new PythonException("Python出现异常，错误代码："+result.getStatus());
@@ -57,8 +59,7 @@ public class AndroidServiceImpl implements AndroidService {
 	}
 
 	@Override
-	public Map<PlatformRiskDao, Boolean> checkApkPlatformRisks(PlatformRiskDao[] platformRisks) {
-		// TODO Auto-generated method stub
+	public List<PlatformRiskResult> checkApkPlatformRisks(ApkInfo apkInfo, PlatformRiskDao[] platformRisks) throws IOException, PythonException {
 		return null;
 	}
 

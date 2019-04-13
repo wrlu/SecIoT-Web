@@ -4,13 +4,11 @@ import java.io.File;
 import java.net.InetAddress;
 import java.util.Map;
 
-import com.wrlus.seciot.traffic.model.ProtocolModel;
-import com.wrlus.seciot.traffic.model.ProtocolRiskModel;
-import com.wrlus.seciot.traffic.model.TrafficRiskReportModel;
+import com.wrlus.seciot.traffic.model.Protocol;
+import com.wrlus.seciot.traffic.model.ProtocolRisk;
 
 public interface TrafficService {
 	public InetAddress[] getConnectionPairs(File pcapFile, InetAddress ip);
-	public Map<ProtocolModel, Boolean> checkProtocolUsage(ProtocolModel[] protocols);
-	public Map<ProtocolRiskModel, Boolean> checkProtocolRisks(ProtocolRiskModel[] protocolRisks);
-	public TrafficRiskReportModel geTrafficRiskReport();
+	public Map<Protocol, Boolean> checkProtocolUsage(Protocol[] protocols);
+	public Map<ProtocolRisk, Boolean> checkProtocolRisks(ProtocolRisk[] protocolRisks);
 }

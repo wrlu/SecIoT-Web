@@ -3,17 +3,20 @@ package com.wrlus.seciot.fw.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
-import com.wrlus.seciot.common.model.ThirdLibraryModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wrlus.seciot.common.model.ThirdLibraryRiskDao;
-import com.wrlus.seciot.common.model.PlatformRiskDao;
-import com.wrlus.seciot.fw.model.FwInfoModel;
+import com.wrlus.seciot.fw.model.FwInfo;
+import com.wrlus.seciot.library.model.ThirdLibrary;
+import com.wrlus.seciot.library.model.ThirdLibraryRiskDao;
+import com.wrlus.seciot.library.model.ThirdLibraryRiskResult;
+import com.wrlus.seciot.platform.model.PlatformRiskDao;
+import com.wrlus.seciot.platform.model.PlatformRiskResult;
 import com.wrlus.seciot.pysocket.PyClient;
 import com.wrlus.seciot.pysocket.model.PySocketRequest;
 import com.wrlus.seciot.pysocket.model.PySocketResponse;
@@ -26,7 +29,7 @@ public class FwServiceImpl implements FwService {
 	private static Logger log = LogManager.getLogger();
 
 	@Override
-	public FwInfoModel getFwInfo(File fwFile) throws IOException, PythonException {
+	public FwInfo getFwInfo(File fwFile) throws IOException, PythonException {
 		PySocketRequest request = new PySocketRequest();
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("file_name", fwFile.getName());
@@ -38,7 +41,7 @@ public class FwServiceImpl implements FwService {
 		PySocketResponse result = pyClient.sendCmdSync(request);
 		if (result.getStatus() == Status.SUCCESS) {
 			ObjectMapper mapper = new ObjectMapper();
-			FwInfoModel fwInfo = mapper.readValue(mapper.writeValueAsString(result.getData()), FwInfoModel.class);
+			FwInfo fwInfo = mapper.readValue(mapper.writeValueAsString(result.getData()), FwInfo.class);
 			return fwInfo;
 		} else {
 			throw new PythonException("Python出现异常，错误代码："+result.getStatus());
@@ -47,7 +50,7 @@ public class FwServiceImpl implements FwService {
 	}
 
 	@Override
-	public File getFwRootDirectory(FwInfoModel fwInfoModel) throws IOException, PythonException {
+	public File getFwRootDirectory(FwInfo fwInfoModel) throws IOException, PythonException {
 		PySocketRequest request = new PySocketRequest();
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("fw_info", fwInfoModel);
@@ -66,7 +69,7 @@ public class FwServiceImpl implements FwService {
 	}
 
 	@Override
-	public ThirdLibraryModel getFwThirdLibrary(FwInfoModel fwInfo, String libName) throws IOException, PythonException {
+	public ThirdLibrary getFwThirdLibrary(FwInfo fwInfo, String libName) throws IOException, PythonException {
 		PySocketRequest request = new PySocketRequest();
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("base_dir", fwInfo.getRootDir());
@@ -78,7 +81,7 @@ public class FwServiceImpl implements FwService {
 		PySocketResponse result = pyClient.sendCmdSync(request);
 		if (result.getStatus() == Status.SUCCESS) {
 			ObjectMapper mapper = new ObjectMapper();
-			ThirdLibraryModel fwThirdLibrary = mapper.readValue(mapper.writeValueAsString(result.getData()), ThirdLibraryModel.class);
+			ThirdLibrary fwThirdLibrary = mapper.readValue(mapper.writeValueAsString(result.getData()), ThirdLibrary.class);
 			pyClient.close();
 			return fwThirdLibrary;
 		} else {
@@ -87,13 +90,13 @@ public class FwServiceImpl implements FwService {
 	}
 
 	@Override
-	public Map<ThirdLibraryRiskDao, Boolean> checkFwLibraryRisks(FwInfoModel fwInfo, ThirdLibraryRiskDao[] fwLibraryRisks) throws IOException, PythonException {
+	public List<ThirdLibraryRiskResult> checkFwLibraryRisks(FwInfo fwInfo, ThirdLibraryRiskDao[] fwLibraryRisks) throws IOException, PythonException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Map<PlatformRiskDao, Boolean> checkFwPlatformRisks(FwInfoModel fwInfo, PlatformRiskDao[] platformRisks) throws IOException, PythonException {
+	public List<PlatformRiskResult> checkFwPlatformRisks(FwInfo fwInfo, PlatformRiskDao[] platformRisks) throws IOException, PythonException {
 		// TODO Auto-generated method stub
 		return null;
 	}
