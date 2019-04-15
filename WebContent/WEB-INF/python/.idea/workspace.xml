@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bbd97ff7-e094-4529-b3d7-8f8e2a709367" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_exported.py" beforeDir="false" afterPath="$PROJECT_DIR$/android_exported.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_ssl_pinning.py" beforeDir="false" afterPath="$PROJECT_DIR$/android_ssl_pinning.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fw_linux_shadow.py" beforeDir="false" afterPath="$PROJECT_DIR$/fw_linux_shadow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fw_openssl_version.py" beforeDir="false" afterPath="$PROJECT_DIR$/fw_openssl_version.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios_ats_policy.py" beforeDir="false" afterPath="$PROJECT_DIR$/ios_ats_policy.py" afterDir="false" />
-    </list>
+    <list default="true" id="bbd97ff7-e094-4529-b3d7-8f8e2a709367" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,32 +10,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/socket_server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1842">
-              <caret line="118" column="19" lean-forward="true" selection-start-line="118" selection-start-column="19" selection-end-line="118" selection-end-column="19" />
+            <state relative-caret-position="781">
+              <caret line="118" column="19" selection-start-line="118" selection-start-column="19" selection-end-line="118" selection-end-column="19" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fw_linux_shadow.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="71" selection-start-line="71" selection-end-line="71" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ios_ats_policy.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -87,7 +62,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-12" />
     <option name="y" value="-12" />
     <option name="width" value="1944" />
@@ -117,8 +92,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/android_ssl_pinning.py" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -324,13 +299,13 @@
     </configuration>
     <list>
       <item itemvalue="Python.android_exported" />
-      <item itemvalue="Python.android_ssl_pinning" />
-      <item itemvalue="Python.socket_server" />
       <item itemvalue="Python.android_permission" />
-      <item itemvalue="Python.run_binwalk" />
-      <item itemvalue="Python.run_jadx" />
+      <item itemvalue="Python.android_ssl_pinning" />
       <item itemvalue="Python.fw_linux_shadow" />
       <item itemvalue="Python.fw_openssl_version" />
+      <item itemvalue="Python.run_binwalk" />
+      <item itemvalue="Python.run_jadx" />
+      <item itemvalue="Python.socket_server" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -347,10 +322,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="704" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="27" width="1920" height="1020" extended-state="7" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17235902" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17230444" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -373,27 +347,9 @@
     <entry file="file://$PROJECT_DIR$/run_nmap.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://C:/Program Files/Python/Python37/Lib/platform.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="1067" selection-start-line="1067" selection-end-line="1067" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python/Python37/Lib/subprocess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="738" selection-start-line="738" selection-end-line="738" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python/Python37/Lib/json/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="292" selection-start-line="292" selection-end-line="292" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/Program Files/Python/Python37/Lib/platform.py" />
+    <entry file="file://C:/Program Files/Python/Python37/Lib/subprocess.py" />
+    <entry file="file://C:/Program Files/Python/Python37/Lib/json/__init__.py" />
     <entry file="file://$PROJECT_DIR$/android_block_mode.py" />
     <entry file="file://$PROJECT_DIR$/android_hard_key.py" />
     <entry file="file://$PROJECT_DIR$/run_jadx.py">
@@ -450,27 +406,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/socket_server.py">
+    <entry file="file://$PROJECT_DIR$/ios_ats_policy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1842">
-          <caret line="118" column="19" lean-forward="true" selection-start-line="118" selection-start-column="19" selection-end-line="118" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="96">
+          <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fw_linux_shadow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
+        <state relative-caret-position="565">
           <caret line="71" selection-start-line="71" selection-end-line="71" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ios_ats_policy.py">
+    <entry file="file://$PROJECT_DIR$/socket_server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="781">
+          <caret line="118" column="19" selection-start-line="118" selection-start-column="19" selection-end-line="118" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
