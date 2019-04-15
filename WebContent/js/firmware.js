@@ -1,5 +1,7 @@
 function onAnalysis() {
 	var formData = new FormData(document.getElementById("uploadForm"));
+//	显示加载模态框
+	$("#loadingModel").modal("show");
 	$.ajax({
 	      type:"POST",
 	      url:"/SecIoT/fw/analysis",
@@ -45,8 +47,14 @@ function onAnalysis() {
 	     		$("#resultModalBody").html(result.reason, function() {});
 	     		$("#resultModal").modal("show");
 	     	 }
+	      },
+	      error: function(error){
+//	    	     隐藏加载模态框
+		    	$("#loadingModel").modal("hide");
+//	     		 填充并显示结果提示模态框，提示错误
+	     		$("#resultModalBody").html(error, function() {});
+	     		$("#resultModal").modal("show");
 	      }
 	});
-//	显示加载模态框
-	$("#loadingModel").modal("show");
+
 }

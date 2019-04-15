@@ -25,7 +25,6 @@ import com.wrlus.seciot.util.Status;
 
 @Service
 public class FwServiceImpl implements FwService {
-	@SuppressWarnings("unused")
 	private static Logger log = LogManager.getLogger();
 
 	@Override
@@ -38,13 +37,14 @@ public class FwServiceImpl implements FwService {
 		request.setParameters(parameters);
 		PyClient pyClient = new PyClient();
 		pyClient.connect();
-		PySocketResponse result = pyClient.sendCmdSync(request);
-		if (result.getStatus() == Status.SUCCESS) {
-			ObjectMapper mapper = new ObjectMapper();
-			FwInfo fwInfo = mapper.readValue(mapper.writeValueAsString(result.getData()), FwInfo.class);
+		PySocketResponse response = pyClient.sendCmdSync(request);
+		ObjectMapper mapper = new ObjectMapper();
+		log.debug("Response: "+mapper.writeValueAsString(response));
+		if (response.getStatus() == Status.SUCCESS) {
+			FwInfo fwInfo = mapper.readValue(mapper.writeValueAsString(response.getData()), FwInfo.class);
 			return fwInfo;
 		} else {
-			throw new PythonException("Python出现异常，错误代码："+result.getStatus());
+			throw new PythonException("Python出现异常，错误代码："+response.getStatus());
 		}
 		
 	}
@@ -58,12 +58,14 @@ public class FwServiceImpl implements FwService {
 		request.setParameters(parameters);
 		PyClient pyClient = new PyClient();
 		pyClient.connect();
-		PySocketResponse result = pyClient.sendCmdSync(request);
-		if (result.getStatus() == Status.SUCCESS) {
-			File rootDir = new File(String.valueOf(result.getData().get("fw_root_directory")));
+		PySocketResponse response = pyClient.sendCmdSync(request);
+		ObjectMapper mapper = new ObjectMapper();
+		log.debug("Response: "+mapper.writeValueAsString(response));
+		if (response.getStatus() == Status.SUCCESS) {
+			File rootDir = new File(String.valueOf(response.getData().get("fw_root_directory")));
 			return rootDir;
 		} else {
-			throw new PythonException("Python出现异常，错误代码："+result.getStatus());
+			throw new PythonException("Python出现异常，错误代码："+response.getStatus());
 		}
 		
 	}
@@ -78,14 +80,15 @@ public class FwServiceImpl implements FwService {
 		request.setParameters(parameters);
 		PyClient pyClient = new PyClient();
 		pyClient.connect();
-		PySocketResponse result = pyClient.sendCmdSync(request);
-		if (result.getStatus() == Status.SUCCESS) {
-			ObjectMapper mapper = new ObjectMapper();
-			ThirdLibrary fwThirdLibrary = mapper.readValue(mapper.writeValueAsString(result.getData()), ThirdLibrary.class);
+		PySocketResponse response = pyClient.sendCmdSync(request);
+		ObjectMapper mapper = new ObjectMapper();
+		log.debug("Response: "+mapper.writeValueAsString(response));
+		if (response.getStatus() == Status.SUCCESS) {
+			ThirdLibrary fwThirdLibrary = mapper.readValue(mapper.writeValueAsString(response.getData()), ThirdLibrary.class);
 			pyClient.close();
 			return fwThirdLibrary;
 		} else {
-			throw new PythonException("Python出现异常，错误代码："+result.getStatus());
+			throw new PythonException("Python出现异常，错误代码："+response.getStatus());
 		}
 	}
 

@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bbd97ff7-e094-4529-b3d7-8f8e2a709367" name="Default Changelist" comment="" />
+    <list default="true" id="bbd97ff7-e094-4529-b3d7-8f8e2a709367" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.settings/org.eclipse.wst.common.project.facet.core.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.settings/org.eclipse.wst.common.project.facet.core.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../js/firmware.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../js/firmware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../assets/OpenSSL漏洞索引（严重程度）.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../assets/OpenSSL漏洞索引（严重程度）.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bin/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/fw/controller/FwController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/fw/controller/FwController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/fw/service/FwServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/fw/service/FwServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/library/service/ThirdLibraryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/library/service/ThirdLibraryServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/mobile/controller/AndroidController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/mobile/controller/AndroidController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/platform/service/PlatformRiskServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/platform/service/PlatformRiskServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/fw/controller/FwController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/fw/controller/FwController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/fw/service/FwServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/fw/service/FwServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/library/service/ThirdLibraryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/library/service/ThirdLibraryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AndroidController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AndroidController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/platform/service/PlatformRiskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/platform/service/PlatformRiskServiceImpl.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,10 +31,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/socket_server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="781">
-              <caret line="118" column="19" selection-start-line="118" selection-start-column="19" selection-end-line="118" selection-end-column="19" />
+            <state relative-caret-position="351">
+              <caret line="113" column="31" lean-forward="true" selection-start-line="113" selection-start-column="31" selection-end-line="113" selection-end-column="31" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/android_ssl_pinning.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1107">
+              <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,20 +83,20 @@
         <option value="$PROJECT_DIR$/run_jadx.py" />
         <option value="$PROJECT_DIR$/run_binwalk.py" />
         <option value="$PROJECT_DIR$/android_permission.py" />
-        <option value="$PROJECT_DIR$/socket_server.py" />
         <option value="$PROJECT_DIR$/fw_openssl_version.py" />
         <option value="$PROJECT_DIR$/android_ssl_pinning.py" />
         <option value="$PROJECT_DIR$/android_exported.py" />
         <option value="$PROJECT_DIR$/fw_linux_shadow.py" />
         <option value="$PROJECT_DIR$/ios_ats_policy.py" />
+        <option value="$PROJECT_DIR$/socket_server.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-12" />
-    <option name="y" value="-12" />
-    <option name="width" value="1944" />
-    <option name="height" value="1056" />
+    <option name="x" value="4" />
+    <option name="y" value="27" />
+    <option name="width" value="1272" />
+    <option name="height" value="674" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -76,7 +106,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -88,12 +117,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/run_jadx.py" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -107,7 +137,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.android_ssl_pinning">
+  <component name="RunManager" selected="Python.socket_server">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -262,12 +292,12 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Program Files\Python\Python37\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\wrlu\OneDrive\CAUC-项目科研\IoT安全检测平台\SecIoT\WebContent\WEB-INF\python\run_jadx.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_jadx.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -283,9 +313,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Program Files\Python\Python37\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/socket_server.py" />
@@ -322,14 +352,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1920" height="1020" extended-state="7" />
+    <frame x="-6" y="32" width="1932" height="1018" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17230444" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16983122" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2937063" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29273742" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5262238" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -386,16 +417,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/android_ssl_pinning.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" selection-start-line="5" selection-end-line="8" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fw_openssl_version.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="616">
@@ -422,10 +443,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/socket_server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="781">
-          <caret line="118" column="19" selection-start-line="118" selection-start-column="19" selection-end-line="118" selection-end-column="19" />
+        <state relative-caret-position="351">
+          <caret line="113" column="31" lean-forward="true" selection-start-line="113" selection-start-column="31" selection-end-line="113" selection-end-column="31" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android_ssl_pinning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1107">
+          <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>

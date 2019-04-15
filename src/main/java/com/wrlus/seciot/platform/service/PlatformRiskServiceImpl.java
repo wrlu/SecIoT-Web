@@ -3,10 +3,12 @@ package com.wrlus.seciot.platform.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.wrlus.seciot.platform.dao.PlatformRiskMapper;
 import com.wrlus.seciot.platform.model.PlatformRiskDao;
 
+@Service
 public class PlatformRiskServiceImpl implements PlatformRiskService {
 	@Autowired
 	private PlatformRiskMapper dao;

@@ -3,11 +3,13 @@ package com.wrlus.seciot.library.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.wrlus.seciot.library.dao.ThirdLibraryMapper;
 import com.wrlus.seciot.library.model.ThirdLibraryDao;
 import com.wrlus.seciot.library.model.ThirdLibraryRiskDao;
 
+@Service
 public class ThirdLibraryServiceImpl implements ThirdLibraryService {
 	@Autowired
 	private ThirdLibraryMapper dao;

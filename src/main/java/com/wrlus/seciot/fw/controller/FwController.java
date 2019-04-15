@@ -50,9 +50,15 @@ public class FwController {
 	public Map<String, Object> analysis(HttpServletRequest request, HttpServletResponse response) {
 		Map<String, Object> data=new HashMap<String, Object>();
 		ObjectMapper mapper = new ObjectMapper();
-		// file:/C:/xxxxxx/SecIoT/WebContent/WEB-INF/classes/
+		// Windows: file:/C:/******/SecIoT/WebContent/WEB-INF/classes/
+		// *nix: file:/mnt/******/SecIoT/WEB-INF/classes/
 		String path = Thread.currentThread().getContextClassLoader().getResource("").toString();
-		path = path.replace("file:/", "");
+		System.out.println(path);
+		if (OSUtil.isWindows()) {
+			path = path.replace("file:/", "");
+		} else {
+			path = path.replace("file:", "");
+		}
 		path = path.replace("WEB-INF/classes/", "attach/uploads/firmware/"+UUID.randomUUID().toString()+"/");
 		if (OSUtil.isWindows()) {
 			path = OSUtil.escapeUnixSeparator(path);
