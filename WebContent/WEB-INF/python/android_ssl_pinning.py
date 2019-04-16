@@ -79,22 +79,8 @@ def do(sources_dir):
     }
     return risk_result
 
-#   @JsonProperty("risk_exists")
-#   private boolean exists;
-#   @JsonProperty("risk_name")
-#   private String name;
-#   @JsonProperty("risk_description")
-#   private String description;
-#   @JsonProperty("risk_level")
-#   private String level;
-#   @JsonProperty("risk_platform")
-#   private String platform;
-#   @JsonProperty("risk_detail_keys")
-#   private String[] detailKeys;
-#   @JsonProperty("risk_details")
-
 
 if __name__ == '__main__':
-    sources_folder = 'D:\\Analysis\\com.huawei.ipc.apk.jadx.out\\sources'
+    sources_folder = '/mnt/data/Analysis/com.huawei.ipc.apk.jadx.out/sources'
     result = do(sources_folder)
     print(result)

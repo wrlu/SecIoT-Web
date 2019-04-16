@@ -90,7 +90,7 @@ def win_path_to_wsl_path(path):
 
 
 if __name__ == '__main__':
-    path = 'D:\\Analysis\\mico_all_f86a5_1.44.4.bin'
+    path = '/mnt/data/Analysis/mico_all_f86a5_1.44.4.bin'
     file_name = 'mico_all_f86a5_1.44.4.bin'
     fw_info = get_fw_info(file_name, path)
     fw_info = get_fw_root_directory(fw_info)

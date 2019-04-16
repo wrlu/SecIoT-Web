@@ -15,6 +15,6 @@ def do(manifest_file):
 
 
 if __name__ == '__main__':
-    manifest_file = 'D:\\Analysis\\com.huawei.ipc.apk.jadx.out\\resources\\AndroidManifest.xml'
+    manifest_file = '/mnt/data/Analysis/com.huawei.ipc.apk.jadx.out/resources/AndroidManifest.xml'
     permissions = do(manifest_file)
     print(permissions)

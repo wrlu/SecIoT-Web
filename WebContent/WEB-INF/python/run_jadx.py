@@ -41,7 +41,7 @@ def jadx(path, params):
 
 
 if __name__ == '__main__':
-    path = 'D:\\Analysis\\com.huawei.ipc.apk'
+    path = '/mnt/data/Analysis/com.huawei.ipc.apk'
     file_name = 'com.huawei.ipc.apk'
     apk_info = get_apk_info(file_name, path)
     print(apk_info)

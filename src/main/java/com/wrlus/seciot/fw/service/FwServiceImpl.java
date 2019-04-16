@@ -23,10 +23,11 @@ import com.wrlus.seciot.pysocket.model.PySocketResponse;
 import com.wrlus.seciot.pysocket.model.PythonException;
 import com.wrlus.seciot.util.Status;
 
+
 @Service
 public class FwServiceImpl implements FwService {
 	private static Logger log = LogManager.getLogger();
-
+	
 	@Override
 	public FwInfo getFwInfo(File fwFile) throws IOException, PythonException {
 		PySocketRequest request = new PySocketRequest();
