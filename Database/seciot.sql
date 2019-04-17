@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2019-04-16 13:12:51
+-- 生成日期： 2019-04-17 10:43:01
 -- 服务器版本： 10.2.22-MariaDB
 -- PHP 版本： 7.2.5
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- 数据库： `seciot`
 --
-CREATE DATABASE IF NOT EXISTS `seciot` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `seciot`;
 
 -- --------------------------------------------------------
 
@@ -795,6 +793,15 @@ CREATE TABLE `platform_risk` (
   `payload` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='保存平台和代码安全风险定义';
 
+--
+-- 转存表中的数据 `platform_risk`
+--
+
+INSERT INTO `platform_risk` (`id`, `name`, `description`, `level`, `platform`, `payload`) VALUES
+('0c89a975-60dd-11e9-95d2-eb78988f066e', 'Android SSL弱校验风险', 'App在进行SSL通信时，未对服务器证书进行校验，可导致中间人攻击并泄漏传输的敏感数据。', 'High', 'Android', 'AndroidService.ssl_pinning'),
+('48c0099d-60dd-11e9-95d2-eb78988f066e', 'Linux用户帐户风险', '固件中存在可登录的Linux用户，可能导致攻击者从本地接口或远程方式取得系统权限。', 'Low', 'Linux', 'FwService.linux_shadow'),
+('f647b3ba-60dc-11e9-95d2-eb78988f066e', 'Android组件暴露风险', 'App在AndroidManifest.xml中没有正确设置四大组件的权限，暴露不必要的组件可能导致隐私信息泄漏给第三方App。', 'Medium', 'Android', 'AndroidService.exported');
+
 -- --------------------------------------------------------
 
 --
@@ -805,6 +812,15 @@ CREATE TABLE `platform_risk_category` (
   `id` varchar(36) NOT NULL,
   `category` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='关联表platform_risk和分析类型';
+
+--
+-- 转存表中的数据 `platform_risk_category`
+--
+
+INSERT INTO `platform_risk_category` (`id`, `category`) VALUES
+('0c89a975-60dd-11e9-95d2-eb78988f066e', 'Android'),
+('48c0099d-60dd-11e9-95d2-eb78988f066e', 'Firmware'),
+('f647b3ba-60dc-11e9-95d2-eb78988f066e', 'Android');
 
 -- --------------------------------------------------------
 
@@ -853,7 +869,7 @@ CREATE TABLE `third_library` (
 --
 
 INSERT INTO `third_library` (`id`, `name`, `description`, `latest_version`) VALUES
-('22db7316-be37-4728-b8f8-47f30a8b4fff', 'OpenSSL', NULL, NULL);
+('22db7316-be37-4728-b8f8-47f30a8b4fff', 'OpenSSL', 'OpenSSL是一个用于加密、数字签名和实现PKI体系的库，是网络安全最基础的第三方库。', NULL);
 
 -- --------------------------------------------------------
 
