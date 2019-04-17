@@ -3,6 +3,7 @@ package com.wrlus.seciot.mobile.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -21,6 +22,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wrlus.seciot.mobile.model.ApkInfo;
 import com.wrlus.seciot.mobile.service.AndroidServiceImpl;
+import com.wrlus.seciot.platform.model.PlatformRiskDao;
+import com.wrlus.seciot.platform.model.PlatformRiskResult;
+import com.wrlus.seciot.platform.service.PlatformRiskServiceImpl;
 import com.wrlus.seciot.pysocket.model.PythonException;
 import com.wrlus.seciot.util.OSUtil;
 import com.wrlus.seciot.util.Status;
@@ -31,6 +35,8 @@ public class AndroidController {
 	private static Logger log = LogManager.getLogger();
 	@Autowired
 	private AndroidServiceImpl androidService;
+	@Autowired
+	private PlatformRiskServiceImpl platformRiskService;
 	
 	@ResponseBody
 	@RequestMapping("/analysis")
@@ -55,12 +61,17 @@ public class AndroidController {
 			File apkFile = this.resolveUploadFile((MultipartHttpServletRequest) request, path);
 			ApkInfo apkInfo = androidService.getApkInfo(apkFile);
 			log.debug("ApkInfo: " + mapper.writeValueAsString(apkInfo));
-			File manifestFile = new File(apkInfo.getManifestFile());
-			String[] permissions = androidService.getAndroidPermissions(manifestFile);
+			String[] permissions = androidService.getAndroidPermissions(apkInfo);
+			List<PlatformRiskDao> platformRisks = platformRiskService.getPlatformRiskByCategory("Firmware");
+			List<PlatformRiskResult> platformRiskResults = androidService.checkApkPlatformRisks(apkInfo, platformRisks.toArray(new PlatformRiskDao[0]));;
 			data.put("status", Status.SUCCESS);
 			data.put("reason", "OK");
 			data.put("apk_info", apkInfo);
-			data.put("permissions", permissions);
+			data.put("apk_permissions", permissions);
+//			返回包含的平台风险数量
+			data.put("apk_platform_risk_size", platformRiskResults.size());
+//			返回平台风险详情
+			data.put("apk_platform_risk", platformRiskResults);
 		} catch (ClassCastException | NullPointerException e) {
 			data.put("status", Status.FILE_UPD_ERROR);
 			data.put("reason", "文件上传失败，错误代码："+Status.FILE_UPD_ERROR);

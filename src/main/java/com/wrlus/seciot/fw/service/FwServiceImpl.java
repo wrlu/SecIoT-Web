@@ -2,6 +2,7 @@ package com.wrlus.seciot.fw.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +14,6 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wrlus.seciot.fw.model.FwInfo;
 import com.wrlus.seciot.library.model.ThirdLibrary;
-import com.wrlus.seciot.library.model.ThirdLibraryRiskDao;
-import com.wrlus.seciot.library.model.ThirdLibraryRiskResult;
 import com.wrlus.seciot.platform.model.PlatformRiskDao;
 import com.wrlus.seciot.platform.model.PlatformRiskResult;
 import com.wrlus.seciot.pysocket.PyClient;
@@ -75,7 +74,7 @@ public class FwServiceImpl implements FwService {
 	public ThirdLibrary getFwThirdLibrary(FwInfo fwInfo, String libName) throws IOException, PythonException {
 		PySocketRequest request = new PySocketRequest();
 		Map<String, Object> parameters = new HashMap<>();
-		parameters.put("base_dir", fwInfo.getRootDir());
+		parameters.put("fw_info", fwInfo);
 		parameters.put("lib_name", libName);
 		request.setCmd("FwService.get_fw_third_library");
 		request.setParameters(parameters);
@@ -94,15 +93,28 @@ public class FwServiceImpl implements FwService {
 	}
 
 	@Override
-	public List<ThirdLibraryRiskResult> checkFwLibraryRisks(FwInfo fwInfo, ThirdLibraryRiskDao[] fwLibraryRisks) throws IOException, PythonException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<PlatformRiskResult> checkFwPlatformRisks(FwInfo fwInfo, PlatformRiskDao[] platformRisks) throws IOException, PythonException {
-		// TODO Auto-generated method stub
-		return null;
+		List<PlatformRiskResult> results = new ArrayList<>();
+		for (PlatformRiskDao platformRisk : platformRisks) {
+			PySocketRequest request = new PySocketRequest();
+			Map<String, Object> parameters = new HashMap<>();
+			parameters.put("fw_info", fwInfo);
+			request.setCmd(platformRisk.getPayload());
+			request.setParameters(parameters);
+			PyClient pyClient = new PyClient();
+			pyClient.connect();
+			PySocketResponse response = pyClient.sendCmdSync(request);
+			ObjectMapper mapper = new ObjectMapper();
+			log.debug("Response: "+mapper.writeValueAsString(response));
+			if (response.getStatus() == Status.SUCCESS) {
+				PlatformRiskResult result = mapper.readValue(mapper.writeValueAsString(response.getData()), PlatformRiskResult.class);
+				results.add(result);
+				pyClient.close();
+			} else {
+				throw new PythonException("Python出现异常，错误代码："+response.getStatus());
+			}
+		}
+		return results;
 	}
 
 }

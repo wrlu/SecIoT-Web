@@ -93,20 +93,20 @@ class SocketServer(socketserver.BaseRequestHandler):
             elif method == 'get_fw_root_directory':
                 result = fwservice.get_fw_root_directory(params['fw_info'])
             elif method == 'get_fw_third_library':
-                result = fwservice.get_fw_third_library(params['base_dir'], params['lib_name'])
+                result = fwservice.get_fw_third_library(params['fw_info']['fw_root_directory'], params['lib_name'])
             elif method == 'linux_shadow':
-                result = fwservice.linux_shadow(params['base_dir'])
+                result = fwservice.linux_shadow(params['fw_info']['fw_root_directory'])
 
         elif classname == 'AndroidService':
             androidservice = AndroidService()
             if method == 'get_apk_info':
                 result = androidservice.get_apk_info(params['file_name'], params['file_path'])
             elif method == 'permission':
-                result = androidservice.permission(params['manifest_file'])
+                result = androidservice.permission(params['apk_info']['apk_manifest_file'])
             elif method == 'exported':
-                result = androidservice.exported(params['manifest_file'])
+                result = androidservice.exported(params['apk_info']['apk_manifest_file'])
             elif method == 'ssl_pinning':
-                result = androidservice.ssl_pinning(params['sources_dir'])
+                result = androidservice.ssl_pinning(params['apk_info']['apk_sources_path'])
 
         elif classname == 'AppleiOSService':
             iosservice = AppleiOSService()
