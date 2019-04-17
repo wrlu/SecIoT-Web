@@ -62,15 +62,25 @@ public class AndroidController {
 			ApkInfo apkInfo = androidService.getApkInfo(apkFile);
 			log.debug("ApkInfo: " + mapper.writeValueAsString(apkInfo));
 			String[] permissions = androidService.getAndroidPermissions(apkInfo);
-			List<PlatformRiskDao> platformRisks = platformRiskService.getPlatformRiskByCategory("Firmware");
+			List<PlatformRiskDao> platformRisks = platformRiskService.getPlatformRiskByCategory("Android");
 			List<PlatformRiskResult> platformRiskResults = androidService.checkApkPlatformRisks(apkInfo, platformRisks.toArray(new PlatformRiskDao[0]));;
+//			清除绝对路径信息，防止路径泄露
+			apkInfo.setManifestFile(apkInfo.getManifestFile().replace(apkInfo.getPath() + ".jdax.out", ""));
+			apkInfo.setNdkLibPath(apkInfo.getNdkLibPath().replace(apkInfo.getPath() + ".jdax.out", ""));
+			apkInfo.setResourcesPath(apkInfo.getResourcesPath().replace(apkInfo.getPath() + ".jdax.out", ""));
+			apkInfo.setSourcesPath(apkInfo.getSourcesPath().replace(apkInfo.getPath() + ".jdax.out", ""));
+			apkInfo.setPath("");
+//			返回状态码
 			data.put("status", Status.SUCCESS);
+//			返回状态说明字符串
 			data.put("reason", "OK");
+//			返回APK信息
 			data.put("apk_info", apkInfo);
+//			返回APK所需权限
 			data.put("apk_permissions", permissions);
-//			返回包含的平台风险数量
+//			返回包含的APK平台风险数量
 			data.put("apk_platform_risk_size", platformRiskResults.size());
-//			返回平台风险详情
+//			返回APK平台风险详情
 			data.put("apk_platform_risk", platformRiskResults);
 		} catch (ClassCastException | NullPointerException e) {
 			data.put("status", Status.FILE_UPD_ERROR);

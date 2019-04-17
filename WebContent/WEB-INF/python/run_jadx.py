@@ -4,7 +4,7 @@ import os
 
 
 def get_apk_info(file_name, path):
-    result = jadx(path, '')
+    result = call_jadx(path, '')
     if result == '':
         raise OSError('jadx runs failed.')
     if platform.system() == 'Windows':
@@ -29,7 +29,7 @@ def get_apk_info(file_name, path):
     return apk_info
 
 
-def jadx(path, params):
+def call_jadx(path, params):
     cmd = 'jadx ' + params + ' -d ' + path + '.jadx.out ' + path
     print(cmd)
     process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
