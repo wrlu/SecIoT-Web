@@ -74,7 +74,6 @@ def do(sources_dir):
         'risk_description': risk_description,
         'risk_level': risk_level,
         'risk_platform': risk_platform,
-        'risk_detail_keys': ['checkServerTrusted', 'checkClientTrusted'],
         'risk_details': risk_details
     }
     return risk_result

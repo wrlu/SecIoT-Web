@@ -8,6 +8,8 @@ public class ApkInfo {
 	
 	@JsonProperty("apk_name")
 	private String name;
+	@JsonProperty("apk_size")
+	private long size;
 	@JsonProperty("apk_path")
 	private String path;
 	@JsonProperty("apk_sources_path")
@@ -32,6 +34,12 @@ public class ApkInfo {
 	}
 	public void setPath(String path) {
 		this.path = path;
+	}
+	public long getSize() {
+		return size;
+	}
+	public void setSize(long size) {
+		this.size = size;
 	}
 	public String getSourcesPath() {
 		return sourcesPath;

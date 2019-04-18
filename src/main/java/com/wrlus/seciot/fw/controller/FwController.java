@@ -76,25 +76,27 @@ public class FwController {
 			log.debug("FwInfo: " + mapper.writeValueAsString(fwInfo));
 //			获得所有已知的第三方库信息
 			List<ThirdLibraryDao> libraries = thirdLibraryService.getThirdLibraryAll();
-//			保存每种库包含风险的数量
-			List<Integer> thirdLibraryRiskNum = new ArrayList<>();
-//			保存第三方库和每种库包含风险内容的映射
-			Map<ThirdLibrary, List<ThirdLibraryRiskDao>> thirdLibraryRiskData = new HashMap<>();
+//			保存存在的第三方库对象
+			List<ThirdLibrary> thirdLibraries = new ArrayList<>();
+//			保存第三方库名称和每种库包含风险内容的映射
+			Map<String, List<ThirdLibraryRiskDao>> thirdLibraryRisks = new HashMap<>();
 //			遍历所有已知第三方库
 			for (ThirdLibraryDao libraryDao : libraries) {
 //				获得第三方库信息
-				ThirdLibrary libraryModel = fwService.getFwThirdLibrary(fwInfo, libraryDao.getName());
+				ThirdLibrary library = fwService.getFwThirdLibrary(fwInfo, libraryDao.getName());
 //				如果第三方库存在
-				if (libraryModel.isAvaliable()) {
+				if (library.isAvaliable()) {
+					thirdLibraries.add(library);
 //					获取这种第三方库所包含的风险
-					List<ThirdLibraryRiskDao> libraryRisks = thirdLibraryService.getThirdLibraryRiskByLibInfo(libraryModel.getName(), libraryModel.getVersion());
-					thirdLibraryRiskNum.add(libraryRisks.size());
-					thirdLibraryRiskData.put(libraryModel, libraryRisks);
+					List<ThirdLibraryRiskDao> libraryRisks = thirdLibraryService.getThirdLibraryRiskByLibInfo(library.getName(), library.getVersion());
+					log.debug("LibraryRisks: "+mapper.writeValueAsString(libraryRisks));
+					thirdLibraryRisks.put(library.getName(), libraryRisks);
 				}
 			}
 //			获得所有Firmware类型的平台风险
 			List<PlatformRiskDao> platformRisks = platformRiskService.getPlatformRiskByCategory("Firmware");
 			List<PlatformRiskResult> platformRiskResults = fwService.checkFwPlatformRisks(fwInfo, platformRisks.toArray(new PlatformRiskDao[0]));
+			log.debug("PlatformRisks: "+mapper.writeValueAsString(platformRiskResults));
 //			清除绝对路径信息，防止路径泄露
 			fwInfo.setPath("");
 			fwInfo.setRootDir(fwInfo.getRootDir().split(".extracted")[1]);
@@ -104,14 +106,10 @@ public class FwController {
 			data.put("reason", "OK");
 //			返回固件信息
 			data.put("fw_info", fwInfo);
-//			返回包含的第三方库数量
-			data.put("fw_lib_size", thirdLibraryRiskNum.size());
-//			返回每种第三方库的风险数量
-			data.put("fw_per_lib_risk_size", thirdLibraryRiskNum);
+//			返回第三方库信息
+			data.put("fw_lib", thirdLibraries);
 //			返回每种第三方库的所有风险
-			data.put("fw_lib_risk", thirdLibraryRiskData);
-//			返回包含的平台风险数量
-			data.put("fw_platform_risk_size", platformRiskResults.size());
+			data.put("fw_lib_risk", thirdLibraryRisks);
 //			返回平台风险详情
 			data.put("fw_platform_risk", platformRiskResults);
 		} catch (ClassCastException | NullPointerException e) {

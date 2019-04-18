@@ -63,7 +63,6 @@ def do(base_dir):
         'risk_description': risk_description,
         'risk_level': risk_level,
         'risk_platform': risk_platform,
-        'risk_detail_keys': ['user_avaliable', 'user_has_no_passwd', 'user_has_passwd'],
         'risk_details': risk_details
     }
     return risk_result

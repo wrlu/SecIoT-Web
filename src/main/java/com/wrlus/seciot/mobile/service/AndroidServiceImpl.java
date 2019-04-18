@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wrlus.seciot.mobile.model.ApkInfo;
@@ -20,6 +21,7 @@ import com.wrlus.seciot.pysocket.model.PySocketResponse;
 import com.wrlus.seciot.pysocket.model.PythonException;
 import com.wrlus.seciot.util.Status;
 
+@Service
 public class AndroidServiceImpl implements AndroidService {
 	private static Logger log = LogManager.getLogger();
 
@@ -55,7 +57,7 @@ public class AndroidServiceImpl implements AndroidService {
 		PySocketResponse result = pyClient.sendCmdSync(request);
 		if (result.getStatus() == Status.SUCCESS) {
 			ObjectMapper mapper = new ObjectMapper();
-			String[] permissions = mapper.readValue(mapper.writeValueAsString(result.getData()), String[].class);
+			String[] permissions = mapper.readValue(mapper.writeValueAsString(result.getData().get("permission")), String[].class);
 			return permissions;
 		} else {
 			throw new PythonException("Python出现异常，错误代码："+result.getStatus());

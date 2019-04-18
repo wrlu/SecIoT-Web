@@ -61,7 +61,6 @@ def do(manifest_file):
         'risk_description': risk_description,
         'risk_level': risk_level,
         'risk_platform': risk_platform,
-        'risk_detail_keys': ['activity', 'service', 'broadcast_receiver', 'content_provider'],
         'risk_details': risk_details
     }
 
