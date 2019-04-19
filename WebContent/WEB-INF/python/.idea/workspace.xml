@@ -2,35 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbd97ff7-e094-4529-b3d7-8f8e2a709367" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/traffic_get_connection_details.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/socket_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/socket_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traffic_check_protocol_usage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/traffic_get_connection_pair.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/mobile/controller/AndroidController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/mobile/controller/AndroidController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/scan/model/PortScanReportModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/scan/service/IdentifierScanService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/scan/service/LocalScanService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/scan/service/PayloadScanService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/scan/service/PortScanService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/traffic/controller/TrafficController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/traffic/controller/TrafficController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/traffic/model/Protocol.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/traffic/model/ProtocolDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/traffic/model/ProtocolRisk.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/traffic/service/TrafficService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/traffic/service/TrafficService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/util/Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bin/com/wrlus/seciot/util/Status.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AndroidController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AndroidController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/protocol/model/Protocol.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/scan/model/PortScanReportModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/scan/service/IdentifierScanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/scan/service/ScanService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/scan/service/LocalScanService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/scan/service/PayloadScanService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/scan/service/PortScanService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/traffic/controller/TrafficController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/traffic/controller/TrafficController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/traffic/model/ProtocolDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/protocol/model/ProtocolDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/traffic/model/ProtocolRisk.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/protocol/model/ProtocolRiskDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/traffic/service/TrafficService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/traffic/service/TrafficService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/util/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/util/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,6 +25,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/run_binwalk.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#17#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/traffic_get_connection_details.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
@@ -413,15 +397,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="32" width="1920" height="1012" extended-state="6" />
+    <frame x="0" y="32" width="1920" height="1012" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1471519" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1471519" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27597764" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27597764" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5251397" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -485,16 +469,6 @@
     <entry file="file://$PROJECT_DIR$/scan_hikvision_rce.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_binwalk.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/android_ssl_pinning.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-864">
@@ -548,6 +522,16 @@
           <caret line="12" column="58" lean-forward="true" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_binwalk.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
           </folding>
         </state>
       </provider>
