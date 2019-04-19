@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2019-04-17 10:43:01
+-- 生成日期： 2019-04-19 12:36:39
 -- 服务器版本： 10.2.22-MariaDB
 -- PHP 版本： 7.2.5
 
@@ -845,9 +845,7 @@ CREATE TABLE `protocol_risk` (
   `id` varchar(36) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
   `description` varchar(256) DEFAULT NULL,
-  `level` varchar(20) DEFAULT NULL,
-  `platform` varchar(20) DEFAULT NULL,
-  `version` varchar(50) DEFAULT NULL,
+  `protocol` varchar(20) DEFAULT NULL,
   `payload` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='保存协议安全风险定义';
 
