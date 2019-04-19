@@ -3,10 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>安卓应用分析 - SecIoT</title>
+    <title>传输流量分析 - SecIoT</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="/SecIoT/css/dashboard.css" rel="stylesheet">
-    <link href="/SecIoT/css/custom.css" rel="stylesheet">
   </head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
@@ -38,11 +37,6 @@
           <li class="nav-item">
             <a class="nav-link" href="/SecIoT/firmware.html">
               系统固件分析
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/SecIoT/scan.html">
-              设备漏洞扫描
             </a>
           </li>
         
@@ -96,41 +90,23 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">流量分析结果</h1>
       </div>
-      <div class="my-3 p-3 bg-white rounded shadow-sm">
-    <h6 class="border-bottom border-gray pb-2 mb-0">流量包基本信息</h6>
-    <div class="media text-muted pt-3">
-      <p id="fw_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark">流量包基本信息</strong>
-        等待分析
-      </p>
-    </div>
-  </div>
   
-  <div id="fw_third_library" class="my-3 p-3 bg-white rounded shadow-sm">
-    <h6 class="border-bottom border-gray pb-2 mb-0">传输交互信息</h6>
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">设备传输交互</h6>
     <div class="media text-muted pt-3">
-      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark">设备传输交互</strong>
+      <p id="tfc_dev_conn_details" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">IoT设备传输交互</strong>
         等待分析
       </p>
     </div>
     <div class="media text-muted pt-3">
-      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark">移动客户端传输交互</strong>
-        等待分析
-      </p>
-    </div>
-  </div>
-  
-  <div id="fw_system_config" class="my-3 p-3 bg-white rounded shadow-sm">
-    <h6 class="border-bottom border-gray pb-2 mb-0">协议风险</h6>
-    <div class="media text-muted pt-3">
-      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark">HTTP协议风险</strong>
+      <p id="tfc_mobile_conn_details" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">移动设备传输交互</strong>
         等待分析
       </p>
     </div>
   </div>
+
     </main>
   </div>
 </div>
@@ -197,6 +173,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
 	crossorigin="anonymous"></script>
-<script src="/SecIoT/js/android.js"></script>
+<script src="/SecIoT/js/traffic.js"></script>
 </body>
 </html>

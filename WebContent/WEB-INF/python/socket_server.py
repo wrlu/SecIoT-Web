@@ -1,12 +1,14 @@
 import socketserver
 import json
 import run_binwalk
+import run_jadx
+import run_nmap
 import fw_linux_shadow
 import fw_openssl_version
-import run_jadx
 import android_exported
 import android_permission
 import android_ssl_pinning
+import traffic_get_connection_details
 
 
 class FwService:
@@ -50,8 +52,8 @@ class AppleiOSService:
 
 
 class TrafficService:
-    def get_connection_pairs(self, file_name, file_path, ip):
-        pass
+    def get_connection_details(self, pcap_file_path, ip_addr):
+        return traffic_get_connection_details.do(pcap_file_path, ip_addr)
 
 
 class ScanService:
@@ -110,8 +112,12 @@ class SocketServer(socketserver.BaseRequestHandler):
 
         elif classname == 'AppleiOSService':
             iosservice = AppleiOSService()
+
         elif classname == 'TrafficService':
             trafficservice = TrafficService()
+            if method == 'get_connection_details':
+                result = trafficservice.get_connection_details(params['file_path'], params['ip_addr'])
+
         elif classname == 'ScanService':
             scanservice = ScanService()
 

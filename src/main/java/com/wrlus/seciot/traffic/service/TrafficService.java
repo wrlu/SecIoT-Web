@@ -1,12 +1,11 @@
 package com.wrlus.seciot.traffic.service;
 
 import java.io.File;
-import java.net.InetAddress;
-import java.util.List;
+import java.io.IOException;
 
-import com.wrlus.seciot.traffic.model.Protocol;
+import com.wrlus.seciot.pysocket.model.PythonException;
+import com.wrlus.seciot.traffic.model.ConnectionDetails;
 
 public interface TrafficService {
-	public InetAddress[] getConnectionPairs(File pcapFile, InetAddress ip);
-	public List<Boolean> checkProtocolUsage(File pcapFile, Protocol[] protocols);
+	public ConnectionDetails getConnectionDetails(File pcapFile, String ip) throws IOException, PythonException;
 }

@@ -12,10 +12,21 @@ function onAnalysis() {
 	    	 $("#loadingModel").modal("hide");
 	    	 var result=JSON.parse(result);
 	     	 if(result.status == 0) {
-	     		tbody = "<tr>";
-	     		tbody += "</tr>";
-	     		$("#fw_result").html(tbody, function() {});
-	     		$("#resultModalBody").html("针对 "+result.fw_info.fw_name+" 的分析完成", function() {});
+	     		var tfc_dev_conn_details = '<strong class="d-block text-gray-dark">IoT设备传输交互</strong>';
+	     		for (var i = 0, len = result.tfc_dev_conn_details.pair_hosts.length; i < len; ++i) {
+	     			var host = result.tfc_dev_conn_details.pair_hosts[i];
+	     			var protocol = result.tfc_dev_conn_details.pair_connection_protocol[i];
+	     			tfc_dev_conn_details += '目标：'+host+'; 协议：'+protocol+'<br/>';
+	     		}
+	     		$("#tfc_dev_conn_details").html(tfc_dev_conn_details);
+	     		var tfc_mobile_conn_details = '<strong class="d-block text-gray-dark">移动设备传输交互</strong>';
+	     		for (var i = 0, len = result.tfc_mobile_conn_details.pair_hosts.length; i < len; ++i) {
+	     			var host = result.tfc_mobile_conn_details.pair_hosts[i];
+	     			var protocol = result.tfc_mobile_conn_details.pair_connection_protocol[i];
+	     			tfc_mobile_conn_details += '目标：'+host+'; 协议：'+protocol+'<br/>';
+	     		}
+	     		$("#tfc_mobile_conn_details").html(tfc_mobile_conn_details);
+	     		$("#resultModalBody").html("针对此流量包的分析完成", function() {});
 	     		$("#resultModal").modal("show");
 	     	 } else {
 	     		$("#resultModalBody").html(result.reason, function() {});

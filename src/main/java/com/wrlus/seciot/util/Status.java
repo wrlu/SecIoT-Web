@@ -11,5 +11,6 @@ public class Status {
 	public static final int PY_ERROR = 1002;
 //	IO异常
 	public static final int IO_ERROR = 1003;
-	
+//	缺少必要的参数
+	public static final int PARAMETER_ERROR = 1004;
 }
