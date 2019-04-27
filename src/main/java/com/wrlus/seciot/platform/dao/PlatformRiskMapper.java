@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 
 import com.wrlus.seciot.platform.model.PlatformRiskDao;
 
+@Repository
 public interface PlatformRiskMapper {
 	@Select("select * from platform_risk;")
 	public List<PlatformRiskDao> getPlatformRiskAll();

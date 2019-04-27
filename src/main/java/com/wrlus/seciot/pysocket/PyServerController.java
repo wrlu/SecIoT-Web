@@ -15,7 +15,11 @@ public class PyServerController {
 	
 	public void init() {
 		String path = Thread.currentThread().getContextClassLoader().getResource("").toString();
-		path = path.replace("file:/", "");
+		if (OSUtil.isWindows()) {
+			path = path.replace("file:/", "");
+		} else {
+			path = path.replace("file:", "");
+		}
 		path = path.replace("classes/", "python/");
 		String script_name = "socket_server.py";
 		if (OSUtil.isWindows()) {

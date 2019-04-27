@@ -8,6 +8,7 @@
 		</Console>
 	</Appenders>
 	<Loggers>
+		<!-- 日志级别为Debug，生产系统请更改为Warn以上级别 -->
 		<Root level="Debug">
 			<AppenderRef ref="Console" />
 		</Root>

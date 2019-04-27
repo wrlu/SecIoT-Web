@@ -2,7 +2,6 @@ import socketserver
 import json
 import run_binwalk
 import run_jadx
-import run_nmap
 import fw_linux_shadow
 import fw_openssl_version
 import android_exported
