@@ -2,7 +2,7 @@ from xml.dom import minidom
 
 
 risk_name = 'Android组件暴露风险'
-risk_description = ''
+risk_description = 'App在AndroidManifest.xml中没有正确设置四大组件的权限，暴露不必要的组件可能导致隐私信息泄漏给第三方App。'
 risk_level = 'Medium'
 risk_platform = 'Android'
 

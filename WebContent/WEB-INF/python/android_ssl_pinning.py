@@ -4,7 +4,7 @@ import platform
 
 
 risk_name = 'Android SSL弱校验风险'
-risk_description = ''
+risk_description = 'App在进行SSL通信时，未对服务器证书进行校验，可导致中间人攻击并泄漏传输的敏感数据。'
 risk_level = 'High'
 risk_platform = 'Android'
 search_regex_strs = {

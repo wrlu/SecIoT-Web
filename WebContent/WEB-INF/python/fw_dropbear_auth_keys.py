@@ -2,7 +2,7 @@ import platform
 
 
 risk_name = 'Dropbear配置公钥风险'
-risk_description = ''
+risk_description = 'Dropbear是一款实现SSH远程登录的实用工具，配置了公钥表明设备生产商可能通过他们自己的私钥远程接入设备。'
 risk_level = 'Medium'
 risk_platform = 'Linux'
 dropbear_auth_keys_file_name = '/etc/dropbear/authorized_keys'

@@ -126,7 +126,7 @@ class SocketServer(socketserver.BaseRequestHandler):
                 result = AndroidService.ssl_pinning(params['apk_info']['apk_sources_path'])
 
         elif classname == 'AppleiOSService':
-            iosservice = AppleiOSService()
+            pass
 
         elif classname == 'TrafficService':
             if method == 'get_connection_details':

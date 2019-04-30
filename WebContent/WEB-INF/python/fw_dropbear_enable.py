@@ -3,7 +3,7 @@ import re
 
 
 risk_name = 'Dropbear开启风险'
-risk_description = ''
+risk_description = 'Dropbear是一款实现SSH远程登录的实用工具，开启Dropbear将允许攻击者有机会从远程登录设备。'
 risk_level = 'High'
 risk_platform = 'Linux'
 dropbear_config_file_name = '/etc/config/dropbear'

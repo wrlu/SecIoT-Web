@@ -2,7 +2,7 @@ import platform
 
 
 risk_name = 'Linux用户帐户风险'
-risk_description = ''
+risk_description = '固件中存在可登录的Linux用户，可能导致攻击者从本地接口或远程方式取得系统权限。'
 risk_level = 'Low'
 risk_platform = 'Linux'
 can_login_shell = [

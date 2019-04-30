@@ -1,3 +1,4 @@
+import binwalk
 import subprocess
 import platform
 
@@ -13,7 +14,7 @@ filesystem_roots = {
 
 
 def get_fw_info(file_name, path):
-    result = binwalk(path, '')
+    result = run_binwalk(path, '')
     if result == '':
         raise OSError('binwalk runs failed.')
     fw_filesystem = get_filesystem(result)
@@ -26,8 +27,8 @@ def get_fw_info(file_name, path):
 
 
 def get_fw_root_directory(fw_info):
-    global filesystem_roots
-    result = binwalk(fw_info['fw_path'], '-Me')
+    globals()
+    result = run_binwalk(fw_info['fw_path'], '-Me')
     if result == '':
         raise OSError('binwalk runs failed.')
     binwalk_base_dir = fw_info['fw_path'].replace(fw_info['fw_name'], '_'+fw_info['fw_name']) + '.extracted'
@@ -47,12 +48,15 @@ def get_filesystem(input):
             return filesystem
 
 
-def binwalk(path, params):
+def run_binwalk(path, params):
     result = ''
     if platform.system() == 'Windows':
         result = call_wsl_binwalk(path, params)
     elif platform.system() == 'Linux' or platform.system() == 'MacOS':
-        result = call_linux_binwalk(path, params)
+        if params == '':
+            result = call_linux_binwalk(path)
+        elif params == '-Me':
+            result = call_linux_binwalk(path, extract=True)
     return result
 
 
@@ -65,20 +69,29 @@ def call_wsl_binwalk(path, params):
     result = ''
     for line in process.stdout.readlines():
         result += line.decode('utf8')
-        print(line.decode('utf8').replace('\n', ''))
+        # print(line.decode('utf8').replace('\n', ''))
     return result
 
 
-def call_linux_binwalk(path, params):
+def call_linux_binwalk(path, extract=False):
     base_path = path[:path.rfind('/')]
-    cmd = 'binwalk '+params+' -C '+base_path+' '+path
-    print(cmd)
-    process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    result = ''
-    for line in process.stdout.readlines():
-        result += line.decode('utf8')
-        print(line.decode('utf8').replace('\n', ''))
-    return result
+    try:
+        if extract is True:
+            modules = binwalk.scan(path, signature=True, matryoshka=True, extract=True, directory=base_path, quiet=True)
+        else:
+            modules = binwalk.scan(path, signature=True, directory=base_path, quiet=True)
+        result = ''
+        for module in modules:
+            # print(module.name+" Results:")
+            for moduleresult in module.results:
+                result += moduleresult.file.path
+                result += '\t'
+                result += moduleresult.description
+                # print("\t文件名："+moduleresult.file.path+"\t文件描述："+moduleresult.description)
+        return result
+    except binwalk.ModuleException as e:
+        print("Critical failure:", e)
+        return ''
 
 
 # Change Windows-style path to *nix-style path in WSL
