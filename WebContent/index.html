@@ -1,109 +1,96 @@
 <!doctype html>
 <html lang="zh-cn">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>控制台 - SecIoT</title>
+    <title>加载中 - SecIoT</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="/SecIoT/css/dashboard.css" rel="stylesheet">
-  </head>
-  <body>
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/SecIoT/">SecIoT 漏洞检测系统</a>
-  <input class="form-control form-control-dark w-100" type="text" placeholder="搜索" aria-label="Search">
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="/SecIoT/logout">注销</a>
-    </li>
-  </ul>
+</head>
+<body>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+	<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/SecIoT/?page=main">SecIoT 漏洞检测系统</a>
+	<input class="form-control form-control-dark w-100" type="text" placeholder="搜索" aria-label="Search">
+	<ul class="navbar-nav px-3">
+		<li class="nav-item text-nowrap"><a class="nav-link" href="/SecIoT/logout">注销</a></li>
+  	</ul>
 </nav>
-
 <div class="container-fluid">
-  <div class="row">
+	<div class="row">
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="/SecIoT/">
-                主页<span class="sr-only">(current)</span>
+            <a id="main_nav" class="nav-link" href="/SecIoT/?page=main">
+              主页
             </a>
           </li>
         </ul>
-        
         <ul class="nav flex-column mb-2">
          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>系统安全</span>
-          </h6>
-          <li class="nav-item">
-            <a class="nav-link" href="/SecIoT/firmware.html">
+         	<span>系统安全</span>
+         </h6>
+         <li class="nav-item">
+            <a id="firmware_nav" class="nav-link" href="/SecIoT/?page=firmware">
               系统固件分析
             </a>
-          </li>
-        
+         </li>
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>应用安全</span>
           </h6>
           <li class="nav-item">
-            <a class="nav-link" href="/SecIoT/android.html">
+            <a id="android_nav" class="nav-link" href="/SecIoT/?page=android">
               安卓应用分析
             </a>
           </li>
- <!--      <li class="nav-item">
-            <a class="nav-link" href="/SecIoT/ios.html">
+       <li class="nav-item">
+            <a id="ios_nav" class="nav-link" href="/SecIoT/?page=ios">
               苹果应用分析
             </a>
-          </li>
-  -->         
+          </li>   
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>传输安全</span>
           </h6>
           <li class="nav-item">
-            <a class="nav-link" href="/SecIoT/traffic.html">
+            <a id="traffic_nav" class="nav-link" href="/SecIoT/?page=traffic">
               传输流量分析
             </a>
           </li>
-
         </ul>
       </div>
     </nav>
+    <main id="main" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"></main>
+    <!-- 分析中的提示框 -->
+<div class="modal fade" id="loadingModel" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">提示</h5>
+      </div>
+      <div class="modal-body">
+                分析中，请稍候...
+      </div>
+    </div>
+  </div>
+</div>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">主页</h1>
+<!-- 提示返回结果 -->
+<div class="modal fade" id="resultModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">提示</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-<div class="card">
-  <div class="card-header">
-    特色功能
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">系统安全</h5>
-    <p class="card-text">上传获得的IoT系统固件，检测固件中常见第三方库和配置的安全风险。</p>
-    <a href="/SecIoT/firmware.html" class="btn btn-sm btn-primary">进入系统固件分析</a>
-  </div>
-</div>
-<br/>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">应用安全</h5>
-        <p class="card-text">通过上传Android系统或iOS系统的应用程序软件包，检测应用程序中的常见安全风险。</p>
-        <a href="/SecIoT/android.html" class="btn btn-sm btn-primary">进入安卓应用分析</a>
-        <!-- <a href="/SecIoT/ios.html" class="btn btn-sm btn-light">进入苹果应用分析</a> -->
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">传输安全</h5>
-        <p class="card-text">通过上传Wireshark或tcpdump抓取到的pcap数据包，检测流量中的协议安全风险。</p>
-        <a href="/SecIoT/traffic.html" class="btn btn-sm btn-primary">进入传输流量分析</a>
+      <div id="resultModalBody" class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">好的</button>
       </div>
     </div>
   </div>
 </div>
-    </main>
   </div>
 </div>
 <script

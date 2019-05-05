@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-cn">
+  <body>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 id="main_title" class="h2">传输流量分析</h1>
+      </div>
+      <form id="uploadForm" enctype="multipart/form-data" method="POST">
+        <div class="form-group">
+            <label>IoT设备IP地址：</label>
+            <input name="deviceIp" placeholder="0.0.0.0" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>移动端IP地址：</label>
+            <input name="mobileIp" placeholder="0.0.0.0" class="form-control">
+        </div>
+        <label>请选择流量捕获(*.pcap, *.cap)文件</label>
+         <div class="form-group">
+            <input type="file" size="28" width="30px" name="file">
+            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#confirmUploadModal">开始分析</button>
+        </div>
+      </form>
+      <br/>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">流量分析结果</h1>
+      </div>
+  
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">设备传输交互</h6>
+    <div class="media text-muted pt-3">
+      <p id="tfc_dev_conn_details" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">IoT设备传输交互</strong>
+        等待分析
+      </p>
+    </div>
+    <div class="media text-muted pt-3">
+      <p id="tfc_mobile_conn_details" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">移动设备传输交互</strong>
+        等待分析
+      </p>
+    </div>
+  </div>
+<!-- 提示是否上传 -->
+<div class="modal fade" id="confirmUploadModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">提示</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                您确实要将文件上传到服务器进行分析吗？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-success" onclick="onTrafficAnalysis()" data-dismiss="modal">开始分析</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

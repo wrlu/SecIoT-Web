@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-cn">
+<body>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 id="main_title" class="h2">苹果应用分析</h1>
+      </div>
+      <form id="uploadForm" enctype="multipart/form-data" method="POST">
+        <label>请选择iOS软件包(*.ipa)文件</label>
+         <div class="form-group">
+            <input type="file" size="28" width="30px" name="file">
+            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#confirmUploadModal">开始分析</button>
+        </div>
+      </form>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">应用分析结果</h1>
+      </div>
+      <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">IPA基本信息</h6>
+    <div class="media text-muted pt-3">
+      <p id="apk_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">IPA基本信息</strong>
+        等待分析
+      </p>
+    </div>
+    <div class="media text-muted pt-3">
+      <p id="apk_permission" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">应用权限</strong>
+        等待分析
+      </p>
+    </div>
+  </div>
+  
+  <div id="apk_platform_risk" class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">平台使用风险</h6>
+    <div class="media text-muted pt-3">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">平台风险</strong>
+        等待分析
+      </p>
+    </div>
+  </div>
+<!-- 提示是否上传 -->
+<div class="modal fade" id="confirmUploadModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">提示</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                您确实要将文件上传到服务器进行分析吗？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-success" onclick="onIpaAnalysis()" data-dismiss="modal">开始分析</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
