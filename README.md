@@ -8,8 +8,9 @@
 - 分析固件中第三方库的版本以及所涉及的漏洞CVE编号（目前仅支持OpenSSL）
 - 分析固件中存在的平台配置风险，目前支持的功能：
     - 分析Linux固件中的用户情况
-    - 分析是否可通过Dropbear进行SSH远程登录
-    - 分析是否在Dropbear中配置了公钥
+    - 分析Linux系统是否可通过Dropbear进行SSH远程登录
+    - 分析Linux系统是否在Dropbear中配置了公钥
+    - 分析Linux系统的计划任务（crontab）情况
 
 ### 二、应用安全
 #### 1、安卓应用分析
