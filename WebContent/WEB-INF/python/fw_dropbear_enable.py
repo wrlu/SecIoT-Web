@@ -17,9 +17,9 @@ def do(base_dir):
         path_fix = '\\'
     else:
         path_fix = '/'
-    dropbear_config_file_name.replace('/', path_fix)
+
     try:
-        dropbear_config_file = open(base_dir + dropbear_config_file_name, 'r')
+        dropbear_config_file = open(base_dir + dropbear_config_file_name.replace('/', path_fix), 'r')
         dropbear_config_file_content = dropbear_config_file.read()
         dropbear_config_file_content_lines = dropbear_config_file_content.split('\n')
         pwd_auth_status = False

@@ -14,9 +14,8 @@ def do(base_dir):
         path_fix = '\\'
     else:
         path_fix = '/'
-    dropbear_auth_keys_file_name.replace('/', path_fix)
     try:
-        dropbear_auth_keys_file = open(base_dir + dropbear_auth_keys_file_name, 'r')
+        dropbear_auth_keys_file = open(base_dir + dropbear_auth_keys_file_name.replace('/', path_fix), 'r')
         dropbear_auth_keys_file_content = dropbear_auth_keys_file.read()
         dropbear_auth_keys_file_content_lines = dropbear_auth_keys_file_content.split('\n')
         risk_result = {

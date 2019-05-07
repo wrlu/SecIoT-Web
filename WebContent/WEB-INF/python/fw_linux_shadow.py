@@ -18,10 +18,8 @@ def do(base_dir):
         path_fix = '\\'
     else:
         path_fix = '/'
-    passwd_file_name.replace('/', path_fix)
-    shadow_file_name.replace('/', path_fix)
     try:
-        passwd_file = open(base_dir + passwd_file_name, 'r')
+        passwd_file = open(base_dir + passwd_file_name.replace('/', path_fix), 'r')
         passwd_file_content = passwd_file.read()
         passwd_file_content_lines = passwd_file_content.split('\n')
         user_can_login = []
@@ -31,7 +29,7 @@ def do(base_dir):
                     username = line[:line.find(':')]
                     user_can_login.append(username)
 
-        shadow_file = open(base_dir + shadow_file_name, 'r')
+        shadow_file = open(base_dir + shadow_file_name.replace('/', path_fix), 'r')
         shadow_file_content = shadow_file.read()
         shadow_file_content_lines = shadow_file_content.split('\n')
         passwd_file.close()
