@@ -151,5 +151,5 @@ class SocketServer(socketserver.BaseRequestHandler):
 
 
 if __name__ == '__main__':
-    server = socketserver.ThreadingTCPServer(('localhost', 8888), SocketServer)
+    server = socketserver.ThreadingTCPServer(('localhost', 8041), SocketServer)
     server.serve_forever()

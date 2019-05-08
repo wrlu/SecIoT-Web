@@ -29,7 +29,7 @@ public class PyClient {
 	public void connect() throws PythonIOException {
 		if (socket == null || !socket.isConnected()) {
 			try {
-				socket = new Socket("localhost", 8888);
+				socket = new Socket("localhost", 8041);
 				OutputStream os = socket.getOutputStream();
 				InputStream is = socket.getInputStream();
 				writer = new BufferedWriter(new OutputStreamWriter(os));
