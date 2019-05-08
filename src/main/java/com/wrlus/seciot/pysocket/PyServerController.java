@@ -7,7 +7,8 @@ import java.io.InputStreamReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.wrlus.seciot.util.OSUtil;
+import com.wrlus.seciot.util.exception.PythonException;
+import com.wrlus.seciot.util.os.OSUtil;
 
 public class PyServerController {
 	private static Logger log = LogManager.getLogger();
@@ -40,7 +41,7 @@ public class PyServerController {
 			client.sendExitSignal(1);
 			log.warn("Python Socket Server Daemon exited with code 1");
 			client.close();
-		} catch (IOException e) {
+		} catch (PythonException | IOException e) {
 			log.error("Cannot stop Python Socket Server: "+e.getLocalizedMessage());
 			if (log.isDebugEnabled()) {
 				e.printStackTrace();

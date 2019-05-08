@@ -1,4 +1,4 @@
-package com.wrlus.seciot.util;
+package com.wrlus.seciot.util.os;
 
 public class OSUtil {
 	private static final String OS = System.getProperty("os.name").toLowerCase();

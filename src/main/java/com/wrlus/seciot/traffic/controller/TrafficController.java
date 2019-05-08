@@ -1,7 +1,6 @@
 package com.wrlus.seciot.traffic.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -19,12 +18,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wrlus.seciot.pysocket.model.PythonException;
 import com.wrlus.seciot.traffic.model.ConnectionDetails;
 import com.wrlus.seciot.traffic.service.TrafficServiceImpl;
-import com.wrlus.seciot.util.OSUtil;
-import com.wrlus.seciot.util.Status;
+import com.wrlus.seciot.util.exception.FileUploadException;
+import com.wrlus.seciot.util.exception.ReasonEnum;
+import com.wrlus.seciot.util.exception.RootException;
+import com.wrlus.seciot.util.os.OSUtil;
 
+@Deprecated
 @Controller
 @RequestMapping("/traffic")
 public class TrafficController {
@@ -40,8 +41,8 @@ public class TrafficController {
 		String devIp = request.getParameter("deviceIp");
 		String phoneIp = request.getParameter("mobileIp");
 		if (devIp == null || phoneIp == null || devIp.equals("") || phoneIp.equals("")) {
-			data.put("status", Status.PARAMETER_ERROR);
-			data.put("reason", "参数错误，错误代码："+Status.PARAMETER_ERROR);
+			data.put("status", -1);
+			data.put("reason", "输入的参数有误");
 			return data;
 		}
 		// Windows: file:/C:/******/SecIoT/WebContent/WEB-INF/classes/
@@ -64,50 +65,45 @@ public class TrafficController {
 			ConnectionDetails mobileConnDetails = trafficService.getConnectionDetails(pcapFile, phoneIp);
 			log.debug("mobileConnDetails: "+mapper.writeValueAsString(mobileConnDetails));
 //			返回状态码
-			data.put("status", Status.SUCCESS);
+			data.put("status", 0);
 //			返回设备连接对象详情
 			data.put("tfc_dev_conn_details", devConnDetails);
 //			返回控制端连接对象详情
 			data.put("tfc_mobile_conn_details", mobileConnDetails);
 //			返回状态说明字符串
 			data.put("reason", "OK");
-		} catch (ClassCastException | NullPointerException e) {
-			data.put("status", Status.FILE_UPD_ERROR);
-			data.put("reason", "文件上传失败，错误代码："+Status.FILE_UPD_ERROR);
+		} catch (RootException e) {
 			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
 			if (log.isDebugEnabled()) {
 				e.printStackTrace();
 			}
-		} catch (PythonException e) {
-			data.put("status", Status.PY_ERROR);
-			data.put("reason", e.getLocalizedMessage());
+			data.put("status", -1);
+			data.put("reason", e.getReason().get());
+		} catch (Exception e) {
 			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
 			if (log.isDebugEnabled()) {
 				e.printStackTrace();
 			}
-		} catch (IllegalStateException e) {
-			data.put("status", Status.FILE_UPD_ERROR);
-			data.put("reason", "Python出现异常，错误代码："+Status.PY_ERROR);
-			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
-			if (log.isDebugEnabled()) {
-				e.printStackTrace();
-			}
-		} catch (IOException e) {
-			data.put("status", Status.IO_ERROR);
-			data.put("reason", "文件或Socket I/O错误，错误代码："+Status.IO_ERROR);
-			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
-			if (log.isDebugEnabled()) {
-				e.printStackTrace();
-			}
+			data.put("status", -1);
+			data.put("reason", ReasonEnum.UNKNOWN.get());
 		}
+		this.cleanUploadFile(path);
 		return data;
 	}
 	
-	private File resolveUploadFile(MultipartHttpServletRequest multipartRequest, String path) throws IllegalStateException, IOException{
-		MultipartFile multipartFile = multipartRequest.getFile("file");
-		new File(path).mkdirs();
-		File targetFile = new File(path + multipartFile.getOriginalFilename());
-		multipartFile.transferTo(targetFile);
-		return targetFile;
+	public File resolveUploadFile(MultipartHttpServletRequest multipartRequest, String path) throws FileUploadException {
+		try {
+			MultipartFile multipartFile = multipartRequest.getFile("file");
+			new File(path).mkdirs();
+			File targetFile = new File(path + multipartFile.getOriginalFilename());
+			multipartFile.transferTo(targetFile);
+			return targetFile;
+		} catch (Exception e) {
+			throw new FileUploadException(e);
+		}
+	}
+	
+	public void cleanUploadFile(String path) {
+		new File(path).delete();
 	}
 }

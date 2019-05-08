@@ -2,6 +2,7 @@ package com.wrlus.seciot.traffic.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@Deprecated
 public class ConnectionDetails {
 	@JsonProperty("pair_hosts")
 	private String[] pairIpAddress;
