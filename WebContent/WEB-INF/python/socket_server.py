@@ -10,6 +10,7 @@ import android_exported
 import android_permission
 import android_ssl_pinning
 import traffic_get_connection_details
+from deprecated import deprecated
 
 
 class FwService:
@@ -71,6 +72,7 @@ class AppleiOSService:
         pass
 
 
+@deprecated(reason="TrafficService is deprecated. Please use traffic analysis module in the Android agent.")
 class TrafficService:
     @staticmethod
     def get_connection_details(pcap_file_path, ip_addr):
@@ -87,7 +89,8 @@ class SocketServer(socketserver.BaseRequestHandler):
         print("Send data: "+str(ret))
         self.request.sendall(json.dumps(ret).encode('utf8'))
 
-    def resolve_data(self, data):
+    @staticmethod
+    def resolve_data(data):
         cmd = data['cmd']
         params = data['params']
         if cmd == "exit":
@@ -99,7 +102,8 @@ class SocketServer(socketserver.BaseRequestHandler):
         print('params: '+str(params))
         return classname, method, params
 
-    def do_action(self, classname, method, params):
+    @staticmethod
+    def do_action(classname, method, params):
         result = {}
         if classname == 'FwService':
             if method == 'get_fw_info':
@@ -140,7 +144,7 @@ class SocketServer(socketserver.BaseRequestHandler):
             }
         else:
             ret = {
-                'status': 1002,
+                'status': -1,
                 'reason': 'No such python method or python error'
             }
         return ret

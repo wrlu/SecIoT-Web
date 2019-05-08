@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2019-04-30 08:37:20
+-- 生成日期： 2019-05-08 06:52:19
 -- 服务器版本： 10.2.22-MariaDB
 -- PHP 版本： 7.2.5
 
@@ -825,33 +825,6 @@ INSERT INTO `platform_risk_category` (`id`, `category`) VALUES
 ('818ea14d-6abe-11e9-94a1-e86957795647', 'Firmware'),
 ('a4d03d9c-6abe-11e9-94a1-e86957795647', 'Firmware'),
 ('f647b3ba-60dc-11e9-95d2-eb78988f066e', 'Android');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `protocol`
---
-
-CREATE TABLE `protocol` (
-  `id` varchar(36) NOT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `layer` int(11) NOT NULL COMMENT '2-5',
-  `description` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 CHECKSUM=1 COMMENT='保存各种类型的协议';
-
--- --------------------------------------------------------
-
---
--- 表的结构 `protocol_risk`
---
-
-CREATE TABLE `protocol_risk` (
-  `id` varchar(36) NOT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `description` varchar(256) DEFAULT NULL,
-  `protocol` varchar(20) DEFAULT NULL,
-  `payload` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='保存协议安全风险定义';
 
 -- --------------------------------------------------------
 

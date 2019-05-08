@@ -10,9 +10,8 @@
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
 	<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/SecIoT/?page=main">SecIoT 漏洞检测系统</a>
-	<input class="form-control form-control-dark w-100" type="text" placeholder="搜索" aria-label="Search">
 	<ul class="navbar-nav px-3">
-		<li class="nav-item text-nowrap"><a class="nav-link" href="/SecIoT/logout">注销</a></li>
+		<li class="nav-item text-nowrap"><a class="nav-link" href="/SecIoT/logout">退出系统</a></li>
   	</ul>
 </nav>
 <div class="container-fluid">
@@ -32,28 +31,41 @@
          </h6>
          <li class="nav-item">
             <a id="firmware_nav" class="nav-link" href="/SecIoT/?page=firmware">
-              系统固件分析
+              系统固件静态分析
             </a>
          </li>
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>应用安全</span>
+            <span>安卓应用安全</span>
           </h6>
           <li class="nav-item">
-            <a id="android_nav" class="nav-link" href="/SecIoT/?page=android">
-              安卓应用分析
+            <a id="android-static_nav" class="nav-link" href="/SecIoT/?page=android-static">
+              Android应用静态分析
             </a>
           </li>
-       <li class="nav-item">
-            <a id="ios_nav" class="nav-link" href="/SecIoT/?page=ios">
-              苹果应用分析
-            </a>
-          </li>   
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>传输安全</span>
-          </h6>
           <li class="nav-item">
-            <a id="traffic_nav" class="nav-link" href="/SecIoT/?page=traffic">
-              传输流量分析
+            <a id="android-dym_nav" class="nav-link" href="/SecIoT/?page=android-dym">
+              Android应用动态分析
+            </a>
+          </li>
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>苹果应用安全</span>
+          </h6>
+       	  <li class="nav-item">
+            <a id="ios_nav" class="nav-link" href="/SecIoT/?page=ios">
+              iOS应用静态分析
+            </a>
+          </li>
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+         	<span>辅助功能</span>
+         </h6>
+         <li class="nav-item">
+            <a id="cve_nav" class="nav-link" href="/SecIoT/?page=cve">
+              第三方库CVE漏洞
+            </a>
+          </li>
+         <li class="nav-item">
+            <a id="history_nav" class="nav-link" href="/SecIoT/?page=history">
+              安全检测历史
             </a>
           </li>
         </ul>
@@ -69,6 +81,9 @@
       </div>
       <div class="modal-body">
                 分析中，请稍候...
+        <div class="progress">
+  			<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+		</div>    
       </div>
     </div>
   </div>

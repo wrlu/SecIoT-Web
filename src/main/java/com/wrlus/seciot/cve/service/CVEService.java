@@ -8,5 +8,4 @@ public interface CVEService {
 	public List<CVEDao> getCVEAll();
 	public List<CVEDao> getCVEByNum(String cvenumber);
 	public List<CVEDao> getCVEByCategory(String category);
-	
 }

@@ -22,4 +22,16 @@ public class PySocketRequest {
 	public void setParameters(Map<String, Object> parameters) {
 		this.parameters = parameters;
 	}
+	@Override
+	public String toString() {
+		StringBuilder printable = new StringBuilder(this.getClass().getName());
+		printable.append(": [ ");
+		printable.append("cmd="+cmd+", ");
+		printable.append("params={ ");
+		for(String key : parameters.keySet()) {
+			printable.append(key+"="+parameters.getOrDefault(key, "null")+", ");
+		}
+		printable.append("} ]");
+		return printable.toString();
+	}
 }

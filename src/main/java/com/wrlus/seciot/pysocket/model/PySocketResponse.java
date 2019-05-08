@@ -26,4 +26,17 @@ public class PySocketResponse {
 	public void setData(Map<String, Object> data) {
 		this.data = data;
 	}
+	@Override
+	public String toString() {
+		StringBuilder printable = new StringBuilder(this.getClass().getName());
+		printable.append(": [ ");
+		printable.append("status="+status+", ");
+		printable.append("reason="+reason+", ");
+		printable.append("data={ ");
+		for(String key : data.keySet()) {
+			printable.append(key+"="+data.getOrDefault(key, "null")+", ");
+		}
+		printable.append("} ]");
+		return printable.toString();
+	}
 }

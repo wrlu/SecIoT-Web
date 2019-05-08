@@ -1,7 +1,6 @@
 package com.wrlus.seciot.fw.service;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,16 +18,19 @@ import com.wrlus.seciot.platform.model.PlatformRiskResult;
 import com.wrlus.seciot.pysocket.PyClient;
 import com.wrlus.seciot.pysocket.model.PySocketRequest;
 import com.wrlus.seciot.pysocket.model.PySocketResponse;
-import com.wrlus.seciot.pysocket.model.PythonException;
-import com.wrlus.seciot.util.Status;
+import com.wrlus.seciot.util.exception.PythonException;
+import com.wrlus.seciot.util.exception.PythonIOException;
+import com.wrlus.seciot.util.exception.PythonRuntimeException;
 
 
 @Service
 public class FwServiceImpl implements FwService {
 	private static Logger log = LogManager.getLogger();
+	private ObjectMapper mapper = new ObjectMapper();
+	private PyClient pyClient = new PyClient();
 	
 	@Override
-	public FwInfo getFwInfo(File fwFile) throws IOException, PythonException {
+	public FwInfo getFwInfo(File fwFile) throws PythonException {
 		PySocketRequest request = new PySocketRequest();
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("file_name", fwFile.getName());
@@ -38,19 +40,22 @@ public class FwServiceImpl implements FwService {
 		PyClient pyClient = new PyClient();
 		pyClient.connect();
 		PySocketResponse response = pyClient.sendCmdSync(request);
-		ObjectMapper mapper = new ObjectMapper();
-		log.debug("Response: "+mapper.writeValueAsString(response));
-		if (response.getStatus() == Status.SUCCESS) {
-			FwInfo fwInfo = mapper.readValue(mapper.writeValueAsString(response.getData()), FwInfo.class);
-			return fwInfo;
+		log.debug(response.toString());
+		if (response.getStatus() == 0) {
+			try {
+				FwInfo fwInfo = mapper.readValue(mapper.writeValueAsString(response.getData()), FwInfo.class);
+				return fwInfo;
+			} catch (Exception e) {
+				throw new PythonIOException("An error occured when parsing response from python server.", e);
+			}
 		} else {
-			throw new PythonException("Python出现异常，错误代码："+response.getStatus());
+			throw new PythonRuntimeException();
 		}
 		
 	}
 
 	@Override
-	public File getFwRootDirectory(FwInfo fwInfoModel) throws IOException, PythonException {
+	public File getFwRootDirectory(FwInfo fwInfoModel) throws PythonException {
 		PySocketRequest request = new PySocketRequest();
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("fw_info", fwInfoModel);
@@ -59,42 +64,43 @@ public class FwServiceImpl implements FwService {
 		PyClient pyClient = new PyClient();
 		pyClient.connect();
 		PySocketResponse response = pyClient.sendCmdSync(request);
-		ObjectMapper mapper = new ObjectMapper();
-		log.debug("Response: "+mapper.writeValueAsString(response));
-		if (response.getStatus() == Status.SUCCESS) {
+		log.debug(response.toString());
+		if (response.getStatus() == 0) {
 			File rootDir = new File(String.valueOf(response.getData().get("fw_root_directory")));
 			return rootDir;
 		} else {
-			throw new PythonException("Python出现异常，错误代码："+response.getStatus());
+			throw new PythonRuntimeException();
 		}
 		
 	}
 
 	@Override
-	public ThirdLibrary getFwThirdLibrary(FwInfo fwInfo, String libName) throws IOException, PythonException {
+	public ThirdLibrary getFwThirdLibrary(FwInfo fwInfo, String libName) throws PythonException {
 		PySocketRequest request = new PySocketRequest();
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("fw_info", fwInfo);
 		parameters.put("lib_name", libName);
 		request.setCmd("FwService.get_fw_third_library");
 		request.setParameters(parameters);
-		PyClient pyClient = new PyClient();
 		pyClient.connect();
 		PySocketResponse response = pyClient.sendCmdSync(request);
-		ObjectMapper mapper = new ObjectMapper();
-		log.debug("Response: "+mapper.writeValueAsString(response));
-		if (response.getStatus() == Status.SUCCESS) {
-			ThirdLibrary fwThirdLibrary = mapper.readValue(mapper.writeValueAsString(response.getData()), ThirdLibrary.class);
-			pyClient.close();
-			return fwThirdLibrary;
+		log.debug(response.toString());
+		if (response.getStatus() == 0) {
+			try {
+				ThirdLibrary fwThirdLibrary = mapper.readValue(mapper.writeValueAsString(response.getData()), ThirdLibrary.class);
+				return fwThirdLibrary;
+			} catch (Exception e) {
+				throw new PythonIOException("An error occured when parsing response from python server.", e);
+			}
 		} else {
-			throw new PythonException("Python出现异常，错误代码："+response.getStatus());
+			throw new PythonRuntimeException();
 		}
 	}
 
 	@Override
-	public List<PlatformRiskResult> checkFwPlatformRisks(FwInfo fwInfo, PlatformRiskDao[] platformRisks) throws IOException, PythonException {
+	public List<PlatformRiskResult> checkFwPlatformRisks(FwInfo fwInfo, PlatformRiskDao[] platformRisks) throws PythonException {
 		List<PlatformRiskResult> results = new ArrayList<>();
+		int successCount = 0;
 		for (PlatformRiskDao platformRisk : platformRisks) {
 			PySocketRequest request = new PySocketRequest();
 			Map<String, Object> parameters = new HashMap<>();
@@ -104,15 +110,24 @@ public class FwServiceImpl implements FwService {
 			PyClient pyClient = new PyClient();
 			pyClient.connect();
 			PySocketResponse response = pyClient.sendCmdSync(request);
-			ObjectMapper mapper = new ObjectMapper();
-			log.debug("Response: "+mapper.writeValueAsString(response));
-			if (response.getStatus() == Status.SUCCESS) {
-				PlatformRiskResult result = mapper.readValue(mapper.writeValueAsString(response.getData()), PlatformRiskResult.class);
-				results.add(result);
-				pyClient.close();
+			log.debug(response.toString());
+			if (response.getStatus() == 0) {
+				try {
+					PlatformRiskResult result = mapper.readValue(mapper.writeValueAsString(response.getData()), PlatformRiskResult.class);
+					results.add(result);
+					++successCount;
+				} catch (Exception e) {
+					log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+					if (log.isDebugEnabled()) {
+						e.printStackTrace();
+					}
+				}
 			} else {
-				throw new PythonException("Python出现异常，错误代码："+response.getStatus());
+				log.error("Failed to check platform risk item: "+platformRisk.getName());
 			}
+		}
+		if (successCount != platformRisks.length) {
+			log.warn("Some platform risk checking script runs failed.");
 		}
 		return results;
 	}

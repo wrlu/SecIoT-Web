@@ -1,7 +1,9 @@
 from scapy.all import *
 from scapy.layers.inet import *
+from deprecated import deprecated
 
 
+@deprecated
 def do(pcap_file_name, ip_addr):
     pkgs = rdpcap(pcap_file_name)
     pair_hosts = []
