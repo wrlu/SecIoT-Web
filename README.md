@@ -1,5 +1,5 @@
 # SecIoT
-- IoT安全漏洞检测平台
+- IoT安全漏洞检测平台-服务器平台
 
 ## 主要功能
 ### 一、系统安全
@@ -28,7 +28,7 @@
     - Android组件暴露分析
     - Android SSL弱校验分析
 
-#### 2、Android应用动态分析（即将添加）
+#### 2、Android应用动态分析（需要SecIoT Agent Android支持，即将添加）
 - 分析Android应用运行时调用的敏感API（即将添加）
 - 分析Android应用运行时连接的IP地址（即将添加）
 - 分析Android应用运行时进行的不安全的数据传输（即将添加）
@@ -52,6 +52,9 @@
 - jadx：用于Android应用静态分析模块，https://github.com/skylot/jadx
 - Frida：用于Android应用动态分析模块，https://github.com/frida/frida
 - SecIoT Agent：对于Android应用动态分析，需要在目标Android手机上安装Agent应用程序，并授予该应用root权限，https://github.com/seciot/SecIoT-Agent-Android
+
+### 三、部署方式
+- 按照Java Web项目部署war包即可
 
 ## 贡献者和许可证
 - 贡献者：SecIoT Web Developers，欢迎发起Pull Request
