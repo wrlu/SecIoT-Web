@@ -1,6 +1,7 @@
 package com.wrlus.seciot.mobile.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +38,11 @@ public class AndroidServiceImpl implements AndroidService {
 		PyClient pyClient = new PyClient();
 		pyClient.connect();
 		PySocketResponse result = pyClient.sendCmdSync(request);
+		try {
+			pyClient.close();
+		} catch (IOException e) {
+			throw new PythonIOException("An error occured when parsing response from python server.", e);
+		}
 		if (result.getStatus() == 0) {
 			try {
 				ApkInfo apkInfo = mapper.readValue(mapper.writeValueAsString(result.getData()), ApkInfo.class);
@@ -59,6 +65,11 @@ public class AndroidServiceImpl implements AndroidService {
 		PyClient pyClient = new PyClient();
 		pyClient.connect();
 		PySocketResponse result = pyClient.sendCmdSync(request);
+		try {
+			pyClient.close();
+		} catch (IOException e) {
+			throw new PythonIOException("An error occured when parsing response from python server.", e);
+		}
 		if (result.getStatus() == 0) {
 			try {
 				String[] permissions = mapper.readValue(mapper.writeValueAsString(result.getData().get("permission")), String[].class);
@@ -84,6 +95,11 @@ public class AndroidServiceImpl implements AndroidService {
 			PyClient pyClient = new PyClient();
 			pyClient.connect();
 			PySocketResponse response = pyClient.sendCmdSync(request);
+			try {
+				pyClient.close();
+			} catch (IOException e) {
+				throw new PythonIOException("An error occured when parsing response from python server.", e);
+			}
 			if (response.getStatus() == 0) {
 				try {
 					PlatformRiskResult result = mapper.readValue(mapper.writeValueAsString(response.getData()), PlatformRiskResult.class);

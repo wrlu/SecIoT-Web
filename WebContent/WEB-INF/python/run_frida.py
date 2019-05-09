@@ -1,8 +1,11 @@
 import frida
+import subprocess
 
 
-js_file_name = '.js'
-process_name = 'com.huawei.ipc'
+def get_frida_version():
+    return {
+        'version': frida.__version__
+    }
 
 
 def on_message(message, data):
@@ -12,21 +15,12 @@ def on_message(message, data):
         print(message)
 
 
-def get_js_code():
+def get_js_code(js_file_name):
     js_file = open(js_file_name)
     return js_file.read()
 
 
 if __name__ == '__main__':
-    device = frida.get_remote_device()
-    processes = device.enumerate_processes()
-    for process in processes:
-        print(process)
-
-    # process = device.attach(process_name)
-    # script = process.create_script(get_js_code())
-    # script.on('message', on_message)
-    # script.load()
-    # sys.stdin.read()
+    print(get_frida_version())
 
 

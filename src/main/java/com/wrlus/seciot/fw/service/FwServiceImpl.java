@@ -1,6 +1,7 @@
 package com.wrlus.seciot.fw.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +28,6 @@ import com.wrlus.seciot.util.exception.PythonRuntimeException;
 public class FwServiceImpl implements FwService {
 	private static Logger log = LogManager.getLogger();
 	private ObjectMapper mapper = new ObjectMapper();
-	private PyClient pyClient = new PyClient();
 	
 	@Override
 	public FwInfo getFwInfo(File fwFile) throws PythonException {
@@ -41,6 +41,11 @@ public class FwServiceImpl implements FwService {
 		pyClient.connect();
 		PySocketResponse response = pyClient.sendCmdSync(request);
 		log.debug(response.toString());
+		try {
+			pyClient.close();
+		} catch (IOException e) {
+			throw new PythonIOException("An error occured when parsing response from python server.", e);
+		}
 		if (response.getStatus() == 0) {
 			try {
 				FwInfo fwInfo = mapper.readValue(mapper.writeValueAsString(response.getData()), FwInfo.class);
@@ -51,7 +56,6 @@ public class FwServiceImpl implements FwService {
 		} else {
 			throw new PythonRuntimeException();
 		}
-		
 	}
 
 	@Override
@@ -65,13 +69,17 @@ public class FwServiceImpl implements FwService {
 		pyClient.connect();
 		PySocketResponse response = pyClient.sendCmdSync(request);
 		log.debug(response.toString());
+		try {
+			pyClient.close();
+		} catch (IOException e) {
+			throw new PythonIOException("An error occured when parsing response from python server.", e);
+		}
 		if (response.getStatus() == 0) {
 			File rootDir = new File(String.valueOf(response.getData().get("fw_root_directory")));
 			return rootDir;
 		} else {
 			throw new PythonRuntimeException();
 		}
-		
 	}
 
 	@Override
@@ -82,8 +90,14 @@ public class FwServiceImpl implements FwService {
 		parameters.put("lib_name", libName);
 		request.setCmd("FwService.get_fw_third_library");
 		request.setParameters(parameters);
+		PyClient pyClient = new PyClient();
 		pyClient.connect();
 		PySocketResponse response = pyClient.sendCmdSync(request);
+		try {
+			pyClient.close();
+		} catch (IOException e) {
+			throw new PythonIOException("An error occured when parsing response from python server.", e);
+		}
 		log.debug(response.toString());
 		if (response.getStatus() == 0) {
 			try {
@@ -110,6 +124,11 @@ public class FwServiceImpl implements FwService {
 			PyClient pyClient = new PyClient();
 			pyClient.connect();
 			PySocketResponse response = pyClient.sendCmdSync(request);
+			try {
+				pyClient.close();
+			} catch (IOException e) {
+				throw new PythonIOException("An error occured when parsing response from python server.", e);
+			}
 			log.debug(response.toString());
 			if (response.getStatus() == 0) {
 				try {

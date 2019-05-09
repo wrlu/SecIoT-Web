@@ -2,6 +2,7 @@ import socketserver
 import json
 import run_binwalk
 import run_jadx
+import run_frida
 import fw_linux_shadow
 import fw_openssl_version
 import fw_dropbear_enable
@@ -9,8 +10,6 @@ import fw_dropbear_auth_keys
 import android_exported
 import android_permission
 import android_ssl_pinning
-import traffic_get_connection_details
-from deprecated import deprecated
 
 
 class FwService:
@@ -58,6 +57,12 @@ class AndroidService:
         return android_exported.do(manifest_file)
 
 
+class FridaService:
+    @staticmethod
+    def get_frida_version():
+        return run_frida.get_frida_version()
+
+
 class AppleiOSService:
     @staticmethod
     def get_ipa_info(file_name, file_path):
@@ -72,14 +77,7 @@ class AppleiOSService:
         pass
 
 
-@deprecated(reason="TrafficService is deprecated. Please use traffic analysis module in the Android agent.")
-class TrafficService:
-    @staticmethod
-    def get_connection_details(pcap_file_path, ip_addr):
-        return traffic_get_connection_details.do(pcap_file_path, ip_addr)
-
-
-class SocketServer(socketserver.BaseRequestHandler):
+class PySocketServerHandler(socketserver.BaseRequestHandler):
     def handle(self):
         r_data = self.request.recv(2048)
         data = json.loads(r_data.decode('utf8'))
@@ -129,12 +127,12 @@ class SocketServer(socketserver.BaseRequestHandler):
             elif method == 'ssl_pinning':
                 result = AndroidService.ssl_pinning(params['apk_info']['apk_sources_path'])
 
+        elif classname == 'FridaService':
+            if method == 'get_frida_version':
+                result = FridaService.get_frida_version()
+
         elif classname == 'AppleiOSService':
             pass
-
-        elif classname == 'TrafficService':
-            if method == 'get_connection_details':
-                result = TrafficService.get_connection_details(params['file_path'], params['ip_addr'])
 
         if len(result) != 0:
             ret = {
@@ -151,5 +149,5 @@ class SocketServer(socketserver.BaseRequestHandler):
 
 
 if __name__ == '__main__':
-    server = socketserver.ThreadingTCPServer(('localhost', 8041), SocketServer)
+    server = socketserver.ThreadingTCPServer(('localhost', 8041), PySocketServerHandler)
     server.serve_forever()
