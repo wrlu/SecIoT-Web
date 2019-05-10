@@ -1,5 +1,22 @@
 import frida
-import subprocess
+import sys
+
+
+def hook(process_name, js_file_name):
+    device = frida.get_remote_device()
+    device.get_process(process_name)
+    process = device.attach(process_name)
+    js_file = open(js_file_name, 'r')
+    script = process.create_script(js_file.read())
+    script.on('message', on_message)
+    script.load()
+    sys.stdin.read()
+
+
+def get_process_list():
+    device = frida.get_remote_device()
+    processes = device.enumerate_processes()
+    return processes
 
 
 def get_frida_version():
@@ -15,12 +32,10 @@ def on_message(message, data):
         print(message)
 
 
-def get_js_code(js_file_name):
-    js_file = open(js_file_name)
-    return js_file.read()
-
-
 if __name__ == '__main__':
     print(get_frida_version())
+    processes = get_process_list()
+    for process in processes:
+        print(process)
 
 
