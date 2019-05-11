@@ -42,5 +42,29 @@ public class AgentAndroidServiceImpl implements AgentAndroidService {
 			throw new PythonRuntimeException();
 		}
 	}
+	
+	@Override
+	public String getFrpsVersion(String path) throws PythonException {
+		PySocketRequest request = new PySocketRequest();
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("frps_path", path);
+		request.setCmd("FrpsService.get_frps_version");
+		request.setParameters(parameters);
+		PyClient pyClient = new PyClient();
+		pyClient.connect();
+		PySocketResponse response = pyClient.sendCmdSync(request);
+		log.debug(response.toString());
+		try {
+			pyClient.close();
+		} catch (IOException e) {
+			throw new PythonIOException("An error occured when parsing response from python server.", e);
+		}
+		if (response.getStatus() == 0) {
+			String version = String.valueOf(response.getData().get("version"));
+			return version;
+		} else {
+			throw new PythonRuntimeException();
+		}
+	}
 
 }

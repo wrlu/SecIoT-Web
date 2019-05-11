@@ -18,23 +18,25 @@ search_regex_strs = {
 
 
 def list_all_classes(root_dir, dirname, suffix):
-    suffix_len = len(suffix)
-    file_list = os.listdir(dirname)
     if platform.system() == 'Windows':
         path_fix = '\\'
     else:
         path_fix = '/'
+    root_dir = root_dir.replace('/', path_fix)
+    dirname = dirname.replace('/', path_fix)
+    suffix_len = len(suffix)
+    file_list = os.listdir(dirname)
     classes = []
     for filename in file_list:
-        if os.path.isdir(dirname + path_fix + filename):
+        if os.path.isdir(dirname + filename):
             if filename.startswith('android'):
                 continue
-            classes_in_dir = list_all_classes(root_dir, dirname + path_fix + filename, suffix)
+            classes_in_dir = list_all_classes(root_dir, dirname + filename + path_fix, suffix)
             for clazz in classes_in_dir:
                 classes.append(clazz)
         else:
             if filename.endswith(suffix):
-                writeable_packagename = dirname.replace(root_dir + path_fix, '').replace(path_fix, '.')
+                writeable_packagename = dirname.replace(root_dir, '').replace(path_fix, '.')
                 writeable_filename = filename[:-suffix_len]
                 classes.append(writeable_packagename + '.' + writeable_filename)
     return classes
@@ -55,7 +57,7 @@ def do(sources_dir):
         'checkClientTrusted': []
     }
     for clazz in classes_list:
-        class_file = open(sources_dir + path_fix + clazz.replace('.', path_fix) + '.java', 'rb')
+        class_file = open(sources_dir + clazz.replace('.', path_fix) + '.java', 'rb')
         class_file_data = class_file.read()
         class_file_content = class_file_data.decode('utf8')
         for key in search_regex_strs:
@@ -80,6 +82,6 @@ def do(sources_dir):
 
 
 if __name__ == '__main__':
-    sources_folder = '/mnt/data/Analysis/com.huawei.ipc.apk.jadx.out/sources'
+    sources_folder = '/mnt/data/Analysis/com.huawei.ipc.apk.jadx.out/sources/'
     result = do(sources_folder)
     print(result)

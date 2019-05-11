@@ -31,13 +31,13 @@ def get_fw_root_directory(fw_info):
     result = run_binwalk(fw_info['fw_path'], '-Me')
     if result == '':
         raise OSError('binwalk runs failed.')
-    binwalk_base_dir = fw_info['fw_path'].replace(fw_info['fw_name'], '_'+fw_info['fw_name']) + '.extracted'
-    fw_filesystem = fw_info['fw_filesystem']
     if platform.system() == 'Windows':
         path_fix = '\\'
     else:
         path_fix = '/'
-    fw_info['fw_root_directory'] = binwalk_base_dir + path_fix + filesystem_roots[fw_filesystem]
+    binwalk_base_dir = fw_info['fw_path'].replace(fw_info['fw_name'], '_'+fw_info['fw_name']) + '.extracted' + path_fix
+    fw_filesystem = fw_info['fw_filesystem']
+    fw_info['fw_root_directory'] = binwalk_base_dir + path_fix + filesystem_roots[fw_filesystem] + path_fix
     return fw_info
 
 
@@ -69,7 +69,6 @@ def call_wsl_binwalk(path, params):
     result = ''
     for line in process.stdout.readlines():
         result += line.decode('utf8')
-        # print(line.decode('utf8').replace('\n', ''))
     return result
 
 

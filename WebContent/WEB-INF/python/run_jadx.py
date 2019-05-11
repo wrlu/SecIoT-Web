@@ -12,10 +12,10 @@ def get_apk_info(file_name, path):
     else:
         path_fix = '/'
     apk_out_directory = path + '.jadx.out'
-    apk_source_directory = apk_out_directory + path_fix + 'sources'
-    apk_resource_directory = apk_out_directory + path_fix + 'resources'
+    apk_source_directory = apk_out_directory + path_fix + 'sources' + path_fix
+    apk_resource_directory = apk_out_directory + path_fix + 'resources' + path_fix
     apk_manifest_file = apk_resource_directory + path_fix + 'AndroidManifest.xml'
-    apk_lib_directory = apk_resource_directory + path_fix + 'lib'
+    apk_lib_directory = apk_resource_directory + path_fix + 'lib' + path_fix
     apk_lib_support_abis = os.listdir(apk_lib_directory)
     apk_info = {
         'apk_name': file_name,

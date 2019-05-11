@@ -51,7 +51,6 @@ public class FwController {
 		// Windows: file:/C:/******/SecIoT/WebContent/WEB-INF/classes/
 		// *nix: file:/mnt/******/SecIoT/WEB-INF/classes/
 		String path = Thread.currentThread().getContextClassLoader().getResource("").toString();
-		System.out.println(path);
 		if (OSUtil.isWindows()) {
 			path = path.replace("file:/", "");
 		} else {

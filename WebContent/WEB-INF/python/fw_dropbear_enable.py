@@ -17,7 +17,6 @@ def do(base_dir):
         path_fix = '\\'
     else:
         path_fix = '/'
-
     try:
         dropbear_config_file = open(base_dir + dropbear_config_file_name.replace('/', path_fix), 'r')
         dropbear_config_file_content = dropbear_config_file.read()
@@ -60,6 +59,6 @@ def do(base_dir):
 
 
 if __name__ == '__main__':
-    base_dir = '/mnt/data/Analysis/_mico_all_f86a5_1.44.4.bin.extracted/squashfs-root'
+    base_dir = '/mnt/data/Analysis/_mico_all_f86a5_1.44.4.bin.extracted/squashfs-root/'
     result = do(base_dir)
     print(result)
