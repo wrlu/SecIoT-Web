@@ -172,5 +172,5 @@ class PySocketServerHandler(socketserver.BaseRequestHandler):
 
 
 if __name__ == '__main__':
-    server = socketserver.ThreadingTCPServer(('localhost', 8041), PySocketServerHandler)
+    server = socketserver.ThreadingTCPServer(('localhost', 8081), PySocketServerHandler)
     server.serve_forever()
