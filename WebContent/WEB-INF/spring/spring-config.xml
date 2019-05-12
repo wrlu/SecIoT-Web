@@ -33,8 +33,16 @@
 		<property name="basePackage" value="com.wrlus.seciot" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
-	<!-- 创建PyServerController Bean，自动管理Python Socket服务器 -->
-	<!-- <bean class="com.wrlus.seciot.pysocket.PyServerController" scope="singleton"
+	<!-- 创建PyServerManager Bean 自动管理Python Socket服务器 -->
+	<!-- <bean class="com.wrlus.seciot.pysocket.PyServerManager" scope="singleton"
         lazy-init="false" init-method="init" destroy-method="destory">
     </bean> -->
+    <!-- 创建FrpsManager Bean 自动管理frps -->
+    <bean class="com.wrlus.seciot.frps.FrpsManager" scope="singleton"
+        lazy-init="false" init-method="init" destroy-method="destory">
+    </bean>
+    <!-- 创建FrpsPortManager Bean 管理frps映射端口 -->
+    <bean id="frpsPortManager" class="com.wrlus.seciot.frps.FrpsPortManager" scope="singleton"
+        lazy-init="false" init-method="init" destroy-method="destory">
+    </bean>
 </beans>
