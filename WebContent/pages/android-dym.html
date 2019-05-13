@@ -16,19 +16,33 @@
               <th>设备型号</th>
               <th>系统版本(API级别)</th>
               <th>代理端版本</th>
-              <th>设备状态</th>
               <th>执行操作</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="deviceBody">
             <tr>
               <td>1</td>
               <td>小路的Nexus 6P</td>
               <td>Google Nexus 6P</td>
               <td>8.1 (API 27)</td>
               <td>1.0-aosp</td>
-              <td>正常</td>
-              <td>XXX</td>
+              <td>
+              	<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#showDeviceInfo" title="查看远程设备的基本信息">查看</button>
+              	<button class="btn btn-sm btn-success" data-toggle="modal" data-target="#configureDetection" title="检测远程设备上的特定应用的安全风险">检测</button>
+              	<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#customInjectionWarning" title="向远程设备上的特定应用注入代码(高级功能)">注入</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>小路的Sony Xperia Z</td>
+              <td>Sony Xperia Z</td>
+              <td>6.0 (API 23)</td>
+              <td>1.0-aosp</td>
+              <td>
+              	<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#showDeviceInfo" title="查看远程设备的基本信息">查看</button>
+              	<button class="btn btn-sm btn-success" data-toggle="modal" data-target="#configureDetection" title="检测远程设备上的特定应用的安全风险">检测</button>
+              	<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#customInjectionWarning" title="向远程设备上的特定应用注入代码(高级功能)">注入</button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -53,9 +67,78 @@
           <tbody></tbody>
         </table>
       </div>
-      
-<!-- 提示是否上传 -->
-<div class="modal fade" id="confirmUploadModal" tabindex="-1" role="dialog">
+
+<div class="modal fade" id="showDeviceInfo" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">设备信息</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        设备信息：
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="configureDetection" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">配置动态检测</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+    		<label for="processSelect">目标进程列表</label>
+   			<select class="form-control" id="processSelect">
+      			<option>com.wrlus.seciot</option>
+      			<option>com.google.chrome</option>
+    		</select>
+  		</div>
+  		<div class="form-group">
+  			<label for="selectDetection">检测项目</label>
+    		<div class="custom-control custom-checkbox" id="selectDetection">
+  				<input type="checkbox" class="custom-control-input" id="apiDetection">
+  				<label class="custom-control-label" for="apiDetection">敏感API调用检测</label>
+			</div>
+			<div class="custom-control custom-checkbox">
+  				<input type="checkbox" class="custom-control-input" id="networkDetection">
+  				<label class="custom-control-label" for="networkDetection">网络通信目的地址检测</label>
+			</div>
+			<div class="custom-control custom-checkbox">
+  				<input type="checkbox" class="custom-control-input" id="trafficDetection">
+  				<label class="custom-control-label" for="trafficDetection">数据传输安全检测</label>
+			</div>
+			<div class="custom-control custom-checkbox">
+  				<input type="checkbox" class="custom-control-input" id="fileOptionDetection">
+  				<label class="custom-control-label" for="fileOptionDetection">文件读写检测</label>
+			</div>
+			<div class="custom-control custom-checkbox">
+  				<input type="checkbox" class="custom-control-input" id="dbOptionDetection">
+  				<label class="custom-control-label" for="dbOptionDetection">数据库操作检测</label>
+			</div>
+  		</div>
+  		
+  		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">放弃</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal">执行</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="confirmDetection" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -65,11 +148,31 @@
         </button>
       </div>
       <div class="modal-body">
-                您确实要开始动态分析吗？
+        您确实要在远程设备上启动检测吗？
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-success" onclick="onAgentAnalysis()" data-dismiss="modal">开始分析</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">放弃</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal">执行</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="customInjectionWarning" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">重要警告</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        向远程设备注入自定义JavaScript脚本可能导致未预期的情况，您确实要将脚本发送到远程设备吗？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">放弃</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">执行</button>
       </div>
     </div>
   </div>
