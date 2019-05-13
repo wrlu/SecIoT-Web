@@ -50,6 +50,14 @@ public class FrpsPortManager {
 		}
 	}
 	
+	public int getBindPort(String clientId) throws NoSuchClientException {
+		if (portMap.containsKey(clientId)) {
+			return portMap.get(clientId);
+		} else {
+			throw new NoSuchClientException("No such client with client id: "+clientId);
+		}
+	}
+	
 	public void unBindPort(String clientId) throws NoSuchClientException {
 		if (portMap.containsKey(clientId)) {
 			portPool[portMap.get(clientId) - minPort] = 0;

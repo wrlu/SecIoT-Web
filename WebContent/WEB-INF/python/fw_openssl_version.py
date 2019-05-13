@@ -6,7 +6,7 @@ import platform
 libcrypto_so_names = [
     '/lib/libcrypto.so.1.0.0',
     '/usr/lib/libcrypto.so.1.0.0',
-    '/usr/lib/libcrypto.so.1.0.0',
+    '/usr/lib/ssl/libcrypto.so.1.0.0',
     '/usr/local/lib/libcrypto.so.1.0.0',
     '/usr/local/ssl/lib/libcrypto.so.1.0.0',
 ]

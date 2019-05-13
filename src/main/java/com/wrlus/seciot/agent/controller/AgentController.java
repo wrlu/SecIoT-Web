@@ -122,6 +122,35 @@ public class AgentController {
 	}
 	
 	@ResponseBody
+	@RequestMapping("/getbind")
+	public Map<String, Object> getBindPort(@RequestParam("client_id") String clientId, HttpServletRequest request, HttpServletResponse response) {
+		Map<String, Object> data = new HashMap<>();
+		try {
+			WebApplicationContext context = ContextLoader.getCurrentWebApplicationContext();
+			FrpsPortManager portManager = (FrpsPortManager) context.getBean("frpsPortManager");
+			int port = portManager.getBindPort(clientId);
+			data.put("status", 0);
+			data.put("reason", ReasonEnum.SUCCESS.get());
+			data.put("port", port);
+		} catch (RootException e) {
+			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+			if (log.isDebugEnabled()) {
+				e.printStackTrace();
+			}
+			data.put("status", -1);
+			data.put("reason", e.getReason().get());
+		} catch (Exception e) {
+			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+			if (log.isDebugEnabled()) {
+				e.printStackTrace();
+			}
+			data.put("status", -1);
+			data.put("reason", ReasonEnum.UNKNOWN.get());
+		}
+		return data;
+	}
+	
+	@ResponseBody
 	@RequestMapping("/unbind")
 	public Map<String, Object> unBindPort(@RequestParam("client_id") String clientId, HttpServletRequest request, HttpServletResponse response) {
 		Map<String, Object> data = new HashMap<>();

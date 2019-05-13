@@ -69,14 +69,6 @@ class FrpsService:
     def get_frps_version(path):
         return run_frps.get_frps_version(path)
 
-    @staticmethod
-    def start_frps_service(path, ini_file):
-        return run_frps.start_frps_service(path, ini_file)
-
-    @staticmethod
-    def stop_frps_service():
-        return run_frps.stop_frps_service()
-
 
 class AppleiOSService:
     @staticmethod
@@ -149,10 +141,6 @@ class PySocketServerHandler(socketserver.BaseRequestHandler):
         elif classname == 'FrpsService':
             if method == 'get_frps_version':
                 result = FrpsService.get_frps_version(params['frps_path'])
-            elif method == 'start_frps_service':
-                result = FrpsService.start_frps_service(params['frps_path'], params['frps_ini_file'])
-            elif method == 'stop_frps_service':
-                result = FrpsService.stop_frps_service()
 
         elif classname == 'AppleiOSService':
             pass
