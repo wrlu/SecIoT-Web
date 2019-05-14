@@ -11,6 +11,6 @@ public interface DeviceMapper {
 	public List<DeviceDao> getOnlineDevices();
 	public List<DeviceDao> getDeviceByClientId(String clientId);
 	public int insertDevice(DeviceDao deviceDao);
-	public int updateDevice(boolean isOnline);
+	public int updateDevice(DeviceDao deviceDao);
 	public int deleteDevice(String clientId);
 }
