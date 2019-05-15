@@ -17,8 +17,15 @@ def hook(host, process_name, js_file_name):
 def get_process_list(host):
     manager = frida.get_device_manager()
     remote_device = manager.add_remote_device(host)
-    remote_processes = remote_device.enumerate_processes()
-    return remote_processes
+
+    remote_processes_obj = remote_device.enumerate_processes()
+    remote_processes = []
+    for process_obj in remote_processes_obj:
+        remote_processes.append(process_obj.name)
+    manager.remove_remote_device(host)
+    return {
+        'processes': remote_processes
+    }
 
 
 def get_frida_version():
@@ -36,8 +43,8 @@ def on_message(message, data):
 
 if __name__ == '__main__':
     print(get_frida_version())
-    processes = get_process_list('127.0.0.1:9000')
-    for process in processes:
+    result = get_process_list('127.0.0.1:9001')
+    for process in result['processes']:
         print(process)
 
 

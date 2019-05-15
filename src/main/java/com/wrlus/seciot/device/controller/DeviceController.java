@@ -71,9 +71,14 @@ public class DeviceController {
 	public Map<String, Object> add(DeviceDao deviceDao, HttpServletRequest request, HttpServletResponse response) {
 		Map<String, Object> data = new HashMap<>();
 		try {
-			deviceService.insertDevice(deviceDao);
-			data.put("status", 0);
-			data.put("reason", ReasonEnum.SUCCESS.get());
+			int rows = deviceService.insertDevice(deviceDao);
+			if (rows == 1) {
+				data.put("status", 0);
+				data.put("reason", ReasonEnum.SUCCESS.get());
+			} else {
+				data.put("status", -1);
+				data.put("reason", ReasonEnum.CLIENT_ALREADY_EXISTS.get());
+			}
 		} catch (Exception e) {
 			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
 			if (log.isDebugEnabled()) {
@@ -90,9 +95,14 @@ public class DeviceController {
 	public Map<String, Object> update(DeviceDao deviceDao, HttpServletRequest request, HttpServletResponse response) {
 		Map<String, Object> data = new HashMap<>();
 		try {
-			deviceService.updateDevice(deviceDao);
-			data.put("status", 0);
-			data.put("reason", ReasonEnum.SUCCESS.get());
+			int rows = deviceService.updateDevice(deviceDao);
+			if (rows == 1) {
+				data.put("status", 0);
+				data.put("reason", ReasonEnum.SUCCESS.get());
+			} else {
+				data.put("status", -1);
+				data.put("reason", ReasonEnum.NO_SUCH_CLINET.get());
+			}
 		} catch (Exception e) {
 			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
 			if (log.isDebugEnabled()) {

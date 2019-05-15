@@ -6,45 +6,22 @@
       </div>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h4>测试设备列表</h4>
+        <button class="btn btn-sm btn-primary" onclick="onRefreshDeviceList()" >刷新设备</button>
       </div>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
               <th>#</th>
-              <th>设备名称</th>
+              <th>设备ID</th>
               <th>设备型号</th>
               <th>系统版本(API级别)</th>
               <th>代理端版本</th>
+              <th>映射端口</th>
               <th>执行操作</th>
             </tr>
           </thead>
-          <tbody id="deviceBody">
-            <tr>
-              <td>1</td>
-              <td>小路的Nexus 6P</td>
-              <td>Google Nexus 6P</td>
-              <td>8.1 (API 27)</td>
-              <td>1.0-aosp</td>
-              <td>
-              	<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#showDeviceInfo" title="查看远程设备的基本信息">查看</button>
-              	<button class="btn btn-sm btn-success" data-toggle="modal" data-target="#configureDetection" title="检测远程设备上的特定应用的安全风险">检测</button>
-              	<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#customInjectionWarning" title="向远程设备上的特定应用注入代码(高级功能)">注入</button>
-              </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>小路的Sony Xperia Z</td>
-              <td>Sony Xperia Z</td>
-              <td>6.0 (API 23)</td>
-              <td>1.0-aosp</td>
-              <td>
-              	<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#showDeviceInfo" title="查看远程设备的基本信息">查看</button>
-              	<button class="btn btn-sm btn-success" data-toggle="modal" data-target="#configureDetection" title="检测远程设备上的特定应用的安全风险">检测</button>
-              	<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#customInjectionWarning" title="向远程设备上的特定应用注入代码(高级功能)">注入</button>
-              </td>
-            </tr>
-          </tbody>
+          <tbody id="deviceBody"></tbody>
         </table>
       </div>
 
@@ -99,10 +76,7 @@
       <div class="modal-body">
         <div class="form-group">
     		<label for="processSelect">目标进程列表</label>
-   			<select class="form-control" id="processSelect">
-      			<option>com.wrlus.seciot</option>
-      			<option>com.google.chrome</option>
-    		</select>
+   			<select class="form-control" id="processSelect"></select>
   		</div>
   		<div class="form-group">
   			<label for="selectDetection">检测项目</label>
@@ -127,8 +101,6 @@
   				<label class="custom-control-label" for="dbOptionDetection">数据库操作检测</label>
 			</div>
   		</div>
-  		
-  		
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">放弃</button>

@@ -6,6 +6,7 @@ public class DeviceDao {
 	private String version;
 	private int apilevel;
 	private String agentver;
+	private int port;
 	private int online;
 	public String getClientid() {
 		return clientid;
@@ -36,6 +37,12 @@ public class DeviceDao {
 	}
 	public void setAgentver(String agentver) {
 		this.agentver = agentver;
+	}
+	public int getPort() {
+		return port;
+	}
+	public void setPort(int port) {
+		this.port = port;
 	}
 	public int getOnline() {
 		return online;

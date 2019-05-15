@@ -14,6 +14,9 @@ $(function(){
 				$("#main").html(errorMsg);
 			}
 		});
+		if (args.page == "android-dym") {
+			onRefreshDeviceList();
+		}
 	}
 });
 
@@ -47,13 +50,13 @@ function onApkAnalysis() {
 		     	apk_basic_info += '文件名：'+result.apk_info.apk_name+'<br/>';
 		     	apk_basic_info += '文件大小：'+result.apk_info.apk_size+'字节<br/>';
 		     	apk_basic_info += 'NDK支持的架构：'+result.apk_info.apk_ndk_lib_support_abis;
-		     	$("#apk_basic_info").html(apk_basic_info, function() {});
+		     	$("#apk_basic_info").html(apk_basic_info);
 //		     	填充权限信息
 		     	apk_permission = '<strong class="d-block text-gray-dark">APK所需权限</strong>';
 		     	for (var i = 0, len = result.apk_permission.length; i < len; ++i) {
 		     		apk_permission += result.apk_permission[i]+'<br/>';
 		     	}
-		     	$("#apk_permission").html(apk_permission, function() {});
+		     	$("#apk_permission").html(apk_permission);
 //				显示平台风险
 		     	var apk_platform_risk = '<h6 class="border-bottom border-gray pb-2 mb-0">平台风险</h6>';
 		     	for (var i = 0, len = result.apk_platform_risk.length; i < len; ++i) {
@@ -74,11 +77,11 @@ function onApkAnalysis() {
 		     		apk_per_platform_risk += '</p></div>';
 		     		apk_platform_risk += apk_per_platform_risk;
 		     	}
-		     	$("#apk_platform_risk").html(apk_platform_risk, function() {});
+		     	$("#apk_platform_risk").html(apk_platform_risk);
 	     		$("#resultModalBody").html("针对 "+result.apk_info.apk_name+" 的分析完成", function() {});
 	     		$("#resultModal").modal("show");
 	     	 } else {
-	     		$("#resultModalBody").html(result.reason, function() {});
+	     		$("#resultModalBody").html(result.reason);
 	     		$("#resultModal").modal("show");
 	     	 }
 	      }
@@ -107,12 +110,12 @@ function onFwAnalysis() {
 	     		fw_basic_info = '<strong class="d-block text-gray-dark">固件基本信息</strong>';
 	     		fw_basic_info += '文件名：'+result.fw_info.fw_name+'<br/>';
 	     		fw_basic_info += '文件大小：'+result.fw_info.fw_size+'字节';
-	     		$("#fw_basic_info").html(fw_basic_info, function() {});
+	     		$("#fw_basic_info").html(fw_basic_info);
 //	     		填充文件系统信息
 	     		fw_filesystem = '<strong class="d-block text-gray-dark">固件文件系统</strong>';
 	     		fw_filesystem += '文件系统：'+result.fw_info.fw_filesystem+'<br/>';
 	     		fw_filesystem += '文件系统根目录：'+result.fw_info.fw_root_directory;
-	     		$("#fw_filesystem").html(fw_filesystem, function() {});
+	     		$("#fw_filesystem").html(fw_filesystem);
 //	     		填充第三方库信息
 	     		var fw_third_library = '<h6 class="border-bottom border-gray pb-2 mb-0">第三方库风险</h6>';
 	     		for (var i = 0, len = result.fw_lib.length; i < len; ++i) {
@@ -128,7 +131,7 @@ function onFwAnalysis() {
      				fw_per_third_library += '</p></div>';
      				fw_third_library += fw_per_third_library;
 	     		}
-	     		$("#fw_third_library").html(fw_third_library, function() {});
+	     		$("#fw_third_library").html(fw_third_library);
 //				显示平台风险
 	     		var fw_platform_risk = '<h6 class="border-bottom border-gray pb-2 mb-0">平台风险</h6>';
 	     		for (var i = 0, len = result.fw_platform_risk.length; i < len; ++i) {
@@ -149,13 +152,13 @@ function onFwAnalysis() {
 	     			fw_per_platform_risk += '</p></div>';
 	     			fw_platform_risk += fw_per_platform_risk;
 	     		}
-	     		$("#fw_platform_risk").html(fw_platform_risk, function() {});
+	     		$("#fw_platform_risk").html(fw_platform_risk);
 //	     		填充并显示结果提示模态框
 	     		$("#resultModalBody").html("针对 "+result.fw_info.fw_name+" 的分析完成", function() {});
 	     		$("#resultModal").modal("show");
 	     	 } else {
 //	     		 填充并显示结果提示模态框，提示错误
-	     		$("#resultModalBody").html(result.reason, function() {});
+	     		$("#resultModalBody").html(result.reason);
 	     		$("#resultModal").modal("show");
 	     	 }
 	      },
@@ -163,48 +166,57 @@ function onFwAnalysis() {
 //	    	     隐藏加载模态框
 		    	$("#loadingModel").modal("hide");
 //	     		 填充并显示结果提示模态框，提示错误
-	     		$("#resultModalBody").html(error, function() {});
+	     		$("#resultModalBody").html(error);
 	     		$("#resultModal").modal("show");
 	      }
 	});
 }
 
-function onTrafficAnalysis() {
-	var formData = new FormData(document.getElementById("uploadForm"));
-	$.ajax({
-	      type:"POST",
-	      url:"/SecIoT/traffic/analysis",
-	      data:formData,
-	      mimeType:"multipart/form-data",
-	      contentType: false,
-	      cache: false,
-	      processData: false,
-	      success: function (result) {
-	    	 $("#loadingModel").modal("hide");
-	    	 var result=JSON.parse(result);
-	     	 if(result.status == 0) {
-	     		var tfc_dev_conn_details = '<strong class="d-block text-gray-dark">IoT设备传输交互</strong>';
-	     		for (var i = 0, len = result.tfc_dev_conn_details.pair_hosts.length; i < len; ++i) {
-	     			var host = result.tfc_dev_conn_details.pair_hosts[i];
-	     			var protocol = result.tfc_dev_conn_details.pair_connection_protocol[i];
-	     			tfc_dev_conn_details += '目标：'+host+'; 协议：'+protocol+'<br/>';
-	     		}
-	     		$("#tfc_dev_conn_details").html(tfc_dev_conn_details);
-	     		var tfc_mobile_conn_details = '<strong class="d-block text-gray-dark">移动设备传输交互</strong>';
-	     		for (var i = 0, len = result.tfc_mobile_conn_details.pair_hosts.length; i < len; ++i) {
-	     			var host = result.tfc_mobile_conn_details.pair_hosts[i];
-	     			var protocol = result.tfc_mobile_conn_details.pair_connection_protocol[i];
-	     			tfc_mobile_conn_details += '目标：'+host+'; 协议：'+protocol+'<br/>';
-	     		}
-	     		$("#tfc_mobile_conn_details").html(tfc_mobile_conn_details);
-	     		$("#resultModalBody").html("针对此流量包的分析完成", function() {});
-	     		$("#resultModal").modal("show");
-	     	 } else {
-	     		$("#resultModalBody").html(result.reason, function() {});
-	     		$("#resultModal").modal("show");
-	     	 }
-	      }
+function onRefreshDeviceList() {
+	$.post("/SecIoT/device/getOnlineDevice", {
+		
+	}, function(result) {
+		if(result.status == 0) {
+			var devices = "";
+			for (var i = 0, len = result.devices.length; i < len; ++i) {
+				devices += "<tr>";
+				devices += "<td>"+(i+1)+"</td>";
+				devices += "<td>"+result.devices[i].clientid+"</td>";
+				devices += "<td>"+result.devices[i].devicename+"</td>";
+				devices += "<td>Android "+result.devices[i].version+" ( API "+result.devices[i].apilevel+" )</td>";
+				devices += "<td>"+result.devices[i].agentver+"</td>";
+				devices += "<td>"+result.devices[i].port+"</td>";
+				devices += "<td>";
+				devices += '<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#showDeviceInfo" title="查看远程设备的基本信息">查看</button>';
+				devices += '<button class="btn btn-sm btn-success" onclick="getProcessList('+result.devices[i].port+')" title="检测远程设备上的特定应用的安全风险">检测</button>';
+				devices += '<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#customInjectionWarning" title="向远程设备上的特定应用注入代码(高级功能)">注入</button>';
+				devices += "</td>";
+				devices += "</tr>";
+			}
+			$("#deviceBody").html(devices);
+		} else {
+			$("#resultModalBody").html(result.reason);
+     		$("#resultModal").modal("show");
+		}
 	});
-	$("#loadingModel").modal("show");
 }
-
+//configureDetection
+function getProcessList(port) {
+	$.get("/SecIoT/android/getProcessList", {
+		port: port
+	}, function(result) {
+		if(result.status == 0) {
+			var processes = "";
+			for (var i = 0, len = result.processes.length; i < len; ++i) {
+				processes += "<option>";
+				processes += result.processes[i];
+				processes += "</option>";
+			}
+			$("#processSelect").html(processes);
+			$("#configureDetection").modal("show");
+		} else {
+			$("#resultModalBody").html(result.reason);
+     		$("#resultModal").modal("show");
+		}
+	});
+}

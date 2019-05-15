@@ -12,4 +12,5 @@ public interface AndroidService {
 	public ApkInfo getApkInfo(File apkFile) throws PythonException;
 	public String[] getAndroidPermissions(ApkInfo apkInfo) throws PythonException;
 	public List<PlatformRiskResult> checkApkPlatformRisks(ApkInfo apkInfo, PlatformRiskDao[] platformRisks) throws PythonException;
+	public String[] getProcessList(int port) throws PythonException;
 }

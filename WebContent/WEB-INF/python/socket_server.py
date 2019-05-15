@@ -63,6 +63,10 @@ class FridaService:
     def get_frida_version():
         return run_frida.get_frida_version()
 
+    @staticmethod
+    def get_process_list(port):
+        return run_frida.get_process_list("127.0.0.1:"+str(port))
+
 
 class FrpsService:
     @staticmethod
@@ -137,6 +141,8 @@ class PySocketServerHandler(socketserver.BaseRequestHandler):
         elif classname == 'FridaService':
             if method == 'get_frida_version':
                 result = FridaService.get_frida_version()
+            elif method == 'get_process_list':
+                result = FridaService.get_process_list(params['port'])
 
         elif classname == 'FrpsService':
             if method == 'get_frps_version':

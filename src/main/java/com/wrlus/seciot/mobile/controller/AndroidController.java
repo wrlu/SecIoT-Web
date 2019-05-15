@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -106,6 +107,33 @@ public class AndroidController {
 		} catch (Exception e) {
 			throw new FileUploadException(e);
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping("/getProcessList")
+	public Map<String, Object> getProcessList(@RequestParam("port") int port, HttpServletRequest request, HttpServletResponse response) {
+		Map<String, Object> data=new HashMap<String, Object>();
+		try {
+			String[] processes = androidService.getProcessList(port);
+			data.put("status", 0);
+			data.put("processes", processes);
+			data.put("reason", ReasonEnum.SUCCESS.get());
+		} catch (RootException e) {
+			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+			if (log.isDebugEnabled()) {
+				e.printStackTrace();
+			}
+			data.put("status", -1);
+			data.put("reason", e.getReason().get());
+		} catch (Exception e) {
+			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+			if (log.isDebugEnabled()) {
+				e.printStackTrace();
+			}
+			data.put("status", -1);
+			data.put("reason", ReasonEnum.UNKNOWN.get());
+		}
+		return data;
 	}
 	
 	public void cleanUploadFile(String path) {

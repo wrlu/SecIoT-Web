@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbd97ff7-e094-4529-b3d7-8f8e2a709367" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../frp/frps.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../frp/frps.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_frida.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_frida.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/socket_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/socket_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pages/android-dym.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../pages/android-dym.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/device/controller/DeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/device/controller/DeviceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/device/dao/DeviceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/device/dao/DeviceMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/device/model/DeviceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/device/model/DeviceDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AndroidController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AndroidController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/service/AndroidService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/service/AndroidService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/service/AndroidServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/service/AndroidServiceImpl.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,13 +27,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/socket_server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1447">
-              <caret line="90" column="15" selection-start-line="90" selection-start-column="15" selection-end-line="90" selection-end-column="15" />
+            <state relative-caret-position="4590">
+              <caret line="170" selection-start-line="170" selection-end-line="170" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/run_frida.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,18 +98,18 @@
         <option value="$PROJECT_DIR$/fw_dropbear_auth_keys.py" />
         <option value="$PROJECT_DIR$/fw_dropbear_enable.py" />
         <option value="$PROJECT_DIR$/fw_linux_shadow.py" />
-        <option value="$PROJECT_DIR$/run_frida.py" />
         <option value="$PROJECT_DIR$/fw_openssl_version.py" />
         <option value="$PROJECT_DIR$/run_frps.py" />
         <option value="$PROJECT_DIR$/socket_server.py" />
+        <option value="$PROJECT_DIR$/run_frida.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="48" />
     <option name="y" value="32" />
-    <option name="width" value="1198" />
-    <option name="height" value="717" />
+    <option name="width" value="1200" />
+    <option name="height" value="730" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -517,7 +541,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="32" width="1932" height="1018" extended-state="6" />
+    <frame x="-6" y="32" width="1932" height="1018" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49888143" visible="true" weight="0.14331041" />
@@ -525,7 +549,7 @@
       <window_info id="Favorites" order="2" show_stripe_button="false" sideWeight="0.50111854" side_tool="true" weight="0.14406332" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32960895" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4994726" visible="true" weight="0.2977273" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4994726" weight="0.2977273" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5251397" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -687,16 +711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_frida.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run_binwalk.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -709,10 +723,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/socket_server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1447">
-          <caret line="90" column="15" selection-start-line="90" selection-start-column="15" selection-end-line="90" selection-end-column="15" />
+        <state relative-caret-position="4590">
+          <caret line="170" selection-start-line="170" selection-end-line="170" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_frida.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>

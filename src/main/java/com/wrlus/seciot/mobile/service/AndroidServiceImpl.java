@@ -120,4 +120,31 @@ public class AndroidServiceImpl implements AndroidService {
 		}
 		return results;
 	}
+
+	@Override
+	public String[] getProcessList(int port) throws PythonException {
+		PySocketRequest request = new PySocketRequest();
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("port", port);
+		request.setCmd("FridaService.get_process_list");
+		request.setParameters(parameters);
+		PyClient pyClient = new PyClient();
+		pyClient.connect();
+		PySocketResponse result = pyClient.sendCmdSync(request);
+		try {
+			pyClient.close();
+		} catch (IOException e) {
+			throw new PythonIOException("An error occured when parsing response from python server.", e);
+		}
+		if (result.getStatus() == 0) {
+			try {
+				String[] processes = mapper.readValue(mapper.writeValueAsString(result.getData().get("processes")), String[].class);
+				return processes;
+			} catch (Exception e) {
+				throw new PythonIOException("An error occured when parsing response from python server.", e);
+			}
+		} else {
+			throw new PythonRuntimeException();
+		}
+	}
 }
