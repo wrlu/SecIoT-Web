@@ -28,12 +28,13 @@
     - Android组件暴露分析
     - Android SSL弱校验分析
 
-#### 2、Android应用动态分析（需要SecIoT Agent Android支持，即将添加）
+#### 2、Android应用动态分析（需要SecIoT Agent Android支持）
 - 分析Android应用运行时调用的敏感API（即将添加）
 - 分析Android应用运行时连接的IP地址（即将添加）
 - 分析Android应用运行时进行的不安全的数据传输（即将添加）
 - 分析Android应用运行时进行的文件写入（即将添加）
 - 分析Android应用运行时进行的数据库写入（即将添加）
+- 支持将自定义的JavaScript脚本注入到设备上（试验性功能，即将添加）
 
 ### 三、苹果应用安全
 #### 2、苹果应用分析（即将添加）
