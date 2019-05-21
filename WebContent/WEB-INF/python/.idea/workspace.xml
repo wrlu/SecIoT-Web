@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbd97ff7-e094-4529-b3d7-8f8e2a709367" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../frp/frps.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../frp/frps.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_frida.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_frida.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/socket_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/socket_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pages/android-dym.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../pages/android-dym.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/device/controller/DeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/device/controller/DeviceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/device/dao/DeviceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/device/dao/DeviceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/device/model/DeviceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/device/model/DeviceDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AndroidController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AndroidController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/service/AndroidService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/service/AndroidService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/service/AndroidServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/service/AndroidServiceImpl.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/socket_server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4590">
-              <caret line="170" selection-start-line="170" selection-end-line="170" />
+            <state relative-caret-position="327">
+              <caret line="124" column="53" lean-forward="true" selection-start-line="124" selection-start-column="53" selection-end-line="124" selection-end-column="53" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -40,10 +28,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/android_ssl_pinning.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_frida.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+            <state relative-caret-position="810">
+              <caret line="30" column="24" lean-forward="true" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -119,6 +119,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -130,7 +131,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -544,7 +544,7 @@
     <frame x="-6" y="32" width="1932" height="1018" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49888143" visible="true" weight="0.14331041" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49888143" visible="true" weight="0.14331041" />
       <window_info id="Structure" order="1" sideWeight="0.50111854" side_tool="true" weight="0.14406332" />
       <window_info id="Favorites" order="2" show_stripe_button="false" sideWeight="0.50111854" side_tool="true" weight="0.14406332" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -578,16 +578,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scan_hikvision_rce.py" />
-    <entry file="file://$PROJECT_DIR$/run_nmap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run_adb.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-1247971763/_frida.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -628,16 +618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="4" column="84" selection-start-line="4" selection-start-column="84" selection-end-line="4" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android_ssl_pinning.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="63" column="54" lean-forward="true" selection-start-line="63" selection-start-column="54" selection-end-line="63" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -721,22 +701,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/socket_server.py">
+    <entry file="file://$PROJECT_DIR$/run_nmap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4590">
-          <caret line="170" selection-start-line="170" selection-end-line="170" />
+        <state relative-caret-position="378">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/run_frida.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+        <state relative-caret-position="810">
+          <caret line="30" column="24" lean-forward="true" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/socket_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="124" column="53" lean-forward="true" selection-start-line="124" selection-start-column="53" selection-end-line="124" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android_ssl_pinning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
