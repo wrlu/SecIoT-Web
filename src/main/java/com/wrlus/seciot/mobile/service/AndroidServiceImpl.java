@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wrlus.seciot.mobile.model.ApkInfo;
+import com.wrlus.seciot.platform.model.MonitorResult;
+import com.wrlus.seciot.platform.model.MonitoringParameter;
 import com.wrlus.seciot.platform.model.PlatformRiskDao;
 import com.wrlus.seciot.platform.model.PlatformRiskResult;
 import com.wrlus.seciot.pysocket.PyClient;
@@ -140,6 +142,69 @@ public class AndroidServiceImpl implements AndroidService {
 			try {
 				String[] processes = mapper.readValue(mapper.writeValueAsString(result.getData().get("processes")), String[].class);
 				return processes;
+			} catch (Exception e) {
+				throw new PythonIOException("An error occured when parsing response from python server.", e);
+			}
+		} else {
+			throw new PythonRuntimeException();
+		}
+	}
+	
+	@Override
+	public MonitorResult monitoringDevice(MonitoringParameter monitorParameter) throws PythonException {
+		PySocketRequest request = new PySocketRequest();
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("port", monitorParameter.getPort());
+		parameters.put("process", monitorParameter.getProcess());
+		parameters.put("monitoring_api", monitorParameter.isMonitoringApi());
+		parameters.put("monitoring_ip", monitorParameter.isMonitoringIp());
+		parameters.put("monitoring_traffic", monitorParameter.isMonitoringTraffic());
+		parameters.put("monitoring_fileio", monitorParameter.isMonitoringFileIO());
+		parameters.put("monitoring_dbio", monitorParameter.isMonitoringDatabaseIO());
+		request.setCmd("FridaService.monitoring_device");
+		request.setParameters(parameters);
+		PyClient pyClient = new PyClient();
+		pyClient.connect();
+		PySocketResponse result = pyClient.sendCmdSync(request);
+		try {
+			pyClient.close();
+		} catch (IOException e) {
+			throw new PythonIOException("An error occured when parsing response from python server.", e);
+		}
+		if (result.getStatus() == 0) {
+			try {
+				MonitorResult monitorResult = mapper.readValue(mapper.writeValueAsString(result.getData()), MonitorResult.class);
+				return monitorResult;
+			} catch (Exception e) {
+				throw new PythonIOException("An error occured when parsing response from python server.", e);
+			}
+		} else {
+			throw new PythonRuntimeException();
+		}
+	}
+	
+	@Override
+	public MonitorResult customInjection(int port, String process, File jsFile) throws PythonException {
+		PySocketRequest request = new PySocketRequest();
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("port", port);
+		parameters.put("process", process);
+		parameters.put("js_name", jsFile.getName());
+		parameters.put("js_path", jsFile.getAbsolutePath());
+		request.setCmd("FridaService.custom_injection");
+		request.setParameters(parameters);
+		PyClient pyClient = new PyClient();
+		pyClient.connect();
+		PySocketResponse result = pyClient.sendCmdSync(request);
+		try {
+			pyClient.close();
+		} catch (IOException e) {
+			throw new PythonIOException("An error occured when parsing response from python server.", e);
+		}
+		if (result.getStatus() == 0) {
+			try {
+				MonitorResult monitorResult = mapper.readValue(mapper.writeValueAsString(result.getData()), MonitorResult.class);
+				return monitorResult;
 			} catch (Exception e) {
 				throw new PythonIOException("An error occured when parsing response from python server.", e);
 			}

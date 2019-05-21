@@ -21,6 +21,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.wrlus.seciot.mobile.model.ApkInfo;
 import com.wrlus.seciot.mobile.service.AndroidServiceImpl;
+import com.wrlus.seciot.platform.model.MonitorResult;
+import com.wrlus.seciot.platform.model.MonitoringParameter;
 import com.wrlus.seciot.platform.model.PlatformRiskDao;
 import com.wrlus.seciot.platform.model.PlatformRiskResult;
 import com.wrlus.seciot.platform.service.PlatformRiskServiceImpl;
@@ -109,9 +111,15 @@ public class AndroidController {
 		}
 	}
 	
+	public void cleanUploadFile(String path) {
+		new File(path).delete();
+	}
+	
 	@ResponseBody
 	@RequestMapping("/getProcessList")
-	public Map<String, Object> getProcessList(@RequestParam("port") int port, HttpServletRequest request, HttpServletResponse response) {
+	public Map<String, Object> getProcessList(
+			@RequestParam("port") int port,
+			HttpServletRequest request, HttpServletResponse response) {
 		Map<String, Object> data=new HashMap<String, Object>();
 		try {
 			String[] processes = androidService.getProcessList(port);
@@ -136,7 +144,78 @@ public class AndroidController {
 		return data;
 	}
 	
-	public void cleanUploadFile(String path) {
-		new File(path).delete();
+	@ResponseBody
+	@RequestMapping("/monitoring")
+	public Map<String, Object> monitoring(MonitoringParameter monitoringParameter,
+			HttpServletRequest request, HttpServletResponse response) { 
+		Map<String, Object> data=new HashMap<String, Object>();
+		try {
+			MonitorResult result = androidService.monitoringDevice(monitoringParameter);
+//			返回状态码
+			data.put("status", 0);
+//			返回状态说明字符串
+			data.put("reason", "OK");
+			data.put("monitoring_result", result);
+		} catch (RootException e) {
+			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+			if (log.isDebugEnabled()) {
+				e.printStackTrace();
+			}
+			data.put("status", -1);
+			data.put("reason", e.getReason().get());
+		} catch (Exception e) {
+			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+			if (log.isDebugEnabled()) {
+				e.printStackTrace();
+			}
+			data.put("status", -1);
+			data.put("reason", ReasonEnum.UNKNOWN.get());
+		}
+		return data;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/custom-injection")
+	public Map<String, Object> customInjection(
+			@RequestParam("port") int port,
+			@RequestParam("process") String process,
+			HttpServletRequest request, HttpServletResponse response) { 
+		Map<String, Object> data=new HashMap<String, Object>();
+		String path = Thread.currentThread().getContextClassLoader().getResource("").toString();
+		if (OSUtil.isWindows()) {
+			path = path.replace("file:/", "");
+		} else {
+			path = path.replace("file:", "");
+		}
+		path = path.replace("WEB-INF/classes/", "attach/uploads/js/"+UUID.randomUUID().toString()+"/");
+		if (OSUtil.isWindows()) {
+			path = OSUtil.escapeUnixSeparator(path);
+		}
+		try {
+			File jsFile = this.resolveUploadFile((MultipartHttpServletRequest) request, path);
+			MonitorResult result = androidService.customInjection(port, process, jsFile);
+//			返回状态码
+			data.put("status", 0);
+//			返回状态说明字符串
+			data.put("reason", "OK");
+			data.put("monitoring_result", result);
+		} catch (RootException e) {
+			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+			if (log.isDebugEnabled()) {
+				e.printStackTrace();
+			}
+			data.put("status", -1);
+			data.put("reason", e.getReason().get());
+		} catch (Exception e) {
+			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+			if (log.isDebugEnabled()) {
+				e.printStackTrace();
+			}
+			data.put("status", -1);
+			data.put("reason", ReasonEnum.UNKNOWN.get());
+		}
+		return data;
 	}
 }
+
+
