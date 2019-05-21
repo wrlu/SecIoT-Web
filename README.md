@@ -51,6 +51,7 @@
 - binwalk：用于系统固件分析模块（对于Windows必须将binwalk安装在Windows Subsystem Linux中），https://github.com/ReFirmLabs/binwalk
 - jadx：用于Android应用静态分析模块，https://github.com/skylot/jadx
 - Frida：用于Android应用动态分析模块，https://github.com/frida/frida
+- Frp：用户Android应用动态分析模块，https://github.com/fatedier/frp
 - SecIoT Agent：对于Android应用动态分析，需要在目标Android手机上安装Agent应用程序，并授予该应用root权限，https://github.com/seciot/SecIoT-Agent-Android
 
 ### 三、部署方式

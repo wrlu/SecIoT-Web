@@ -8,12 +8,14 @@
     <link href="/SecIoT/css/dashboard.css" rel="stylesheet">
 </head>
 <body>
+<header>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
 	<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/SecIoT/?page=main">SecIoT 漏洞检测系统</a>
 	<ul class="navbar-nav px-3">
 		<li class="nav-item text-nowrap"><a class="nav-link" href="/SecIoT/logout">退出系统</a></li>
   	</ul>
 </nav>
+</header>
 <div class="container-fluid">
 	<div class="row">
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -76,8 +78,21 @@
         </ul>
       </div>
     </nav>
-    <main id="main" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"></main>
-    <!-- 分析中的提示框 -->
+    <main id="main" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 flex-shrink-0"></main>
+</div>
+</div>
+<footer class="footer">
+	<div class="container">
+		<span class="text-muted">
+			Copyright &copy; 2019 SecIoT Contributors.
+			<a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">自由软件许可</a> , 
+			<a href="https://gitlab.com/wrlu/seciot-server">贡献源代码</a>
+		</span>
+	</div>
+</footer>
+
+
+<!-- 分析中的提示框 -->
 <div class="modal fade" id="loadingModel" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -109,8 +124,6 @@
         <button type="button" class="btn btn-primary" data-dismiss="modal">好的</button>
       </div>
     </div>
-  </div>
-</div>
   </div>
 </div>
 <script
