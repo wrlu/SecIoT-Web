@@ -1,16 +1,26 @@
 import socketserver
 import json
-import run_binwalk
-import run_jadx
-import run_frida
-import run_frps
-import fw_linux_shadow
-import fw_openssl_version
-import fw_dropbear_enable
-import fw_dropbear_auth_keys
-import android_exported
-import android_permission
-import android_ssl_pinning
+from run_tools import run_frps
+from run_tools import run_jadx
+from run_tools import run_frida
+from run_tools import run_binwalk
+from fw_third_library import fw_openssl_version
+from fw_third_library import fw_zlib_version
+from fw_third_library import fw_dropbear_version
+from fw_third_library import fw_busybox_version
+from fw_third_library import fw_openssh_version
+from fw_third_library import fw_iproute2_version
+from fw_third_library import fw_pcre_version
+from fw_third_library import fw_miniupnp_version
+from fw_third_library import fw_uclibc_version
+from fw_third_library import fw_openldap_version
+
+from fw_platform import fw_dropbear_enable
+from fw_platform import fw_linux_shadow
+from fw_platform import fw_dropbear_auth_keys
+from android_platform import android_permission
+from android_platform import android_ssl_pinning
+from android_platform import android_exported
 
 
 class FwService:
@@ -30,6 +40,24 @@ class FwService:
     def get_fw_third_library(base_dir, lib_name):
         if lib_name.lower() == "openssl":
             return fw_openssl_version.do(base_dir)
+        elif lib_name.lower() == "dropbear":
+            return fw_dropbear_version.do(base_dir)
+        elif lib_name.lower() == "openssh":
+            return fw_openssh_version.do(base_dir)
+        elif lib_name.lower() == "zlib":
+            return fw_zlib_version.do(base_dir)
+        elif lib_name.lower() == "iproute2":
+            return fw_iproute2_version.do(base_dir)
+        elif lib_name.lower() == "miniupnp":
+            return fw_miniupnp_version.do(base_dir)
+        elif lib_name.lower() == "pcre":
+            return fw_pcre_version.do(base_dir)
+        elif lib_name.lower() == "uclibc":
+            return fw_uclibc_version.do(base_dir)
+        elif lib_name.lower() == "busybox":
+            return fw_busybox_version.do(base_dir)
+        elif lib_name.lower() == "openldap":
+            return fw_openldap_version.do(base_dir)
 
     @staticmethod
     def dropbear_enable(base_dir):
@@ -65,7 +93,7 @@ class FridaService:
 
     @staticmethod
     def get_process_list(port):
-        return run_frida.get_process_list("127.0.0.1:"+str(port))
+        return run_frida.get_process_list("127.0.0.1:" + str(port))
 
 
 class FrpsService:

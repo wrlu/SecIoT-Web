@@ -90,7 +90,8 @@ if __name__ == '__main__':
     result = get_process_list('127.0.0.1:27042')
     for process in result['processes']:
         print(process)
-    hook_status = hook('127.0.0.1:27042', 'com.huawei.ipc', ['injection/monitoring_api.js', 'injection/monitoring_ip.js'])
+    hook_status = hook('127.0.0.1:27042', 'com.huawei.ipc',
+                       ['android_injection/monitoring_api.js', 'android_injection/monitoring_ip.js'])
     print(hook_status)
     while True:
         cmd_in = sys.stdin.readline().strip('\n')
