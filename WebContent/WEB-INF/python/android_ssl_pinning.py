@@ -7,13 +7,16 @@ risk_name = 'Android SSL弱校验风险'
 risk_description = 'App在进行SSL通信时，未对服务器证书进行校验，可导致中间人攻击并泄漏传输的敏感数据。'
 risk_level = 'High'
 risk_platform = 'Android'
+# public\s+void\s+checkServerTrusted\s*\(\s*X509Certificate\s*\[\]\s*[a-z,A-Z,_][a-z,A-Z,0-9,_]*\s*,\s*String\s+[a-z,A-Z,_][a-z,A-Z,0-9,_]*\s*\)\s*(throws\s*CertificateException)?\s*{\s*(return;)?\s*}
 search_regex_strs = {
     'checkServerTrusted': 'public\\s+void\\s+checkServerTrusted\\s*\\('
                           '\\s*X509Certificate\\s*\\[\\]\\s*[a-z,A-Z,_][a-z,A-Z,0-9,_]*\\s*,'
-                          '\\s*String\\s+[a-z,A-Z,_][a-z,A-Z,0-9,_]*\\s*\\)',
+                          '\\s*String\\s+[a-z,A-Z,_][a-z,A-Z,0-9,_]*\\s*\\)\\s*(throws\\s*CertificateException)?\\s*{'
+                          '\\s*(return;)?\\s*}',
     'checkClientTrusted': 'public\\s+void\\s+checkClientTrusted\\s*\\('
                           '\\s*X509Certificate\\s*\\[\\]\\s*[a-z,A-Z,_][a-z,A-Z,0-9,_]*\\s*,'
-                          '\\s*String\\s+[a-z,A-Z,_][a-z,A-Z,0-9,_]*\\s*\\)'
+                          '\\s*String\\s+[a-z,A-Z,_][a-z,A-Z,0-9,_]*\\s*\\)\\s*(throws\\s*CertificateException)?\\s*{'
+                          '\\s*(return;)?\\s*}'
 }
 
 
@@ -38,7 +41,7 @@ def list_all_classes(root_dir, dirname, suffix):
             if filename.endswith(suffix):
                 writeable_packagename = dirname.replace(root_dir, '').replace(path_fix, '.')
                 writeable_filename = filename[:-suffix_len]
-                classes.append(writeable_packagename + '.' + writeable_filename)
+                classes.append(writeable_packagename + writeable_filename)
     return classes
 
 
@@ -57,14 +60,14 @@ def do(sources_dir):
         'checkClientTrusted': []
     }
     for clazz in classes_list:
-        class_file = open(sources_dir + clazz.replace('.', path_fix) + '.java', 'rb')
-        class_file_data = class_file.read()
-        class_file_content = class_file_data.decode('utf8')
+        class_file = open(sources_dir + clazz.replace('.', path_fix) + '.java', 'r')
+        class_file_content = class_file.read()
         for key in search_regex_strs:
             regex = re.compile(search_regex_strs[key])
             found = regex.findall(class_file_content)
             if len(found) != 0:
                 risk_details[key].append(clazz)
+        class_file.close()
     risk_exists = False
     for key in risk_details:
         if len(risk_details[key]) != 0:

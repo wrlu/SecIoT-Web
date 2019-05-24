@@ -18,6 +18,7 @@ def do(base_dir):
         dropbear_auth_keys_file = open(base_dir + dropbear_auth_keys_file_name.replace('/', path_fix), 'r')
         dropbear_auth_keys_file_content = dropbear_auth_keys_file.read()
         dropbear_auth_keys_file_content_lines = dropbear_auth_keys_file_content.split('\n')
+        dropbear_auth_keys_file.close()
         risk_result = {
             'risk_exists': True,
             'risk_name': risk_name,

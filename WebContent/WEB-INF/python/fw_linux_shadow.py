@@ -22,6 +22,7 @@ def do(base_dir):
         passwd_file = open(base_dir + passwd_file_name.replace('/', path_fix), 'r')
         passwd_file_content = passwd_file.read()
         passwd_file_content_lines = passwd_file_content.split('\n')
+        passwd_file.close()
         user_can_login = []
         for line in passwd_file_content_lines:
             for shell in can_login_shell:
@@ -32,7 +33,6 @@ def do(base_dir):
         shadow_file = open(base_dir + shadow_file_name.replace('/', path_fix), 'r')
         shadow_file_content = shadow_file.read()
         shadow_file_content_lines = shadow_file_content.split('\n')
-        passwd_file.close()
         shadow_file.close()
         user_has_no_passwd = []
         user_has_passwd = []

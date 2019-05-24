@@ -24,9 +24,4 @@ public class CVEServiceImpl implements CVEService {
 		return dao.getCVEByNum(cvenumber);
 	}
 
-	@Override
-	public List<CVEDao> getCVEByCategory(String category) {
-		return dao.getCVEByCategory(category);
-	}
-
 }

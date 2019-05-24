@@ -10,7 +10,7 @@ libcrypto_so_names = [
     '/usr/local/lib/libcrypto.so.1.0.0',
     '/usr/local/ssl/lib/libcrypto.so.1.0.0',
 ]
-openssl_version_search_regex = b'OpenSSL [0-1].[0-9]*.[0-9]*.[a-z]?'
+openssl_version_search_regex = b'OpenSSL [0-1].[0-9]*.[0-9]*[a-z]?'
 
 
 def do(base_dir):
@@ -30,6 +30,7 @@ def do(base_dir):
         return result
     libcrypto_so = open(base_dir + libcrypto_so_path.replace('/', path_fix), 'rb')
     libcrypto_so_binary = libcrypto_so.read()
+    libcrypto_so.close()
     regex = re.compile(openssl_version_search_regex)
     openssl_version = regex.findall(libcrypto_so_binary)
     result['lib_name'] = 'OpenSSL'

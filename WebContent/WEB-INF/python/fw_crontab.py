@@ -27,6 +27,7 @@ def do(base_dir):
             risk_details[crontab_file_name] = []
             for line in crontab_file_content_lines:
                 risk_details[crontab_file_name].append(line)
+            crontab_file.close()
         if risk_details != {}:
             risk_exists = True
         risk_result = {

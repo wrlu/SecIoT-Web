@@ -114,53 +114,60 @@ class PySocketServerHandler(socketserver.BaseRequestHandler):
     @staticmethod
     def do_action(classname, method, params):
         result = {}
-        if classname == 'FwService':
-            if method == 'get_fw_info':
-                result = FwService.get_fw_info(params['file_name'], params['file_path'])
-            elif method == 'get_fw_root_directory':
-                result = FwService.get_fw_root_directory(params['fw_info'])
-            elif method == 'get_fw_third_library':
-                result = FwService.get_fw_third_library(params['fw_info']['fw_root_directory'], params['lib_name'])
-            elif method == 'linux_shadow':
-                result = FwService.linux_shadow(params['fw_info']['fw_root_directory'])
-            elif method == 'dropbear_enable':
-                result = FwService.dropbear_enable(params['fw_info']['fw_root_directory'])
-            elif method == 'dropbear_auth_keys':
-                result = FwService.dropbear_auth_keys(params['fw_info']['fw_root_directory'])
+        try:
+            if classname == 'FwService':
+                if method == 'get_fw_info':
+                    result = FwService.get_fw_info(params['file_name'], params['file_path'])
+                elif method == 'get_fw_root_directory':
+                    result = FwService.get_fw_root_directory(params['fw_info'])
+                elif method == 'get_fw_third_library':
+                    result = FwService.get_fw_third_library(params['fw_info']['fw_root_directory'], params['lib_name'])
+                elif method == 'linux_shadow':
+                    result = FwService.linux_shadow(params['fw_info']['fw_root_directory'])
+                elif method == 'dropbear_enable':
+                    result = FwService.dropbear_enable(params['fw_info']['fw_root_directory'])
+                elif method == 'dropbear_auth_keys':
+                    result = FwService.dropbear_auth_keys(params['fw_info']['fw_root_directory'])
 
-        elif classname == 'AndroidService':
-            if method == 'get_apk_info':
-                result = AndroidService.get_apk_info(params['file_name'], params['file_path'])
-            elif method == 'permission':
-                result = AndroidService.permission(params['apk_info']['apk_manifest_file'])
-            elif method == 'exported':
-                result = AndroidService.exported(params['apk_info']['apk_manifest_file'])
-            elif method == 'ssl_pinning':
-                result = AndroidService.ssl_pinning(params['apk_info']['apk_sources_path'])
+            elif classname == 'AndroidService':
+                if method == 'get_apk_info':
+                    result = AndroidService.get_apk_info(params['file_name'], params['file_path'])
+                elif method == 'permission':
+                    result = AndroidService.permission(params['apk_info']['apk_manifest_file'])
+                elif method == 'exported':
+                    result = AndroidService.exported(params['apk_info']['apk_manifest_file'])
+                elif method == 'ssl_pinning':
+                    result = AndroidService.ssl_pinning(params['apk_info']['apk_sources_path'])
 
-        elif classname == 'FridaService':
-            if method == 'get_frida_version':
-                result = FridaService.get_frida_version()
-            elif method == 'get_process_list':
-                result = FridaService.get_process_list(params['port'])
+            elif classname == 'FridaService':
+                if method == 'get_frida_version':
+                    result = FridaService.get_frida_version()
+                elif method == 'get_process_list':
+                    result = FridaService.get_process_list(params['port'])
 
-        elif classname == 'FrpsService':
-            if method == 'get_frps_version':
-                result = FrpsService.get_frps_version(params['frps_path'])
+            elif classname == 'FrpsService':
+                if method == 'get_frps_version':
+                    result = FrpsService.get_frps_version(params['frps_path'])
 
-        elif classname == 'AppleiOSService':
-            pass
+            elif classname == 'AppleiOSService':
+                pass
 
-        if len(result) != 0:
-            ret = {
-                'status': 0,
-                'reason': 'OK',
-                'data': result
-            }
-        else:
+            if len(result) != 0:
+                ret = {
+                    'status': 0,
+                    'reason': 'OK',
+                    'data': result
+                }
+            else:
+                ret = {
+                    'status': -1,
+                    'reason': 'No such python method or python error'
+                }
+        except Exception as e:
+            print(e)
             ret = {
                 'status': -1,
-                'reason': 'No such python method or python error'
+                'reason': 'Python error'
             }
         return ret
 

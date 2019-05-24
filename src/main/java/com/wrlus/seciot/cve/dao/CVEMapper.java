@@ -17,7 +17,4 @@ public interface CVEMapper {
 	@Select("select * from cve where cve_num = #{cve_num};")
 	public List<CVEDao> getCVEByNum(@Param("cve_num") String cvenumber);
 	
-	@Select("select * from cve where cve_num in (select cve_num from cve_category where category = #{category});")
-	public List<CVEDao> getCVEByCategory(@Param("category") String category);
-	
 }
