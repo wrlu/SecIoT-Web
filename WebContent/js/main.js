@@ -230,9 +230,7 @@ function onIpaAnalysis() {
 }
 
 function onRefreshDeviceList() {
-	$.post("/SecIoT/device/getOnlineDevice", {
-		
-	}, function(result) {
+	$.post("/SecIoT/device/getOnlineDevice", {}, function(result) {
 		if(result.status == 0) {
 			var devices = "";
 			for (var i = 0, len = result.devices.length; i < len; ++i) {
@@ -251,6 +249,15 @@ function onRefreshDeviceList() {
 				devices += "</tr>";
 			}
 			$("#deviceBody").html(devices);
+			if (result.devices.length == 0) {
+				$("#resultModalBody").html("未发现在线的测试设备，请您检查测试设备状态。<br/><br/>" +
+						"1. 是否已在测试设备上安装SecIoT Agent应用？<br/>" +
+						"2. SecIoT Agent模块是否已经安装（需要取得测试设备的root权限）？<br/>" +
+						"3. SecIoT Agent模块是否已经开启？（需要取得测试设备的root权限）<br/>" +
+						"4. 检查测试设备的网络连接是否正常？<br/>" +
+						"5. 检查frps控制台是否存在测试设备连接？");
+	     		$("#resultModal").modal("show");
+			}
 		} else {
 			$("#resultModalBody").html(result.reason);
      		$("#resultModal").modal("show");

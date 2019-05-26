@@ -28,22 +28,48 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h4>分析结果</h4>
       </div>
-      <div class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>风险名称</th>
-              <th>风险类型</th>
-              <th>风险级别</th>
-              <th>风险描述</th>
-              <th>风险位置</th>
-              <th>附加信息</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
+      <div class="my-3 p-3 bg-white rounded shadow-sm">
+    	<h6 class="border-bottom border-gray pb-2 mb-0">动态检测日志</h6>
+    	<div class="media text-muted pt-3">
+      		<p id="apk_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        		<strong class="d-block text-gray-dark">敏感API调用检测日志</strong>
+        		等待分析
+      		</p>
+    	</div>
+    	<div class="media text-muted pt-3">
+      		<p id="apk_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        		<strong class="d-block text-gray-dark">网络通信目的地址检测日志</strong>
+        		等待分析
+      		</p>
+    	</div>
+    	<div class="media text-muted pt-3">
+      		<p id="apk_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        		<strong class="d-block text-gray-dark">数据传输安全检测日志</strong>
+        		等待分析
+      		</p>
+    	</div>
+    	<div class="media text-muted pt-3">
+      		<p id="apk_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        		<strong class="d-block text-gray-dark">文件读写检测日志</strong>
+        		等待分析
+      		</p>
+    	</div>
+    	<div class="media text-muted pt-3">
+      		<p id="apk_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        		<strong class="d-block text-gray-dark">数据库操作检测日志</strong>
+        		等待分析
+      		</p>
+    	</div>
+    </div>
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+    	<h6 class="border-bottom border-gray pb-2 mb-0">自定义动态检测日志</h6>
+    	<div class="media text-muted pt-3">
+      		<p id="apk_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        		<strong class="d-block text-gray-dark">自定义JavaScript脚本输出</strong>
+        		等待分析
+      		</p>
+    	</div>
+    </div>
 
 <div class="modal fade" id="showDeviceInfo" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
