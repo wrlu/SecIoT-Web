@@ -1,17 +1,11 @@
 import platform
 
 
-risk_name = 'iOS应用权限风险'
-risk_description = ''
-risk_level = 'High'
-risk_platform = 'iOS'
-
-
 def do(info_plist_file):
     pass
 
 
 if __name__ == '__main__':
-    info_plist_file = ''
+    info_plist_file = '/mnt/data/Analysis/com.huawei.ipchuawei.ipa.out/Payload/HuaweiVideo.app/Info.plist'
     result = do(info_plist_file)
     print(result)

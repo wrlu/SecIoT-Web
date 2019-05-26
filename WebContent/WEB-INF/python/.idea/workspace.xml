@@ -2,36 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbd97ff7-e094-4529-b3d7-8f8e2a709367" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/fw_third_library/fw_busybox_version.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fw_third_library/fw_dropbear_version.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fw_third_library/fw_iproute2_version.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fw_third_library/fw_miniupnp_version.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fw_third_library/fw_openldap_version.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fw_third_library/fw_openssh_version.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fw_third_library/fw_pcre_version.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fw_third_library/fw_uclibc_version.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fw_third_library/fw_zlib_version.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run_tools/run_unzip_ipa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_exported.py" beforeDir="false" afterPath="$PROJECT_DIR$/android_platform/android_exported.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/android_platform/android_permission.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_ssl_pinning.py" beforeDir="false" afterPath="$PROJECT_DIR$/android_platform/android_ssl_pinning.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fw_crontab.py" beforeDir="false" afterPath="$PROJECT_DIR$/fw_platform/fw_crontab.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fw_dropbear_auth_keys.py" beforeDir="false" afterPath="$PROJECT_DIR$/fw_platform/fw_dropbear_auth_keys.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fw_dropbear_enable.py" beforeDir="false" afterPath="$PROJECT_DIR$/fw_platform/fw_dropbear_enable.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fw_linux_shadow.py" beforeDir="false" afterPath="$PROJECT_DIR$/fw_platform/fw_linux_shadow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fw_openssl_version.py" beforeDir="false" afterPath="$PROJECT_DIR$/fw_third_library/fw_openssl_version.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/injection/monitoring_api.js" beforeDir="false" afterPath="$PROJECT_DIR$/android_injection/monitoring_api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/injection/monitoring_dbio.js" beforeDir="false" afterPath="$PROJECT_DIR$/android_injection/monitoring_dbio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/injection/monitoring_fileio.js" beforeDir="false" afterPath="$PROJECT_DIR$/android_injection/monitoring_fileio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/injection/monitoring_ip.js" beforeDir="false" afterPath="$PROJECT_DIR$/android_injection/monitoring_ip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/injection/monitoring_traffic.js" beforeDir="false" afterPath="$PROJECT_DIR$/android_injection/monitoring_traffic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios_ats_policy.py" beforeDir="false" afterPath="$PROJECT_DIR$/ios_platform/ios_ats_policy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_binwalk.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tools/run_binwalk.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_frida.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tools/run_frida.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_frps.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tools/run_frps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_jadx.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tools/run_jadx.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_nmap.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tools/run_nmap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/socket_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/socket_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios_platform/ios_ats_policy.py" beforeDir="false" afterPath="$PROJECT_DIR$/ios_platform/ios_permission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_tools/run_jadx.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tools/run_jadx.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +21,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/socket_server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1377">
+            <state relative-caret-position="3969">
               <caret line="169" column="42" selection-start-line="169" selection-start-column="42" selection-end-line="169" selection-end-column="42" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -56,13 +30,58 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_tools/run_binwalk.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+            <state relative-caret-position="351">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run_tools/run_unzip_ipa.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ios_platform/ios_permission.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/android_platform/android_ssl_pinning.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run_tools/run_jadx.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -156,14 +175,18 @@
         <option value="$PROJECT_DIR$/fw_third_library/fw_miniupnp_version.py" />
         <option value="$PROJECT_DIR$/fw_third_library/fw_openldap_version.py" />
         <option value="$PROJECT_DIR$/socket_server.py" />
+        <option value="$PROJECT_DIR$/run_tools/run_jadx.py" />
+        <option value="$PROJECT_DIR$/run_tools/run_unzip.py" />
+        <option value="$PROJECT_DIR$/run_tools/run_unzip_ipa.py" />
+        <option value="$PROJECT_DIR$/ios_platform/ios_permission.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="60" />
     <option name="y" value="32" />
-    <option name="width" value="1182" />
-    <option name="height" value="757" />
+    <option name="width" value="1184" />
+    <option name="height" value="770" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -219,7 +242,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/fw_third_library/fw_openldap_version.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ios_platform/ios_permission.py" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
@@ -243,7 +266,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.socket_server">
+  <component name="RunManager" selected="Python.ios_permission">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -643,6 +666,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="ios_permission" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ios_platform" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ios_platform/ios_permission.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="run_binwalk" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -748,6 +792,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="run_unzip_ipa" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run_tools" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_tools/run_unzip_ipa.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="socket_server" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -810,6 +875,8 @@
       <item itemvalue="Python.fw_openldap_version" />
       <item itemvalue="Python.run_binwalk" />
       <item itemvalue="Python.run_jadx" />
+      <item itemvalue="Python.run_unzip_ipa" />
+      <item itemvalue="Python.ios_permission" />
       <item itemvalue="Python.agent_server" />
       <item itemvalue="Python.run_frida" />
       <item itemvalue="Python.run_nmap" />
@@ -832,10 +899,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="32" width="1920" height="1012" extended-state="6" />
+    <frame x="-6" y="32" width="1932" height="1018" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49888143" visible="true" weight="0.14331041" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49888143" visible="true" weight="0.14331041" />
       <window_info id="Structure" order="1" sideWeight="0.50111854" side_tool="true" weight="0.14406332" />
       <window_info id="Favorites" order="2" show_stripe_button="false" sideWeight="0.50111854" side_tool="true" weight="0.14406332" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -917,16 +984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_tools/run_jadx.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/android_platform/android_exported.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -965,13 +1022,6 @@
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ios_platform/ios_ats_policy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1049,16 +1099,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/android_platform/android_ssl_pinning.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1863">
-          <caret line="69" column="26" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fw_third_library/fw_pcre_version.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="837">
@@ -1111,7 +1151,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/socket_server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
+        <state relative-caret-position="3969">
           <caret line="169" column="42" selection-start-line="169" selection-start-column="42" selection-end-line="169" selection-end-column="42" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
@@ -1141,11 +1181,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/run_tools/run_binwalk.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+        <state relative-caret-position="351">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_tools/run_jadx.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android_platform/android_ssl_pinning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_tools/run_unzip_ipa.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ios_platform/ios_permission.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
