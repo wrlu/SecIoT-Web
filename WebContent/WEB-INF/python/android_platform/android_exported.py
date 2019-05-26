@@ -63,7 +63,6 @@ def do(manifest_file):
         'risk_platform': risk_platform,
         'risk_details': risk_details
     }
-
     return risk_result
 
 
