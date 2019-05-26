@@ -4,6 +4,7 @@ from run_tools import run_frps
 from run_tools import run_jadx
 from run_tools import run_frida
 from run_tools import run_binwalk
+from run_tools import run_unzip_ipa
 from fw_third_library import fw_openssl_version
 from fw_third_library import fw_zlib_version
 from fw_third_library import fw_dropbear_version
@@ -14,13 +15,15 @@ from fw_third_library import fw_pcre_version
 from fw_third_library import fw_miniupnp_version
 from fw_third_library import fw_uclibc_version
 from fw_third_library import fw_openldap_version
-
 from fw_platform import fw_dropbear_enable
 from fw_platform import fw_linux_shadow
 from fw_platform import fw_dropbear_auth_keys
 from android_platform import android_permission
 from android_platform import android_ssl_pinning
 from android_platform import android_exported
+from ios_platform import ios_ats_policy
+from ios_platform import ios_background_usage
+from ios_platform import ios_permission
 
 
 class FwService:
@@ -105,15 +108,19 @@ class FrpsService:
 class AppleiOSService:
     @staticmethod
     def get_ipa_info(file_name, file_path):
-        pass
+        return run_unzip_ipa.get_ipa_info(file_name, file_path)
 
     @staticmethod
     def ats_policy(info_plist_file):
-        pass
+        return ios_ats_policy.do(info_plist_file)
+
+    @staticmethod
+    def background(info_plist_file):
+        return ios_background_usage.do(info_plist_file)
 
     @staticmethod
     def permission(info_plist_file):
-        pass
+        return ios_permission.do(info_plist_file)
 
 
 class PySocketServerHandler(socketserver.BaseRequestHandler):
@@ -178,7 +185,14 @@ class PySocketServerHandler(socketserver.BaseRequestHandler):
                     result = FrpsService.get_frps_version(params['frps_path'])
 
             elif classname == 'AppleiOSService':
-                pass
+                if method == 'get_ipa_info':
+                    result = AppleiOSService.get_ipa_info(params['file_name'], params['file_path'])
+                elif method == 'permission':
+                    result = AppleiOSService.permission(params['ipa_info']['ipa_info_plist_file'])
+                elif method == 'background':
+                    result = AppleiOSService.background(params['ipa_info']['ipa_info_plist_file'])
+                elif method == 'ats_policy':
+                    result = AppleiOSService.ats_policy(params['ipa_info']['ipa_info_plist_file'])
 
             if len(result) != 0:
                 ret = {

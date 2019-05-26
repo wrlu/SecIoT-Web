@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2019-05-24 14:26:29
+-- 生成日期： 2019-05-26 12:36:04
 -- 服务器版本： 10.2.22-MariaDB
 -- PHP 版本： 7.2.5
 
@@ -2835,10 +2835,12 @@ CREATE TABLE `platform_risk` (
 
 INSERT INTO `platform_risk` (`id`, `name`, `description`, `level`, `platform`, `payload`) VALUES
 ('0c89a975-60dd-11e9-95d2-eb78988f066e', 'Android SSL弱校验风险', 'App在进行SSL通信时，未对服务器证书进行校验，可导致中间人攻击并泄漏传输的敏感数据。', 'High', 'Android', 'AndroidService.ssl_pinning'),
+('3d64a102-7fb1-11e9-90ff-dd3c92270fd6', 'iOS后台使用', 'iOS允许应用程序在后台使用GPS定位，持续跟踪位置并使应用即使在锁屏后依旧可以在后台运行。', 'Low', 'iOS', 'AppleiOSService.background'),
 ('48c0099d-60dd-11e9-95d2-eb78988f066e', 'Linux用户帐户风险', '固件中存在可登录的Linux用户，可能导致攻击者从本地接口或远程方式取得系统权限。', 'Low', 'Linux', 'FwService.linux_shadow'),
 ('818ea14d-6abe-11e9-94a1-e86957795647', 'Dropbear开启风险', 'Dropbear是一款实现SSH远程登录的实用工具，开启Dropbear将允许攻击者有机会从远程登录设备。', 'High', 'Linux', 'FwService.dropbear_enable'),
 ('a4d03d9c-6abe-11e9-94a1-e86957795647', 'Dropbear配置公钥风险', 'Dropbear是一款实现SSH远程登录的实用工具，配置了公钥表明设备生产商可能通过他们自己的私钥远程接入设备。', 'Medium', 'Linux', 'FwService.dropbear_auth_keys'),
-('f647b3ba-60dc-11e9-95d2-eb78988f066e', 'Android组件暴露风险', 'App在AndroidManifest.xml中没有正确设置四大组件的权限，暴露不必要的组件可能导致隐私信息泄漏给第三方App。', 'Medium', 'Android', 'AndroidService.exported');
+('f647b3ba-60dc-11e9-95d2-eb78988f066e', 'Android组件暴露风险', 'App在AndroidManifest.xml中没有正确设置四大组件的权限，暴露不必要的组件可能导致隐私信息泄漏给第三方App。', 'Medium', 'Android', 'AndroidService.exported'),
+('fef2a768-7fb0-11e9-90ff-dd3c92270fd6', 'iOS应用传输安全风险', 'iOS App Transport Security要求iOS应用必须使用安全的HTTPS协议，如果配置禁用则允许明文传输，可能导致信息泄露。', 'Medium', 'iOS', 'AppleiOSService.ats_policy');
 
 -- --------------------------------------------------------
 
@@ -2857,10 +2859,12 @@ CREATE TABLE `platform_risk_category` (
 
 INSERT INTO `platform_risk_category` (`id`, `category`) VALUES
 ('0c89a975-60dd-11e9-95d2-eb78988f066e', 'Android'),
+('3d64a102-7fb1-11e9-90ff-dd3c92270fd6', 'iOS'),
 ('48c0099d-60dd-11e9-95d2-eb78988f066e', 'Firmware'),
 ('818ea14d-6abe-11e9-94a1-e86957795647', 'Firmware'),
 ('a4d03d9c-6abe-11e9-94a1-e86957795647', 'Firmware'),
-('f647b3ba-60dc-11e9-95d2-eb78988f066e', 'Android');
+('f647b3ba-60dc-11e9-95d2-eb78988f066e', 'Android'),
+('fef2a768-7fb0-11e9-90ff-dd3c92270fd6', 'iOS');
 
 -- --------------------------------------------------------
 

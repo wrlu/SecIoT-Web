@@ -5,7 +5,6 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ApkInfo {
-	
 	@JsonProperty("apk_name")
 	private String name;
 	@JsonProperty("apk_size")
