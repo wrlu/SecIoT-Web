@@ -35,7 +35,7 @@ def do(base_dir):
     openssh_version = regex.findall(openssh_exec_binary)
     if len(openssh_version) != 0:
         result = {
-            'lib_name': 'Dropbear',
+            'lib_name': 'OpenSSH',
             'lib_avaliable': True,
             'lib_path': openssh_path,
             'lib_version': openssh_version[0].decode('utf8').replace('OpenSSH_', '')
@@ -49,7 +49,7 @@ def do(base_dir):
             }
         else:
             result = {
-                'lib_name': 'Dropbear',
+                'lib_name': 'OpenSSH',
                 'lib_avaliable': True,
                 'lib_path': openssh_path,
                 'lib_version': 'Unknown'
