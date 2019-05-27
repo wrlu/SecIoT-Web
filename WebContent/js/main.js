@@ -264,7 +264,7 @@ function onRefreshDeviceList() {
 		}
 	});
 }
-//configureDetection
+
 function getProcessList(port) {
 	$.get("/SecIoT/android/getProcessList", {
 		port: port

@@ -80,7 +80,9 @@ def get_frida_version():
 
 def on_message(message, data):
     if message['type'] == 'send':
-        print("[*] {0}".format(message['payload']))
+        print(message['payload'])
+    elif message['type'] == 'error':
+        print(message['description'])
     else:
         print(message)
 
@@ -90,7 +92,7 @@ if __name__ == '__main__':
     result = get_process_list('127.0.0.1:27042')
     for process in result['processes']:
         print(process)
-    hook_status = hook('127.0.0.1:27042', 'com.huawei.ipc',
+    hook_status = hook('127.0.0.1:27042', 'com.wrlus.qprivacy',
                        ['android_injection/monitoring_api.js', 'android_injection/monitoring_ip.js'])
     print(hook_status)
     while True:
