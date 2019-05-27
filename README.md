@@ -7,14 +7,14 @@
 - 分析Squashfs和JFFS2文件系统的固件
 - 分析固件中第三方库的版本以及此版本存在的CVE漏洞，目前支持以下第三方库的检测：
     - OpenSSL
-    - gzlib（即将添加）
-    - busybox（即将添加）
-    - miniUPnP（即将添加）
-    - uclibc（即将添加）
-    - OpenSSH（即将添加）
-    - Dropbear（即将添加）
-    - pcre（即将添加）
-    - OpenLDAP（即将添加）
+    - gzlib
+    - busybox
+    - miniUPnP
+    - uclibc
+    - OpenSSH
+    - Dropbear
+    - pcre
+    - OpenLDAP
 - 分析固件中存在的平台配置风险，目前支持的功能：
     - 分析Linux固件中的用户情况
     - 分析Linux系统是否可通过Dropbear进行SSH远程登录
