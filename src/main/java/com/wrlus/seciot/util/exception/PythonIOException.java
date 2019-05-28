@@ -28,6 +28,6 @@ public class PythonIOException extends PythonException {
 
 	@Override
 	public String getPythonError() {
-		return null;
+		return getLocalizedMessage();
 	}
 }

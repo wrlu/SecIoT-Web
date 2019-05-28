@@ -11,7 +11,8 @@ public enum ReasonEnum {
 	PORT_RUN_OUT("已达到最大客户端连接数"),
 	CLIENT_ALREADY_EXISTS("客户端已注册过映射端口"),
 	NO_SUCH_CLINET("没有那个客户端"),
-	INVALID_PARAM("参数错误");
+	INVALID_PARAM("参数错误"),
+	FRIDA_ERROR("远程调试服务器报告了一个错误");
 	
 	private String reason;
 	

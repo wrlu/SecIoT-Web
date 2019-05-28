@@ -23,7 +23,7 @@ public class PythonRuntimeException extends PythonException {
 
 	@Override
 	public String getPythonError() {
-		return null;
+		return getLocalizedMessage();
 	}
 	
 	@Override

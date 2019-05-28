@@ -1,15 +1,14 @@
 import platform
 import os
 
-risk_name = 'crontab计划任务'
-risk_description = ''
+risk_name = 'Crontab计划任务'
+risk_description = 'Crontab是Linux中的计划任务程序，在Crontab中设置的不恰当的项目可能意味着系统存在后门。'
 risk_level = 'Low'
 risk_platform = 'Linux'
 crontab_folder_name = '/etc/crontabs/'
 
 
 def do(base_dir):
-    globals()
     if platform.system() == 'Windows':
         path_fix = '\\'
     else:

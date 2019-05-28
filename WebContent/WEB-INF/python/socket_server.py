@@ -18,6 +18,7 @@ from fw_third_library import fw_openldap_version
 from fw_platform import fw_dropbear_enable
 from fw_platform import fw_linux_shadow
 from fw_platform import fw_dropbear_auth_keys
+from fw_platform import fw_crontab
 from android_platform import android_permission
 from android_platform import android_ssl_pinning
 from android_platform import android_exported
@@ -69,6 +70,10 @@ class FwService:
     @staticmethod
     def dropbear_auth_keys(base_dir):
         return fw_dropbear_auth_keys.do(base_dir)
+
+    @staticmethod
+    def crontab(base_dir):
+        return fw_crontab.do(base_dir)
 
 
 class AndroidService:
@@ -163,6 +168,8 @@ class PySocketServerHandler(socketserver.BaseRequestHandler):
                     result = FwService.dropbear_enable(params['fw_info']['fw_root_directory'])
                 elif method == 'dropbear_auth_keys':
                     result = FwService.dropbear_auth_keys(params['fw_info']['fw_root_directory'])
+                elif method == 'crontab':
+                    result = FwService.crontab(params['fw_info']['fw_root_directory'])
 
             elif classname == 'AndroidService':
                 if method == 'get_apk_info':

@@ -20,6 +20,7 @@ import com.wrlus.seciot.platform.model.PlatformRiskResult;
 import com.wrlus.seciot.pysocket.PyClient;
 import com.wrlus.seciot.pysocket.model.PySocketRequest;
 import com.wrlus.seciot.pysocket.model.PySocketResponse;
+import com.wrlus.seciot.util.exception.FridaException;
 import com.wrlus.seciot.util.exception.PythonException;
 import com.wrlus.seciot.util.exception.PythonIOException;
 import com.wrlus.seciot.util.exception.PythonRuntimeException;
@@ -139,11 +140,18 @@ public class AndroidServiceImpl implements AndroidService {
 			throw new PythonIOException("An error occured when parsing response from python server.", e);
 		}
 		if (result.getStatus() == 0) {
+			String hookStatus;
+			String[] processes;
 			try {
-				String[] processes = mapper.readValue(mapper.writeValueAsString(result.getData().get("processes")), String[].class);
-				return processes;
-			} catch (Exception e) {
+				hookStatus = mapper.readValue(mapper.writeValueAsString(result.getData().get("hook_status")), String.class);
+				processes = mapper.readValue(mapper.writeValueAsString(result.getData().get("processes")), String[].class);
+			} catch (IOException e) {
 				throw new PythonIOException("An error occured when parsing response from python server.", e);
+			}
+			if (hookStatus.equals("success")) {
+				return processes;
+			} else {
+				throw new FridaException(hookStatus);
 			}
 		} else {
 			throw new PythonRuntimeException();

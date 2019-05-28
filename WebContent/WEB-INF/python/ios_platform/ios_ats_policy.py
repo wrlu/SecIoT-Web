@@ -64,7 +64,6 @@ def do(info_plist_file):
                                                     exception_domains.append(exception_domain)
                                                 index3 = index3 + 1
                             index2 = index2 + 1
-
         index = index + 1
     if len(exception_domains) != 0:
         has_exception_domains = True

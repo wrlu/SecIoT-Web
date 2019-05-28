@@ -63,12 +63,14 @@ def get_process_list(host):
             remote_processes.append(process_obj.name)
         manager.remove_remote_device(host)
         return {
+            'hook_status': 'success',
             'processes': remote_processes
         }
     except frida.ServerNotRunningError as e:
         print(e)
         return {
-            'hook_status': 'unable to connect to remote frida-server'
+            'hook_status': 'unable to connect to remote frida-server',
+            'processes': []
         }
 
 
@@ -92,8 +94,12 @@ if __name__ == '__main__':
     result = get_process_list('127.0.0.1:27042')
     for process in result['processes']:
         print(process)
-    hook_status = hook('127.0.0.1:27042', 'com.wrlus.qprivacy',
-                       ['android_injection/monitoring_api.js', 'android_injection/monitoring_ip.js'])
+    hook_status = hook('127.0.0.1:27042', 'com.huawei.ipc_honor',
+                       ['android_injection/monitoring_api.js',
+                        'android_injection/monitoring_ip.js',
+                        'android_injection/monitoring_traffic.js',
+                        'android_injection/monitoring_fileio.js',
+                        'android_injection/monitoring_dbio.js'])
     print(hook_status)
     while True:
         cmd_in = sys.stdin.readline().strip('\n')
