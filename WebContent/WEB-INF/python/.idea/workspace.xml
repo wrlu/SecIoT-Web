@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bbd97ff7-e094-4529-b3d7-8f8e2a709367" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/android_injection/hook_log/hook_log.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_injection/monitoring_dbio.js" beforeDir="false" afterPath="$PROJECT_DIR$/android_injection/monitoring_dbio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_injection/monitoring_fileio.js" beforeDir="false" afterPath="$PROJECT_DIR$/android_injection/monitoring_fileio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_injection/monitoring_ip.js" beforeDir="false" afterPath="$PROJECT_DIR$/android_injection/monitoring_ip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_injection/monitoring_traffic.js" beforeDir="false" afterPath="$PROJECT_DIR$/android_injection/monitoring_traffic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fw_platform/fw_crontab.py" beforeDir="false" afterPath="$PROJECT_DIR$/fw_platform/fw_crontab.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios_platform/ios_ats_policy.py" beforeDir="false" afterPath="$PROJECT_DIR$/ios_platform/ios_ats_policy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_tools/run_frida.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tools/run_frida.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/socket_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/socket_server.py" afterDir="false" />
-    </list>
+    <list default="true" id="bbd97ff7-e094-4529-b3d7-8f8e2a709367" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/run_tools/run_frida.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="72" column="27" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
+            <state relative-caret-position="284">
+              <caret line="69" column="16" lean-forward="true" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -950,7 +939,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="32" width="1932" height="1018" extended-state="6" />
+    <frame x="-6" y="32" width="1932" height="1018" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49888143" visible="true" weight="0.14331041" />
@@ -961,11 +950,11 @@
       <window_info anchor="bottom" id="Debug" order="2" weight="0.525" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="Run" order="5" sideWeight="0.4994726" visible="true" weight="0.29431817" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49920678" visible="true" weight="0.29431817" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32867134" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50052744" side_tool="true" weight="0.3329609" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="9" sideWeight="0.5007932" side_tool="true" visible="true" weight="0.29431817" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32849163" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1297,8 +1286,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/run_tools/run_frida.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="72" column="27" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
+        <state relative-caret-position="284">
+          <caret line="69" column="16" lean-forward="true" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
