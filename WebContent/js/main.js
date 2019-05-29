@@ -1,3 +1,5 @@
+var isMonitoring = false;
+
 $(function(){
 	var args = getArgs();
 	var mainPage = "/SecIoT/?page=main";
@@ -236,15 +238,19 @@ function onRefreshDeviceList() {
 			for (var i = 0, len = result.devices.length; i < len; ++i) {
 				devices += "<tr>";
 				devices += "<td>"+(i+1)+"</td>";
-				devices += "<td>"+result.devices[i].clientid+"</td>";
 				devices += "<td>"+result.devices[i].devicename+"</td>";
 				devices += "<td>Android "+result.devices[i].version+" ( API "+result.devices[i].apilevel+" )</td>";
 				devices += "<td>"+result.devices[i].agentver+"</td>";
 				devices += "<td>"+result.devices[i].port+"</td>";
-				devices += "<td>";
-				devices += '<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#showDeviceInfo" title="查看远程设备的基本信息">查看</button>';
-				devices += '<button class="btn btn-sm btn-success" onclick="getProcessList('+result.devices[i].port+')" title="检测远程设备上的特定应用的安全风险">检测</button>';
-				devices += '<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#customInjectionWarning" title="向远程设备上的特定应用注入代码(高级功能)">注入</button>';
+				devices += '<td id="'+result.devices[i].port+'control">';
+				if (result.devices[i].busy == 0) {
+					devices += '<button class="btn btn-sm btn-info" onclick="onShowDevices(\''+result.devices[i].clientid+'\')" title="查看远程设备的基本信息">查看</button>';
+					devices += '<button class="btn btn-sm btn-success" onclick="getProcessList(\''+result.devices[i].clientid+'\', '+result.devices[i].port+')" title="检测远程设备上的特定应用的安全风险">检测</button>';
+					devices += '<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#customInjectionWarning" title="向远程设备上的特定应用注入代码(高级功能)">注入</button>';
+				} else if (result.devices[i].busy == 1) {
+					devices += '<button class="btn btn-sm btn-info" onclick="onShowDevices(\''+result.devices[i].clientid+'\')" title="查看远程设备的基本信息">查看</button>';
+					devices += '<button class="btn btn-sm btn-danger" onclick="stopMonitoring(\''+result.devices[i].clientid+'\', '+result.devices[i].port+')" title="停止远程设备上的检测任务">中止</button>';
+				}
 				devices += "</td>";
 				devices += "</tr>";
 			}
@@ -265,22 +271,105 @@ function onRefreshDeviceList() {
 	});
 }
 
-function getProcessList(port) {
+function onShowDevices(client_id) {
+	$("#deviceModelBody").html("客户端ID："+client_id);
+	$("#deviceModel").modal("show");
+}
+
+function getProcessList(client_id, port) {
 	$.get("/SecIoT/android/getProcessList", {
 		port: port
 	}, function(result) {
 		if(result.status == 0) {
-			var processes = "";
+			var processes = '';
 			for (var i = 0, len = result.processes.length; i < len; ++i) {
-				processes += "<option>";
+				processes += '<option value="'+result.processes[i]+'">';
 				processes += result.processes[i];
-				processes += "</option>";
+				processes += '</option>';
 			}
+			$("#deviceClientId").val(client_id);
+			$("#devicePort").val(port);
 			$("#processSelect").html(processes);
 			$("#configureDetection").modal("show");
 		} else {
-			$("#resultModalBody").html(result.reason);
+			$("#resultModalBody").html(result.reason + "<br/><br/>" +
+					"1. 检查测试设备的网络连接是否正常？<br/>" +
+					"2. 检查frps控制台是否存在测试设备连接？<br/>" +
+					"3. 请尝试重新启动SecIoT Agent模块再试<br/>" +
+					"4. 请尝试重新启动设备再试");
      		$("#resultModal").modal("show");
 		}
 	});
 }
+
+function monitoringDevice() {
+	if (isMonitoring == true) {
+		$("#resultModalBody").html("已经启动了一项检测，请先中止现有的检测再开始新的检测");
+ 		$("#resultModal").modal("show");
+ 		return;
+	}
+	var client_id = $("#deviceClientId").val();
+	var port = $("#devicePort").val();
+	var process = $("#processSelect").val();
+	var apiDetection = $("#apiDetection").prop("checked");
+	var networkDetection = $("#networkDetection").prop("checked");
+	var trafficDetection = $("#trafficDetection").prop("checked");
+	var fileOptionDetection = $("#fileOptionDetection").prop("checked");
+	var dbOptionDetection = $("#dbOptionDetection").prop("checked");
+	if (apiDetection == false 
+			&& networkDetection == false 
+			&& trafficDetection == false 
+			&& fileOptionDetection  == false 
+			&& dbOptionDetection == false) {
+		$("#resultModalBody").html("请至少选择一个动态检测项目");
+ 		$("#resultModal").modal("show");
+ 		return;
+	}
+	$("#attachingModel").modal("show");
+	$.post("/SecIoT/android/monitoring", {
+		clientId: client_id,
+		port: port,
+		process: process,
+		monitoringApi: apiDetection,
+		monitoringIp: networkDetection,
+		monitoringTraffic: trafficDetection,
+		monitoringFileIO: fileOptionDetection,
+		monitoringDatabaseIO: dbOptionDetection
+	}, function(result) {
+		$("#attachingModel").modal("hide");
+		if(result.status == 0) {
+			isMonitoring = true;
+			$("#resultModalBody").html(result.monitoring_result);
+			$("#resultModal").modal("show");
+			onRefreshDeviceList();
+		} else {
+			$("#resultModalBody").html(result.reason + "<br/><br/>" +
+					"1. 检查测试设备的网络连接是否正常？<br/>" +
+					"2. 检查frps控制台是否存在测试设备连接？<br/>" +
+					"3. 请尝试重新启动SecIoT Agent模块再试<br/>" +
+					"4. 请尝试重新启动设备再试<br/>" +
+					"5. 如果在启动检测的过程中，被检测应用始终提示“已停止运行”，那么可能是Frida对您设备的Android版本未兼容，请尝试更换设备再试。");
+			$("#resultModal").modal("show");
+		}
+	});
+}
+
+function stopMonitoring(client_id, port) {
+	$("#attachingModel").modal("show");
+	$.get("/SecIoT/android/stop-monitoring", {
+		clientId: client_id,
+		port: port
+	}, function(result) {
+		$("#attachingModel").modal("hide");
+		if(result.status == 0) {
+			isMonitoring = false;
+			$("#resultModalBody").html(result.monitoring_result);
+			$("#resultModal").modal("show");
+			onRefreshDeviceList();
+		} else {
+			$("#resultModalBody").html(result.reason + "<br/><br/>");
+     		$("#resultModal").modal("show");
+		}
+	});
+}
+

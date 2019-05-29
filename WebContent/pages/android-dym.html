@@ -13,7 +13,6 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>设备ID</th>
               <th>设备型号</th>
               <th>系统版本(API级别)</th>
               <th>代理端版本</th>
@@ -31,47 +30,12 @@
       <div class="my-3 p-3 bg-white rounded shadow-sm">
     	<h6 class="border-bottom border-gray pb-2 mb-0">动态检测日志</h6>
     	<div class="media text-muted pt-3">
-      		<p id="apk_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        		<strong class="d-block text-gray-dark">敏感API调用检测日志</strong>
-        		等待分析
-      		</p>
+    		<textarea class="form-control" id="fridaLogArea" rows="3" readonly></textarea>
     	</div>
-    	<div class="media text-muted pt-3">
-      		<p id="apk_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        		<strong class="d-block text-gray-dark">网络通信目的地址检测日志</strong>
-        		等待分析
-      		</p>
-    	</div>
-    	<div class="media text-muted pt-3">
-      		<p id="apk_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        		<strong class="d-block text-gray-dark">数据传输安全检测日志</strong>
-        		等待分析
-      		</p>
-    	</div>
-    	<div class="media text-muted pt-3">
-      		<p id="apk_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        		<strong class="d-block text-gray-dark">文件读写检测日志</strong>
-        		等待分析
-      		</p>
-    	</div>
-    	<div class="media text-muted pt-3">
-      		<p id="apk_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        		<strong class="d-block text-gray-dark">数据库操作检测日志</strong>
-        		等待分析
-      		</p>
-    	</div>
-    </div>
-    <div class="my-3 p-3 bg-white rounded shadow-sm">
-    	<h6 class="border-bottom border-gray pb-2 mb-0">自定义动态检测日志</h6>
-    	<div class="media text-muted pt-3">
-      		<p id="apk_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        		<strong class="d-block text-gray-dark">自定义JavaScript脚本输出</strong>
-        		等待分析
-      		</p>
-    	</div>
-    </div>
+  	  </div>
+      
 
-<div class="modal fade" id="showDeviceInfo" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="deviceModel" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -80,9 +44,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        设备信息：
-      </div>
+      <div id="deviceModelBody" class="modal-body"></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
       </div>
@@ -103,6 +65,8 @@
         <div class="form-group">
     		<label for="processSelect">目标进程列表</label>
    			<select class="form-control" id="processSelect"></select>
+   			<input id="deviceClientId" type="hidden" value="x" />
+   			<input id="devicePort" type="hidden" value="0" />
   		</div>
   		<div class="form-group">
   			<label for="selectDetection">检测项目</label>
@@ -130,7 +94,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">放弃</button>
-        <button type="button" class="btn btn-success" data-dismiss="modal">执行</button>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#confirmDetection" data-dismiss="modal">执行</button>
       </div>
     </div>
   </div>
@@ -150,7 +114,23 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">放弃</button>
-        <button type="button" class="btn btn-success" data-dismiss="modal">执行</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="monitoringDevice()">执行</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="attachingModel" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">提示</h5>
+      </div>
+      <div class="modal-body">
+                正在和远程设备通信，请稍候...
+        <div class="progress">
+  			<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+		</div>    
       </div>
     </div>
   </div>

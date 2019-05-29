@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wrlus.seciot.mobile.model.ApkInfo;
-import com.wrlus.seciot.platform.model.MonitorResult;
-import com.wrlus.seciot.platform.model.MonitoringParameter;
+import com.wrlus.seciot.mobile.model.HookResult;
+import com.wrlus.seciot.mobile.model.MonitoringParameter;
 import com.wrlus.seciot.platform.model.PlatformRiskDao;
 import com.wrlus.seciot.platform.model.PlatformRiskResult;
 import com.wrlus.seciot.pysocket.PyClient;
@@ -140,15 +140,14 @@ public class AndroidServiceImpl implements AndroidService {
 			throw new PythonIOException("An error occured when parsing response from python server.", e);
 		}
 		if (result.getStatus() == 0) {
-			String hookStatus;
+			String hookStatus = (String) result.getData().get("hook_status");
 			String[] processes;
 			try {
-				hookStatus = mapper.readValue(mapper.writeValueAsString(result.getData().get("hook_status")), String.class);
 				processes = mapper.readValue(mapper.writeValueAsString(result.getData().get("processes")), String[].class);
 			} catch (IOException e) {
 				throw new PythonIOException("An error occured when parsing response from python server.", e);
 			}
-			if (hookStatus.equals("success")) {
+			if (hookStatus != null && hookStatus.equals(HookResult.HOOK_SUCCESS)) {
 				return processes;
 			} else {
 				throw new FridaException(hookStatus);
@@ -159,7 +158,7 @@ public class AndroidServiceImpl implements AndroidService {
 	}
 	
 	@Override
-	public MonitorResult monitoringDevice(MonitoringParameter monitorParameter) throws PythonException {
+	public String monitoringDevice(MonitoringParameter monitorParameter) throws PythonException {
 		PySocketRequest request = new PySocketRequest();
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("port", monitorParameter.getPort());
@@ -180,11 +179,11 @@ public class AndroidServiceImpl implements AndroidService {
 			throw new PythonIOException("An error occured when parsing response from python server.", e);
 		}
 		if (result.getStatus() == 0) {
-			try {
-				MonitorResult monitorResult = mapper.readValue(mapper.writeValueAsString(result.getData()), MonitorResult.class);
-				return monitorResult;
-			} catch (Exception e) {
-				throw new PythonIOException("An error occured when parsing response from python server.", e);
+			String hookStatus = (String) result.getData().get("hook_status");
+			if (hookStatus != null && hookStatus.equals(HookResult.HOOK_SUCCESS)) {
+				return hookStatus;
+			} else {
+				throw new FridaException(hookStatus);
 			}
 		} else {
 			throw new PythonRuntimeException();
@@ -192,7 +191,34 @@ public class AndroidServiceImpl implements AndroidService {
 	}
 	
 	@Override
-	public MonitorResult customInjection(int port, String process, File jsFile) throws PythonException {
+	public String stopMonitoringDevice(int port) throws PythonException {
+		PySocketRequest request = new PySocketRequest();
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("port", port);
+		request.setCmd("FridaService.stop_monitoring");
+		request.setParameters(parameters);
+		PyClient pyClient = new PyClient();
+		pyClient.connect();
+		PySocketResponse result = pyClient.sendCmdSync(request);
+		try {
+			pyClient.close();
+		} catch (IOException e) {
+			throw new PythonIOException("An error occured when parsing response from python server.", e);
+		}
+		if (result.getStatus() == 0) {
+			String hookStatus = (String) result.getData().get("hook_status");
+			if (hookStatus != null && hookStatus.equals(HookResult.HOOK_STOP)) {
+				return hookStatus;
+			} else {
+				throw new FridaException(hookStatus);
+			}
+		} else {
+			throw new PythonRuntimeException();
+		}
+	}
+	
+	@Override
+	public String customInjection(int port, String process, File jsFile) throws PythonException {
 		PySocketRequest request = new PySocketRequest();
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("port", port);
@@ -210,11 +236,11 @@ public class AndroidServiceImpl implements AndroidService {
 			throw new PythonIOException("An error occured when parsing response from python server.", e);
 		}
 		if (result.getStatus() == 0) {
-			try {
-				MonitorResult monitorResult = mapper.readValue(mapper.writeValueAsString(result.getData()), MonitorResult.class);
-				return monitorResult;
-			} catch (Exception e) {
-				throw new PythonIOException("An error occured when parsing response from python server.", e);
+			String hookStatus = (String) result.getData().get("hook_status");
+			if (hookStatus != null && hookStatus.equals(HookResult.HOOK_SUCCESS)) {
+				return hookStatus;
+			} else {
+				throw new FridaException(hookStatus);
 			}
 		} else {
 			throw new PythonRuntimeException();

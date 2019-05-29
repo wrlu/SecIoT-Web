@@ -37,5 +37,10 @@ public class DeviceServiceImpl implements DeviceService {
 	public int deleteDevice(String clientId) {
 		return dao.deleteDevice(clientId);
 	}
+	
+	@Override
+	public int updateDeviceBusyStatus(String clientId, int busy) {
+		return dao.updateDeviceBusyStatus(clientId, busy);
+	}
 
 }

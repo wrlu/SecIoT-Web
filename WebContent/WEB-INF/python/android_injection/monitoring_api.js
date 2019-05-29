@@ -9,11 +9,11 @@ setImmediate(function() {
             } else if (res == -1) {
                 res_str = 'PERMISSION_DENIED (权限拒绝)'
             }
-            send('[API调用检测] 操作: 动态权限检查(API >= 23), 权限名称: '+p+', 检查对象: '+context+', 检查结果: '+res_str);
+            send('[Host'+host+' - API调用检测] 操作: 动态权限检查(API >= 23), 权限名称: '+p+', 检查对象: '+context+', 检查结果: '+res_str);
             return res;
         }
         ActivityCompat.requestPermissions.overload('android.app.Activity', '[Ljava.lang.String;', 'int').implementation = function(activity, ps, i) {
-            send('[API调用检测] 操作: 动态权限申请(API >= 23), 权限名称: '+ps+', 申请对象: '+activity);
+            send('[Host'+host+' - API调用检测] 操作: 动态权限申请(API >= 23), 权限名称: '+ps+', 申请对象: '+activity);
             ActivityCompat.requestPermissions(activity, ps, i)
         }
     });

@@ -1,8 +1,16 @@
 import frida
 import sys
+import re
+
+
+base_dir = ''
 
 
 def hook(host, process_name, js_files):
+    if len(js_files) == 0:
+        return {
+            'hook_status': 'stop'
+        }
     manager = frida.get_device_manager()
     try:
         remote_device = manager.add_remote_device(host)
@@ -15,7 +23,7 @@ def hook(host, process_name, js_files):
         session = remote_device.attach(process_name)
         for js_file_name in js_files:
             js_file = open(js_file_name, 'r')
-            script = session.create_script(js_file.read())
+            script = session.create_script('var host = "' + host + '";' + js_file.read())
             js_file.close()
             script.on('message', on_message)
             script.load()
@@ -82,19 +90,26 @@ def get_frida_version():
 
 def on_message(message, data):
     if message['type'] == 'send':
-        print(message['payload'])
+        payload = message['payload']
+        regex = re.compile('Host127\\.0\\.0\\.1:9[0-9][0-9][0-9]')
+        host = regex.findall(payload)[0]
+        host_log = open('hook_log/' + host + '.log', 'rw+')
+        host_log.writelines(payload)
+        print(payload)
     elif message['type'] == 'error':
         print(message['description'])
+        error_log = open('hook_log/error.log', 'rw')
+        error_log.writelines(message['description'])
     else:
         print(message)
 
 
 if __name__ == '__main__':
     print(get_frida_version())
-    result = get_process_list('127.0.0.1:27042')
+    result = get_process_list('127.0.0.1:9000')
     for process in result['processes']:
         print(process)
-    hook_status = hook('127.0.0.1:27042', 'com.huawei.ipc_honor',
+    hook_status = hook('127.0.0.1:9000', 'com.huawei.smartspeaker',
                        ['android_injection/monitoring_api.js',
                         'android_injection/monitoring_ip.js',
                         'android_injection/monitoring_traffic.js',
@@ -106,5 +121,5 @@ if __name__ == '__main__':
         if cmd_in == 'exit':
             break
         if cmd_in == 'stop':
-            hook_status = stop_hook('127.0.0.1:27042')
+            hook_status = stop_hook('127.0.0.1:9000')
             print(hook_status)

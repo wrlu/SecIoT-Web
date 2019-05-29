@@ -8,6 +8,8 @@ public class DeviceDao {
 	private String agentver;
 	private int port;
 	private int online;
+	private int busy;
+	
 	public String getClientid() {
 		return clientid;
 	}
@@ -49,6 +51,12 @@ public class DeviceDao {
 	}
 	public void setOnline(int online) {
 		this.online = online;
+	}
+	public int getBusy() {
+		return busy;
+	}
+	public void setBusy(int busy) {
+		this.busy = busy;
 	}
 	
 }

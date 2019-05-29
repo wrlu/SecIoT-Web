@@ -10,4 +10,5 @@ public interface DeviceService {
 	public int insertDevice(DeviceDao deviceDao);
 	public int updateDevice(DeviceDao deviceDao);
 	public int deleteDevice(String clientId);
+	public int updateDeviceBusyStatus(String clientId, int busy);
 }

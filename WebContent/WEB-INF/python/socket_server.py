@@ -101,7 +101,26 @@ class FridaService:
 
     @staticmethod
     def get_process_list(port):
-        return run_frida.get_process_list("127.0.0.1:" + str(port))
+        return run_frida.get_process_list('127.0.0.1:' + str(port))
+
+    @staticmethod
+    def monitoring_device(port, process, m_api, m_ip, m_traffic, m_fileio, m_dbio):
+        js_files = []
+        if m_api is True:
+            js_files.append('android_injection/monitoring_api.js')
+        if m_ip is True:
+            js_files.append('android_injection/monitoring_ip.js')
+        if m_traffic is True:
+            js_files.append('android_injection/monitoring_traffic.js')
+        if m_fileio is True:
+            js_files.append('android_injection/monitoring_fileio.js')
+        if m_dbio is True:
+            js_files.append('android_injection/monitoring_dbio.js')
+        return run_frida.hook('127.0.0.1:' + str(port), process, js_files)
+
+    @staticmethod
+    def stop_monitoring(port):
+        return run_frida.stop_hook('127.0.0.1:' + str(port))
 
 
 class FrpsService:
@@ -186,6 +205,18 @@ class PySocketServerHandler(socketserver.BaseRequestHandler):
                     result = FridaService.get_frida_version()
                 elif method == 'get_process_list':
                     result = FridaService.get_process_list(params['port'])
+                elif method == 'monitoring_device':
+                    result = FridaService.monitoring_device(
+                        params['port'],
+                        params['process'],
+                        params['monitoring_api'],
+                        params['monitoring_ip'],
+                        params['monitoring_traffic'],
+                        params['monitoring_fileio'],
+                        params['monitoring_dbio']
+                    )
+                elif method == 'stop_monitoring':
+                    result = FridaService.stop_monitoring(params['port'])
 
             elif classname == 'FrpsService':
                 if method == 'get_frps_version':

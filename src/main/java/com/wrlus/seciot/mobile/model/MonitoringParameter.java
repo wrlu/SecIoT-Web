@@ -1,8 +1,9 @@
-package com.wrlus.seciot.platform.model;
+package com.wrlus.seciot.mobile.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MonitoringParameter {
+	private String clientId;
 	private int port;
 	private String process;
 	@JsonProperty("monitoring_api")
@@ -16,6 +17,12 @@ public class MonitoringParameter {
 	@JsonProperty("monitoring_dbio")
 	private boolean isMonitoringDatabaseIO;
 	
+	public String getClientId() {
+		return clientId;
+	}
+	public void setClientId(String clientId) {
+		this.clientId = clientId;
+	}
 	public int getPort() {
 		return port;
 	}
