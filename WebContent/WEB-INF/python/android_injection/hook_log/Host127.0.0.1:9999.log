@@ -1,0 +1,23 @@
+[Host127.0.0.1:9999 - API调用检测] 操作: 动态权限检查(API >= 23), 权限名称: android.permission.READ_EXTERNAL_STORAGE, 检查对象: com.wrlus.qprivacy.MainActivity@4bdfa6d, 检查结果: PERMISSION_GRANTED (权限授予)
+[Host127.0.0.1:9999 - API调用检测] 操作: 动态权限检查(API >= 23), 权限名称: android.permission.READ_PHONE_STATE, 检查对象: com.wrlus.qprivacy.MainActivity@4bdfa6d, 检查结果: PERMISSION_GRANTED (权限授予)
+[Host127.0.0.1:9999 - API调用检测] 操作: 动态权限检查(API >= 23), 权限名称: android.permission.ACCESS_COARSE_LOCATION, 检查对象: com.wrlus.qprivacy.MainActivity@4bdfa6d, 检查结果: PERMISSION_GRANTED (权限授予)
+[Host127.0.0.1:9999 - API调用检测] 操作: 动态权限检查(API >= 23), 权限名称: android.permission.ACCESS_FINE_LOCATION, 检查对象: com.wrlus.qprivacy.MainActivity@4bdfa6d, 检查结果: PERMISSION_GRANTED (权限授予)
+[Host127.0.0.1:9999 - API调用检测] 操作: 动态权限检查(API >= 23), 权限名称: android.permission.WRITE_EXTERNAL_STORAGE, 检查对象: com.wrlus.qprivacy.MainActivity@4bdfa6d, 检查结果: PERMISSION_GRANTED (权限授予)
+[Host127.0.0.1:9999 - API调用检测] 操作: 动态权限检查(API >= 23), 权限名称: android.permission.ACCESS_COARSE_LOCATION, 检查对象: com.wrlus.qprivacy.MainActivity@4bdfa6d, 检查结果: PERMISSION_GRANTED (权限授予)
+[Host127.0.0.1:9999 - API调用检测] 操作: 动态权限检查(API >= 23), 权限名称: android.permission.ACCESS_FINE_LOCATION, 检查对象: com.wrlus.qprivacy.MainActivity@4bdfa6d, 检查结果: PERMISSION_GRANTED (权限授予)
+[Host127.0.0.1:9999 - API调用检测] 操作: 动态权限检查(API >= 23), 权限名称: android.permission.ACCESS_COARSE_LOCATION, 检查对象: com.wrlus.qprivacy.MainActivity@4bdfa6d, 检查结果: PERMISSION_GRANTED (权限授予)
+[Host127.0.0.1:9999 - 网络连接检测] 协议: HTTPS, 目标: https://app-api-22.ictun.com/v5/msg, 参数: client_id=%1s, token=
+[Host127.0.0.1:9999 - 网络连接检测] 协议: HTTPS, 目标: https://app-api-22.ictun.com/v5/msg, 参数: client_id=e2241ca1f7caeea2e115121169f67f5b, token=g132322e31.13cc1b5dc9b9a8e2395be2ca1adc4dd6da02e7b3c8
+[Host127.0.0.1:9999 - 网络连接检测] 协议: HTTPS, 目标: https://app-api-22.ictun.com/v5/msg, 参数: client_id=e2241ca1f7caeea2e115121169f67f5b, token=g132322e31.13cc1b5dc9b9a8e2395be2ca1adc4dd6da02e7b3c8
+[Host127.0.0.1:9999 - API调用检测] 操作: 动态权限检查(API >= 23), 权限名称: android.permission.ACCESS_NETWORK_STATE, 检查对象: base.module.BaseApplication@1943b82, 检查结果: PERMISSION_GRANTED (权限授予)
+[Host127.0.0.1:9999 - 网络连接检测] 协议: HTTPS, 目标: https://app-api-22.ictun.com/v5/msg, 参数: client_id=%1s, token=
+[Host127.0.0.1:9999 - 网络连接检测] 协议: HTTPS, 目标: https://app-api-22.ictun.com/v5/msg, 参数: client_id=e2241ca1f7caeea2e115121169f67f5b, token=g132322e31.13cc1b5dc9b9a8e2395be2ca1adc4dd6da02e7b3c8
+[Host127.0.0.1:9999 - 网络连接检测] 协议: HTTPS, 目标: https://app-api-22.ictun.com/v5/msg, 参数: client_id=e2241ca1f7caeea2e115121169f67f5b, token=g132322e31.13cc1b5dc9b9a8e2395be2ca1adc4dd6da02e7b3c8
+[Host127.0.0.1:9999 - 网络连接检测] 协议: HTTPS, 目标: https://app-api-22.ictun.com/apiv5/dana_cloud_service, 参数: client_id=%1s, token=
+[Host127.0.0.1:9999 - 网络连接检测] 协议: HTTPS, 目标: https://app-api-22.ictun.com/apiv5/dana_cloud_service, 参数: client_id=e2241ca1f7caeea2e115121169f67f5b, token=g132322e31.13cc1b5dc9b9a8e2395be2ca1adc4dd6da02e7b3c8
+[Host127.0.0.1:9999 - 网络连接检测] 协议: HTTPS, 目标: https://app-api-22.ictun.com/apiv5/dana_cloud_service, 参数: client_id=e2241ca1f7caeea2e115121169f67f5b, token=g132322e31.13cc1b5dc9b9a8e2395be2ca1adc4dd6da02e7b3c8
+[Host127.0.0.1:9999 - 网络连接检测] 协议: HTTPS, 目标: https://app-api-22.ictun.com/apiv5/dana_cloud_service, 参数: client_id=%1s, token=
+[Host127.0.0.1:9999 - 网络连接检测] 协议: HTTPS, 目标: https://app-api-22.ictun.com/apiv5/dana_cloud_service, 参数: client_id=e2241ca1f7caeea2e115121169f67f5b, token=g132322e31.13cc1b5dc9b9a8e2395be2ca1adc4dd6da02e7b3c8
+[Host127.0.0.1:9999 - 网络连接检测] 协议: HTTPS, 目标: https://app-api-22.ictun.com/apiv5/dana_cloud_service, 参数: client_id=e2241ca1f7caeea2e115121169f67f5b, token=g132322e31.13cc1b5dc9b9a8e2395be2ca1adc4dd6da02e7b3c8
+[Host127.0.0.1:9999 - 文件I/O检测] 类型: 文件写入(FileOutputStream), 文件名: c52235f97d2567fc8439e930f68f9dda2cf2bed285dbe9883edbec3f7b5af4ea.0.tmp, 文件完整路径: /data/user/0/com.huawei.ipc/cache/image_manager_disk_cache/c52235f97d2567fc8439e930f68f9dda2cf2bed285dbe9883edbec3f7b5af4ea.0.tmp
+[Host127.0.0.1:9999 - 文件I/O检测] 类型: 文件写入(FileOutputStream), 文件名: c52235f97d2567fc8439e930f68f9dda2cf2bed285dbe9883edbec3f7b5af4ea.0.tmp, 文件完整路径: /data/user/0/com.huawei.ipc/cache/image_manager_disk_cache/c52235f97d2567fc8439e930f68f9dda2cf2bed285dbe9883edbec3f7b5af4ea.0.tmp

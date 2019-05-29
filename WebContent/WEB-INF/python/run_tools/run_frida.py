@@ -1,9 +1,10 @@
 import frida
 import sys
 import re
+import os
 
 
-log_base_dir = 'hook_log/'
+log_base_dir = 'android_injection/hook_log/'
 log_regex = re.compile('Host127\\.0\\.0\\.1:9[0-9][0-9][0-9]')
 
 
@@ -24,9 +25,8 @@ def hook(host, process_name, js_files, log_dir):
     try:
         remote_device.get_process(process_name)
         session = remote_device.attach(process_name)
-        host_log = open(log_base_dir + host + '.log', 'w')
-        host_log.write(' ')
-        host_log.close()
+        if os.path.exists(log_base_dir + host + '.log'):
+            os.remove(log_base_dir + host + '.log')
         for js_file_name in js_files:
             js_file = open(js_file_name, 'r')
             script = session.create_script('var localhost = "' + host + '";' + js_file.read())
@@ -49,12 +49,12 @@ def hook(host, process_name, js_files, log_dir):
 
 
 def stop_hook(host):
+    global log_base_dir
     manager = frida.get_device_manager()
     try:
         manager.remove_remote_device(host)
-        host_log = open(log_base_dir + host + '.log', 'w')
-        host_log.write(' ')
-        host_log.close()
+        if os.path.exists(log_base_dir + host + '.log'):
+            os.remove(log_base_dir + host + '.log')
         return {
             'hook_status': 'stop'
         }
@@ -103,12 +103,12 @@ def on_message(message, data):
         payload = message['payload']
         print(payload)
         host = log_regex.findall(payload)[0]
-        host_log = open(log_base_dir + host + '.log', 'a+')
+        host_log = open(log_base_dir + host + '.log', 'a')
         host_log.write(payload + '\n')
         host_log.close()
     elif message['type'] == 'error':
         print(message['description'])
-        error_log = open(log_base_dir + 'error.log', 'a+')
+        error_log = open(log_base_dir + 'error.log', 'a')
         error_log.write(message['description'] + '\n')
         error_log.close()
     else:
@@ -117,10 +117,10 @@ def on_message(message, data):
 
 if __name__ == '__main__':
     print(get_frida_version())
-    result = get_process_list('127.0.0.1:9000')
+    result = get_process_list('127.0.0.1:9999')
     for process in result['processes']:
         print(process)
-    hook_status = hook('127.0.0.1:9000', 'com.huawei.smartspeaker',
+    hook_status = hook('127.0.0.1:9999', 'com.huawei.ipc',
                        ['android_injection/monitoring_api.js',
                         'android_injection/monitoring_ip.js',
                         'android_injection/monitoring_traffic.js',
@@ -132,5 +132,5 @@ if __name__ == '__main__':
         if cmd_in == 'exit':
             break
         if cmd_in == 'stop':
-            hook_status = stop_hook('127.0.0.1:9000')
+            hook_status = stop_hook('127.0.0.1:9999')
             print(hook_status)

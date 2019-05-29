@@ -22,7 +22,7 @@ public interface DeviceMapper {
 	@Insert("insert into device values (#{clientid}, #{devicename}, #{version}, #{apilevel}, #{agentver}, #{port}, #{online}, 0);")
 	public int insertDevice(DeviceDao deviceDao);
 	
-	@Update("update device set version = #{version}, apilevel = #{apilevel}, agentver = #{agentver}, port = #{port}, online = #{online} where clientid = #{clientid}; ")
+	@Update("update device set version = #{version}, apilevel = #{apilevel}, agentver = #{agentver}, port = #{port}, online = #{online}, busy = 0 where clientid = #{clientid}; ")
 	public int updateDevice(DeviceDao deviceDao);
 	
 	@Update("update device set busy = #{busy} where clientId = #{clientId};")

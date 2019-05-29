@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbd97ff7-e094-4529-b3d7-8f8e2a709367" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/android_injection/monitoring_api.js" beforeDir="false" afterPath="$PROJECT_DIR$/android_injection/monitoring_api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_injection/monitoring_dbio.js" beforeDir="false" afterPath="$PROJECT_DIR$/android_injection/monitoring_dbio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android_injection/hook_log/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/android_injection/hook_log/error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android_injection/monitoring_fileio.js" beforeDir="false" afterPath="$PROJECT_DIR$/android_injection/monitoring_fileio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_injection/monitoring_ip.js" beforeDir="false" afterPath="$PROJECT_DIR$/android_injection/monitoring_ip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_injection/monitoring_traffic.js" beforeDir="false" afterPath="$PROJECT_DIR$/android_injection/monitoring_traffic.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run_tools/run_frida.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tools/run_frida.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/socket_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/socket_server.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +21,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/socket_server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-27">
+            <state relative-caret-position="2889">
               <caret line="116" column="26" lean-forward="true" selection-start-line="116" selection-start-column="26" selection-end-line="116" selection-end-column="26" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -33,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/run_tools/run_frida.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="31" column="57" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="57" />
+            <state relative-caret-position="273">
+              <caret line="122" column="56" selection-start-line="122" selection-start-column="56" selection-end-line="122" selection-end-column="56" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -48,8 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/android_injection/monitoring_api.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+            <state relative-caret-position="297">
+              <caret line="11" column="23" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -57,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/android_injection/monitoring_ip.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1269">
-              <caret line="56" column="34" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="34" />
+            <state relative-caret-position="1053">
+              <caret line="39" column="31" lean-forward="true" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -66,7 +63,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/android_injection/monitoring_traffic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
+            <state relative-caret-position="-1359">
               <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
             </state>
           </provider>
@@ -75,17 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/android_injection/monitoring_fileio.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="63" column="34" selection-start-line="63" selection-start-column="34" selection-end-line="63" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/android_injection/monitoring_dbio.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+            <state relative-caret-position="297">
+              <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -103,6 +91,7 @@
     <findStrings>
       <find>path_fix</find>
       <find>low</find>
+      <find>host</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -156,16 +145,16 @@
         <option value="$PROJECT_DIR$/ios_platform/ios_ats_policy.py" />
         <option value="$PROJECT_DIR$/fw_platform/fw_crontab.py" />
         <option value="$PROJECT_DIR$/socket_server.py" />
-        <option value="$PROJECT_DIR$/run_tools/run_frida.py" />
         <option value="$PROJECT_DIR$/android_injection/monitoring_api.js" />
         <option value="$PROJECT_DIR$/android_injection/monitoring_ip.js" />
         <option value="$PROJECT_DIR$/android_injection/monitoring_traffic.js" />
-        <option value="$PROJECT_DIR$/android_injection/monitoring_fileio.js" />
         <option value="$PROJECT_DIR$/android_injection/monitoring_dbio.js" />
+        <option value="$PROJECT_DIR$/android_injection/monitoring_fileio.js" />
+        <option value="$PROJECT_DIR$/run_tools/run_frida.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="60" />
     <option name="y" value="32" />
     <option name="width" value="1184" />
@@ -255,7 +244,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.socket_server">
+  <component name="RunManager" selected="Python.run_frida">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -932,7 +921,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="32" width="1932" height="1018" extended-state="7" />
+    <frame x="-6" y="32" width="1932" height="1018" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49888143" visible="true" weight="0.14331041" />
       <window_info id="Structure" order="1" sideWeight="0.50111854" side_tool="true" weight="0.14406332" />
@@ -942,7 +931,7 @@
       <window_info anchor="bottom" id="Debug" order="2" weight="0.525" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="Run" order="5" sideWeight="0.49920678" visible="true" weight="0.23068182" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49920678" weight="0.23068182" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32867134" />
@@ -1224,9 +1213,6 @@
     <entry file="file://$PROJECT_DIR$/android_injection/hook_log/hook_log.log">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/android_injection/hook_log/error.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/fw_platform/fw_linux_shadow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -1234,9 +1220,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/android_injection/monitoring_api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="23" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android_injection/monitoring_ip.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1053">
+          <caret line="39" column="31" lean-forward="true" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android_injection/monitoring_traffic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1359">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android_injection/monitoring_dbio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="15" column="35" lean-forward="true" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android_injection/monitoring_fileio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/socket_server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
+        <state relative-caret-position="2889">
           <caret line="116" column="26" lean-forward="true" selection-start-line="116" selection-start-column="26" selection-end-line="116" selection-end-column="26" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
@@ -1244,48 +1265,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/android_injection/hook_log/error.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android_injection/hook_log/Host127.0.0.1:9999.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/run_tools/run_frida.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="31" column="57" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="57" />
+        <state relative-caret-position="273">
+          <caret line="122" column="56" selection-start-line="122" selection-start-column="56" selection-end-line="122" selection-end-column="56" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android_injection/monitoring_api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android_injection/monitoring_ip.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1269">
-          <caret line="56" column="34" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android_injection/monitoring_traffic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android_injection/monitoring_fileio.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="63" column="34" selection-start-line="63" selection-start-column="34" selection-end-line="63" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android_injection/monitoring_dbio.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
         </state>
       </provider>
     </entry>

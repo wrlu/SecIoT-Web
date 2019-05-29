@@ -47,7 +47,7 @@ setImmediate(function() {
         FileWriter.$init.overload('java.io.File').implementation = function (file) {
             var file_name = file.getName();
             var file_path = file.getAbsolutePath();
-            send('[Host'+host+' - 文件I/O检测] 类型: 文件写入(FileWriter), 文件名: '+file_name+', 文件完整路径: '+file_path);
+            send('[Host'+localhost+' - 文件I/O检测] 类型: 文件写入(FileWriter), 文件名: '+file_name+', 文件完整路径: '+file_path);
             return this.$init(file);
         }
         FileWriter.$init.overload('java.lang.String').implementation = function (name) {
