@@ -3,10 +3,13 @@ import sys
 import re
 
 
-base_dir = ''
+log_base_dir = 'hook_log/'
+log_regex = re.compile('Host127\\.0\\.0\\.1:9[0-9][0-9][0-9]')
 
 
-def hook(host, process_name, js_files):
+def hook(host, process_name, js_files, log_dir):
+    global log_base_dir
+    log_base_dir = log_dir
     if len(js_files) == 0:
         return {
             'hook_status': 'stop'
@@ -21,9 +24,12 @@ def hook(host, process_name, js_files):
     try:
         remote_device.get_process(process_name)
         session = remote_device.attach(process_name)
+        host_log = open(log_base_dir + host + '.log', 'w')
+        host_log.write(' ')
+        host_log.close()
         for js_file_name in js_files:
             js_file = open(js_file_name, 'r')
-            script = session.create_script('var host = "' + host + '";' + js_file.read())
+            script = session.create_script('var localhost = "' + host + '";' + js_file.read())
             js_file.close()
             script.on('message', on_message)
             script.load()
@@ -46,6 +52,9 @@ def stop_hook(host):
     manager = frida.get_device_manager()
     try:
         manager.remove_remote_device(host)
+        host_log = open(log_base_dir + host + '.log', 'w')
+        host_log.write(' ')
+        host_log.close()
         return {
             'hook_status': 'stop'
         }
@@ -89,17 +98,19 @@ def get_frida_version():
 
 
 def on_message(message, data):
+    global log_base_dir
     if message['type'] == 'send':
         payload = message['payload']
-        regex = re.compile('Host127\\.0\\.0\\.1:9[0-9][0-9][0-9]')
-        host = regex.findall(payload)[0]
-        host_log = open('hook_log/' + host + '.log', 'rw+')
-        host_log.writelines(payload)
         print(payload)
+        host = log_regex.findall(payload)[0]
+        host_log = open(log_base_dir + host + '.log', 'a+')
+        host_log.write(payload + '\n')
+        host_log.close()
     elif message['type'] == 'error':
         print(message['description'])
-        error_log = open('hook_log/error.log', 'rw')
-        error_log.writelines(message['description'])
+        error_log = open(log_base_dir + 'error.log', 'a+')
+        error_log.write(message['description'] + '\n')
+        error_log.close()
     else:
         print(message)
 
@@ -114,7 +125,7 @@ if __name__ == '__main__':
                         'android_injection/monitoring_ip.js',
                         'android_injection/monitoring_traffic.js',
                         'android_injection/monitoring_fileio.js',
-                        'android_injection/monitoring_dbio.js'])
+                        'android_injection/monitoring_dbio.js'], log_base_dir)
     print(hook_status)
     while True:
         cmd_in = sys.stdin.readline().strip('\n')

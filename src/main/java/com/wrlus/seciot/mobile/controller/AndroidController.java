@@ -1,6 +1,8 @@
 package com.wrlus.seciot.mobile.controller;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -209,6 +211,46 @@ public class AndroidController {
 			}
 			data.put("status", -1);
 			data.put("reason", ReasonEnum.UNKNOWN.get());
+		}
+		return data;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/refresh-frida-log")
+	public Map<String, Object> refreshFridaLog(
+			@RequestParam("port") int port, 
+			HttpServletRequest request, HttpServletResponse response) {
+		Map<String, Object> data=new HashMap<String, Object>();
+		String path = Thread.currentThread().getContextClassLoader().getResource("").toString();
+		if (OSUtil.isWindows()) {
+			path = path.replace("file:/", "");
+		} else {
+			path = path.replace("file:", "");
+		}
+		path = path.replace("WEB-INF/classes/", "WEB-INF/python/android_injection/hook_log/");
+		if (OSUtil.isWindows()) {
+			path = OSUtil.escapeUnixSeparator(path);
+		}
+		try {
+			Thread.sleep(1000);
+			BufferedReader logReader = new BufferedReader(new FileReader(path + "Host127.0.0.1:"+port+".log"));
+			StringBuilder logFileContents = new StringBuilder();
+			String line;
+			while (( line = logReader.readLine() ) != null) {
+				logFileContents.append(line);
+				logFileContents.append("\n");
+			}
+			logReader.close();
+			data.put("status", 0);
+			data.put("reason", "OK");
+			data.put("log", logFileContents);
+		} catch (Exception e) {
+			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
+			if (log.isDebugEnabled()) {
+				e.printStackTrace();
+			}
+			data.put("status", -1);
+			data.put("reason", ReasonEnum.FRIDA_ERROR.get());
 		}
 		return data;
 	}

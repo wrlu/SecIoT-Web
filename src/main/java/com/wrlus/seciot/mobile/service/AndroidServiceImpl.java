@@ -24,6 +24,7 @@ import com.wrlus.seciot.util.exception.FridaException;
 import com.wrlus.seciot.util.exception.PythonException;
 import com.wrlus.seciot.util.exception.PythonIOException;
 import com.wrlus.seciot.util.exception.PythonRuntimeException;
+import com.wrlus.seciot.util.os.OSUtil;
 
 @Service
 public class AndroidServiceImpl implements AndroidService {
@@ -168,6 +169,17 @@ public class AndroidServiceImpl implements AndroidService {
 		parameters.put("monitoring_traffic", monitorParameter.isMonitoringTraffic());
 		parameters.put("monitoring_fileio", monitorParameter.isMonitoringFileIO());
 		parameters.put("monitoring_dbio", monitorParameter.isMonitoringDatabaseIO());
+		String path = Thread.currentThread().getContextClassLoader().getResource("").toString();
+		if (OSUtil.isWindows()) {
+			path = path.replace("file:/", "");
+		} else {
+			path = path.replace("file:", "");
+		}
+		path = path.replace("WEB-INF/classes/", "WEB-INF/python/android_injection/hook_log/");
+		if (OSUtil.isWindows()) {
+			path = OSUtil.escapeUnixSeparator(path);
+		}
+		parameters.put("log_base_dir", path);
 		request.setCmd("FridaService.monitoring_device");
 		request.setParameters(parameters);
 		PyClient pyClient = new PyClient();

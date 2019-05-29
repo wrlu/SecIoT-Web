@@ -342,6 +342,7 @@ function monitoringDevice() {
 			$("#resultModalBody").html(result.monitoring_result);
 			$("#resultModal").modal("show");
 			onRefreshDeviceList();
+			refreshFridaLog(port);
 		} else {
 			$("#resultModalBody").html(result.reason + "<br/><br/>" +
 					"1. 检查测试设备的网络连接是否正常？<br/>" +
@@ -350,6 +351,19 @@ function monitoringDevice() {
 					"4. 请尝试重新启动设备再试<br/>" +
 					"5. 如果在启动检测的过程中，被检测应用始终提示“已停止运行”，那么可能是Frida对您设备的Android版本未兼容，请尝试更换设备再试。");
 			$("#resultModal").modal("show");
+		}
+	});
+}
+
+function refreshFridaLog(port) {
+	$.get("/SecIoT/android/refresh-frida-log", {
+		port: port
+	}, function(result) {
+		if(result.status == 0) {
+			$("#fridaLogArea").html(result.log);
+		}
+		if (isMonitoring == true) {
+			refreshFridaLog(port);
 		}
 	});
 }

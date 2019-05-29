@@ -3,22 +3,22 @@ setImmediate(function() {
         var Socket = Java.use('java.net.Socket');
         Socket.$init.overload('java.net.InetAddress', 'int').implementation = function (ip, port) {
             var target_ip = ip.getHostAddress();
-            send('[Host'+host+' - [不安全通信检测] 协议: TCP, 目标: '+target_ip+', 端口:'+port);
+            send('[Host'+localhost+' - 不安全通信检测] 协议: TCP, 目标: '+target_ip+', 端口:'+port);
             return this.$init(ip, port);
         }
         Socket.$init.overload('java.lang.String', 'int').implementation = function (ip, port) {
-            send('[Host'+host+' - [不安全通信检测] 协议: TCP, 目标: '+ip+', 端口: '+port);
+            send('[Host'+localhost+' - 不安全通信检测] 协议: TCP, 目标: '+ip+', 端口: '+port);
             return this.$init(ip, port);
         }
         var DatagramPacket = Java.use('java.net.DatagramPacket');
         DatagramPacket.$init.overload('[B', 'int', 'java.net.InetAddress', 'int').implementation = function (buf, len, ip, port) {
             var target_ip = ip.getHostAddress();
-            send('[Host'+host+' - [不安全通信检测] 协议: UDP, 目标: '+ip+', 端口: '+port);
+            send('[Host'+localhost+' - 不安全通信检测] 协议: UDP, 目标: '+ip+', 端口: '+port);
             return this.$init(buf, len, ip, port);
         }
         DatagramPacket.$init.overload('[B', 'int', 'int', 'java.net.InetAddress', 'int').implementation = function (buf, len, offset, ip, port) {
             var target_ip = ip.getHostAddress();
-            send('[Host'+host+' - [不安全通信检测] 协议: UDP, 目标: '+ip+', 端口: '+port);
+            send('[Host'+localhost+' - 不安全通信检测] 协议: UDP, 目标: '+ip+', 端口: '+port);
             return this.$init(buf, len, offset, ip, port);
         }
         var OkHttpRequest = Java.use('okhttp3.Request$Builder');
@@ -31,7 +31,7 @@ setImmediate(function() {
                 } else {
                     var param = "无";
                 }
-                send('[Host'+host+' - [不安全通信检测] 协议: HTTP, 目标: '+host+", 参数: "+param);
+                send('[Host'+localhost+' - 不安全通信检测] 协议: HTTP, 目标: '+host+", 参数: "+param);
             }
             return this.url(u);
         }
@@ -45,26 +45,26 @@ setImmediate(function() {
                 } else {
                     var param = "无";
                 }
-                send('[Host'+host+' - [不安全通信检测] 协议: HTTP, 目标: '+host+", 参数: "+param);
+                send('[Host'+localhost+' - 不安全通信检测] 协议: HTTP, 目标: '+host+", 参数: "+param);
             }
             return this.url(hu);
         }
         var SSLContext = Java.use('javax.net.ssl.SSLContext');
         SSLContext.getInstance.overload('java.lang.String').implementation = function (protocol) {
             if (protocol != 'TLS' && protocol != 'tls') {
-                send('[Host'+host+' - [不安全通信检测] 协议: '+protocol);
+                send('[Host'+localhost+' - 不安全通信检测] 协议: '+protocol);
             }
             return SSLContext.getInstance(protocol);
         }
         SSLContext.getInstance.overload('java.lang.String', 'java.lang.String').implementation = function (protocol, provider) {
             if (protocol != 'TLS' && protocol != 'tls') {
-                send('[Host'+host+' - [不安全通信检测] 协议: '+protocol);
+                send('[Host'+localhost+' - 不安全通信检测] 协议: '+protocol);
             }
             return SSLContext.getInstance(protocol, provider);
         }
         SSLContext.getInstance.overload('java.lang.String', 'java.security.Provider').implementation = function (protocol, provider) {
             if (protocol != 'TLS' && protocol != 'tls') {
-                send('[Host'+host+' - [不安全通信检测] 协议: '+protocol);
+                send('[Host'+localhost+' - 不安全通信检测] 协议: '+protocol);
             }
             return SSLContext.getInstance(protocol, provider);
         }
