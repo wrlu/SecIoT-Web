@@ -1,18 +1,20 @@
-var isMonitoring = false;
-
 $(function(){
 	var args = getArgs();
 	var mainPage = "/SecIoT/?page=main";
 	if (typeof(args.page) == "undefined" || args.page == null) {
 		window.location.href = mainPage;
+	} else if (args.page == "403") {
+		$(document).attr("title", "拒绝访问 - SecIoT");
+		var errorMsg = '<br/><div class="alert alert-danger" role="alert">温馨提示：很抱歉，您没有访问此页面的权限，请联系系统管理员或<a href="'+mainPage+'">返回首页</a></div>'
+		$("#main").html(errorMsg);
 	} else {
 		$("#main").load("/SecIoT/pages/"+args.page+".html", function(response, status, xhr) {
 			if (status == "success") {
 				$(document).attr("title",$("#main_title").html() + " - SecIoT");
 				$("#"+args.page+"_nav").addClass("active");
 			} else {
-				$(document).attr("title", "出错了 - SecIoT");
-				var errorMsg = '<br/><div class="alert alert-danger" role="alert">温馨提示：很抱歉，此页无法加载，请尝试刷新或<a href="'+mainPage+'">返回首页</a></div>'
+				$(document).attr("title", "未找到 - SecIoT");
+				var errorMsg = '<br/><div class="alert alert-danger" role="alert">温馨提示：很抱歉，您请求的页面未找到，请尝试刷新或<a href="'+mainPage+'">返回首页</a></div>'
 				$("#main").html(errorMsg);
 			}
 		});
@@ -230,6 +232,8 @@ function onIpaAnalysis() {
 	});
 	$("#loadingModel").modal("show");
 }
+
+var isMonitoring = false;
 
 function onRefreshDeviceList() {
 	$.post("/SecIoT/device/getOnlineDevice", {}, function(result) {

@@ -2,9 +2,9 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- 主机： localhost
--- 生成日期： 2019-05-26 12:36:04
--- 服务器版本： 10.2.22-MariaDB
+-- 主机： [::1]
+-- 生成日期： 2019-05-30 15:00:29
+-- 服务器版本： 10.3.15-MariaDB
 -- PHP 版本： 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -38,7 +38,7 @@ CREATE TABLE `authorities` (
 --
 
 INSERT INTO `authorities` (`username`, `authority`) VALUES
-('root', 'authenticated');
+('admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -290,16 +290,17 @@ CREATE TABLE `device` (
   `apilevel` int(3) NOT NULL,
   `agentver` varchar(16) NOT NULL,
   `port` int(5) NOT NULL,
-  `online` int(1) NOT NULL
+  `online` int(1) NOT NULL,
+  `busy` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `device`
 --
 
-INSERT INTO `device` (`clientid`, `devicename`, `version`, `apilevel`, `agentver`, `port`, `online`) VALUES
-('197bf204-3a75-4bd5-b707-24e9bb93848a', 'Sony C6603 ( yuga )', '6.0.1', 23, '1.0-aosp', 0, 0),
-('71a0d0f9-1af1-4cd9-ac94-7c69787e46b3', 'Huawei angler ( angler )', '8.1.0', 27, '1.0-aosp', 0, 0);
+INSERT INTO `device` (`clientid`, `devicename`, `version`, `apilevel`, `agentver`, `port`, `online`, `busy`) VALUES
+('197bf204-3a75-4bd5-b707-24e9bb93848a', 'Sony C6603 ( yuga )', '6.0.1', 23, '1.0-aosp', 0, 0, 0),
+('71a0d0f9-1af1-4cd9-ac94-7c69787e46b3', 'Huawei angler ( angler )', '8.1.0', 27, '1.0-aosp', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2912,7 +2913,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`username`, `password`, `enabled`) VALUES
-('root', 'root', 1);
+('admin', '$2a$10$ay6W.bucdA3NcaTQ3DfW3.1jYdfxORNjiu2NHRaq3Fw3xPdV4l/ZW', 1);
 
 --
 -- 转储表的索引
@@ -2941,7 +2942,8 @@ ALTER TABLE `device`
 --
 ALTER TABLE `library_risk`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_library_risk_cve` (`cve_num`);
+  ADD KEY `FK_library_risk_cve` (`cve_num`),
+  ADD KEY `FK_library_risk_third_part_library` (`name`);
 
 --
 -- 表的索引 `platform_risk`

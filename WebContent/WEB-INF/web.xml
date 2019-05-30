@@ -41,12 +41,12 @@
     <url-pattern>/</url-pattern>
 </servlet-mapping>
 <!-- 配置Spring Security过滤器，如不需要登录和身份认证可以去掉 -->
-<!-- <filter> 
+<filter> 
     <filter-name>springSecurityFilterChain</filter-name> 
     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> 
 </filter> 
 <filter-mapping> 
     <filter-name>springSecurityFilterChain</filter-name> 
     <url-pattern>/*</url-pattern> 
-</filter-mapping> -->
+</filter-mapping>
 </web-app>
