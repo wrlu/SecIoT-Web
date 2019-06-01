@@ -1,3 +1,4 @@
+import sys
 import socketserver
 import json
 from run_tools import run_frps
@@ -161,8 +162,6 @@ class PySocketServerHandler(socketserver.BaseRequestHandler):
     def resolve_data(data):
         cmd = data['cmd']
         params = data['params']
-        if cmd == "exit":
-            exit(int(params['code']))
         classname = cmd.split('.')[0]
         method = cmd.split('.')[1]
         print('classname: '+classname)
