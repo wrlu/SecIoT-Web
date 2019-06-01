@@ -38,7 +38,9 @@ public class PyServerManager {
                     while(!Thread.currentThread().isInterrupted()) {
                         String line;
                         while ((line = bs.readLine()) != null) {
-                            log.debug(line);
+                            if (log.isDebugEnabled()) {
+								System.out.println(line);
+							}
                         }
                         Thread.sleep(1000);
                     }

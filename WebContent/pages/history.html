@@ -1,10 +1,257 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+<!doctype html>
+<html lang="zh-cn">
 <body>
-
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
+        <h2 id="main_title">安全检测历史</h2>
+      </div>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
+        <div class="form-group">
+        	<select class="form-control" id="historyCategory">
+        		<option value="all">全部分类</option>
+        		<option value="firmware-static">系统固件静态分析</option>
+        		<option value="android-static">Android应用静态分析</option>
+        		<option value="ios-static">iOS应用静态分析</option>
+        		<option value="android-dym">Android应用动态分析</option>
+       		</select>
+        </div>
+        <button class="btn btn-sm btn-primary" onclick="" >刷新</button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>检测编号</th>
+              <th>检测时间</th>
+              <th>检测项目</th>
+              <th>检测目标</th>
+              <th>执行操作</th>
+            </tr>
+          </thead>
+          <tbody id="historyBody">
+          	<tr>
+          		<td>1</td>
+          		<td>20190601-FirmwareStatic-1</td>
+          		<td>2019/06/01 14:29:02</td>
+          		<td>系统固件静态分析</td>
+          		<td>miwifi_r3d_firmware_dccfe_2.28.17.bin</td>
+          		<td>
+          			<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#firmwareStaticResultModal" onclick="">查看报告</button>
+          			<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteHistory" onclick="deleteHistory(id)">删除</button>
+          		</td>
+          	</tr>
+          	<tr>
+          		<td>2</td>
+          		<td>20190601-AndroidStatic-1</td>
+          		<td>2019/06/01 14:29:02</td>
+          		<td>Android应用静态分析</td>
+          		<td>com.huawei.ipc.apk</td>
+          		<td>
+          			<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#androidStaticResultModal" onclick="">查看报告</button>
+          			<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteHistory" onclick="">删除</button>
+          		</td>
+          	</tr>
+          	<tr>
+          		<td>1</td>
+          		<td>20190601-iOSStatic-1</td>
+          		<td>2019/06/01 14:29:02</td>
+          		<td>iOS应用静态分析</td>
+          		<td>com.huawei.ipc.ipa</td>
+          		<td>
+          			<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#iosStaticResultModal" onclick="">查看报告</button>
+          			<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteHistory" onclick="">删除</button>
+          		</td>
+          	</tr>
+          	<tr>
+          		<td>1</td>
+          		<td>20190601-AndroidDym-1</td>
+          		<td>2019/06/01 14:29:02</td>
+          		<td>Android动态分析</td>
+          		<td>Huawei angler</td>
+          		<td>
+          			<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#androidDymResultModal" onclick="">查看报告</button>
+          			<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteHistory">删除</button>
+          		</td>
+          	</tr>
+          </tbody>
+        </table>
+      </div>
 </body>
+<div class="modal fade" id="firmwareStaticResultModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">分析结果</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">固件基本信息</h6>
+    <div class="media text-muted pt-3">
+      <p id="fw_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">固件基本信息</strong>
+        等待分析
+      </p>
+    </div>
+    <div class="media text-muted pt-3">
+      <p id="fw_filesystem" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">固件文件系统</strong>
+       等待分析
+      </p>
+    </div>
+  </div>
+  
+  <div id="fw_third_library" class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">第三方库风险</h6>
+    <div class="media text-muted pt-3">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">第三方库</strong>
+        等待分析
+      </p>
+    </div>
+  </div>
+  
+  <div id="fw_platform_risk" class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">平台使用风险</h6>
+    <div class="media text-muted pt-3">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">平台风险</strong>
+        等待分析
+      </p>
+    </div>
+  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">好的</button>
+      </div>
+    </div>
+   </div>
+</div>
+
+<div class="modal fade" id="androidStaticResultModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">分析结果</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      		<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">APK基本信息</h6>
+    <div class="media text-muted pt-3">
+      <p id="apk_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">APK基本信息</strong>
+        等待分析
+      </p>
+    </div>
+    <div class="media text-muted pt-3">
+      <p id="apk_permission" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">应用权限</strong>
+        等待分析
+      </p>
+    </div>
+  </div>
+  
+  <div id="apk_platform_risk" class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">平台使用风险</h6>
+    <div class="media text-muted pt-3">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">平台风险</strong>
+        等待分析
+      </p>
+    </div>
+  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="iosStaticResultModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">分析结果</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">IPA基本信息</h6>
+    <div class="media text-muted pt-3">
+      <p id="ipa_basic_info" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">IPA基本信息</strong>
+        等待分析
+      </p>
+    </div>
+    <div class="media text-muted pt-3">
+      <p id="ipa_permission" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">应用权限</strong>
+        等待分析
+      </p>
+    </div>
+  </div>
+  
+  <div id="ipa_platform_risk" class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">平台使用风险</h6>
+    <div class="media text-muted pt-3">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">平台风险</strong>
+        等待分析
+      </p>
+    </div>
+  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="androidDymResultModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">分析结果</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteHistory" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">提示</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+           您确实要删除这条历史记录吗？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-success" onclick="deleteHistory()" data-dismiss="modal">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
 </html>
