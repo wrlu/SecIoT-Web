@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbd97ff7-e094-4529-b3d7-8f8e2a709367" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pages/android-dym.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../pages/android-dym.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pages/android-static.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../pages/android-static.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pages/cve.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../pages/cve.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pages/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../pages/history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/fw/controller/FwController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/fw/controller/FwController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/model/AndroidResultDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/model/AndroidHistoryDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/model/AppleiOSResultDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/model/AppleiOSHistoryDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/model/FwResultDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/model/FwHistoryDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/service/HistoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/service/HistoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AndroidController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AndroidController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AppleiOSController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AppleiOSController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/socket_server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="176" column="43" selection-start-line="176" selection-start-column="43" selection-end-line="176" selection-end-column="43" />
+            <state relative-caret-position="597">
+              <caret line="255" column="88" lean-forward="true" selection-start-line="255" selection-start-column="88" selection-end-line="255" selection-end-column="88" />
             </state>
           </provider>
         </entry>
@@ -152,11 +157,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="60" />
     <option name="y" value="32" />
-    <option name="width" value="1184" />
-    <option name="height" value="770" />
+    <option name="width" value="1188" />
+    <option name="height" value="796" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -166,7 +171,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -214,6 +218,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -919,7 +924,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="32" width="1932" height="1018" extended-state="7" />
+    <frame x="-6" y="32" width="1932" height="1018" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49888143" visible="true" weight="0.14331041" />
@@ -930,7 +935,7 @@
       <window_info anchor="bottom" id="Debug" order="2" weight="0.525" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="Run" order="5" sideWeight="0.49920678" visible="true" weight="0.23068182" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49920678" weight="0.23068182" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32867134" />
@@ -1236,8 +1241,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/socket_server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="176" column="43" selection-start-line="176" selection-start-column="43" selection-end-line="176" selection-end-column="43" />
+        <state relative-caret-position="597">
+          <caret line="255" column="88" lean-forward="true" selection-start-line="255" selection-start-column="88" selection-end-line="255" selection-end-column="88" />
         </state>
       </provider>
     </entry>

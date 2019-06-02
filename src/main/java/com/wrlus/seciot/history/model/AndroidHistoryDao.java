@@ -8,11 +8,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wrlus.seciot.mobile.model.ApkInfo;
 import com.wrlus.seciot.platform.model.PlatformRiskResult;
 
-public class AndroidResultDao {
+public class AndroidHistoryDao {
+	private String id;
 	private ApkInfo apkinfo;
 	private String[] apkpermission;
 	private List<PlatformRiskResult> apkplatformrisk;
 	private static ObjectMapper mapper = new ObjectMapper();
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getApkinfo() {
 		try {
 			return mapper.writeValueAsString(apkinfo);
@@ -58,5 +65,23 @@ public class AndroidResultDao {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	public ApkInfo getApkinfoRaw() {
+		return apkinfo;
+	}
+	public String[] getApkpermissionRaw() {
+		return apkpermission;
+	}
+	public List<PlatformRiskResult> getApkplatformriskRaw() {
+		return apkplatformrisk;
+	}
+	public void setApkinfo(ApkInfo apkinfo) {
+		this.apkinfo = apkinfo;
+	}
+	public void setApkpermission(String[] apkpermission) {
+		this.apkpermission = apkpermission;
+	}
+	public void setApkplatformrisk(List<PlatformRiskResult> apkplatformrisk) {
+		this.apkplatformrisk = apkplatformrisk;
 	}
 }

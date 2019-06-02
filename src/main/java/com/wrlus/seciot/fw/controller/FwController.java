@@ -1,6 +1,7 @@
 package com.wrlus.seciot.fw.controller;
 
 import java.io.File;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,6 +24,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.wrlus.seciot.fw.model.FwInfo;
 import com.wrlus.seciot.fw.service.FwServiceImpl;
+import com.wrlus.seciot.history.model.FwHistoryDao;
+import com.wrlus.seciot.history.model.HistoryDao;
+import com.wrlus.seciot.history.service.HistoryServiceImpl;
 import com.wrlus.seciot.library.model.ThirdLibraryDao;
 import com.wrlus.seciot.library.model.ThirdLibrary;
 import com.wrlus.seciot.library.model.ThirdLibraryRiskDao;
@@ -43,11 +49,13 @@ public class FwController {
 	private ThirdLibraryServiceImpl thirdLibraryService;
 	@Autowired
 	private PlatformRiskServiceImpl platformRiskService;
+	@Autowired
+	private HistoryServiceImpl historyService;
 	
 	@ResponseBody
 	@RequestMapping("/analysis")
 	public Map<String, Object> analysis(HttpServletRequest request, HttpServletResponse response) {
-		Map<String, Object> data=new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		// Windows: file:/C:/******/SecIoT/WebContent/WEB-INF/classes/
 		// *nix: file:/mnt/******/SecIoT/WEB-INF/classes/
 		String path = Thread.currentThread().getContextClassLoader().getResource("").toString();
@@ -105,6 +113,22 @@ public class FwController {
 			data.put("fw_lib_risk", thirdLibraryRisks);
 //			返回平台风险详情
 			data.put("fw_platform_risk", platformRiskResults);
+			FwHistoryDao fwHistory = new FwHistoryDao();
+			fwHistory.setId(UUID.randomUUID().toString());
+			fwHistory.setFwinfo(fwInfo);
+			fwHistory.setFwlib(thirdLibraries);
+			fwHistory.setFwlibrisk(thirdLibraryRisks);
+			fwHistory.setFwplatformrisk(platformRiskResults);
+			historyService.addFwHistory(fwHistory);
+			HistoryDao history = new HistoryDao();
+			history.setId(UUID.randomUUID().toString());
+			history.setName("FirmwareStatic-"+fwFile.getName());
+			history.setTarget(fwFile.getName());
+			history.setType("firmware-static");
+			history.setUser(getAuthenticatedUsername());
+			history.setDate(new Date(new java.util.Date().getTime()));
+			history.setDetailid(fwHistory.getId());
+			historyService.addHistory(history);
 		} catch (RootException e) {
 			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
 			if (log.isDebugEnabled()) {
@@ -138,6 +162,17 @@ public class FwController {
 	
 	public void cleanUploadFile(String path) {
 		new File(path).delete();
+	}
+	
+	public static String getAuthenticatedUsername() { 
+		String username; 
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
+		if (principal instanceof UserDetails) { 
+			username = ((UserDetails) principal).getUsername(); 
+		} else { 
+			username = principal.toString(); 
+		} 
+		return username; 
 	}
 
 }

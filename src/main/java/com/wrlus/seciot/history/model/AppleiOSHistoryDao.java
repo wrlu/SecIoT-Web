@@ -8,11 +8,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wrlus.seciot.mobile.model.IpaInfo;
 import com.wrlus.seciot.platform.model.PlatformRiskResult;
 
-public class AppleiOSResultDao {
+public class AppleiOSHistoryDao {
+	private String id;
 	private IpaInfo ipainfo;
 	private String[] ipapermission;
 	private List<PlatformRiskResult> ipaplatformrisk;
 	private static ObjectMapper mapper = new ObjectMapper();
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getIpainfo() {
 		try {
 			return mapper.writeValueAsString(ipainfo);
@@ -59,4 +66,23 @@ public class AppleiOSResultDao {
 			e.printStackTrace();
 		};
 	}
+	public IpaInfo getIpainfoRaw() {
+		return ipainfo;
+	}
+	public String[] getIpapermissionRaw() {
+		return ipapermission;
+	}
+	public List<PlatformRiskResult> getIpaplatformriskRaw() {
+		return ipaplatformrisk;
+	}
+	public void setIpainfo(IpaInfo ipainfo) {
+		this.ipainfo = ipainfo;
+	}
+	public void setIpapermission(String[] ipapermission) {
+		this.ipapermission = ipapermission;
+	}
+	public void setIpaplatformrisk(List<PlatformRiskResult> ipaplatformrisk) {
+		this.ipaplatformrisk = ipaplatformrisk;
+	}
+	
 }
