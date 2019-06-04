@@ -21,7 +21,7 @@ public class FrpsManager {
 		} else {
 			path = path.replace("file:", "");
 		}
-		path = path.replace("classes/", "frp/");
+		path = path.replace("classes/", "frps-"+OSUtil.getArch()+"/");
 		if (OSUtil.isWindows()) {
 			path = OSUtil.escapeUnixSeparator(path);
 		}

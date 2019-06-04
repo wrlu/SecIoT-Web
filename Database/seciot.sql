@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： [::1]
--- 生成日期： 2019-05-30 15:00:29
+-- 生成日期： 2019-06-03 13:15:43
 -- 服务器版本： 10.3.15-MariaDB
 -- PHP 版本： 7.2.5
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- 数据库： `seciot`
 --
+CREATE DATABASE IF NOT EXISTS `seciot` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `seciot`;
 
 -- --------------------------------------------------------
 
@@ -300,7 +302,93 @@ CREATE TABLE `device` (
 
 INSERT INTO `device` (`clientid`, `devicename`, `version`, `apilevel`, `agentver`, `port`, `online`, `busy`) VALUES
 ('197bf204-3a75-4bd5-b707-24e9bb93848a', 'Sony C6603 ( yuga )', '6.0.1', 23, '1.0-aosp', 0, 0, 0),
-('71a0d0f9-1af1-4cd9-ac94-7c69787e46b3', 'Huawei angler ( angler )', '8.1.0', 27, '1.0-aosp', 0, 0, 0);
+('71a0d0f9-1af1-4cd9-ac94-7c69787e46b3', 'Huawei angler ( angler )', '8.1.0', 27, '1.0-aosp', 9000, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `history`
+--
+
+CREATE TABLE `history` (
+  `id` varchar(36) NOT NULL,
+  `name` varchar(160) NOT NULL,
+  `type` varchar(160) NOT NULL,
+  `target` varchar(160) NOT NULL,
+  `user` varchar(50) NOT NULL,
+  `date` date NOT NULL,
+  `detailid` varchar(36) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `history`
+--
+
+INSERT INTO `history` (`id`, `name`, `type`, `target`, `user`, `date`, `detailid`) VALUES
+('322851ec-21f8-4f25-8372-fc393e57645a', 'FirmwareStatic-mico_all_f86a5_1.44.4.bin', 'firmware-static', 'mico_all_f86a5_1.44.4.bin', 'admin', '2019-06-03', '9031cc61-412d-470f-bd39-9c48e3dc0186'),
+('754d0219-3318-46c4-baa4-f5677280efa4', '小米路由器固件检测', 'firmware-static', 'miwifi_r1cm_firmware_7054f_2.3.5.bin', 'admin', '2019-06-02', 'd5681442-101e-4820-859c-c822fed5719c'),
+('b06f6078-7481-4425-888a-b30872fddf79', '华为智能摄像机iOS版', 'ios-static', 'com.huawei.ipchuawei.ipa', 'admin', '2019-06-02', 'fdc004c9-ea1b-4223-b262-628035426045'),
+('bc1d12ec-e285-4b2f-8d16-707b3fa59df1', 'iOSStatic-com.huawei.smartspeaker.ipa', 'ios-static', 'com.huawei.smartspeaker.ipa', 'admin', '2019-06-02', 'fc9dfc9e-49d8-4687-b5b3-4bb496cef2d9'),
+('edc9e21c-b76e-4ad9-8120-a760851a98e5', '小米AI音箱固件检测', 'firmware-static', 'mico_all_f86a5_1.44.4.bin', 'admin', '2019-06-02', '2a4c4e70-107d-415b-9b6e-4fa01d7ec2ad'),
+('fd1af62b-ee1f-45cd-ad29-97124b3e88f2', 'iOSStatic-com.huawei.ipchuawei.ipa', 'ios-static', 'com.huawei.ipchuawei.ipa', 'admin', '2019-06-03', 'ba4385e6-6b86-44c1-bb50-fed721327348');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `history_android_static`
+--
+
+CREATE TABLE `history_android_static` (
+  `id` varchar(36) NOT NULL,
+  `apkinfo` varchar(500) NOT NULL,
+  `apkpermission` varchar(5000) NOT NULL,
+  `apkplatformrisk` varchar(5000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `history_fw_static`
+--
+
+CREATE TABLE `history_fw_static` (
+  `id` varchar(36) NOT NULL,
+  `fwinfo` varchar(500) NOT NULL,
+  `fwlib` varchar(5000) NOT NULL,
+  `fwlibrisk` varchar(5000) NOT NULL,
+  `fwplatformrisk` varchar(5000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `history_fw_static`
+--
+
+INSERT INTO `history_fw_static` (`id`, `fwinfo`, `fwlib`, `fwlibrisk`, `fwplatformrisk`) VALUES
+('2a4c4e70-107d-415b-9b6e-4fa01d7ec2ad', '{\"fw_name\":\"mico_all_f86a5_1.44.4.bin\",\"fw_path\":\"\",\"fw_size\":38346864,\"fw_filesystem\":\"Squashfs\",\"fw_root_directory\":\"/squashfs-root\"}', '[{\"lib_name\":\"OpenSSL\",\"lib_avaliable\":true,\"lib_path\":\"/usr/lib/libssl.so.1.0.0\",\"lib_version\":\"1.0.2l\"},{\"lib_name\":\"Zlib\",\"lib_avaliable\":true,\"lib_path\":\"/usr/lib/libz.so\",\"lib_version\":\"1.2.11\"},{\"lib_name\":\"Pcre\",\"lib_avaliable\":true,\"lib_path\":\"/usr/lib/libpcre.so\",\"lib_version\":\"8.41\"},{\"lib_name\":\"Uclibc\",\"lib_avaliable\":true,\"lib_path\":\"/lib/libc.so.6\",\"lib_version\":\"2.25\"},{\"lib_name\":\"Dropbear\",\"lib_avaliable\":true,\"lib_path\":\"/usr/sbin/dropbear\",\"lib_version\":\"2017.75\"},{\"lib_name\":\"Busybox\",\"lib_avaliable\":true,\"lib_path\":\"/bin/busybox\",\"lib_version\":\"1.27.2\"}]', '{\"Zlib\":[],\"Pcre\":[{\"id\":\"8e2643bf-1ce4-4c97-8c2e-fde8c8bc0f5e\",\"name\":\"Pcre\",\"version\":\"8.41\",\"cve_num\":\"CVE-2017-11164\"},{\"id\":\"c16642a7-6b88-4e0a-8798-4f670e714011\",\"name\":\"Pcre\",\"version\":\"8.41\",\"cve_num\":\"CVE-2017-16231\"}],\"Dropbear\":[],\"Uclibc\":[],\"Busybox\":[{\"id\":\"0fb0e336-49bd-4bf2-9966-d16ac59b4ce4\",\"name\":\"Busybox\",\"version\":\"1.27.2\",\"cve_num\":\"CVE-2017-15873\"},{\"id\":\"6fa7c315-a274-46ba-a6a7-1cfb5fdf0be1\",\"name\":\"Busybox\",\"version\":\"1.27.2\",\"cve_num\":\"CVE-2015-9261\"},{\"id\":\"b1e518b8-1de1-4fb4-911b-6fc20959a7e1\",\"name\":\"Busybox\",\"version\":\"1.27.2\",\"cve_num\":\"CVE-2017-15874\"},{\"id\":\"dfb1da9e-3d8f-4dd5-a1f6-5f420809bd6c\",\"name\":\"Busybox\",\"version\":\"1.27.2\",\"cve_num\":\"CVE-2017-16544\"},{\"id\":\"ef340885-aba2-40fc-a042-43b73435675e\",\"name\":\"Busybox\",\"version\":\"1.27.2\",\"cve_num\":\"CVE-2018-20679\"}],\"OpenSSL\":[{\"id\":\"2d4ae244-0c49-4c5d-89d1-150f44e1dcfa\",\"name\":\"OpenSSL\",\"version\":\"1.0.2l\",\"cve_num\":\"CVE-2017-3738 \"},{\"id\":\"7e48d9b4-7874-4814-b619-508e23de2a9a\",\"name\":\"OpenSSL\",\"version\":\"1.0.2l\",\"cve_num\":\"CVE-2019-1559\"},{\"id\":\"82eab5ce-06f0-4544-897f-3d95e083bc82\",\"name\":\"OpenSSL\",\"version\":\"1.0.2l\",\"cve_num\":\"CVE-2017-3736\"},{\"id\":\"98c82113-d048-4529-8ca1-17a82f45071e\",\"name\":\"OpenSSL\",\"version\":\"1.0.2l\",\"cve_num\":\"CVE-2017-3735\"},{\"id\":\"b91a300f-7460-47f6-af1d-9f14bc546110\",\"name\":\"OpenSSL\",\"version\":\"1.0.2l\",\"cve_num\":\"CVE-2018-0732 \"},{\"id\":\"c27810ac-8481-486d-853d-310e2aede6d3\",\"name\":\"OpenSSL\",\"version\":\"1.0.2l\",\"cve_num\":\"CVE-2018-5407 \"}]}', '[{\"risk_exists\":true,\"risk_name\":\"Linux用户帐户风险\",\"risk_description\":\"固件中存在可登录的Linux用户，可能导致攻击者从本地接口或远程方式取得系统权限。\",\"risk_level\":\"Low\",\"risk_platform\":\"Linux\",\"risk_detail_keys\":null,\"risk_details\":{\"user_avaliable\":[\"root\"],\"user_has_no_passwd\":[\"root\"],\"user_has_passwd\":[]}},{\"risk_exists\":false,\"risk_name\":\"Dropbear开启风险\",\"risk_description\":\"Dropbear是一款实现SSH远程登录的实用工具，开启Dropbear将允许攻击者有机会从远程登录设备。\",\"risk_level\":\"High\",\"risk_platform\":\"Linux\",\"risk_detail_keys\":null,\"risk_details\":{\"pwd_auth\":[\"false\"],\"root_pwd_auth\":[\"false\"]}},{\"risk_exists\":true,\"risk_name\":\"Dropbear配置公钥风险\",\"risk_description\":\"Dropbear是一款实现SSH远程登录的实用工具，配置了公钥表明设备生产商可能通过他们自己的私钥远程接入设备。\",\"risk_level\":\"Medium\",\"risk_platform\":\"Linux\",\"risk_detail_keys\":null,\"risk_details\":{\"auth_keys\":[\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDFmT6q32Mht0SItl9Xp6CetCQDbWoBzXRSq3iaozGVa//VjyYrooayWQ1PsI4LGpF1LxOsm8FCkPckHd3OjOlKaNkXjmnAP7nZyj1Ka0cDV77SivPTWz/hnHLedgXEnd0b04qWFiUgaGqQ1nUx+jqnTi3/Rw0HNqtSEZwj9fKMwg/r8opyU8RAhCz8KNM0tBHz9U/hEmhwZNq6KcKEOtYot/yAsPzo1s1H5R0JHPntbP2l0AlT9VVkdtxbKLK61kuGWhSY49GJTkhUIptS5ga9IrgaXPSVBb4JNeHtoimN3B3zizCiNalzIMhABnTAPoUVt7qp6VhEPJZMoQbYhoClEsnZ2qZQ846dRkJnHTl+EyAfYag2rVYk8emmpZn1X0sGzp1X1PlEtSZnstF6ED/Gv/GV4wYVWeETW8bUhjTCCnbxxQr0I9PAWQJrSACfLT+jq+4BVLozV6dCXVKOtehhVH3dV+uxfJJ7hbdfla0Vue0lamvzNa8iUP5SEcWQWo5sRkdIrGo6ykUcMuR81B9tk3Q8EAyinpa8A6q/w+6GPthQagaVpM4fTqIVU8iVRDBpIesm/jEJIueGWkx4fu6zsLjyNt5YqQS9Af0BwSr3+8TIMu65kBi3r8CjHFsPQl6Y6aQvaW4FEtTrXiT+iR30cuQcgxpLktkw7jwldjS9jw== chen@beijing\",\"\"]}}]'),
+('9031cc61-412d-470f-bd39-9c48e3dc0186', '{\"fw_name\":\"mico_all_f86a5_1.44.4.bin\",\"fw_path\":\"\",\"fw_size\":38346864,\"fw_filesystem\":\"Squashfs\",\"fw_root_directory\":\"/squashfs-root\"}', '[{\"lib_name\":\"OpenSSL\",\"lib_avaliable\":true,\"lib_path\":\"/usr/lib/libssl.so.1.0.0\",\"lib_version\":\"1.0.2l\"},{\"lib_name\":\"Zlib\",\"lib_avaliable\":true,\"lib_path\":\"/usr/lib/libz.so\",\"lib_version\":\"1.2.11\"},{\"lib_name\":\"Pcre\",\"lib_avaliable\":true,\"lib_path\":\"/usr/lib/libpcre.so\",\"lib_version\":\"8.41\"},{\"lib_name\":\"Uclibc\",\"lib_avaliable\":true,\"lib_path\":\"/lib/libc.so.6\",\"lib_version\":\"2.25\"},{\"lib_name\":\"Dropbear\",\"lib_avaliable\":true,\"lib_path\":\"/usr/sbin/dropbear\",\"lib_version\":\"2017.75\"},{\"lib_name\":\"Busybox\",\"lib_avaliable\":true,\"lib_path\":\"/bin/busybox\",\"lib_version\":\"1.27.2\"}]', '{\"Zlib\":[],\"Pcre\":[{\"id\":\"8e2643bf-1ce4-4c97-8c2e-fde8c8bc0f5e\",\"name\":\"Pcre\",\"version\":\"8.41\",\"cve_num\":\"CVE-2017-11164\"},{\"id\":\"c16642a7-6b88-4e0a-8798-4f670e714011\",\"name\":\"Pcre\",\"version\":\"8.41\",\"cve_num\":\"CVE-2017-16231\"}],\"Dropbear\":[],\"Uclibc\":[],\"Busybox\":[{\"id\":\"0fb0e336-49bd-4bf2-9966-d16ac59b4ce4\",\"name\":\"Busybox\",\"version\":\"1.27.2\",\"cve_num\":\"CVE-2017-15873\"},{\"id\":\"6fa7c315-a274-46ba-a6a7-1cfb5fdf0be1\",\"name\":\"Busybox\",\"version\":\"1.27.2\",\"cve_num\":\"CVE-2015-9261\"},{\"id\":\"b1e518b8-1de1-4fb4-911b-6fc20959a7e1\",\"name\":\"Busybox\",\"version\":\"1.27.2\",\"cve_num\":\"CVE-2017-15874\"},{\"id\":\"dfb1da9e-3d8f-4dd5-a1f6-5f420809bd6c\",\"name\":\"Busybox\",\"version\":\"1.27.2\",\"cve_num\":\"CVE-2017-16544\"},{\"id\":\"ef340885-aba2-40fc-a042-43b73435675e\",\"name\":\"Busybox\",\"version\":\"1.27.2\",\"cve_num\":\"CVE-2018-20679\"}],\"OpenSSL\":[{\"id\":\"2d4ae244-0c49-4c5d-89d1-150f44e1dcfa\",\"name\":\"OpenSSL\",\"version\":\"1.0.2l\",\"cve_num\":\"CVE-2017-3738 \"},{\"id\":\"7e48d9b4-7874-4814-b619-508e23de2a9a\",\"name\":\"OpenSSL\",\"version\":\"1.0.2l\",\"cve_num\":\"CVE-2019-1559\"},{\"id\":\"82eab5ce-06f0-4544-897f-3d95e083bc82\",\"name\":\"OpenSSL\",\"version\":\"1.0.2l\",\"cve_num\":\"CVE-2017-3736\"},{\"id\":\"98c82113-d048-4529-8ca1-17a82f45071e\",\"name\":\"OpenSSL\",\"version\":\"1.0.2l\",\"cve_num\":\"CVE-2017-3735\"},{\"id\":\"b91a300f-7460-47f6-af1d-9f14bc546110\",\"name\":\"OpenSSL\",\"version\":\"1.0.2l\",\"cve_num\":\"CVE-2018-0732 \"},{\"id\":\"c27810ac-8481-486d-853d-310e2aede6d3\",\"name\":\"OpenSSL\",\"version\":\"1.0.2l\",\"cve_num\":\"CVE-2018-5407 \"}]}', '[{\"risk_exists\":true,\"risk_name\":\"Linux用户帐户风险\",\"risk_description\":\"固件中存在可登录的Linux用户，可能导致攻击者从本地接口或远程方式取得系统权限。\",\"risk_level\":\"Low\",\"risk_platform\":\"Linux\",\"risk_detail_keys\":null,\"risk_details\":{\"user_avaliable\":[\"root\"],\"user_has_no_passwd\":[\"root\"],\"user_has_passwd\":[]}},{\"risk_exists\":false,\"risk_name\":\"Dropbear开启风险\",\"risk_description\":\"Dropbear是一款实现SSH远程登录的实用工具，开启Dropbear将允许攻击者有机会从远程登录设备。\",\"risk_level\":\"High\",\"risk_platform\":\"Linux\",\"risk_detail_keys\":null,\"risk_details\":{\"pwd_auth\":[\"false\"],\"root_pwd_auth\":[\"false\"]}},{\"risk_exists\":true,\"risk_name\":\"Dropbear配置公钥风险\",\"risk_description\":\"Dropbear是一款实现SSH远程登录的实用工具，配置了公钥表明设备生产商可能通过他们自己的私钥远程接入设备。\",\"risk_level\":\"Medium\",\"risk_platform\":\"Linux\",\"risk_detail_keys\":null,\"risk_details\":{\"auth_keys\":[\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDFmT6q32Mht0SItl9Xp6CetCQDbWoBzXRSq3iaozGVa//VjyYrooayWQ1PsI4LGpF1LxOsm8FCkPckHd3OjOlKaNkXjmnAP7nZyj1Ka0cDV77SivPTWz/hnHLedgXEnd0b04qWFiUgaGqQ1nUx+jqnTi3/Rw0HNqtSEZwj9fKMwg/r8opyU8RAhCz8KNM0tBHz9U/hEmhwZNq6KcKEOtYot/yAsPzo1s1H5R0JHPntbP2l0AlT9VVkdtxbKLK61kuGWhSY49GJTkhUIptS5ga9IrgaXPSVBb4JNeHtoimN3B3zizCiNalzIMhABnTAPoUVt7qp6VhEPJZMoQbYhoClEsnZ2qZQ846dRkJnHTl+EyAfYag2rVYk8emmpZn1X0sGzp1X1PlEtSZnstF6ED/Gv/GV4wYVWeETW8bUhjTCCnbxxQr0I9PAWQJrSACfLT+jq+4BVLozV6dCXVKOtehhVH3dV+uxfJJ7hbdfla0Vue0lamvzNa8iUP5SEcWQWo5sRkdIrGo6ykUcMuR81B9tk3Q8EAyinpa8A6q/w+6GPthQagaVpM4fTqIVU8iVRDBpIesm/jEJIueGWkx4fu6zsLjyNt5YqQS9Af0BwSr3+8TIMu65kBi3r8CjHFsPQl6Y6aQvaW4FEtTrXiT+iR30cuQcgxpLktkw7jwldjS9jw== chen@beijing\",\"\"]}}]'),
+('d5681442-101e-4820-859c-c822fed5719c', '{\"fw_name\":\"miwifi_r1cm_firmware_7054f_2.3.5.bin\",\"fw_path\":\"\",\"fw_size\":12846004,\"fw_filesystem\":\"Squashfs\",\"fw_root_directory\":\"/squashfs-root\"}', '[{\"lib_name\":\"OpenSSH\",\"lib_avaliable\":true,\"lib_path\":\"/usr/bin/ssh\",\"lib_version\":\"Unknown\"},{\"lib_name\":\"OpenSSL\",\"lib_avaliable\":true,\"lib_path\":\"/usr/lib/libssl.so.1.0.0\",\"lib_version\":\"1.0.1j\"},{\"lib_name\":\"Zlib\",\"lib_avaliable\":true,\"lib_path\":\"/usr/lib/libz.so\",\"lib_version\":\"1.2.7\"},{\"lib_name\":\"Iproute2\",\"lib_avaliable\":true,\"lib_path\":\"/usr/sbin/ip\",\"lib_version\":\"100000\"},{\"lib_name\":\"Dropbear\",\"lib_avaliable\":true,\"lib_path\":\"/usr/sbin/dropbear\",\"lib_version\":\"Unknown\"},{\"lib_name\":\"Busybox\",\"lib_avaliable\":true,\"lib_path\":\"/bin/busybox\",\"lib_version\":\"1.19.4\"}]', '{\"Zlib\":[],\"OpenSSH\":[],\"Iproute2\":[],\"Dropbear\":[],\"Busybox\":[{\"id\":\"4917613b-ba5f-4632-bb95-191c012a6214\",\"name\":\"Busybox\",\"version\":\"1.19.4\",\"cve_num\":\"CVE-2015-9261\"},{\"id\":\"f535e3d7-8d5f-4bcb-afe6-c9692ce9cd8e\",\"name\":\"Busybox\",\"version\":\"1.19.4\",\"cve_num\":\"CVE-2018-20679\"}],\"OpenSSL\":[]}', '[{\"risk_exists\":true,\"risk_name\":\"Linux用户帐户风险\",\"risk_description\":\"固件中存在可登录的Linux用户，可能导致攻击者从本地接口或远程方式取得系统权限。\",\"risk_level\":\"Low\",\"risk_platform\":\"Linux\",\"risk_detail_keys\":null,\"risk_details\":{\"user_avaliable\":[\"root\"],\"user_has_no_passwd\":[],\"user_has_passwd\":[\"root\"]}},{\"risk_exists\":true,\"risk_name\":\"Dropbear开启风险\",\"risk_description\":\"Dropbear是一款实现SSH远程登录的实用工具，开启Dropbear将允许攻击者有机会从远程登录设备。\",\"risk_level\":\"High\",\"risk_platform\":\"Linux\",\"risk_detail_keys\":null,\"risk_details\":{\"pwd_auth\":[\"true\"],\"root_pwd_auth\":[\"true\"]}},{\"risk_exists\":false,\"risk_name\":\"Dropbear配置公钥风险\",\"risk_description\":\"Dropbear是一款实现SSH远程登录的实用工具，配置了公钥表明设备生产商可能通过他们自己的私钥远程接入设备。\",\"risk_level\":\"Medium\",\"risk_platform\":\"Linux\",\"risk_detail_keys\":null,\"risk_details\":{}}]');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `history_ios_static`
+--
+
+CREATE TABLE `history_ios_static` (
+  `id` varchar(36) NOT NULL,
+  `ipainfo` varchar(500) NOT NULL,
+  `ipapermission` varchar(5000) NOT NULL,
+  `ipaplatformrisk` varchar(5000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `history_ios_static`
+--
+
+INSERT INTO `history_ios_static` (`id`, `ipainfo`, `ipapermission`, `ipaplatformrisk`) VALUES
+('ba4385e6-6b86-44c1-bb50-fed721327348', '{\"ipa_name\":\"com.huawei.ipchuawei.ipa\",\"ipa_size\":33763796,\"ipa_path\":\"\",\"ipa_source_file\":\"\",\"ipa_info_plist_file\":\"\"}', '[\"NSPhotoLibrary ( UsageDescription: We need visit album )\",\"NSLocationWhenInUse ( UsageDescription: We need visit location )\",\"NSCamera ( UsageDescription: We need visit camera )\",\"NSPhotoLibraryAdd ( UsageDescription: We need visit album )\",\"NSMicrophone ( UsageDescription: We need visit mic )\",\"NSLocation ( UsageDescription: We need visit location )\"]', '[{\"risk_exists\":true,\"risk_name\":\"iOS后台使用\",\"risk_description\":\"iOS允许应用程序在后台使用GPS定位，持续跟踪位置并使应用即使在锁屏后依旧可以在后台运行。\",\"risk_level\":\"Low\",\"risk_platform\":\"iOS\",\"risk_detail_keys\":null,\"risk_details\":{\"background_modes\":[\"fetch\",\"remote-notification\"]}},{\"risk_exists\":true,\"risk_name\":\"iOS应用传输安全风险\",\"risk_description\":\"iOS App Transport Security要求iOS应用必须使用安全的HTTPS协议，如果配置禁用则允许明文传输，可能导致信息泄露。\",\"risk_level\":\"Medium\",\"risk_platform\":\"iOS\",\"risk_detail_keys\":null,\"risk_details\":{\"NSAllowsArbitraryLoads\":[\"true\"],\"NSExceptionDomains\":[]}}]'),
+('fc9dfc9e-49d8-4687-b5b3-4bb496cef2d9', '{\"ipa_name\":\"com.huawei.smartspeaker.ipa\",\"ipa_size\":24823400,\"ipa_path\":\"\",\"ipa_source_file\":\"\",\"ipa_info_plist_file\":\"\"}', '[\"NSPhotoLibrary ( UsageDescription: 用于设置您的头像或者吐槽的图片和视频提交 )\",\"NSLocationWhenInUse ( UsageDescription: 获取位置信息，用于天气播报和路况提醒 )\",\"NSCamera ( UsageDescription: 用于设置您的头像 )\",\"NSBluetoothPeripheral ( UsageDescription: 用于配置音箱联网，请允许打开蓝牙 )\",\"NSMicrophone ( UsageDescription: 用于智能训练中的录音功能 )\"]', '[{\"risk_exists\":true,\"risk_name\":\"iOS后台使用\",\"risk_description\":\"iOS允许应用程序在后台使用GPS定位，持续跟踪位置并使应用即使在锁屏后依旧可以在后台运行。\",\"risk_level\":\"Low\",\"risk_platform\":\"iOS\",\"risk_detail_keys\":null,\"risk_details\":{\"background_modes\":[\"bluetooth-peripheral\",\"bluetooth-central\"]}},{\"risk_exists\":true,\"risk_name\":\"iOS应用传输安全风险\",\"risk_description\":\"iOS App Transport Security要求iOS应用必须使用安全的HTTPS协议，如果配置禁用则允许明文传输，可能导致信息泄露。\",\"risk_level\":\"Medium\",\"risk_platform\":\"iOS\",\"risk_detail_keys\":null,\"risk_details\":{\"NSAllowsArbitraryLoads\":[\"true\"],\"NSExceptionDomains\":[\"localhost\",\"NSTemporaryExceptionAllowsInsecureHTTPLoads\"]}}]'),
+('fdc004c9-ea1b-4223-b262-628035426045', '{\"ipa_name\":\"com.huawei.ipchuawei.ipa\",\"ipa_size\":33763796,\"ipa_path\":\"\",\"ipa_source_file\":\"\",\"ipa_info_plist_file\":\"\"}', '[\"NSPhotoLibrary ( UsageDescription: We need visit album )\",\"NSLocationWhenInUse ( UsageDescription: We need visit location )\",\"NSCamera ( UsageDescription: We need visit camera )\",\"NSPhotoLibraryAdd ( UsageDescription: We need visit album )\",\"NSMicrophone ( UsageDescription: We need visit mic )\",\"NSLocation ( UsageDescription: We need visit location )\"]', '[{\"risk_exists\":true,\"risk_name\":\"iOS后台使用\",\"risk_description\":\"iOS允许应用程序在后台使用GPS定位，持续跟踪位置并使应用即使在锁屏后依旧可以在后台运行。\",\"risk_level\":\"Low\",\"risk_platform\":\"iOS\",\"risk_detail_keys\":null,\"risk_details\":{\"background_modes\":[\"fetch\",\"remote-notification\"]}},{\"risk_exists\":true,\"risk_name\":\"iOS应用传输安全风险\",\"risk_description\":\"iOS App Transport Security要求iOS应用必须使用安全的HTTPS协议，如果配置禁用则允许明文传输，可能导致信息泄露。\",\"risk_level\":\"Medium\",\"risk_platform\":\"iOS\",\"risk_detail_keys\":null,\"risk_details\":{\"NSAllowsArbitraryLoads\":[\"true\"],\"NSExceptionDomains\":[]}}]');
 
 -- --------------------------------------------------------
 
@@ -2938,6 +3026,31 @@ ALTER TABLE `device`
   ADD PRIMARY KEY (`clientid`);
 
 --
+-- 表的索引 `history`
+--
+ALTER TABLE `history`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user` (`user`);
+
+--
+-- 表的索引 `history_android_static`
+--
+ALTER TABLE `history_android_static`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 表的索引 `history_fw_static`
+--
+ALTER TABLE `history_fw_static`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 表的索引 `history_ios_static`
+--
+ALTER TABLE `history_ios_static`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 表的索引 `library_risk`
 --
 ALTER TABLE `library_risk`
@@ -2979,6 +3092,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `authorities`
   ADD CONSTRAINT `fk_authorities_users` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
+
+--
+-- 限制表 `history`
+--
+ALTER TABLE `history`
+  ADD CONSTRAINT `history_ibfk_1` FOREIGN KEY (`user`) REFERENCES `users` (`username`);
 
 --
 -- 限制表 `library_risk`

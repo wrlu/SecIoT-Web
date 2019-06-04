@@ -1,6 +1,6 @@
-import sys
 import socketserver
 import json
+import platform
 from run_tools import run_frps
 from run_tools import run_jadx
 from run_tools import run_frida
@@ -105,19 +105,23 @@ class FridaService:
         return run_frida.get_process_list('127.0.0.1:' + str(port))
 
     @staticmethod
-    def monitoring_device(port, process, m_api, m_ip, m_traffic, m_fileio, m_dbio, log_base_dir):
+    def monitoring_device(port, process, m_api, m_ip, m_traffic, m_fileio, m_dbio, python_base_dir):
+        if platform.system() == 'Windows':
+            path_fix = '\\'
+        else:
+            path_fix = '/'
         js_files = []
         if m_api is True:
-            js_files.append('android_injection/monitoring_api.js')
+            js_files.append(python_base_dir + 'android_injection'+path_fix+'monitoring_api.js')
         if m_ip is True:
-            js_files.append('android_injection/monitoring_ip.js')
+            js_files.append(python_base_dir + 'android_injection'+path_fix+'monitoring_ip.js')
         if m_traffic is True:
-            js_files.append('android_injection/monitoring_traffic.js')
+            js_files.append(python_base_dir + 'android_injection'+path_fix+'monitoring_traffic.js')
         if m_fileio is True:
-            js_files.append('android_injection/monitoring_fileio.js')
+            js_files.append(python_base_dir + 'android_injection'+path_fix+'monitoring_fileio.js')
         if m_dbio is True:
-            js_files.append('android_injection/monitoring_dbio.js')
-        return run_frida.hook('127.0.0.1:' + str(port), process, js_files, log_base_dir)
+            js_files.append(python_base_dir + 'android_injection'+path_fix+'monitoring_dbio.js')
+        return run_frida.hook('127.0.0.1:' + str(port), process, js_files, python_base_dir)
 
     @staticmethod
     def stop_monitoring(port):
@@ -213,7 +217,7 @@ class PySocketServerHandler(socketserver.BaseRequestHandler):
                         params['monitoring_traffic'],
                         params['monitoring_fileio'],
                         params['monitoring_dbio'],
-                        params['log_base_dir']
+                        params['python_base_dir']
                     )
                 elif method == 'stop_monitoring':
                     result = FridaService.stop_monitoring(params['port'])

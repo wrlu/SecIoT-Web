@@ -2,15 +2,20 @@ import frida
 import sys
 import re
 import os
+import platform
 
 
 log_base_dir = 'android_injection/hook_log/'
 log_regex = re.compile('Host127\\.0\\.0\\.1:9[0-9][0-9][0-9]')
 
 
-def hook(host, process_name, js_files, log_dir):
+def hook(host, process_name, js_files, python_base_dir):
     global log_base_dir
-    log_base_dir = log_dir
+    if platform.system() == 'Windows':
+        path_fix = '\\'
+    else:
+        path_fix = '/'
+    log_base_dir = python_base_dir + 'android_injection'+path_fix+'hook_log'+path_fix
     if len(js_files) == 0:
         return {
             'hook_status': 'stop'

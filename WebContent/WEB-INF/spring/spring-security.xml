@@ -14,7 +14,7 @@
     	<intercept-url pattern="/agent/**" access="permitAll" />
     	<intercept-url pattern="/device/add*" access="permitAll" />
     	<intercept-url pattern="/device/update*" access="permitAll" />
-    	<intercept-url pattern="/attach/downloads*" access="permitAll" />
+    	<intercept-url pattern="/attach/downloads/**" access="permitAll" />
     	<!-- 无条件禁止以下路径 -->
         <intercept-url pattern="/attach/uploads/**" access="denyAll" />
         <!-- 需要管理员权限访问以下路径 -->

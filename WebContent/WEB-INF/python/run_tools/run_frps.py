@@ -17,4 +17,4 @@ def call_frps_version(path):
 
 
 if __name__ == '__main__':
-    print(get_frps_version('/mnt/data/WebServer/apache-tomcat-9.0.19/wtpwebapps/SecIoT/WEB-INF/frp/'))
+    print(get_frps_version('/mnt/data/WebServer/apache-tomcat-9.0.19/wtpwebapps/SecIoT/WEB-INF/frps-amd64/'))

@@ -175,11 +175,11 @@ public class AndroidServiceImpl implements AndroidService {
 		} else {
 			path = path.replace("file:", "");
 		}
-		path = path.replace("WEB-INF/classes/", "WEB-INF/python/android_injection/hook_log/");
+		path = path.replace("WEB-INF/classes/", "WEB-INF/python/");
 		if (OSUtil.isWindows()) {
 			path = OSUtil.escapeUnixSeparator(path);
 		}
-		parameters.put("log_base_dir", path);
+		parameters.put("python_base_dir", path);
 		request.setCmd("FridaService.monitoring_device");
 		request.setParameters(parameters);
 		PyClient pyClient = new PyClient();

@@ -2,16 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbd97ff7-e094-4529-b3d7-8f8e2a709367" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../Database/seciot.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Database/seciot.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frp/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/../frps-amd64/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frp/frps" beforeDir="false" afterPath="$PROJECT_DIR$/../frps-amd64/frps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frp/frps.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../frps-amd64/frps.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frp/startfrps.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../frps-amd64/startfrps.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pages/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../pages/history.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/fw/controller/FwController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/fw/controller/FwController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/model/AndroidResultDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/model/AndroidHistoryDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/model/AppleiOSResultDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/model/AppleiOSHistoryDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/model/FwResultDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/model/FwHistoryDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/service/HistoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/history/service/HistoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AndroidController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AndroidController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AppleiOSController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/mobile/controller/AppleiOSController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_tools/run_frida.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tools/run_frida.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_tools/run_frps.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tools/run_frps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/socket_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/socket_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/spring-security.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../spring/spring-security.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/agent/controller/AgentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/agent/controller/AgentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/frps/FrpsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/frps/FrpsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/util/os/OSUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/main/java/com/wrlus/seciot/util/os/OSUtil.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,20 +27,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/socket_server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
-              <caret line="255" column="88" lean-forward="true" selection-start-line="255" selection-start-column="88" selection-end-line="255" selection-end-column="88" />
+            <state relative-caret-position="243">
+              <caret line="111" column="26" lean-forward="true" selection-start-line="108" selection-start-column="8" selection-end-line="111" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fw_platform/fw_crontab.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="351">
+              <caret line="14" column="22" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="14" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/run_tools/run_frida.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3591">
-              <caret line="136" selection-start-line="136" selection-end-line="136" />
+            <state relative-caret-position="216">
+              <caret line="17" column="16" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="16" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -103,7 +121,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ios_ats_policy.py" />
         <option value="$PROJECT_DIR$/android_permission.py" />
         <option value="$PROJECT_DIR$/run_nmap.py" />
         <option value="$PROJECT_DIR$/scan_hikvision_rce.py" />
@@ -152,16 +169,17 @@
         <option value="$PROJECT_DIR$/android_injection/monitoring_traffic.js" />
         <option value="$PROJECT_DIR$/android_injection/monitoring_dbio.js" />
         <option value="$PROJECT_DIR$/android_injection/monitoring_fileio.js" />
-        <option value="$PROJECT_DIR$/run_tools/run_frida.py" />
+        <option value="$PROJECT_DIR$/run_tools/run_frps.py" />
         <option value="$PROJECT_DIR$/socket_server.py" />
+        <option value="$PROJECT_DIR$/run_tools/run_frida.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="60" />
     <option name="y" value="32" />
-    <option name="width" value="1188" />
-    <option name="height" value="796" />
+    <option name="width" value="1192" />
+    <option name="height" value="822" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -927,7 +945,7 @@
     <frame x="-6" y="32" width="1932" height="1018" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49888143" visible="true" weight="0.14331041" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49888143" visible="true" weight="0.14331041" />
       <window_info id="Structure" order="1" sideWeight="0.50111854" side_tool="true" weight="0.14406332" />
       <window_info id="Favorites" order="2" show_stripe_button="false" sideWeight="0.50111854" side_tool="true" weight="0.14406332" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -935,7 +953,7 @@
       <window_info anchor="bottom" id="Debug" order="2" weight="0.525" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49920678" weight="0.23068182" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49920678" visible="true" weight="0.30227274" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32867134" />
@@ -995,13 +1013,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py" />
     <entry file="file://$PROJECT_DIR$/traffic_get_connection_details.py" />
-    <entry file="file://$PROJECT_DIR$/run_tools/run_frps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run_tools/run_nmap.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -1099,13 +1110,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/android_platform/android_exported.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fw_platform/fw_dropbear_auth_keys.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
@@ -1170,16 +1174,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_tools/run_jadx.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/android_platform/android_permission.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1201,16 +1195,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1755">
           <caret line="65" column="47" selection-start-line="65" selection-start-column="47" selection-end-line="65" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fw_platform/fw_crontab.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1239,20 +1223,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/socket_server.py">
+    <entry file="file://$PROJECT_DIR$/run_tools/run_frps.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="255" column="88" lean-forward="true" selection-start-line="255" selection-start-column="88" selection-end-line="255" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_tools/run_frida.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3591">
-          <caret line="136" selection-start-line="136" selection-end-line="136" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="27">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -1281,6 +1255,53 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_tools/run_jadx.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="36" column="64" lean-forward="true" selection-start-line="36" selection-start-column="64" selection-end-line="36" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android_platform/android_exported.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1728">
+          <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fw_platform/fw_crontab.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="14" column="22" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="14" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/socket_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="111" column="26" lean-forward="true" selection-start-line="108" selection-start-column="8" selection-end-line="111" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_tools/run_frida.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -68,7 +68,7 @@ public class AgentController {
 		} else {
 			path = path.replace("file:", "");
 		}
-		path = path.replace("classes/", "frp/");
+		path = path.replace("classes/", "frps-"+OSUtil.getArch()+"/");
 		try {
 			String version = agentAndroidService.getFrpsVersion(path);
 			data.put("status", 0);

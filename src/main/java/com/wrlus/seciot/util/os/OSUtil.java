@@ -19,6 +19,10 @@ public class OSUtil {
 		return escapePath;
 	}
 	
+	public static String getArch() {
+		return System.getProperty("os.arch");
+	}
+	
 	public static boolean isLinux(){
 		return OS.indexOf("linux")>=0;
 	}

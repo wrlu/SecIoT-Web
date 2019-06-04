@@ -264,7 +264,7 @@ function onRefreshDeviceList() {
 				if (result.devices[i].busy == 0) {
 					devices += '<button class="btn btn-sm btn-info" onclick="onShowDevices(\''+result.devices[i].clientid+'\')" title="查看远程设备的基本信息">查看</button>';
 					devices += '<button class="btn btn-sm btn-success" onclick="getProcessList(\''+result.devices[i].clientid+'\', '+result.devices[i].port+')" title="检测远程设备上的特定应用的安全风险">检测</button>';
-					devices += '<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#customInjectionWarning" title="向远程设备上的特定应用注入代码(高级功能)">注入</button>';
+//					devices += '<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#customInjectionWarning" title="向远程设备上的特定应用注入代码(高级功能)">注入</button>';
 				} else if (result.devices[i].busy == 1) {
 					devices += '<button class="btn btn-sm btn-info" onclick="onShowDevices(\''+result.devices[i].clientid+'\')" title="查看远程设备的基本信息">查看</button>';
 					devices += '<button class="btn btn-sm btn-danger" onclick="stopMonitoring(\''+result.devices[i].clientid+'\', '+result.devices[i].port+')" title="停止远程设备上的检测任务">中止</button>';
