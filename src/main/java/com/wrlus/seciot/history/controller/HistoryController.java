@@ -138,7 +138,7 @@ public class HistoryController {
 			data.put("reason", ReasonEnum.SUCCESS.get());
 			data.put("ipa_info", history.getIpainfoRaw());
 			data.put("ipa_permission", history.getIpapermissionRaw());
-			data.put("ipa_platform_risk", history.getIpapermissionRaw());
+			data.put("ipa_platform_risk", history.getIpaplatformriskRaw());
 		} catch (Exception e) {
 			log.error(e.getClass().getName() + ": " + e.getLocalizedMessage());
 			if (log.isDebugEnabled()) {

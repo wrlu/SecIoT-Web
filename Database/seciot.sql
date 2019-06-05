@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： [::1]
--- 生成日期： 2019-06-03 13:15:43
+-- 生成日期： 2019-06-04 07:54:51
 -- 服务器版本： 10.3.15-MariaDB
 -- PHP 版本： 7.2.5
 
@@ -295,14 +295,6 @@ CREATE TABLE `device` (
   `online` int(1) NOT NULL,
   `busy` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `device`
---
-
-INSERT INTO `device` (`clientid`, `devicename`, `version`, `apilevel`, `agentver`, `port`, `online`, `busy`) VALUES
-('197bf204-3a75-4bd5-b707-24e9bb93848a', 'Sony C6603 ( yuga )', '6.0.1', 23, '1.0-aosp', 0, 0, 0),
-('71a0d0f9-1af1-4cd9-ac94-7c69787e46b3', 'Huawei angler ( angler )', '8.1.0', 27, '1.0-aosp', 9000, 1, 0);
 
 -- --------------------------------------------------------
 

@@ -35,6 +35,7 @@ import com.wrlus.seciot.mobile.service.AndroidServiceImpl;
 import com.wrlus.seciot.platform.model.PlatformRiskDao;
 import com.wrlus.seciot.platform.model.PlatformRiskResult;
 import com.wrlus.seciot.platform.service.PlatformRiskServiceImpl;
+import com.wrlus.seciot.protect.XSSProtect;
 import com.wrlus.seciot.util.exception.FileUploadException;
 import com.wrlus.seciot.util.exception.ReasonEnum;
 import com.wrlus.seciot.util.exception.RootException;
@@ -125,22 +126,6 @@ public class AndroidController {
 		}
 		this.cleanUploadFile(path);
 		return data;
-	}
-	
-	public File resolveUploadFile(MultipartHttpServletRequest multipartRequest, String path) throws FileUploadException {
-		try {
-			MultipartFile multipartFile = multipartRequest.getFile("file");
-			new File(path).mkdirs();
-			File targetFile = new File(path + multipartFile.getOriginalFilename());
-			multipartFile.transferTo(targetFile);
-			return targetFile;
-		} catch (Exception e) {
-			throw new FileUploadException(e);
-		}
-	}
-	
-	public void cleanUploadFile(String path) {
-		new File(path).delete();
 	}
 	
 	@ResponseBody
@@ -319,6 +304,26 @@ public class AndroidController {
 			data.put("reason", ReasonEnum.UNKNOWN.get());
 		}
 		return data;
+	}
+	
+	public File resolveUploadFile(MultipartHttpServletRequest multipartRequest, String path) throws FileUploadException {
+		try {
+			MultipartFile multipartFile = multipartRequest.getFile("file");
+			new File(path).mkdirs();
+			String originalFilename = multipartFile.getOriginalFilename();
+			if (!originalFilename.endsWith(".apk")) {
+				throw new FileUploadException("File type mismatch.");
+			}
+			File targetFile = new File(path + XSSProtect.escapeString(originalFilename));
+			multipartFile.transferTo(targetFile);
+			return targetFile;
+		} catch (Exception e) {
+			throw new FileUploadException(e);
+		}
+	}
+	
+	public void cleanUploadFile(String path) {
+		new File(path).delete();
 	}
 	
 	public static String getAuthenticatedUsername() { 

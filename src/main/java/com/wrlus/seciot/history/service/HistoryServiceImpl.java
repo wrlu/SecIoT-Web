@@ -10,6 +10,7 @@ import com.wrlus.seciot.history.model.AndroidHistoryDao;
 import com.wrlus.seciot.history.model.AppleiOSHistoryDao;
 import com.wrlus.seciot.history.model.FwHistoryDao;
 import com.wrlus.seciot.history.model.HistoryDao;
+import com.wrlus.seciot.protect.XSSProtect;
 
 @Service
 public class HistoryServiceImpl implements HistoryService {
@@ -69,7 +70,7 @@ public class HistoryServiceImpl implements HistoryService {
 
 	@Override
 	public int updateHistoryName(String id, String name) {
-		return dao.updateHistoryName(id, name);
+		return dao.updateHistoryName(id, XSSProtect.escapeString(name));
 	}
 
 	@Override

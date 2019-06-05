@@ -1,5 +1,7 @@
 package com.wrlus.seciot.device.model;
 
+import com.wrlus.seciot.protect.XSSProtect;
+
 public class DeviceDao {
 	private String clientid;
 	private String devicename;
@@ -14,13 +16,13 @@ public class DeviceDao {
 		return clientid;
 	}
 	public void setClientid(String clientid) {
-		this.clientid = clientid;
+		this.clientid = XSSProtect.escapeUuid(clientid);
 	}
 	public String getDevicename() {
 		return devicename;
 	}
 	public void setDevicename(String devicename) {
-		this.devicename = devicename;
+		this.devicename = XSSProtect.escapeString(devicename);
 	}
 	public String getVersion() {
 		return version;
