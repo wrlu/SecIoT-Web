@@ -1,6 +1,6 @@
 package com.wrlus.seciot.device.model;
 
-import com.wrlus.seciot.protect.XSSProtect;
+import com.wrlus.seciot.waf.XSSProtect;
 
 public class DeviceDao {
 	private String clientid;

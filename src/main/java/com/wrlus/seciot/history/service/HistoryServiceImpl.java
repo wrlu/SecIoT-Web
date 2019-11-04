@@ -10,7 +10,7 @@ import com.wrlus.seciot.history.model.AndroidHistoryDao;
 import com.wrlus.seciot.history.model.AppleiOSHistoryDao;
 import com.wrlus.seciot.history.model.FwHistoryDao;
 import com.wrlus.seciot.history.model.HistoryDao;
-import com.wrlus.seciot.protect.XSSProtect;
+import com.wrlus.seciot.waf.XSSProtect;
 
 @Service
 public class HistoryServiceImpl implements HistoryService {

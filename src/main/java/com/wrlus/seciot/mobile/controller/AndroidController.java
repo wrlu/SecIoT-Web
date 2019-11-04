@@ -35,11 +35,11 @@ import com.wrlus.seciot.mobile.service.AndroidServiceImpl;
 import com.wrlus.seciot.platform.model.PlatformRiskDao;
 import com.wrlus.seciot.platform.model.PlatformRiskResult;
 import com.wrlus.seciot.platform.service.PlatformRiskServiceImpl;
-import com.wrlus.seciot.protect.XSSProtect;
 import com.wrlus.seciot.util.exception.FileUploadException;
 import com.wrlus.seciot.util.exception.ReasonEnum;
 import com.wrlus.seciot.util.exception.RootException;
 import com.wrlus.seciot.util.os.OSUtil;
+import com.wrlus.seciot.waf.XSSProtect;
 
 @Controller
 @RequestMapping("/android")

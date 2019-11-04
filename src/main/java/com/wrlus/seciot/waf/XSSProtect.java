@@ -1,4 +1,4 @@
-package com.wrlus.seciot.protect;
+package com.wrlus.seciot.waf;
 
 public class XSSProtect {
 	public static String escapeString(String input) {
