@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wrlus.seciot.history.dao.HistoryMapper;
-import com.wrlus.seciot.history.model.AndroidHistoryDao;
-import com.wrlus.seciot.history.model.AppleiOSHistoryDao;
 import com.wrlus.seciot.history.model.FwHistoryDao;
 import com.wrlus.seciot.history.model.HistoryDao;
 import com.wrlus.seciot.waf.XSSProtect;
@@ -39,16 +37,6 @@ public class HistoryServiceImpl implements HistoryService {
 	}
 
 	@Override
-	public List<AndroidHistoryDao> getAndroidHistoryById(String id) {
-		return dao.getAndroidHistoryById(id);
-	}
-
-	@Override
-	public List<AppleiOSHistoryDao> getAppleiOSHistoryById(String id) {
-		return dao.getAppleiOSHistoryById(id);
-	}
-
-	@Override
 	public int addHistory(HistoryDao history) {
 		return dao.addHistory(history);
 	}
@@ -56,16 +44,6 @@ public class HistoryServiceImpl implements HistoryService {
 	@Override
 	public int addFwHistory(FwHistoryDao fwHistory) {
 		return dao.addFwHistory(fwHistory);
-	}
-
-	@Override
-	public int addAndroidHistory(AndroidHistoryDao androidHistory) {
-		return dao.addAndroidHistory(androidHistory);
-	}
-
-	@Override
-	public int addAppleiOSHistory(AppleiOSHistoryDao appleiOSHistory) {
-		return dao.addAppleiOSHistory(appleiOSHistory);
 	}
 
 	@Override
@@ -81,16 +59,6 @@ public class HistoryServiceImpl implements HistoryService {
 	@Override
 	public int deleteFwHistory(String id) {
 		return dao.deleteFwHistory(id);
-	}
-
-	@Override
-	public int deleteAndroidHistory(String id) {
-		return dao.deleteAndroidHistory(id);
-	}
-
-	@Override
-	public int deleteAppleiOSHistory(String id) {
-		return dao.deleteAppleiOSHistory(id);
 	}
 
 }

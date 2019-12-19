@@ -32,55 +32,55 @@ implementation group: 'commons-logging', name: 'commons-logging', version: '1.2'
 // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
 implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.2'
 // https://mvnrepository.com/artifact/org.apache.poi/poi
-implementation group: 'org.apache.poi', name: 'poi', version: '4.1.0'
+implementation group: 'org.apache.poi', name: 'poi', version: '4.1.1'
 // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
-implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.0'
+implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.1'
 // https://mvnrepository.com/artifact/org.apache.poi/poi-scratchpad
-implementation group: 'org.apache.poi', name: 'poi-scratchpad', version: '4.1.0'
+implementation group: 'org.apache.poi', name: 'poi-scratchpad', version: '4.1.1'
 // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml-schemas
-implementation group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '4.1.0'
+implementation group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '4.1.1'
 // https://mvnrepository.com/artifact/org.apache.poi/poi-excelant
-implementation group: 'org.apache.poi', name: 'poi-excelant', version: '4.1.0'
+implementation group: 'org.apache.poi', name: 'poi-excelant', version: '4.1.1'
 // https://mvnrepository.com/artifact/org.springframework/spring-core
-implementation group: 'org.springframework', name: 'spring-core', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-core', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-beans
-implementation group: 'org.springframework', name: 'spring-beans', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-beans', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-web
-implementation group: 'org.springframework', name: 'spring-web', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-web', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-webmvc
-implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-jdbc
-implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-aop
-implementation group: 'org.springframework', name: 'spring-aop', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-aop', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-aspects
-implementation group: 'org.springframework', name: 'spring-aspects', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-aspects', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-context-support
-implementation group: 'org.springframework', name: 'spring-context-support', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-context-support', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-instrument
-implementation group: 'org.springframework', name: 'spring-instrument', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-instrument', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-instrument-tomcat
 implementation group: 'org.springframework', name: 'spring-instrument-tomcat', version: '4.3.22.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-jms
-implementation group: 'org.springframework', name: 'spring-jms', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-jms', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-messaging
-implementation group: 'org.springframework', name: 'spring-messaging', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-messaging', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-orm
-implementation group: 'org.springframework', name: 'spring-orm', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-orm', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-oxm
-implementation group: 'org.springframework', name: 'spring-oxm', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-oxm', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-tx
-implementation group: 'org.springframework', name: 'spring-tx', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-tx', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-webmvc
-implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework/spring-websocket
-implementation group: 'org.springframework', name: 'spring-websocket', version: '5.1.9.RELEASE'
+implementation group: 'org.springframework', name: 'spring-websocket', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework.security/spring-security-core
-implementation group: 'org.springframework.security', name: 'spring-security-core', version: '5.1.6.RELEASE'
+implementation group: 'org.springframework.security', name: 'spring-security-core', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework.security/spring-security-web
-implementation group: 'org.springframework.security', name: 'spring-security-web', version: '5.1.6.RELEASE'
+implementation group: 'org.springframework.security', name: 'spring-security-web', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework.security/spring-security-config
-implementation group: 'org.springframework.security', name: 'spring-security-config', version: '5.1.6.RELEASE'
+implementation group: 'org.springframework.security', name: 'spring-security-config', version: '5.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2
 implementation group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.6.0'
 // https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
@@ -94,9 +94,9 @@ implementation group: 'org.apache.commons', name: 'commons-collections4', versio
 // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
 implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
 // https://mvnrepository.com/artifact/org.mybatis/mybatis-spring
-implementation group: 'org.mybatis', name: 'mybatis-spring', version: '2.0.2'
+implementation group: 'org.mybatis', name: 'mybatis-spring', version: '2.0.3'
 // https://mvnrepository.com/artifact/org.mybatis/mybatis
-implementation group: 'org.mybatis', name: 'mybatis', version: '3.5.2'
+implementation group: 'org.mybatis', name: 'mybatis', version: '3.5.3'
 // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
 implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 // https://mvnrepository.com/artifact/org.json/json
@@ -107,8 +107,5 @@ implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', ve
 implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.8'
 // https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on
 implementation group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.61'
-// https://mvnrepository.com/artifact/org.apache.derby/derby
-implementation group: 'org.apache.derby', name: 'derby', version: '10.15.1.3'
 
 }
-
