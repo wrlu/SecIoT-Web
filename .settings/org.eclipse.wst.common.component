@@ -3,5 +3,6 @@
 	<wb-module deploy-name="SecIoT">
 		<property name="context-root" value="SecIoT"/>
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
+		<wb-resource deploy-path="/" source-path="src/main/webapp"/>
 	</wb-module>
 </project-modules>

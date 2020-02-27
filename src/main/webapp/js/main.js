@@ -18,9 +18,7 @@ $(function(){
 				$("#main").html(errorMsg);
 			}
 		});
-		if (args.page == "android-dym") {
-			onRefreshDeviceList();
-		} else if (args.page == "history") {
+		if (args.page == "history") {
 			onRefreshHistoryList();
 		}
 	}

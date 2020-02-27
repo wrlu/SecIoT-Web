@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+						http://www.springframework.org/schema/jdbc 
+						http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+						http://www.springframework.org/schema/context   
+					    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<!-- 主要数据库的配置 -->
+	<bean id="mainDataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="org.sqlite.JDBC" />
+		<property name="url" value="jdbc:sqlite:../wtpwebapps/SecIoT/WEB-INF/db/seciot.db" />
+	</bean>
+	<!-- 认证数据库的配置 -->
+    <bean id="securityDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.sqlite.JDBC" />
+		<property name="url" value="jdbc:sqlite:../wtpwebapps/SecIoT/WEB-INF/db/seciot.db" />
+    </bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="mainDataSource" />
+		<property name="configLocation" value="/WEB-INF/mybatis/mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath:com/wrlus/seciot/*/dao/*.xml" />
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.wrlus.seciot" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+	<!-- 创建PyServerManager Bean 自动管理Python Socket服务器 -->
+	<bean class="com.wrlus.seciot.pysocket.PyServerManager" scope="singleton"
+        lazy-init="false" init-method="init" destroy-method="destory">
+    </bean>
+</beans>

@@ -1,0 +1,47 @@
+<b:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:b="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security 
+		http://www.springframework.org/schema/security/spring-security.xsd">
+    <!-- 配置访问权限控制 -->
+    <http auto-config="true" use-expressions="true">
+    	<!-- 无条件允许以下路径 -->
+    	<intercept-url pattern="/css/**" access="permitAll" />
+    	<intercept-url pattern="/js/**" access="permitAll" />
+    	<intercept-url pattern="/agent/**" access="permitAll" />
+    	<intercept-url pattern="/device/add*" access="permitAll" />
+    	<intercept-url pattern="/device/update*" access="permitAll" />
+    	<intercept-url pattern="/attach/downloads/**" access="permitAll" />
+    	<!-- 无条件禁止以下路径 -->
+        <intercept-url pattern="/attach/uploads/**" access="denyAll" />
+        <!-- 需要管理员权限访问以下路径 -->
+        <intercept-url pattern="/user/**" access="hasAuthority('admin')" />
+    	<!-- 需要普通用户权限访问所有其他路径 -->
+        <intercept-url pattern="/**" access="hasAnyAuthority('admin', 'user')" />
+        <!-- 配置禁止访问页面 -->
+        <access-denied-handler error-page="/?page=403" />
+        <!-- 开启XSS防护 -->
+        <headers>
+            <xss-protection />
+        </headers>
+        <!-- 配置默认目标，此处还可以配置替换默认的登录页面和自定义注销页面 -->
+        <form-login default-target-url="/?page=main" always-use-default-target="true" />
+        <!-- 关闭CSRF防护，如需开启需要配置jsp文件 -->
+        <csrf disabled="true" />
+    </http>
+    <!-- 认证管理器 -->
+    <authentication-manager>
+    	<!-- 配置认证提供者为JDBC，并指明数据源的bean和密码编码方式 -->
+        <authentication-provider>
+            <jdbc-user-service data-source-ref="securityDataSource"/>
+            <password-encoder ref="passwordEncoder" />
+        </authentication-provider>
+    </authentication-manager>
+    <!-- 配置密码为BCrypt算法哈希存储，如需明文存储可更换为NoOpPasswordEncoder -->
+    <b:bean id="passwordEncoder"
+        class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+</b:beans>
+

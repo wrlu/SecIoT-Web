@@ -8,7 +8,7 @@
 
 plugins {
     // Apply the java-library plugin to add support for Java Library
-    id 'java-library'
+    id 'java'
     // Apply the war plugin to add support for Java Web war package
     id 'war'
 }
@@ -21,8 +21,8 @@ repositories {
 }
 
 dependencies {
-// https://mvnrepository.com/artifact/mysql/mysql-connector-java
-implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
+// https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
+implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.30.1'
 // https://mvnrepository.com/artifact/commons-codec/commons-codec
 implementation group: 'commons-codec', name: 'commons-codec', version: '1.12'
 // https://mvnrepository.com/artifact/org.apache.commons/commons-collections4
